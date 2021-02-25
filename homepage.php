@@ -4,7 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
+use VisitMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,9 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
  */
 get_header();
 
-/*$hadesRepository = new HadesRepository();
+$wpRepository = new WpRepository();
+$hadesRepository = new HadesRepository();
 
-$news = WpRepository::getAllNews(6);
+$inspirationCat = $wpRepository->getCategoryBySlug('inspirations');
+$inspirations = [];
+if ($inspirationCat) {
+    $inspirations = $wpRepository->getPostsByCatId($inspirationCat->cat_ID);
+}
+
 try {
     $events = $hadesRepository->getEvents();
 } catch (\Exception $exception) {
@@ -23,25 +29,11 @@ try {
     Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
-$pageAlert    = WpRepository::getPageAlert();
-$contentAlert = null;
-
-if ($pageAlert) {
-    $request = Request::createFromGlobals();
-    $close   = (bool)$request->cookies->get('closeAlert');
-    if ($close) {
-        $pageAlert = null;
-    } else {
-        $contentAlert = get_the_content(null, null, $pageAlert);
-        $contentAlert = apply_filters('the_content', $contentAlert);
-        $contentAlert = str_replace(']]>', ']]&gt;', $contentAlert);
-    }
-}
-*/
 Twig::rendPage(
     'homepage/index.html.twig',
     [
-
+        'events' => $events,
+        'inspirations' => $inspirations,
     ]
 );
 
