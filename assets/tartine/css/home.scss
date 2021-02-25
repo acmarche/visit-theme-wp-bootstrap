@@ -1,0 +1,152 @@
+@import "config.scss";
+
+/* HOME */
+
+.bg-img-home {
+    background-image: url(../rsc/img/bg_home.png);
+    background-size: 375%;
+    background-position: 30% 55%;
+    
+    @media screen {
+        @media (orientation: landscape) {
+            background-size: 325%;
+
+            @media (min-width: $sm) {
+                background-size: 300%;
+            }
+            @media (min-width: $md) {
+                background-size: 200%;
+            }
+        }
+        
+        @media (min-width: $md) {
+            background-size: 150%;
+            background-position: 30% 75%;
+        }
+        @media (min-width: $lg) {
+            background-size: cover;
+            background-position: bottom center;
+        }
+        @media (min-width: $xl) {
+            background-position: center;
+        }
+    }
+    
+    // searchHome
+    .searchHome {
+        > input[type="search"] {
+            width: 100%;
+            height: 100%;
+            left: 0;
+
+            + button {
+
+                + .bubble {
+                    width: auto;
+                    top: -600px;
+                    bottom: auto;
+                    left: -24px;
+                    right: -24px;
+                    background-color: $white;
+                    opacity: 0;
+                    z-index: 10;
+                    @include lowBoxShadow();
+                    @include transition(opacity, $basicDuration);
+
+                    .graphicElement {
+                        bottom: auto;
+                        right: auto;
+                        opacity: 0;
+                        @include allTransition($basicDuration);
+                        @include delay($basicDuration);
+
+                        &:first-child {
+                            width: 20px;
+                            height: 20px;
+                            top: 20px;
+                            left: 48px;
+                            @include lowBoxShadow-reverse();
+                        }
+                        &:last-child {
+                            width: 40px;
+                            height: 20px;
+                            top: 30px;
+                            left: 38px;
+                            @include transform(none);
+                        }
+                    }
+
+                    h3 {
+                        font-size: $bigFontSize-1;
+                        padding: 16px 24px;
+                        color: $darkCTA;
+                        text-align: left;
+                        position: relative;
+                        z-index: 30;
+                    }
+
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 0 0 12px;
+                        text-align: left;
+                        
+                        @media screen {
+                            @media (orientation: landscape) {
+                                flex-wrap: wrap;
+                                flex-direction: row;
+                            }
+                        }
+
+                        li {
+                            display: flex;
+                            position: relative;
+                            z-index: 30;
+
+                            a {
+                                display: flex;
+                                font-family: 'montserratsemibold';
+                                font-size: $shortFontSize-3;
+                                padding: 8px 24px;
+                                color: $darkCTA;
+                                
+                                i {
+                                    width: 20px;
+                                    height: 20px;
+                                    background-size: contain;
+                                    margin-right: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:focus {
+                + button {
+                    + .bubble {
+                        top: 50px;
+                        opacity: 1;
+                        @include transition(opacity, $basicDuration);
+                        
+                        .graphicElement {
+                            opacity: 1;
+                            @include allTransition($basicDuration);
+                            @include delay($basicDuration);
+                            
+                            &:first-child {
+                                top: -10px;
+                            }
+                            &:last-child {
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.bg-gradient-home {
+	@include gradient(90deg, rgba(77, 77, 77, .35), rgba(231, 218, 203, .35));
+}

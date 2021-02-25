@@ -1,0 +1,157 @@
+@import "../config.scss";
+
+/* SEE MORE */
+
+.seeMore {
+	position: absolute;
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: $smallestRadius;
+	background-color: $CTA;
+	@include lowestBoxShadow();
+	@include allTransition($basicDuration);
+
+	p {
+		padding: 4px 6px;
+		font-size: $shortFontSize-2;
+		font-weight: 600;
+		line-height: 1.25rem;
+		color: $white;
+		@include boxShadowTransition($basicDuration);
+
+		&.more {
+			display: block;
+			@include boxInset(-22px 0 55px rgba($darkCTA, $alpha0));
+		}
+		&.less {
+			display: none;
+			//@include boxInset(-22px 0 55px rgba($active, $alpha0));
+		}
+	}
+
+	&.active {
+		//background-color: $active;
+
+		p {
+			&.more {
+				display: none;
+			}
+			&.less {
+				display: block;
+			}
+		}
+
+		&:hover {
+			//background-color: $lightActive;
+		}
+	}
+
+	&:hover {
+		//background-color: $lightCTA;
+		@include highBoxShadow();
+		@include allTransition($basicDuration);
+
+		p {
+			@include boxShadowTransition($basicDuration);
+
+			&.more {
+				@include boxInset(-22px 0 55px $darkCTA);
+			}
+			&.less {
+				//@include boxInset(-22px 0 55px $active);
+			}
+		}
+	}
+}
+
+// BOARD CONTAINER
+
+.boardContainer {
+	.seeMore {
+		p {
+			padding: 4px 6px;
+
+			&:last-child {
+				padding: 4px 6px;
+			}
+		}
+	}
+}
+
+// STEPS
+
+.descStep {
+	.seeMore {
+		bottom: 16px;
+		right: 22px;
+
+		&.active {
+			bottom: 22px;
+		}
+	}
+}
+
+// DATA LIST
+
+.dataList {
+	.mainData {
+		p {
+			height: 44px;
+			max-height: max-content;
+			overflow: hidden;
+			@include transition(height, $basicDuration);
+
+			&.viewFull {
+				height: 50px;
+				max-height: max-content;
+				padding-bottom: 28px;
+				@include transition(height, $basicDuration);
+			}
+		}
+		.seeMore {
+			display: inline-block;
+			width: auto;
+			padding: 0;
+			bottom: 14px;
+			right: 11px;
+		}
+	}
+}
+
+// LIBRARY
+
+.library {
+	.seeMore {
+		margin: 22px 0 0;
+		position: relative;
+		text-align: center;
+		border-radius: $basicRadius;
+
+
+		p {
+			padding: 11px;
+			font-weight: normal;
+			font-size: $shortFontSize-1;
+
+			&.more {
+				display: block;
+				@include boxInset(-66px 0 88px rgba($darkCTA, $alpha0));
+			}
+			&.less {
+				display: none;
+				//@include boxInset(-66px 0 88px rgba($active, $alpha0));
+			}
+		}
+
+		&:hover {
+			p {
+				&.more {
+					@include boxInset(-66px 0 88px $darkCTA);
+				}
+				&.less {
+					//@include boxInset(-66px 0 88px $active);
+				}
+			}
+		}
+	}
+}

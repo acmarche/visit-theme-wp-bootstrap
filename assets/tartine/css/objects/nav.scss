@@ -1,0 +1,1322 @@
+@import "../config.scss";
+
+/* NAV */
+
+nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    background-color: $darkGrey;
+    @include lowestBoxShadow-reverse();
+    
+    @media screen {
+        @media (orientation: landscape) {
+            width: 42px;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            right: auto;
+        }
+        
+        @media (min-width: $md) {
+            width: 42px;
+            flex-direction: column;
+            top: auto;
+            bottom: 24px;
+            left: auto;
+            right: 24px;
+            border-radius: $smallestRadius;
+            overflow: hidden;
+            @include lowBoxShadow();
+            
+            @media (orientation: landscape) {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: auto;
+                border-radius: 0;
+                overflow: initial;
+            }
+        }
+        @media (min-width: $lg) {
+            @media (orientation: landscape) {
+                top: auto;
+                bottom: 24px;
+                left: auto;
+                right: 24px;
+                border-radius: $smallestRadius;
+                overflow: hidden;
+            }
+        }        
+        @media (min-width: $xl) {
+            position: relative;
+            width: initial;
+            //height: 66px;
+            flex-direction: initial;
+            flex-grow: 1;
+            bottom: auto;
+            left: auto;
+            right: auto;
+            border-radius: 0;
+            overflow: initial;
+            background: none;
+            align-items: flex-end;
+            justify-content: flex-end;
+            @include noneBoxShadow();
+        }
+    }
+    
+    &.version_b {
+        > div {
+            > a {
+                span {
+                    @media screen {
+                        @media (min-width: $xl) {
+                            color: $darkGrey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    > div {
+        flex: auto;
+        position: relative;
+        
+        @media screen {
+            @media (orientation: landscape) {
+                height: 20%;
+            }
+            
+            @media (min-width: $lg) {
+                height: 42px;
+            }
+            @media (min-width: $xl) {
+                flex: initial;
+                padding: 0 15px;
+            }
+        }
+        &.search {
+            @media screen {
+                @media (min-width: $xl) {
+                    padding: 0;
+                    margin: 0 0 0 16px;
+                    order: 6;
+                }
+            }
+            
+            > a {
+                @media screen {
+                    @media (min-width: $xl) {
+                        width: 42px;
+                    }
+                }
+                
+                > i {
+                    &.icon_nav {
+                        @media (min-width: $xl) {
+                            display: block;
+                            @include transition(opacity, $basicDuration);
+                            
+                            &:last-child {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .searchScreen {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 0;
+                background-color: $white;
+                @include transition(top, $basicDuration);
+                
+                @media screen {
+                    @media (min-width: $xl) {
+                        width: auto;
+                        display: flex;
+                        top: 76px;
+                        bottom: auto;
+                        left: initial;
+                        right: initial;
+                        margin-left: 999px;
+                        z-index: 10;
+                        border-radius: $smallestRadius;
+                        @include lowBoxShadow();
+                        @include transition(margin-left, $longDuration);
+                    }
+                }
+                
+                .graphicElement {
+                    display: none;
+                    position: absolute;
+                    margin: 0 auto;
+                    background-color: $white;
+                    
+                    @media screen {
+                        @media (min-width: $xl) {
+                            display: block;
+                        }
+                    }
+                    
+                    &:first-child {
+                        width: 20px;
+                        height: 20px;
+                        //top: -10px;
+                        top: 0;
+                        bottom: auto;
+                        left: 70px;
+                        right: auto;
+                        z-index: 0;
+                        @include lowestBoxShadow-45();
+                        @include transform(rotate(45deg));
+                        @include transition(top, $basicDuration);
+                    }
+                    &:last-child {
+                        width: 45px;
+                        height: 24px;
+                        top: 0;
+                        bottom: auto;
+                        left: 57px;
+                        right: auto;
+                        z-index: 20;
+                    }
+                }
+                
+                > ul {
+                    display: flex;
+                    flex-direction: column;
+                    //background-color: $white;
+                    //height: 100%;
+                    
+                    @media screen {
+                        @media (orientation: landscape) {
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                            align-items: flex-start;
+                        }
+                        
+                        @media (min-width: $xl) {
+                            flex-direction: column;
+                        }
+                    }
+                    
+                    > li {
+                        &:first-child {
+                            padding: 24px 24px 12px;
+                            flex-direction: row;
+                            
+                            > form {
+                                flex-grow: 1;
+                                position: relative;
+                                
+                                @media screen {
+                                    @media (min-width: $xl) {
+                                        min-width: 200px;
+                                    }
+                                }
+                                
+                                input {
+                                    background-color: $lighterGrey;
+                                }
+                            }
+                            
+                            > a {
+                                padding: 0;
+                                margin-left: 12px;
+                                
+                                @media screen {
+                                    @media (min-width: $xl) {
+                                        display: none;
+                                    }
+                                }
+                                
+                                i {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                        
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                        
+                        > a {
+                            font-family: 'montserratsemibold';
+                            font-size: $shortFontSize-3;
+                            color: $darkGrey;
+                            text-align: left;
+                            padding: 10px 24px;
+                            white-space: nowrap;
+                            display: flex;
+                            align-items: center;
+                            
+                            @media screen {
+                                @media (min-width: $xl) {
+                                    &:hover {
+                                        color: $white;
+                                        background-color: $CTA;
+                                        
+                                        i {
+                                            &.i-patrimony {
+                                                background-image: url(../../rsc/svg/icon_patrimony_white.svg);
+                                            }
+                                            &.i-arts {
+                                                background-image: url(../../rsc/svg/icon_arts_white.svg);
+                                            }
+                                            &.i-walks {
+                                                background-image: url(../../rsc/svg/icon_walks_white.svg);
+                                            }
+                                            &.i-delicaties {
+                                                background-image: url(../../rsc/svg/icon_delicaties_white.svg);
+                                            }
+                                            &.i-parties {
+                                                background-image: url(../../rsc/svg/icon_parties_white.svg);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            i {
+                                width: 20px;
+                                height: 20px;
+                                background-size: contain;
+                                margin-right: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &:hover {
+                > a {
+                    @media screen {
+                        @media (min-width: $xl) {
+                            @include boxShadow(0 -42px 0 $CTA inset);
+                            
+                            > i {
+                                &.icon_nav {
+                                    @media (min-width: $xl) {
+                                        @include transition(opacity, $basicDuration);
+                                        
+                                        &:first-child {
+                                            opacity: 0;
+                                        }
+                                        &:last-child {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .searchScreen {
+                    top: 0;
+                    @include transition(top, $basicDuration);
+
+                    @media screen {
+                        @media (min-width: $xl) {
+                            top: 76px;
+                            //right: 24px;
+                            margin-left: -58px;
+                            @include transition(margin-left, $longDuration);
+                            
+                            .graphicElement {
+                                &:first-child {
+                                    top: -10px;
+                                    @include transition(top, $basicDuration);
+                                    @include delay($longDuration);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*&.all {
+            
+            @media screen {
+                @media (min-width: $xl) {
+                    padding: 0;
+                    margin: 0 15px;
+                    order: 1;
+                }
+            }
+            
+            .subnav {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 0;
+                background-color: $darkCTA;
+                @include transition(top, $basicDuration);
+                
+                @media screen {
+                    @media (min-width: $xl) {
+                        display: none;
+                        //top: -147px;
+                        top: 66px;
+                        bottom: auto;
+                        flex-direction: initial;
+                        max-width: 1920px;
+                        margin: auto;
+                        overflow: hidden;
+                        @include lowestBoxShadow();
+                    }
+                }
+                
+                > ul {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    @media screen and (orientation: landscape) {
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        align-items: flex-start;
+                    }
+                    
+                    @media screen {
+                        @media (min-width: $xl) {
+                            height: auto;
+                            flex-direction: column;
+                        }
+                    }
+                    
+                    > li {
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                        position: initial;
+                        
+                        @media screen {
+                            @media (min-width: $xl) {
+                                align-items: flex-end;
+                            }
+                        }
+                        
+                        &:hover {
+                            > a {
+                                background-color: $white;
+                                color: $CTA;
+                                @include allTransition($basicDuration);
+                            }
+                            
+                            > div {
+                                left: 0;
+                                @include transition(left, $basicDuration);
+                                
+                                @media screen {
+                                    @media (min-width: $xl) {
+                                        display: flex;
+                                        left: auto;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        > a {
+                            font-family: 'montserratsemibold';
+                            font-size: $shortFontSize-3;
+                            color: $white;
+                            text-align: left;
+                            padding: 10px 24px;
+                            white-space: nowrap;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            @include allTransition($basicDuration);
+                            
+                            @media screen {
+                                @media (min-width: $xl) {
+                                    padding: 0 36px 0 999px;
+                                    display: initial;
+                                }
+                            }
+                        }
+                        
+                        > div {
+                            display: flex;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 100%;
+                            right: 0;
+                            padding: 0 0 24px;
+                            overflow-y: auto;
+                            background-color: $white;
+                            flex-direction: column;
+                            @include transition(left, $basicDuration);
+                            
+                            @media screen {
+                                @media (orientation: landscape) {
+                                    flex-wrap: wrap;
+                                    flex-direction: row;
+                                    justify-content: flex-start;
+                                }
+                                
+                                @media (min-width: $xl) {
+                                    display: none;
+                                    left: auto;
+                                    padding: 0;
+                                    flex-direction: row;
+                                    overflow: initial;
+                                }
+                            }
+                            
+                            > ul {
+                                text-align: left;
+                                
+                                @media screen {
+                                    @media (orientation: landscape) {
+                                        display: flex;
+                                        flex-direction: column;
+                                        padding: 0;
+                                    }
+                                    
+                                    @media (min-width: $xl) {
+                                        font-family: 'montserratlight';
+                                        padding: 12px 0;
+                                    }
+                                }
+                                
+                                > li {
+                                    display: flex;
+                                    
+                                    @media screen {
+                                        @media (min-width: $xl) {
+                                            height: 22px;
+                                        }
+                                    }
+                                    
+                                    > a {
+                                        width: 100%;
+                                        font-family: 'montserratsemibold';
+                                        padding: 10px 24px;
+                                        font-size: $shortFontSize-3;
+                                        color: $darkCTA;
+                                        @include transition(color, $basicDuration);
+                                        
+                                        @media screen {
+                                            @media (min-width: $xl) {
+                                                font-family: 'montserratlight';
+                                                padding: 0 0 0 36px;
+                                            }
+                                        }
+                                        
+                                        &:hover {
+                                            text-decoration: none;
+                                            color: $CTA;
+                                            @include transition(color, $basicDuration);
+                                        }
+                                        
+                                        > i {
+                                            font-size: $shortFontSize-3;
+                                            padding-left: 8px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        &.c-adm {
+                            &:hover {
+                                > a {
+                                    color: $c-adm;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-adm;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            h3 {
+                                color: $c-adm;
+                            }
+                        }
+                        &.c-cit {
+                            &:hover {
+                                > a {
+                                    color: $c-cit;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-cit;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            h3 {
+                                color: $c-cit;
+                            }
+                        }
+                        &.c-cul {
+                            &:hover {
+                                > a {
+                                    color: $c-cul;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-cul;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-cul;
+                            }
+                        }
+                        &.c-eco {
+                            &:hover {
+                                > a {
+                                    color: $c-eco;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-eco;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-eco;
+                            }
+                        }
+                        &.c-enf {
+                            &:hover {
+                                > a {
+                                    color: $c-enf;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-enf;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-enf;
+                            }
+                        }
+                        &.c-san {
+                            &:hover {
+                                > a {
+                                    color: $c-san;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-san;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-san;
+                            }
+                        }
+                        &.c-soc {
+                            &:hover {
+                                > a {
+                                    color: $c-soc;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-soc;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-soc;
+                            }
+                        }
+                        &.c-spo {
+                            &:hover {
+                                > a {
+                                    color: $c-spo;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-spo;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-spo;
+                            }
+                        }
+                        &.c-tou {
+                            &:hover {
+                                > a {
+                                    color: $c-tou;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-tou;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-tou;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &:hover {
+                
+                .subnav {
+                    top: 0;
+                    z-index: 10;
+                    @include transition(top, $basicDuration);
+                    
+                    @media screen {
+                        @media (min-width: $xl) {
+                            display: block;
+                            top: 66px;
+                        }
+                    }
+                }
+            }
+        }*/
+        &.organize {
+            @media screen {
+                @media (min-width: $xl) {
+                    order: 4;
+                    padding: 0;
+                    cursor: pointer;
+                }
+            }
+            
+            &:hover {
+                @media screen {
+                    @media (min-width: $xl) {
+                        input[type="checkbox"] {
+                            + a {
+                                + .bubble {
+                                    height: 84px;
+                                    top: calc(100% + 5px);
+                                    bottom: auto;
+                                    
+                                    div {
+                                        height: 84px;
+                                        @include transition(height, $basicDuration);
+                                    }
+                                }
+                            }
+                        }
+                        
+                        > a {
+                            @include boxShadow(0 -4px 0 $CTA inset);
+                        }
+                    }
+                }
+            }
+            
+            input[type="checkbox"] {
+                width: 65px;
+                height: 42px;
+                left: 0;
+                
+                @media screen {
+                    @media (orientation: landscape) {
+                        width: 42px;
+                        height: 100%;
+                    }
+                    
+                    @media (min-width: $md) {
+                        width: 42px;
+                    }
+                    
+                    @media (min-width: $xl) {
+                        width: 75.3px;
+                        height: 100%;
+                        left: 15px;
+                        right: 15px;
+                    }
+                }
+                
+                &:checked {
+                    + a {
+                        @include boxShadow(0 -42px 0 $CTA inset);
+                        
+                        @media screen {
+                            @media (orientation: landscape) {
+                                @include boxShadow(42px 0 0 $CTA inset);
+                                
+                                @media (min-width: $md) {
+                                    @include boxShadow(42px 0 0 $CTA inset);
+                                }
+                                
+                                @media (min-width: $md) {
+                                    @include boxShadow(0 -42px 0 $CTA inset);
+                                }
+                            }
+                            
+                            @media (min-width: $xl) {
+                                @include boxShadow(0 -4px 0 $CTA inset);
+                            }
+                        }
+                        
+                        + .bubble {
+                            height: 84px;
+                            top: auto;
+                            bottom: calc(100% + 5px);
+                            
+                            @media screen {
+                                @media (orientation: landscape) {
+                                    top: -11px;
+                                    bottom: auto;
+                                    left: calc(100% + 5px);
+                                    
+                                    @media (min-width: $sm) {
+                                        top: -5px;
+                                    }
+                                }
+                                
+                                @media (min-width: $md) {
+                                    top: auto;
+                                    bottom: 107px;
+                                    left: auto;
+                                }
+                                
+                                @media (min-width: $xl) {
+                                    top: calc(100% + 5px);
+                                    bottom: auto;
+                                    opacity: 1;
+                                    
+                                    div {
+                                        height: 84px;
+                                        @include transition(height, $basicDuration);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                + a {
+                    @media screen {
+                        @media (min-width: $xl) {
+                            margin: auto 15px;
+                            
+                            &:hover {
+                                @include boxShadow(0 0 0 $CTA inset);
+                            }
+                        }
+                    }
+                    
+                    + .bubble {
+                        left: 0;
+                        
+                        @media screen {
+                            @media (orientation: landscape) {
+                                top: -11px;
+                                bottom: auto;
+                                left: -80px;
+                                
+                                @media (min-width: $sm) {
+                                    top: -5px;
+                                }
+                            }
+                            
+                            @media (min-width: $md) {
+                                position: fixed;
+                                top: auto;
+                                bottom: -84px;
+                                left: auto;
+                                right: 75px;
+                            }
+                            
+                            @media (min-width: $xl) {
+                                position: absolute;
+                                height: 4px;
+                                top: calc(100% - 4px);
+                                bottom: auto;
+                                right: auto;
+                                padding: 0 15px;
+                            }
+                        }
+                        
+                        .graphicElement {
+                            top : calc(100% - 5px);
+                            
+                            @media screen {
+                                @media (orientation: landscape) {
+                                    top: 38px;
+                                    bottom: auto;
+                                    left: auto;
+                                    right: calc(100% - 5px);
+                                }
+                                
+                                @media (min-width: $md) {
+                                    top: calc(100% - 27px);
+                                    left: calc(100% - 5px);
+                                }
+                                
+                                @media (min-width: $xl) {
+                                    top: -5px;
+                                    left: 0;
+                                    right: 0;
+                                }
+                            }
+                        }
+                        
+                        div {
+                            width: 75.3px;
+                            overflow: hidden;
+                            @include transition(height, $basicDuration);
+                            
+                            @media screen {
+                                @media (min-width: $xl) {
+                                    height: 4px;
+                                }
+                            }
+                            
+                            a {
+                                display: block;
+                                background-color: $white;
+                                padding: 5px 0;
+                                border-radius: 0;
+                                font-family: 'montserratsemibold';
+                                color: $darkGrey;
+                                font-size: $shortFontSize-3;
+                                line-height: 150%;
+                                @include colorTransition($basicDuration);
+                                
+                                &:hover {
+                                    color: $CTA;
+                                    @include colorTransition($basicDuration);
+                                }
+
+                                &:first-child {
+                                    border-radius: $smallestRadius $smallestRadius 0 0;
+                                }
+                                &:last-child {
+                                    border-radius: 0 0 $smallestRadius $smallestRadius;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.practical {
+            @media screen {
+                @media (min-width: $xl) {
+                    order: 5;
+                }
+            }
+        }
+        &.more {
+            position: relative;
+            
+            @media screen {
+                @media (min-width: $xl) {
+                    display: none;
+                }
+            }
+            
+            > input[type="checkbox"] {
+                width: 100%;
+                height: 100%;
+                left: 0;
+                z-index: 20;
+                
+                + a {
+                    @include boxShadow(0 0 0 $CTA inset);
+                    @include transition(box-shadow, $basicDuration);
+                    
+                    + .bubble {
+                        width: max-content;
+                        top: auto;
+                        bottom: 100%;
+                        right: 8px;
+                        background-color: $white;
+                        opacity: 0;
+                        border-radius: $smallestRadius;
+                        @include lowBoxShadow();
+                        @include allTransition($basicDuration);
+                        
+                        @media screen {
+                            @media (orientation: landscape) {
+                                bottom: 8px;
+                                left: -100%;
+                                right: auto;
+                            }
+                            
+                            @media (min-width: $md) {
+                                position: fixed;
+                                bottom: -88px;
+                                right: 74px;
+                            }
+                            @media (min-width: $lg) {
+                                @media (orientation: landscape) {
+                                    position: fixed;
+                                    bottom: -88px;
+                                    left: auto;
+                                    right: 74px;
+                                }
+                            }
+                        }
+                        
+                        .graphicElement {
+                            top: auto;
+                            left: auto;
+                            
+                            &:first-child {
+                                width: 20px;
+                                height: 20px;
+                                bottom: -10px;
+                                right: 14px;
+                                @include lowBoxShadow-reverse();
+                                
+                                @media screen  {
+                                    @media (orientation: landscape) {
+                                        bottom: 10px;
+                                        left: -10px;
+                                        right: auto;
+                                        @include lowBoxShadow-90();
+                                    }
+                                    
+                                    @media (min-width: $md) {
+                                        bottom: 11px;
+                                        right: -10px;
+                                        @include lowBoxShadow-90();
+                                    }
+                                    @media (min-width: $lg) {
+                                        @media (orientation: landscape) {
+                                            bottom: 11px;
+                                            left: auto;
+                                            right: -10px;
+                                            @include lowBoxShadow-90();
+                                        }
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                width: 40px;
+                                height: 20px;
+                                bottom: 0;
+                                right: 5px;
+                                border-radius: $smallestRadius;
+                                @include transform(none);
+                                
+                                @media screen {
+                                    @media (orientation: landscape) {
+                                        width: 20px;
+                                        height: 45px;
+                                        bottom: 0;
+                                        left: 0;
+                                        right: auto;
+                                    }
+                                    
+                                    @media (min-width: $md) {
+                                        width: 20px;
+                                        height: 45px;
+                                        bottom: 0;
+                                        right: 0;
+                                    }
+                                    @media (min-width: $lg) {
+                                        @media (orientation: landscape) {
+                                            width: 20px;
+                                            height: 45px;
+                                            bottom: 0;
+                                            left: auto;
+                                            right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            padding: 8px 0;
+                            text-align: left;
+                            
+                            a {
+                                font-family: 'montserratsemibold';
+                                font-size: $shortFontSize-3;
+                                padding: 8px 24px 8px 12px;
+                                color: $darkGrey;
+                                position: relative;
+                                z-index: 30;
+                                @include colorTransition($basicDuration);
+                                
+                                &:hover {
+                                    color: $CTA;
+                                    @include colorTransition($basicDuration);
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                &:checked {
+                    + a {
+                        @include boxShadow(0 -42px 0 $CTA inset);
+                        @include transition(box-shadow, $basicDuration);
+                        
+                        @media screen {
+                            @media (orientation: landscape) {
+                                @include boxShadow(42px 0 0 $CTA inset);
+                            }
+                            
+                            @media (min-width: $lg) {
+                                @media (orientation: landscape) {
+                                    @include boxShadow(0 -42px 0 $CTA inset);
+                                }
+                            }
+                        }
+                        
+                        + .bubble {
+                            bottom: 50px;
+                            opacity: 1;
+                            @include allTransition($basicDuration);
+                            
+                            @media screen {
+                                @media (orientation: landscape) {
+                                    bottom: 8px;
+                                    left: 50px;
+                                }
+                                
+                                @media (min-width: $md) {
+                                    bottom: 24px;
+                                    right: 74px;
+                                }
+                                @media (min-width: $lg) {
+                                    @media (orientation: landscape) {
+                                        bottom: 24px;
+                                        left: auto;
+                                        right: 74px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.inspirations {
+            display: none;
+            order: 2;
+
+            @media screen {
+                @media (min-width: $xl) {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        &.agenda {
+            display: none;
+            order: 3;
+
+            @media screen {
+                @media (min-width: $xl) {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        
+        &.active {            
+            > a {
+                background-color: $CTA;
+
+                @media screen {
+                    @media (min-width: $xl) {
+                        background: none;
+                        @include boxShadow(0 -4px 0 $CTA inset);
+                    }
+                }
+            }
+        }
+        
+        > a {
+            display: flex;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            font-size: $bigFontSize-1;
+            @include boxShadow(0 0 0 $CTA inset);
+            @include transition(box-shadow, $basicDuration);
+            
+            @media screen {
+                @media (orientation: landscape) {
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                }
+                
+                @media (min-width: $lg) {
+                    @media (orientation: landscape) {
+                        height: 42px;
+                    }
+                }
+                @media (min-width: $xl) {
+                    position: initial;
+                }
+            }
+            
+            &:hover {
+                @include boxShadow(0 -42px 0 $CTA inset);
+                @include transition(box-shadow, $basicDuration);
+                
+                @media screen {
+                    @media (orientation: landscape) {
+                        @include boxShadow(42px 0 0 $CTA inset);
+                    }
+                    
+                    @media (min-width: $lg) {
+                        @media (orientation: landscape) {
+                            @include boxShadow(0 -42px 0 $CTA inset);
+                        }
+                    }                    
+                    @media (min-width: $xl) {
+                        @include boxShadow(0 -4px 0 $CTA inset);
+                        
+                        /*@media (orientation: landscape) {
+                            @include boxShadow(0 -42px 0 $CTA inset);
+                        }*/
+                    }
+                }
+            }
+
+            i {
+                font-size: $bigFontSize-1;
+
+                &.icon_nav {
+                    @media screen {
+                        @media (min-width: $xl) {
+                            display: none;
+                            
+                            /*@media (orientation: landscape) {
+                                display: flex;
+                            }*/
+                        }
+                    }
+                }
+            }
+
+            &.icon_custom {
+                .i-dark-primary {
+                    display: none;
+
+                    @media screen {
+                        @media (min-width: $xl) {
+                            display: inline;
+                            margin-right: 8px;
+                            background-size: auto;
+
+                            &.i-bars {
+                                height: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            span {
+                display: none;
+                color: $white;
+                font-size: $shortFontSize-2;
+                font-family: 'montserratsemibold';
+                text-shadow: 0 1px 3px rgba($darkestGrey, .12), 0 1px 2px rgba($darkestGrey, .24);
+
+                @media screen {
+                    @media (min-width: $xl) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

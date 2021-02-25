@@ -1,0 +1,100 @@
+@import "../config.scss";
+
+/* FOOTER */
+
+footer {
+    padding: 24px 24px 66px;
+    background-color: $darkGrey;
+    color: $white;
+    
+    @media screen {
+        @media (orientation: landscape) {
+            padding-bottom: 24px;
+            padding-left: 66px;
+        }
+        
+        @media (min-width: $md) {
+            padding-bottom: 24px;
+            padding-right: 90px;
+            
+            @media (orientation: landscape) {
+                padding-right: 24px;
+            }
+        }
+        @media (min-width: $lg) {
+            @media (orientation: landscape) {
+                padding-left: 24px;
+                padding-right: 90px;
+            }
+        }
+        @media (min-width: $xl) {
+            display: flex;
+            position: relative;
+            //position: absolute;
+            //bottom: 0;
+            padding-left: 55px;
+            padding-right: 55px;
+            padding-bottom: 48px;
+            
+            /*@media (orientation: landscape) {
+                padding-left: 24px;
+                padding-right: 90px;
+            }*/
+        }
+    }
+    
+    section {
+        div {
+            position: relative;
+            width: 100%;
+            
+            li {
+                padding-top: 8px;
+                color: $white;
+                font-size: $shortFontSize-3;
+                
+                a {
+                    color: $white;
+                    font-size: $shortFontSize-3;
+                    padding-bottom: 0;
+                    border-bottom: 1px solid;
+                    border-color: rgba($white, 0);
+                    @include allTransition($basicDuration);
+                    
+                    &:hover {
+                        color: $white;
+                        padding-bottom: 3px;
+                        border-color: rgba($white, .5);
+                        @include allTransition($basicDuration);
+                    }
+                }
+            }
+        }
+        
+        + section {
+            @include border(1px 0 0 0, rgba($white, .25));
+            
+            a {
+                color: $white;
+                font-size: $shortFontSize-3;
+                @include allTransition($basicDuration);
+                
+                &:hover {
+                    color: $white;
+                    border-color: rgba($white, .5) !important;
+                    @include allTransition($basicDuration);
+                }
+            }
+            small {
+                display: block;
+                padding-top: 8px;
+                font-size: .5rem;
+                line-height: 150%;
+                
+                span {
+                    font-size: .5rem;
+                }
+            }
+        }
+    }
+}

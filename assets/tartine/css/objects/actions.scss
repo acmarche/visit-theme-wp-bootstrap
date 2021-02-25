@@ -1,0 +1,249 @@
+@import "../config.scss";
+
+/* ACTIONS */
+
+.actions {
+	position: absolute;
+	z-index: 10;
+	font-size: 0;
+
+	> i {
+		color: $CTA;
+		@include colorTransition($basicDuration);
+
+		&.fa-angle-up,
+		&.fa-angle-down {
+			font-size: $bigFontSize-1;
+			line-height: 1rem;
+		}
+	}
+
+	.icon,
+	.text {
+		margin: 0 6px 0 0;
+		font-size: 0;
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+
+	.text {
+		display: inline-block;
+		height: 28px;
+		text-align: center;
+		overflow: hidden;
+		vertical-align: top;
+		background-color: $white;
+		border-radius: $smallestRadius;
+		@include lowestBoxShadow();
+		@include allTransition($basicDuration);
+
+		span {
+			display: block;
+			padding: 7px 11px;
+			color: $CTA;
+			@include boxInset(-55px 0 88px rgba($darkCTA, $alpha0));
+			@include allTransition($basicDuration);
+		}
+
+		/*&.active {
+			background-color: $lightActive;
+
+			span {
+				color: $white;
+				@include boxInset(-55px 0 88px $active);
+			}
+
+			&:hover {
+				background-color: $lightActive;
+
+				span {
+					@include boxInset(-55px 0 88px $active);
+				}
+			}
+		}*/
+
+		/*&:hover {
+			background-color: $lightCTA;
+			@include higherBoxShadow();
+			@include allTransition($basicDuration);
+
+			span {
+				color: $white;
+				@include boxInset(-55px 0 88px $darkCTA);
+				@include allTransition($basicDuration);
+			}
+		}*/
+	}
+}
+
+/* -------------- */
+
+// CARD BOARD
+
+.cardBoard {
+	.title {
+		.actions {
+			top: 11px;
+			right: 22px;
+
+			> * {
+				margin: 0 11px 0 0;
+				vertical-align: top;
+
+				&:last-child {
+					margin: 0;
+				}
+			}
+
+			.icon,
+			.text {
+				height: 28px;
+				margin-top: 3px;
+			}
+		}
+	}
+}
+
+// BOARD CONTAINER
+
+.boardContainer {
+	.defaultCard {
+		.actions {
+			top: -4px;
+			right: 0;
+		}
+
+		.subCard {
+			.actions {
+				top: 11px;
+				right: 11px;
+
+				.icon,
+				.text {
+					@include noneBoxShadow();
+					@include basicBorder(1px);
+
+					&:hover {
+						@include noneBoxShadow();
+					}
+				}
+			}
+
+			/*&.presentation {
+				.actions {
+					.icon,
+					.text {
+						border: none;
+						@include lowestBoxShadow();
+
+						&:hover {
+							@include higherBoxShadow();
+						}
+					}
+				}
+			}*/
+
+			&:hover {
+				.actions {
+					> i {
+						color: $darkCTA;
+						@include colorTransition($basicDuration);
+					}
+				}
+			}
+		}
+	}
+}
+
+// DEFAULT CARD
+
+.defaultCard {
+	.actions {
+		top: 6px;
+		right: 11px;
+	}
+}
+
+// CAT LINE
+
+.catLine {
+	.withActions {
+		.actions {
+			top: 5px;
+			right: -11px;
+		}
+	}
+}
+
+// PARCOURS
+
+#monParcours {
+	> .actions {
+		top: 22px;
+		right: 22px;
+	}
+}
+
+// VIDEO MEETING DETAIL
+
+.videoMeetingDetail {
+	.popupContainer {
+		.popupContent {
+			.actions {
+				bottom: 11px;
+				right: 26px;
+
+				> * {
+					opacity: $alpha30;
+
+					&:hover {
+						opacity: $alpha100;
+					}
+				}
+			}
+
+			.benefView {
+				.actions {
+					right: 33px;
+				}
+			}
+		}
+	}
+}
+
+// DATA LIST
+
+.dataList {
+	ul {
+		li {
+			div {
+				.actions {
+					display: block;
+					width: 28px;
+					height: max-content;
+					margin: auto 0 auto 11px;
+					padding: 0;
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					right: 0;
+
+					a {
+						margin: 0 0 6px;
+
+						i {
+							width: 28px;
+							height: 28px;
+							margin: 0;
+							padding: 6px 0;
+							border: none;
+							border-radius: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

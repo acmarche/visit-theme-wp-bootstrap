@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Studio Tartine">
+
+        <title>Agenda | Visit Marche</title>
+
+        <!--BOOTSTRAP-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/base.css">
+
+        <!--FONT-AWESOME-->
+        <script src="https://kit.fontawesome.com/346aed29e3.js" crossorigin="anonymous"></script>
+
+        <!--FAVICON-->
+        <link rel="icon" type="image/png" href="rsc/favicon.png" />
+    </head>
+
+    <body class="bg-white">
+
+        <!--OBJECT | HEADER-->
+        <header>
+            <div>
+                <a href="index.html">
+                    <img src="rsc/img/img_logo.png" alt="logo">
+                </a>
+
+                <!--OBJECT | NAV-->
+                <nav>
+
+                    <!--home-->
+                    <div class="home">
+                        <a href="index.html" class="icon_custom position-relative">
+                            <i class="icon_nav i-home"></i>
+                            <span>Accueil</span>
+                        </a>
+                    </div>
+                    <!--search | visible on mobile/tablet && !homepage-extralarge-->
+                    <div class="search">
+                        <a href="#">
+                            <i class="icon_nav i-search i-white"></i>
+                            <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                        </a>
+
+                        <div class="searchScreen">
+                           <i class="graphicElement"></i>
+
+                            <ul>
+                                <li class="col-ls-12">
+                                    <form class="h-32px">
+                                        <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
+                                        <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                                            <i class="i-search i-dark-grey w-16px h-16px"></i>
+                                        </button>
+                                    </form>
+                                    <!--TODO JF: branchement-->
+                                    <a href="#" class="icon_custom">
+                                        <i class="i-times"></i>
+                                    </a>
+                                </li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-patrimony"></i>Patrimoine</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-arts"></i>Arts</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-walks"></i>Balades</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-delicaties"></i>Gourmandises</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-parties"></i>Fêtes</a></li>
+                            </ul>
+
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+                    
+                    <!--organize-->
+                    <div class="organize">
+                       <input type="checkbox" id="organize" name="organize"/>
+                        <a href="#" for="organize">
+                            <i class="icon_nav i-bars"></i>
+                            <span>S'organiser</span>
+                        </a>
+
+                        <div class="bubble">
+                            <i class="graphicElement"></i>
+                            <div>
+                                <a href="enjoy.html">Savourer</a>
+                                <a href="#">Bouger</a>
+                                <a href="#">Séjourner</a>
+                            </div>
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+                    
+                    <!--practical-->
+                    <div class="practical">
+                        <a href="#">
+                            <i class="icon_nav i-clock"></i>
+                            <span>Pratique</span>
+                        </a>
+                    </div>
+                    
+                    <!--more-->
+                    <div class="more">
+                       <input type="checkbox" id="more" name="more"/>
+                        <a href="#" for="more">
+                            <i class="icon_nav i-plus"></i>
+                        </a>
+
+                        <div class="bubble">
+                            <i class="graphicElement"></i>
+                            <div class="shadow-sm">
+                                <a href="inspirations.html">Inspirations</a>
+                                <a href="events.html">Agenda</a>
+                            </div>
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+
+                    <!--visible from extralarge-->
+                    <!--inspirations-->
+                    <div class="inspirations">
+                        <a href="inspirations.html">
+                            <span>Inspirations</span>
+                        </a>
+                    </div>
+                    <!--agenda-->
+                    <div class="agenda active">
+                        <a href="#">
+                            <span>Agenda</span>
+                        </a>
+                    </div>
+                </nav>
+
+                <!--language-->
+                <div class="language pl-32px">
+                   <input type="checkbox" id="language" name="language"/>
+                    <a href="#" for="language">FR<i class="fas fa-caret-down"></i></a>
+
+                    <div class="bubble">
+                        <i class="graphicElement"></i>
+                        <div class="shadow-sm">
+                            <a href="#">fr</a>
+                            <a href="#">nl</a>
+                            <a href="#">en</a>
+                        </div>
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+
+                <!--social-->
+                <div class="social">
+                   <input type="checkbox" id="social" name="social"/>
+                   <a href="#" for="social">
+                       <i class="fas fa-share-alt"></i>
+                       <i class="fas fa-times fs-basic"></i>
+                   </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!--CONTENT-->
+        <section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
+            
+            <!--EVENTS_BG-->
+            <div class="bg-img-events">
+                <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
+
+                    <!--back | TODO JF: lien dynamique vers la page précédente-->
+                    <a href="index.html" class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à l'accueil</a>
+
+                    <!--title-->
+                    <h2 class="text-white lh-100">Agenda</h2>
+                </div>
+            </div>
+
+            <!--EVENTS-->
+            <div class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
+
+                <!--list | TODO JF: à brancher-->
+                <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
+                   
+                   <!--event-1-->
+                    <li class="object-card oc-event col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-1 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>02</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Course cycliste : DH Famenne-Ardenne</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small>Du 02.03.2020 au 24.03.2020</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--event-2-->
+                    <li class="object-card oc-event pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-2 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>03</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Exposition : Vibrations</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small class="d-none">Du {jj.mm.aaaa} au {jj.mm.aaaa}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--event-3-->
+                    <li class="object-card oc-event pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-3 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>03</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Cinémarche : Madre</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small class="d-none">Du {jj.mm.aaaa} au {jj.mm.aaaa}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--event-4-->
+                    <li class="object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-4 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>04</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Exposition : Curieux</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small class="d-none">Du {jj.mm.aaaa} au {jj.mm.aaaa}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--event-5-->
+                    <li class="object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-5 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>05</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Concert Pomme</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small class="d-none">Du {jj.mm.aaaa} au {jj.mm.aaaa}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!--event-6-->
+                    <li class="object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                        <a href="#" class="bg-img">
+                            <i class="bg-img-event-6 bg-img-size-hover-110">
+                                <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                                <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Voir l'événement</span>
+                            </i>
+                            <div>
+
+                               <!--date-->
+                                <div class="col-3">
+                                    <span>07</span>
+                                    <span>03</span>
+                                    <span>2020</span>
+                                </div>
+                                
+                                <!--other datas-->
+                                <div class="col-9">
+                                   
+                                   <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                                    <h3 maxlenght="0">Souper couscous du Vieux Tilleul</h3>
+                                    
+                                    <small>Marche-en-Famenne</small>
+                                    
+                                    <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+                                    <small class="d-none">Du {jj.mm.aaaa} au {jj.mm.aaaa}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <a href="#" class="button lvl3 mt-20px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">Charger plus d'événements<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+            </div>
+        </section>
+
+        <!--OBJECT | FOOTER-->
+        <footer>
+            <section class="px-0 d-md-flex flex-md-wrap mx-md-n15px px-md-15px d-ls-flex flex-ls-wrap mx-ls-n15px pl-ls-15px col-xl-9 order-xl-2">
+                <div class="px-0 col-ls-6 col-ls-md-4 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Menu</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                        <li class="col-6 col-ls-12 col-md-12">
+                            <a href="inspirations.html">Inspirations</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-3 col-md-12 order-md-3">
+                            <a href="#">S'organiser</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-2 col-md-12 order-md-2">
+                            <a href="#">Agenda</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-4 col-md-12 order-md-4">
+                            <a href="#">Pratique</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-6 pt-ls-0 col-ls-md-4 pt-md-0 pl-md-12px pl-ls-md-0 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Découvrez</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                       <li class="col-6">
+                            <a href="#">Patrimoine</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Arts</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Balades</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Gourmandises</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="category.html">Fêtes</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Contact</h6>
+                    <ul>
+                        <li>Hôtel de ville : <a href="tel:+3284327000">084 32 70 00</a></li>
+                        <li>Du lundi au jeudi : de 8h à 12h et de 13h à 17h</li>
+                        <li>Vendredi : de 8h à 12h et de 13h à 15h</li>
+                        <li class="d-flex">
+                            <a href="#" class="text-white border-0 pb-0">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="d-flex mt-24px w-100 px-0 col-xl-3 border-xl-0 mt-xl-0 position-xl-initial">
+                <div class="col-6 col-xl-12 pt-24px pl-0 pt-xl-12px d-flex flex-wrap flex-column flex-ls-row flex-xl-row">
+                   <a href="index.html" class="d-block">
+                        <img src="rsc/img/img_logo.png" alt="logo" class="w-66px w-xl-88px">
+                    </a>
+                    <a href="#" class="d-block ml-ls-24px ml-ls-xl-40px ml-xl-40px mt-8px mt-ls-0">
+                        <img src="rsc/img/img_logo_marche.png" alt="logo" class="w-66px w-xl-88px">
+                    </a>
+                </div>
+                <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
+                    <a href="#" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">Vie privée</a>
+                    <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">Mentions légales</a>
+                    <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright © 2020<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br class="d-ls-md-none d-md-none">Tous droits réservés</small>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>

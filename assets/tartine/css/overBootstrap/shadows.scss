@@ -1,0 +1,188 @@
+@import "../config.scss";
+
+/* SHADOWS */
+
+.shadow-sm-1 {
+	@include lowBoxShadow();
+}
+.shadow-sm-2 {
+	@include lowestBoxShadow();
+}
+.shadow-hover-sm-2 {
+	&:hover {
+		@include lowestBoxShadow();
+	}
+}
+.shadow-sm-2-45 {
+	@include lowestBoxShadow-45();
+}
+/*.shadow-sm-inset {
+	@include lowestBoxShadow-inset();
+}*/
+
+.shadow {
+	@include basicBoxShadow();
+}
+.shadow-hover {
+	&:hover {
+		@include basicBoxShadow();
+	}
+}
+
+.shadow-lg {
+	@include highBoxShadow();
+}
+.shadow-hover-lg {
+	&:hover {
+		@include highBoxShadow();
+	}
+}
+
+/*.shadow-xl {
+	@include higherBoxShadow();
+}
+.shadow-hover-xl {
+	&:hover {
+		@include higherBoxShadow();
+	}
+}
+
+.shadow-xxl {
+	@include highestBoxShadow();
+}
+.shadow-hover-xxl {
+	&:hover {
+		@include highestBoxShadow();
+	}
+}*/
+
+.shadow-none {
+	@include noneBoxShadow();
+}
+.shadow-hover-none {
+	&:hover {
+		@include noneBoxShadow();
+	}
+}
+
+// .md-shadow
+@media screen and (min-width: $md) {
+    .md-shadow-sm-1 {
+    	@include lowBoxShadow();
+    }
+    .md-shadow-sm-2 {
+    	@include lowestBoxShadow();
+    }
+    .md-shadow-hover-sm-2 {
+        &:hover {
+            @include lowestBoxShadow();
+        }
+    }
+    .md-shadow-sm-2-45 {
+        @include lowestBoxShadow-45();
+    }
+    /*.md-shadow-sm-inset {
+        @include lowestBoxShadow-inset();
+    }*/
+
+    .md-shadow {
+        @include basicBoxShadow();
+    }
+    .md-shadow-hover {
+        &:hover {
+            @include basicBoxShadow();
+        }
+    }
+
+    .md-shadow-lg {
+        @include highBoxShadow();
+    }
+    .md-shadow-hover-lg {
+        &:hover {
+            @include highBoxShadow();
+        }
+    }
+
+    /*.md-shadow-xl {
+        @include higherBoxShadow();
+    }
+    .md-shadow-hover-xl {
+        &:hover {
+            @include higherBoxShadow();
+        }
+    }
+
+    .md-shadow-xxl {
+        @include highestBoxShadow();
+    }
+    .md-shadow-hover-xxl {
+        &:hover {
+            @include highestBoxShadow();
+        }
+    }*/
+
+    .md-shadow-none {
+        @include noneBoxShadow();
+    }
+    .md-shadow-hover-none {
+        &:hover {
+            @include noneBoxShadow();
+        }
+    }
+}
+// .lg-shadow
+@media screen and (min-width: $lg) {
+    .lg-shadow-sm-1 {
+    	@include lowBoxShadow();
+    }
+}
+// .xxl-shadow
+@media screen and (min-width: $xxl) {
+    .xxl-shadow-sm-1 {
+    	@include lowBoxShadow();
+    }
+}
+
+/*.shadow-white {
+	@include boxShadow(-44px 0 44px $white, -33px 0 33px $white);
+}*/
+
+// text
+
+.shadow-text-none {
+	text-shadow: none;
+}
+.shadow-text-sm {
+	text-shadow: 0 1px 3px rgba($darkestGrey, .12), 0 1px 2px rgba($darkestGrey, .24);
+}
+
+// inset
+
+.button {
+	&.rotate-315 {
+		&:hover {
+			.shadow-inset-CTA-sm {
+				@include boxInset(-11px -22px 44px $darkCTA);
+			}
+			.shadow-inset-darkGrey-sm {
+				@include boxInset(-11px -22px 44px $darkGrey);
+			}
+		}
+	}
+
+	&:hover {
+		.shadow-inset-CTA-xs {
+			@include boxInset(-16px 0 33px $darkCTA);
+		}
+		.shadow-inset-CTA-sm {
+			@include boxInset(-22px 0 44px $darkCTA);
+		}
+		.shadow-inset-darkGrey-sm {
+			@include boxInset(-22px 0 44px $darkGrey);
+		}
+	}
+}
+
+.shadow-inset-success {
+	@include boxInset(-11px 0 33px rgba($darkGreen, .75));
+}

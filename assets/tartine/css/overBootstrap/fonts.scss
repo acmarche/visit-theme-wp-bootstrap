@@ -1,0 +1,121 @@
+@import "../config.scss";
+
+/* FONTS */
+
+// .ff-custom
+.ff-light {
+    font-family: 'montserratlight' !important;
+}
+.ff-semibold {
+    font-family: 'montserratsemibold';
+}
+
+// .fw-N
+@for $i from 100 through 900 {
+	.fw-#{$i} {
+		font-weight: 1*$i !important;
+	}
+}
+
+// .fs-custom-Nrem
+@for $i from 1 through 10 {
+	.fs-custom-#{$i}rem {
+		font-size: 1rem*$i !important;
+	}
+}
+
+.fs-big-5 {
+	font-size: $bigFontSize-5 !important;
+}
+.fs-big-4 {
+	font-size: $bigFontSize-4 !important;
+}
+.fs-big-3 {
+	font-size: $bigFontSize-3 !important;
+}
+.fs-big-2 {
+	font-size: $bigFontSize-2 !important;
+}
+.fs-big-1 {
+	font-size: $bigFontSize-1 !important;
+}
+.fs-basic {
+	font-size: $basicFontSize !important;
+}
+.fs-short-1 {
+	font-size: $shortFontSize-1 !important;
+}
+.fs-short-2 {
+	font-size: $shortFontSize-2 !important;
+}
+.fs-short-3 {
+	font-size: $shortFontSize-3 !important;
+}
+
+.fs-0 {
+	font-size: 0 !important;
+}
+
+.fs-lg-basic {
+	@media screen and (min-width: $lg) {
+		font-size: $basicFontSize !important;
+	}
+}
+.fs-xl-basic {
+	@media screen and (min-width: $xl) {
+		font-size: $basicFontSize !important;
+	}
+}
+
+.fs-md-big-2 {
+    @media screen and (min-width: $md) {
+        font-size: $bigFontSize-2 !important;
+    }
+}
+
+.fs-md-short-1 {
+	@media screen and (min-width: $md) {
+		font-size: $shortFontSize-1 !important;
+	}
+}
+
+.fs-lg-short-2 {
+	@media screen and (min-width: $lg) {
+		font-size: $shortFontSize-2 !important;
+	}
+}
+.fs-xl-short-2 {
+	@media screen and (min-width: $xl) {
+		font-size: $shortFontSize-2 !important;
+	}
+}
+
+.fs-ls-big-1 {
+    @media screen and (orientation: landscape) {
+        font-size: $bigFontSize-1 !important;
+    }
+}
+
+.fs-ls-md-big-2 {
+    @media screen and (orientation: landscape) and (min-width: $md) {
+        font-size: $bigFontSize-2 !important;
+    }
+}
+
+.fs-ls-lg-big-5 {
+    @media screen and (orientation: landscape) and (min-width: $lg) {
+        font-size: $bigFontSize-5 !important;
+    }
+}
+
+// line-height
+
+// .lh-N
+@for $i from 1 through 200 {
+	.lh-#{$i} {
+		line-height: calc(1% * #{$i}) !important;
+	}
+}
+.lh-0 {
+    line-height: 0 !important;
+}

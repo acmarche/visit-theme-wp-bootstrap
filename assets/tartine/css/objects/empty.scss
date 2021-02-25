@@ -1,0 +1,144 @@
+@import "../config.scss";
+
+/* EMPTY */
+
+.empty {
+	display: flex;
+	justify-content: center;
+
+	p {
+		display: block;
+		width: 100%;
+		height: auto;
+		padding: 0;
+		text-align: center;
+		align-self: center;
+		color: $lightGrey;
+	}
+}
+
+/* -------------- */
+/* -------------- */
+
+// CLIENT DETAIL
+
+.previousParcoursContainer {
+	.catLine {
+		.catOne {
+			.empty {
+				width: 100%;
+				height: 66px;
+				padding: 0 22px;
+				cursor: initial;
+				vertical-align: top;
+				border-radius: $basicRadius;
+				background-color: $white;
+				@include basicBorder(1px);
+
+				p {
+					display: block;
+					width: 100%;
+					height: auto;
+					padding: 0;
+					text-align: center;
+					align-self: center;
+					color: $lightGrey;
+				}
+			}
+		}
+	}
+}
+.notesContainer {
+	.catLine {
+		.catOne {
+			.empty {
+				width: 100%;
+				height: 66px;
+				padding: 0 22px;
+				cursor: initial;
+				vertical-align: top;
+				border-radius: $basicRadius;
+				background-color: $white;
+				@include basicBorder(1px);
+
+				p {
+					display: block;
+					width: 100%;
+					height: auto;
+					padding: 0;
+					text-align: center;
+					align-self: center;
+					color: $lightGrey;
+				}
+			}
+		}
+	}
+}
+.sharedFilesContainer {
+	.catLine {
+		.catOne {
+			.empty {
+				width: 100%;
+				height: 66px;
+				padding: 0 22px;
+				cursor: initial;
+				vertical-align: top;
+				border-radius: $basicRadius;
+				background-color: $white;
+				@include basicBorder(1px);
+
+				p {
+					display: block;
+					width: 100%;
+					height: auto;
+					padding: 0;
+					text-align: center;
+					align-self: center;
+					color: $lightGrey;
+				}
+			}
+		}
+	}
+}
+
+// BENEF LIST CONTAINER
+
+.benefsListContainer {
+	&.coach {
+		.tabPagination {
+			.empty {
+				span {
+					border: none;
+				}
+			}
+		}
+	}
+}
+
+// COACH
+
+.coach {
+	.coachElement {
+		&.noCoach {
+			.empty {
+				padding: 22px 0;
+				border-radius: $basicRadius;
+				background-color: $white;
+				@include basicBorder(1px);
+			}
+		}
+	}
+}
+
+// DATA LIST
+
+.dataList {
+	ul {
+		li {
+			.empty {
+				padding: 22px 0;
+				color: $lightGrey;
+			}
+		}
+	}
+}

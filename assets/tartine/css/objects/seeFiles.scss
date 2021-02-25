@@ -1,0 +1,77 @@
+@import "../config.scss";
+
+/* SEE FILE */
+
+.seeFile {
+	display: inline-block;
+	width: auto;
+	margin: 0 0 11px;
+	position: relative;
+	overflow: hidden;
+	font-size: 0;
+	border-radius: $smallestRadius;
+	background-color: $white;
+	@include lowestBoxShadow();
+	@include boxShadowTransition($basicDuration);
+
+	a {
+		display: flex;
+		align-items: center;
+
+		p {
+			padding: 6px 11px;
+			color: $CTA;
+
+			i {
+				padding: 0 6px 0 0;
+				color: $CTA;
+			}
+		}
+		.CTA {
+			width: 33px;
+			height: 33px;
+			padding: 9px 0;
+			text-align: center;
+			vertical-align: middle;
+			font-size: $basicFontSize;
+			background-color: $CTA;
+			color: $white;
+			//@include buttonInset();
+			@include allTransition($basicDuration);
+		}
+	}
+
+	&:hover {
+		//@include higherBoxShadow();
+		@include boxShadowTransition($basicDuration);
+
+		a {
+			.CTA {
+				//background-color: $lightCTA;
+				//@include buttonInsetHover();
+				@include allTransition($basicDuration);
+			}
+		}
+	}
+}
+
+/* -------------- */
+
+// STEPS
+
+.documentStep,
+.externalStep {
+	.seeFile {
+		margin: 0;
+
+		a {
+			p {
+				padding: 6px 11px;
+
+				i {
+					padding: 0 6px 0 0;
+				}
+			}
+		}
+	}
+}

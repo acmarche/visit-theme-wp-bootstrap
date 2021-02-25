@@ -1,0 +1,183 @@
+@import "../config.scss";
+
+/* BORDERS */
+
+.border-xl-0 {
+	@media screen and (min-width: $xl) {
+		border: 0 !important;
+	}
+}
+.border-xxl-0 {
+	@media screen and (min-width: $xxl) {
+		border: 0 !important;
+	}
+}
+.border-xxxl-0 {
+	@media screen and (min-width: $xxxl) {
+		border: 0 !important;
+	}
+}
+
+// bottom
+
+.border-xl-bottom {
+	@media screen and (min-width: $xl) {
+		border-bottom-width: 1px;
+		border-style: solid;
+	}
+}
+
+// right
+
+.border-lg-right {
+	@media screen and (min-width: $lg) {
+		border-right-width: 1px;
+		border-style: solid;
+	}
+}
+
+.border-xl-right {
+	@media screen and (min-width: $xl) {
+		border-right-width: 1px;
+		border-style: solid;
+	}
+}
+.border-xxl-right {
+	@media screen and (min-width: $xxl) {
+		border-right-width: 1px;
+		border-style: solid;
+	}
+}
+.border-xxxl-right {
+	@media screen and (min-width: $xxxl) {
+		border-right-width: 1px;
+		border-style: solid;
+	}
+}
+
+// left
+
+.border-xl-left {
+	@media screen and (min-width: $xl) {
+		border-left-width: 1px;
+		border-style: solid;
+	}
+}
+.border-xxl-left {
+	@media screen and (min-width: $xxl) {
+		border-left-width: 1px;
+		border-style: solid;
+	}
+}
+.border-xxxl-left {
+	@media screen and (min-width: $xxxl) {
+		border-left-width: 1px;
+		border-style: solid;
+	}
+}
+
+// width
+
+// .border-width-Npx
+@for $i from 1 through 11 {
+	.border-width-#{$i}px {
+		border-width: 1px*$i !important;
+	}
+}
+
+// colors
+
+.border-default {
+	border-color: rgba($darkGrey, $alpha10) !important;
+}
+.border-primary {
+	border-color: $CTA !important;
+}
+.border-dark-primary {
+	border-color: $darkCTA !important;
+}
+.border-white-25 {
+	border-color: rgba($white, .25) !important;
+}
+/*.border-active {
+	border-color: $active !important;
+}*/
+/*.border-active-10 {
+	border-color: rgba($active, $alpha10) !important;
+}*/
+/*.border-active-30 {
+	border-color: rgba($active, $alpha30) !important;
+}*/
+.border-red,
+.border-danger {
+	border-color: $basicRed !important;
+}
+.border-success {
+	border-color: $darkGreen !important;
+}
+
+// radius
+
+.rounded-xs {
+	border-radius: $smallestRadius !important;
+}
+.rounded-top-xs {
+	border-top-left-radius: $smallestRadius !important;
+	border-top-right-radius: $smallestRadius !important;
+}
+.rounded-top-left-xs {
+	border-top-left-radius: $smallestRadius !important;
+}
+.rounded-left-xs {
+	border-top-left-radius: $smallestRadius !important;
+	border-bottom-left-radius: $smallestRadius !important;
+}
+.rounded-right-xs {
+	border-top-right-radius: $smallestRadius !important;
+	border-bottom-right-radius: $smallestRadius !important;
+}
+.rounded-sm {
+	border-radius: $smallRadius !important;
+}
+.rounded-top-left-sm {
+	border-top-left-radius: $smallRadius !important;
+}
+.rounded-top-sm {
+	border-top-left-radius: $smallRadius !important;
+	border-top-right-radius: $smallRadius !important;
+}
+.rounded {
+	border-radius: $basicRadius !important;
+}
+.rounded-top-left {
+	border-top-left-radius: $basicRadius !important;
+}
+
+.rounded-left-pill {
+	border-top-left-radius: $pillRadius !important;
+	border-bottom-left-radius: $pillRadius !important;
+}
+.rounded-right-pill {
+	border-top-right-radius: $pillRadius !important;
+	border-bottom-right-radius: $pillRadius !important;
+}
+
+// .md-rounded
+@media screen and (min-width: $md) {
+    .md-rounded {
+	    border-radius: $basicRadius !important;
+    }
+    .md-rounded-pill {
+        border-radius: $pillRadius !important;
+    }
+    .md-rounded-0 {
+        border-radius: 0 !important;
+    }
+}
+
+// .xl-rounded
+.xl-rounded-xs {
+	@media screen and (min-width: $xl) {
+		border-radius: $smallestRadius !important;
+	}
+}

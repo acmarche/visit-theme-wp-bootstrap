@@ -1,0 +1,520 @@
+@import "../config.scss";
+
+/* POSITIONS */
+
+// top
+
+// .top-Npx
+@for $i from 1 through 550 {
+	.top-#{$i}px {
+		top: 1px*$i !important;
+	}
+}
+// .top-nNpx
+@for $i from 1 through 550 {
+	.top-n#{$i}px {
+		top: -1px*$i !important;
+	}
+}
+// .top-Npercent
+@for $i from 1 through 100 {
+	.top-#{$i}percent {
+		top: calc(1% * #{$i}) !important;
+	}
+}
+.top-auto {
+	top: auto !important;
+}
+.top-0 {
+	top: 0 !important;
+}
+
+// .md-top-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $md) {
+		.md-top-#{$i}px {
+			top: 1px*$i !important;
+		}
+	}
+}
+.md-top-auto {
+	@media screen and (min-width: $md) {
+		top: auto !important;
+	}
+}
+.md-top-0 {
+	@media screen and (min-width: $md) {
+		top: 0 !important;
+	}
+}
+
+// .lg-top-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $lg) {
+		.lg-top-#{$i}px {
+			top: 1px*$i !important;
+		}
+	}
+}
+.lg-top-auto {
+	@media screen and (min-width: $lg) {
+		top: auto !important;
+	}
+}
+.lg-top-0 {
+	@media screen and (min-width: $lg) {
+		top: 0 !important;
+	}
+}
+
+// .xl-top-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xl) {
+		.xl-top-#{$i}px {
+			top: 1px*$i !important;
+		}
+	}
+}
+.xl-top-auto {
+	@media screen and (min-width: $xl) {
+		top: auto !important;
+	}
+}
+.xl-top-0 {
+	@media screen and (min-width: $xl) {
+		top: 0 !important;
+	}
+}
+
+// .xxl-top-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxl) {
+		.xxl-top-#{$i}px {
+			top: 1px*$i !important;
+		}
+	}
+}
+.xxl-top-auto {
+	@media screen and (min-width: $xxl) {
+		top: auto !important;
+	}
+}
+.xxl-top-0 {
+	@media screen and (min-width: $xxl) {
+		top: 0 !important;
+	}
+}
+
+// .xxxl-top-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxxl) {
+		.xxxl-top-#{$i}px {
+			top: 1px*$i !important;
+		}
+	}
+}
+.xxxl-top-auto {
+	@media screen and (min-width: $xxxl) {
+		top: auto !important;
+	}
+}
+.xxxl-top-0 {
+	@media screen and (min-width: $xxxl) {
+		top: 0 !important;
+	}
+}
+
+// bottom
+
+// .bottom-Npx
+@for $i from 1 through 550 {
+	.bottom-#{$i}px {
+		bottom: 1px*$i !important;
+	}
+}
+// .bottom-nNpx
+@for $i from 1 through 550 {
+	.bottom-n#{$i}px {
+		bottom: -1px*$i !important;
+	}
+}
+// .bottom-Npercent
+@for $i from 1 through 100 {
+	.bottom-#{$i}percent {
+		bottom: calc(1% * #{$i}) !important;
+	}
+}
+// .bottom-nNpercent
+@for $i from 1 through 100 {
+	.bottom-n#{$i}percent {
+		bottom: calc(-1% * #{$i}) !important;
+	}
+}
+.bottom-auto {
+	bottom: auto !important;
+}
+.bottom-0 {
+	bottom: 0 !important;
+}
+
+// .md-bottom-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $md) {
+		.md-bottom-#{$i}px {
+			bottom: 1px*$i !important;
+		}
+	}
+}
+// .md-bottom-nNpercent
+@for $i from 1 through 100 {
+	@media screen and (min-width: $md) {
+		.md-bottom-n#{$i}percent {
+			bottom: calc(-1% * #{$i}) !important;
+		}
+	}
+}
+.md-bottom-auto {
+	@media screen and (min-width: $md) {
+		bottom: auto !important;
+	}
+}
+.md-bottom-0 {
+	@media screen and (min-width: $md) {
+		bottom: 0 !important;
+	}
+}
+
+// .lg-bottom-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $lg) {
+		.lg-bottom-#{$i}px {
+			bottom: 1px*$i !important;
+		}
+	}
+}
+.lg-bottom-auto {
+	@media screen and (min-width: $lg) {
+		bottom: auto !important;
+	}
+}
+.lg-bottom-0 {
+	@media screen and (min-width: $lg) {
+		bottom: 0 !important;
+	}
+}
+
+// .xl-bottom-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xl) {
+		.xl-bottom-#{$i}px {
+			bottom: 1px*$i !important;
+		}
+	}
+}
+.xl-bottom-auto {
+	@media screen and (min-width: $xl) {
+		bottom: auto !important;
+	}
+}
+.xl-bottom-0 {
+	@media screen and (min-width: $xl) {
+		bottom: 0 !important;
+	}
+}
+
+// .xxl-bottom-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxl) {
+		.xl-bottom-#{$i}px {
+			bottom: 1px*$i !important;
+		}
+	}
+}
+.xxl-bottom-auto {
+	@media screen and (min-width: $xxl) {
+		bottom: auto !important;
+	}
+}
+.xxl-bottom-0 {
+	@media screen and (min-width: $xxl) {
+		bottom: 0 !important;
+	}
+}
+
+// .xxxl-bottom-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxxl) {
+		.xxxl-bottom-#{$i}px {
+			bottom: 1px*$i !important;
+		}
+	}
+}
+.xxxl-bottom-auto {
+	@media screen and (min-width: $xxxl) {
+		bottom: auto !important;
+	}
+}
+.xxxl-bottom-0 {
+	@media screen and (min-width: $xxxl) {
+		bottom: 0 !important;
+	}
+}
+
+// left
+
+// .left-Npx
+@for $i from 1 through 550 {
+	.left-#{$i}px {
+		left: 1px*$i !important;
+	}
+}
+// .left-hover-Npx
+@for $i from 1 through 110 {
+	.left-hover-#{$i}px {
+        &:hover {
+            left: 1px*$i !important;
+        }
+	}
+}
+// .left-nNpx
+@for $i from 1 through 550 {
+	.left-n#{$i}px {
+		left: -1px*$i !important;
+	}
+}
+// .left-Npercent
+@for $i from 1 through 100 {
+	.left-#{$i}percent {
+		left: calc(1% * #{$i}) !important;
+	}
+}
+.left-auto {
+	left: auto !important;
+}
+.left-0 {
+	left: 0 !important;
+}
+
+// .md-left-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $md) {
+		.md-left-#{$i}px {
+			left: 1px*$i !important;
+		}
+	}
+}
+.md-left-auto {
+	@media screen and (min-width: $md) {
+		left: auto !important;
+	}
+}
+.md-left-0 {
+	@media screen and (min-width: $md) {
+		left: 0 !important;
+	}
+}
+
+// .lg-left-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $lg) {
+		.lg-left-#{$i}px {
+			left: 1px*$i !important;
+		}
+	}
+}
+.lg-left-auto {
+	@media screen and (min-width: $lg) {
+		left: auto !important;
+	}
+}
+.lg-left-0 {
+	@media screen and (min-width: $lg) {
+		left: 0 !important;
+	}
+}
+
+// .xl-left-Npercent
+@for $i from 1 through 100 {
+	@media screen and (min-width: $xl) {
+		.left-#{$i}percent {
+			left: calc(1% * #{$i}) !important;
+		}
+	}
+}
+// .xl-left-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xl) {
+		.xl-left-#{$i}px {
+			left: 1px*$i !important;
+		}
+	}
+}
+.xl-left-auto {
+	@media screen and (min-width: $xl) {
+		left: auto !important;
+	}
+}
+.xl-left-0 {
+	@media screen and (min-width: $xl) {
+		left: 0 !important;
+	}
+}
+
+// .xxl-left-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxl) {
+		.xxl-left-#{$i}px {
+			left: 1px*$i !important;
+		}
+	}
+}
+.xxl-left-auto {
+	@media screen and (min-width: $xxl) {
+		left: auto !important;
+	}
+}
+.xxl-left-0 {
+	@media screen and (min-width: $xxl) {
+		left: 0 !important;
+	}
+}
+// .xxxl-left-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxxl) {
+		.xxxl-left-#{$i}px {
+			left: 1px*$i !important;
+		}
+	}
+}
+.xxxl-left-auto {
+	@media screen and (min-width: $xxxl) {
+		left: auto !important;
+	}
+}
+.xxxl-left-0 {
+	@media screen and (min-width: $xxxl) {
+		left: 0 !important;
+	}
+}
+
+// right
+
+// .right-Npx
+@for $i from 1 through 550 {
+	.right-#{$i}px {
+		right: 1px*$i !important;
+	}
+}
+// .right-nNpx
+@for $i from 1 through 550 {
+	.right-n#{$i}px {
+		right: -1px*$i !important;
+	}
+}
+// .right-Npercent
+@for $i from 1 through 100 {
+	.right-#{$i}percent {
+		right: calc(1% * #{$i}) !important;
+	}
+}
+.right-auto {
+	right: auto !important;
+}
+.right-0 {
+	right: 0 !important;
+}
+
+// .md-right-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $md) {
+		.md-right-#{$i}px {
+			right: 1px*$i !important;
+		}
+	}
+}
+.md-right-auto {
+	@media screen and (min-width: $md) {
+		right: auto !important;
+	}
+}
+.md-right-0 {
+	@media screen and (min-width: $md) {
+		right: 0 !important;
+	}
+}
+
+// .lg-right-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $lg) {
+		.lg-right-#{$i}px {
+			right: 1px*$i !important;
+		}
+	}
+}
+.lg-right-auto {
+	@media screen and (min-width: $lg) {
+		right: auto !important;
+	}
+}
+.lg-right-0 {
+	@media screen and (min-width: $lg) {
+		right: 0 !important;
+	}
+}
+
+// .xl-right-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xl) {
+		.xl-right-#{$i}px {
+			right: 1px*$i !important;
+		}
+	}
+}
+.xl-right-auto {
+	@media screen and (min-width: $xl) {
+		right: auto !important;
+	}
+}
+.xl-right-0 {
+	@media screen and (min-width: $xl) {
+		right: 0 !important;
+	}
+}
+
+// .xxl-right-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxl) {
+		.xxl-right-#{$i}px {
+			right: 1px*$i !important;
+		}
+	}
+}
+.xxl-right-auto {
+	@media screen and (min-width: $xxl) {
+		right: auto !important;
+	}
+}
+.xxl-right-0 {
+	@media screen and (min-width: $xxl) {
+		right: 0 !important;
+	}
+}
+
+// .xxxl-right-Npx
+@for $i from 1 through 550 {
+	@media screen and (min-width: $xxxl) {
+		.xxxl-right-#{$i}px {
+			right: 1px*$i !important;
+		}
+	}
+}
+.xxxl-right-auto {
+	@media screen and (min-width: $xxxl) {
+		right: auto !important;
+	}
+}
+.xxxl-right-0 {
+	@media screen and (min-width: $xxxl) {
+		right: 0 !important;
+	}
+}

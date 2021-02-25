@@ -1,0 +1,396 @@
+@import "../config.scss";
+
+/* ICON */
+
+// custom library
+
+.icon_custom {
+    //width: 18px;
+    //height: 18px;
+    //background-size: cover;
+    //background-position: center center;
+    //background-repeat: no-repeat;
+    
+    i {
+        width: 18px;
+        height: 18px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        
+        // bg-color
+        &.i-bg-primary {
+            background-color: $CTA;
+        }
+        &.i-bg-white {
+            background-color: $white;
+        }
+        
+        // icon
+        &.i-map {
+            background-image: url(../../rsc/svg/icon_map_primary.svg);
+        }
+        &.i-envelope {
+            background-image: url(../../rsc/svg/icon_envelope_primary.svg);
+        }
+        &.i-leaf {
+            background-image: url(../../rsc/svg/icon_leaf_primary.svg);
+        }
+        &.i-traffic-cone {
+            background-image: url(../../rsc/svg/icon_trafficcone_primary.svg);
+        }
+        &.i-handshake {
+            background-image: url(../../rsc/svg/icon_handshake_primary.svg);
+        }
+        &.i-swimmer {
+            background-image: url(../../rsc/svg/icon_swimmer_primary.svg);
+        }
+        &.i-beach-ball {
+            background-image: url(../../rsc/svg/icon_beachball_primary.svg);
+        }
+        &.i-angle-left {
+            background-image: url(../../rsc/svg/icon_angleleft_primary.svg);
+        }
+        &.i-times {
+            background-image: url(../../rsc/svg/icon_times_primary.svg);
+        }
+        &.i-shirt {
+            background-image: url(../../rsc/svg/icon_shirt_primary.svg);
+        }
+        &.i-medical {
+            background-image: url(../../rsc/svg/icon_medical_primary.svg);
+        }
+        &.i-trash {
+            background-image: url(../../rsc/svg/icon_trash_primary.svg);
+        }
+        &.i-martini-glass {
+            background-image: url(../../rsc/svg/icon_martiniglass_primary.svg);
+        }
+        &.i-cart {
+            background-image: url(../../rsc/svg/icon_cart_primary.svg);
+        }
+        &.i-flatware {
+            background-image: url(../../rsc/svg/icon_flatware_primary.svg);
+        }
+        &.i-water-drop {
+            background-image: url(../../rsc/svg/icon_waterdrop_primary.svg);
+        }
+        &.i-umbrella {
+            background-image: url(../../rsc/svg/icon_umbrella_primary.svg);
+        }
+        &.i-disk {
+            background-image: url(../../rsc/svg/icon_disk_primary.svg);
+        }
+        &.i-book {
+            background-image: url(../../rsc/svg/icon_book_primary.svg);
+        }
+        &.i-patrimony {
+            background-image: url(../../rsc/svg/icon_patrimony_primary.svg);
+        }
+        &.i-arts {
+            background-image: url(../../rsc/svg/icon_arts_primary.svg);
+        }
+        &.i-walks {
+            background-image: url(../../rsc/svg/icon_walks_primary.svg);
+        }
+        &.i-delicaties {
+            background-image: url(../../rsc/svg/icon_delicaties_primary.svg);
+        }
+        &.i-parties {
+            background-image: url(../../rsc/svg/icon_parties_primary.svg);
+        }
+        
+        &.i-dark-primary {
+            &.i-search {
+                background-image: url(../../rsc/svg/icon_search_darkprimary.svg);
+            }
+            &.i-angle-left {
+                background-image: url(../../rsc/svg/icon_angleleft_darkprimary.svg);
+            }
+            &.i-angle-right {
+                background-image: url(../../rsc/svg/icon_angleright_darkprimary.svg);
+            }
+            &.i-bars {
+                background-image: url(../../rsc/svg/icon_bars_darkprimary.svg);
+            }
+        }
+        
+        &.i-dark-grey {
+            &.i-search {
+                background-image: url(../../rsc/svg/icon_search_darkgrey.svg);
+            }
+            &.i-angle-left {
+                background-image: url(../../rsc/svg/icon_angleleft_darkgrey.svg);
+            }
+            &.i-angle-right {
+                background-image: url(../../rsc/svg/icon_angleright_darkgrey.svg);
+            }
+        }
+        
+        &.i-white {
+            &.i-angle-right {
+                background-image: url(../../rsc/svg/icon_angleright_white.svg);
+            }
+            &.i-times {
+                background-image: url(../../rsc/svg/icon_times_white.svg);
+            }
+            &.i-patrimony {
+                background-image: url(../../rsc/svg/icon_patrimony_white.svg);
+            }
+            &.i-arts {
+                background-image: url(../../rsc/svg/icon_arts_white.svg);
+            }
+            &.i-walks {
+                background-image: url(../../rsc/svg/icon_walks_white.svg);
+            }
+            &.i-delicaties {
+                background-image: url(../../rsc/svg/icon_delicaties_white.svg);
+            }
+            &.i-parties {
+                background-image: url(../../rsc/svg/icon_parties_white.svg);
+            }
+        }
+        
+        // transition
+        &.i-bg-color-transition {
+            @include transition(background-color, $basicDuration);
+        }
+    }
+    
+    // HOVER
+    &:hover {
+        i {
+            
+            // bg-color
+            &.i-bg-hover-primary {
+               background-color: $CTA;
+            }
+            // categories
+            &.i-bg-hover-cat-pat {
+                background-color: $c-pat;
+            }
+            &.i-bg-hover-cat-art {
+                background-color: $c-art;
+            }
+            &.i-bg-hover-cat-wal {
+                background-color: $c-wal;
+            }
+            &.i-bg-hover-cat-del {
+                background-color: $c-del;
+            }
+            &.i-bg-hover-cat-par {
+                background-color: $c-par;
+            }
+
+            // icon
+            &.i-hover-white {
+                &.i-map {
+                    background-image: url(../../rsc/svg/icon_map_white.svg);
+                }
+                &.i-envelope {
+                    background-image: url(../../rsc/svg/icon_envelope_white.svg);
+                }
+                &.i-leaf {
+                    background-image: url(../../rsc/svg/icon_leaf_white.svg);
+                }
+                &.i-traffic-cone {
+                    background-image: url(../../rsc/svg/icon_trafficcone_white.svg);
+                }
+                &.i-handshake {
+                    background-image: url(../../rsc/svg/icon_handshake_white.svg);
+                }
+                &.i-swimmer {
+                    background-image: url(../../rsc/svg/icon_swimmer_white.svg);
+                }
+                &.i-beach-ball {
+                    background-image: url(../../rsc/svg/icon_beachball_white.svg);
+                }
+            }
+
+            // transition
+            &.i-bg-color-transition {
+                @include transition(background-color, $basicDuration);
+            }
+        }
+    }
+}
+
+// TODO | Voir avec le front-end s'il préfère cet élément à part ou si je peux l'ajouter aux .icon_custom
+.icon_nav {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-position: center center;
+    
+    &.i-home {
+        background-image: url(../../rsc/svg/icon_home_white.svg);
+    }
+    &.i-search {
+        background-image: url(../../rsc/svg/icon_search_white.svg);
+        
+        @media screen {
+            @media (min-width: $xl) {
+                background-image: url(../../rsc/svg/icon_search_darkgrey.svg);
+                
+                &.i-white {
+                    background-image: url(../../rsc/svg/icon_search_white.svg);
+                }
+            }
+        }
+    }
+    &.i-bars {
+        height: 10px;
+        background-image: url(../../rsc/svg/icon_bars_white.svg);
+    }
+    &.i-clock {
+        background-image: url(../../rsc/svg/icon_clock_white.svg);
+    }
+    &.i-plus {
+        width: 18px;
+        height: 18px;
+        background-image: url(../../rsc/svg/icon_plus_white.svg);
+    }
+}
+
+
+
+.icon {
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	vertical-align: top;
+	background-color: $white;
+	border-radius: $smallestRadius;
+	@include lowestBoxShadow();
+	@include allTransition($basicDuration);
+
+	i {
+		width: 28px;
+		height: 28px;
+		padding: 6px 0;
+		font-size: $basicFontSize;
+		color: $CTA;
+		//@include buttonInset();
+		@include allTransition($basicDuration);
+
+		&.fa-angle-up,
+		&.fa-angle-down,
+		&.fa-angle-left,
+		&.fa-angle-right {
+			font-size: 1.5rem;
+			line-height: 1rem;
+		}
+	}
+
+	&.green {
+		i {
+			color: $darkGreen;
+			@include boxInset(-12px 0 33px rgba($darkGreen, $alpha0));
+		}
+
+		&:hover {
+			background-color: $basicGreen;
+
+			i {
+				color: $white;
+				@include boxInset(-12px 0 33px $darkGreen);
+			}
+		}
+	}
+
+	&.red {
+		i {
+			color: $basicRed;
+			@include boxInset(-12px 0 33px rgba($darkRed, $alpha0));
+		}
+
+		&:hover {
+			background-color: $basicRed;
+
+			i {
+				color: $white;
+				@include boxInset(-12px 0 33px $darkRed);
+			}
+		}
+	}
+
+    /*
+	&.active {
+		background-color: $active;
+
+		i {
+			color: $white;
+			@include boxInset(-12px 0 33px rgba($active, $alpha0));
+		}
+
+		&:hover {
+			background-color: $lightActive;
+
+			i {
+				color: $white;
+				@include boxInset(-12px 0 33px $active);
+			}
+		}
+	}
+    */
+
+    /*
+	&.reverse {
+		background-color: $CTA;
+
+		i {
+			color: $white;
+			@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
+		}
+
+		&:hover {
+			background-color: $lightCTA;
+
+			i {
+				color: $white;
+				@include boxInset(-12px 0 33px $darkCTA);
+			}
+		}
+	}
+    */
+
+	&.circle {
+		border-radius: $biggestRadius;
+	}
+
+	&.disabled {
+		cursor: default;
+		background-color: rgba($white, $alpha30);
+		@include basicBorder(1px);
+		@include noneBoxShadow();
+
+		i {
+			color: rgba($darkestGrey, $alpha10);
+		}
+
+		&:hover {
+			background-color: rgba($white, $alpha30);
+			@include basicBorder(1px);
+			@include noneBoxShadow();
+
+			i {
+				color: rgba($darkestGrey, $alpha10);
+				@include noneBoxShadow();
+			}
+		}
+	}
+
+    /*
+	&:hover {
+		background-color: $lightCTA;
+		@include higherBoxShadow();
+		@include allTransition($basicDuration);
+
+		i {
+			color: $white;
+			@include buttonInsetHover();
+			@include allTransition($basicDuration);
+		}
+	}
+    */
+}

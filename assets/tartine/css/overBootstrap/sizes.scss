@@ -1,0 +1,254 @@
+@import "../config.scss";
+
+/* SIZES */
+
+// height
+
+// .h-Npx
+@for $i from 1 through 399 {
+	.h-#{$i}px {
+		height: 1px*$i !important;
+	}
+}
+// .h-100nNpx
+@for $i from 1 through 199 {
+	.h-100n#{$i}px {
+		height: calc(100% - #{$i}px) !important;
+	}
+}
+.h-0 {
+	height: 0 !important;
+}
+.h-max-content {
+	height: max-content !important;
+}
+
+// .h-md-Npx
+@for $i from 1 through 399 {
+	.h-md-#{$i}px {
+		@media screen and (min-width: $md) {
+			height: 1px*$i !important;
+		}
+	}
+    .h-lg-#{$i}px {
+		@media screen and (min-width: $lg) {
+			height: 1px*$i !important;
+		}
+	}
+    .h-xl-#{$i}px {
+		@media screen and (min-width: $xl) {
+			height: 1px*$i !important;
+		}
+	}
+}
+// .h-md-auto
+@media screen and (min-width: $md) {
+	.h-md-auto {
+		height: auto !important;
+	}
+}
+// .h-lg-auto
+@media screen and (min-width: $lg) {
+	.h-lg-auto {
+		height: auto !important;
+	}
+}
+
+// .mh-Npx
+@for $i from 1 through 199 {
+	.mh-#{$i}px {
+		max-height: 1px*$i !important;
+	}
+}
+.mh-none {
+	max-height: none !important;
+}
+.mh-max-content {
+	max-height: max-content !important;
+}
+// .mh-xl-Npx
+@for $i from 1 through 220 {
+	@media screen and (min-width: $xl) {
+		.mh-xl-#{$i}px {
+			max-height: 1px*$i !important;
+		}
+	}
+}
+
+// .min-height-Npx
+@for $i from 1 through 399 {
+	.min-height-#{$i}px {
+		min-height: 1px*$i !important;
+	}
+}
+.min-height-auto {
+	min-height: auto !important;
+}
+
+// .lg-min-height-Npx
+@for $i from 1 through 199 {
+	@media screen and (min-width: $lg) {
+		.lg-min-height-#{$i}px {
+			min-height: 1px*$i !important;
+		}
+	}
+}
+
+// .xl-min-height-Npx
+@for $i from 1 through 199 {
+	@media screen and (min-width: $xl) {
+		.xl-min-height-#{$i}px {
+			min-height: 1px*$i !important;
+		}
+	}
+}
+
+// width
+
+// .w-Npx
+@for $i from 1 through 199 {
+	.w-#{$i}px {
+		width: 1px*$i !important;
+	}
+}
+// .w-N
+@for $i from 1 through 300 {
+	.w-#{$i} {
+		width: calc(1% * #{$i}) !important;
+	}
+}
+.w-max-content {
+	width: max-content !important;
+}
+
+// .w-50nNpx
+@for $i from 1 through 110 {
+	.w-50n#{$i}px {
+		width: calc(50% - #{$i}px) !important;
+	}
+}
+// .w-100nNpx
+@for $i from 1 through 1999 {
+	.w-100n#{$i}px {
+		width: calc(100% - #{$i}px) !important;
+	}
+}
+
+// .w-md-Npx
+@for $i from 1 through 199 {
+	.w-md-#{$i}px {
+		@media screen and (min-width: $md) {
+			width: 1px*$i !important;
+		}
+	}
+}
+// .w-md-N
+@for $i from 1 through 100 {
+	.w-md-#{$i} {
+		@media screen and (min-width: $md) {
+			width: calc(1% * #{$i}) !important;
+		}
+	}
+}
+
+.w-md-auto {
+	@media screen and (min-width: $md) {
+		width: auto !important;
+	}
+}
+
+// .w-lg-N
+@for $i from 1 through 100 {
+	.w-lg-#{$i} {
+		@media screen and (min-width: $lg) {
+			width: calc(1% * #{$i}) !important;
+		}
+	}
+}
+.w-lg-auto {
+	@media screen and (min-width: $lg) {
+		width: auto !important;
+	}
+}
+
+// .w-xl-Npx
+@for $i from 1 through 199 {
+	.w-xl-#{$i}px {
+		@media screen and (min-width: $xl) {
+			width: 1px*$i !important;
+		}
+	}
+}
+// .w-xl-N
+@for $i from 1 through 100 {
+	.w-xl-#{$i} {
+		@media screen and (min-width: $lg) {
+			width: calc(1% * #{$i}) !important;
+		}
+	}
+}
+.w-xl-auto {
+	@media screen and (min-width: $lg) {
+		width: auto !important;
+	}
+}
+
+// .mw-Npx
+@for $i from 1 through 1660 {
+	.mw-#{$i}px {
+		max-width: 1px*$i !important;
+	}
+}
+.mw-max-content {
+	max-width: max-content !important;
+}
+@media screen {
+    @media (min-width: $md) {
+        
+        // .mw-md-Npx
+        @for $i from 1 through 550 {
+            .mw-md-#{$i}px {
+                max-width: 1px*$i !important;
+            }
+        }
+    }
+    
+    @media (min-width: $lg) {
+        
+        // .mw-lg-Npx
+        @for $i from 1 through 550 {
+            .mw-lg-#{$i}px {
+                max-width: 1px*$i !important;
+            }
+        }
+    }
+    
+    @media (min-width: $xl) {
+        
+        // .mw-xl-Npx
+        @for $i from 1 through 550 {
+            .mw-xl-#{$i}px {
+                max-width: 1px*$i !important;
+            }
+        }
+    }
+}
+
+// .min-width-Npx
+@for $i from 1 through 199 {
+	.min-width-#{$i}px {
+		min-width: 1px*$i !important;
+	}
+}
+// .min-width-100nNpx
+@for $i from 1 through 110 {
+	.min-width-100n#{$i}px {
+		min-width: calc(100% - #{$i}px) !important;
+	}
+}
+// .min-width-100
+@for $i from 1 through 100 {
+	.min-width-#{$i} {
+		min-width: calc(1% * #{$i}) !important;
+	}
+}

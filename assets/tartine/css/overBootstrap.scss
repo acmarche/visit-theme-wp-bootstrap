@@ -1,0 +1,221 @@
+@import 'config.scss';
+
+/* OVER BOOTSTRAP */
+
+// flex
+
+.d-flex {
+	.col-1,
+	.col-2,
+	.col-3,
+	.col-4,
+	.col-5,
+	.col-6,
+	.col-7,
+	.col-8,
+	.col-9,
+	.col-10,
+	.col-11,
+	.col-12 {
+		padding-left: 11px;
+		padding-right: 11px;
+	}
+
+	&.row {
+		margin-left: -11px;
+		margin-right: -11px;
+	}
+}
+
+// transitions
+
+.noneTransition {
+	@include noneTransition();
+}
+
+// position
+
+.position-inherit {
+    position: inherit !important;
+}
+.position-md-relative {
+	@media screen and (min-width: $md) {
+		position: relative !important;
+	}
+}
+.position-lg-absolute {
+	@media screen and (min-width: $lg) {
+		position: absolute !important;
+	}
+}
+.position-xl-absolute {
+	@media screen and (min-width: $xl) {
+		position: absolute !important;
+	}
+}
+.position-xl-relative {
+	@media screen and (min-width: $xl) {
+		position: relative !important;
+	}
+}
+.position-xl-initial {
+	@media screen and (min-width: $xl) {
+		position: initial !important;
+	}
+}
+.position-ls-absolute {
+    @media screen and (orientation: landscape) {
+        position: absolute !important;
+    }
+}
+.position-ls-relative {
+    @media screen and (orientation: landscape) {
+        position: relative!important;
+    }
+}
+.position-ls-fixed {
+    @media screen and (orientation: landscape) {
+        position: fixed !important;
+    }
+}
+
+// z-index
+
+// .z-N (favoriser une base 10)
+@for $i from 1 through 101 {
+	.z-#{$i} {
+		z-index: 1*$i !important;
+	}
+}
+.z-1030 {
+	z-index: 1030 !important;
+}
+.z-0 {
+	z-index: 0;
+}
+
+// .z-ls-1030
+.z-ls-1030 {
+    @media screen and (orientation: landscape) {
+        z-index: 1030 !important;
+    }
+}
+
+// .z-hover-N (favoriser une base 10)
+@for $i from 1 through 101 {
+	.z-hover-#{$i} {
+		&:hover {
+			z-index: 1*$i !important;
+		}
+	}
+}
+
+// transform
+
+.rotate-45 {
+	@include transform(rotate(45deg));
+}
+.rotate-90 {
+	@include transform(rotate(90deg));
+}
+.rotate-315 {
+	@include transform(rotate(315deg));
+}
+
+// order
+
+.order-lg-1 {
+	@media screen and (min-width: $lg) {
+		order: 1 !important;
+	}
+}
+.order-lg-2 {
+	@media screen and (min-width: $lg) {
+		order: 2 !important;
+	}
+}
+
+/*--------------*/
+
+// others
+
+.cursor-default {
+	cursor: default !important;
+}
+.cursor-pointer {
+	cursor: pointer !important;
+}
+.cursor-grab {
+	cursor: grab !important;
+}
+.cursor-move {
+	cursor: move !important;
+}
+
+.overflow-visible {
+	overflow: visible !important;
+}
+.overflowY-auto {
+	overflow-y: auto !important;
+}
+.overflow-md-hidden {
+    @media screen and (min-width: $md) {
+        overflow: hidden;
+    }
+}
+
+.outline-none {
+	outline: none !important;
+
+	&:focus {
+		outline: none !important;
+	}
+}
+
+.break-word {
+	word-break: break-word !important;
+}
+
+// .bg-size-N
+@for $i from 1 through 100 {
+    .bg-size-#{$i} {
+        background-size: calc(1% * #{$i}) !important;
+    }
+}
+// .bg-size-Npx
+@for $i from 1 through 110 {
+    .bg-size-#{$i}px {
+        background-size: 1px*$i 1px*$i !important;
+    }
+}
+.bg-size-auto {
+    background-size: auto !important;
+}
+
+// .bg-position
+.bg-position-left {
+    background-position: left !important;
+}
+
+// TEMPO
+
+.markdownLineHeight {
+	p {
+		line-height: 150% !important;
+	}
+}
+
+/*--------------*/
+
+// IMPORT
+
+@import "overBootstrap/borders.css";
+@import "overBootstrap/colors.css";
+@import "overBootstrap/fonts.css";
+@import "overBootstrap/margins.css";
+@import "overBootstrap/paddings.css";
+@import "overBootstrap/positions.css";
+@import "overBootstrap/responsive.css";
+@import "overBootstrap/shadows.css";
+@import "overBootstrap/sizes.css";
+@import "overBootstrap/landscape.css";

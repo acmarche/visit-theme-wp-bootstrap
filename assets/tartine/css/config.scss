@@ -1,0 +1,223 @@
+@import 'utils.scss';
+
+/* VARIABLES */
+
+/*- ONLY FOR THIS PROJECT -*/
+
+// CATEGORIES
+
+$c-pat: rgb(170, 183, 216);
+$c-art: rgb(245, 204, 115);
+$c-wal: rgb(100, 150, 111);
+$c-del: rgb(239, 191, 177);
+$c-par: rgb(239, 215, 205);
+
+/*- END | ONLY FOR THIS PROJECT -*/
+
+// ALPHAS
+
+$alpha100: 1;
+$alpha90: .9;
+$alpha80: .8;
+$alpha75: .75;
+$alpha70: .7;
+$alpha60: .6;
+$alpha50: .5;
+$alpha40: .4;
+$alpha30: .3;
+$alpha20: .2;
+$alpha15: .15;
+$alpha10: .1;
+$alpha0: 0;
+
+// FONTS
+
+$bigFontSize-5: 4.625rem; /*56pt / 84px*/
+$bigFontSize-4: 2.3125rem; /*28pt / 37px*/
+$bigFontSize-3: 1.87rem; /*22pt / 30px*/
+$bigFontSize-2: 1.5rem;
+$bigFontSize-1: 1.25rem;
+$basicFontSize: 1rem;
+$shortFontSize-1: .875rem;
+$shortFontSize-2: .825rem; /*.75rem*/
+$shortFontSize-3: .75rem; /*.688rem*/
+
+$boldFontFat: 400;
+$bolderFontFat: 600;
+
+// COLORS
+
+//$lightCTA: rgb(125, 190, 245);
+$CTA: rgb(253, 131, 131);
+$darkCTA: rgb(72, 127, 137);
+//$lightActive: rgb(255, 207, 27);
+$active: rgb(255, 136, 27);
+
+$white: rgb(255, 255, 255);
+$lighterGrey: rgb(237, 237, 236);
+//$lightBlue: rgb(125, 191, 245);
+$lightGrey: rgb(189, 195, 195);//
+$basicGrey: rgb(128, 128, 128);//
+$darkGrey: rgb(99, 96, 97);
+$darkerGrey: rgb(35, 34, 34);
+//$darkBlue: rgb(0, 68, 127);
+$darkestGrey: rgb(5, 0, 50);
+
+$basicGreen: rgb(20, 190, 120);
+$darkGreen: rgb(22, 186, 153);//
+$basicOrange: rgb(253, 189, 86);//
+$darkOrange: rgb(252, 112, 8);//
+$basicRed: rgb(220, 55, 55);
+$darkRed: rgb(222, 44, 1);//
+
+// DURATIONS
+
+$shortDuration: .1s;
+$basicDuration: .25s;
+$longDuration: .45s;
+
+// BORDER-RADIUS
+
+$biggestRadius: 50%;
+$pillRadius: 999px;
+$basicRadius: 16px;
+$smallRadius: 8px;
+$smallestRadius: 4px;
+
+
+// PAGINATION
+
+$catTiny: 90px;
+$catSmall: 132px;
+
+// SIZES
+
+$sm : 576px;
+$md : 768px;
+$lg : 992px;
+$xl : 1200px;
+$xxl : 1440px;
+$xxxl : 1600px;
+
+/* --------------------------- */
+
+/* MIXINS */
+
+// BOX-SHADOWS
+
+/*@mixin highestBoxShadow() {
+	@include boxShadow(0 19px 38px rgba($darkestGrey, $alpha30), 0 15px 12px rgba($darkestGrey, .22));
+}
+
+@mixin higherBoxShadow() {
+	@include boxShadow(0 14px 28px rgba($darkestGrey, .25), 0 10px 10px rgba($darkestGrey, .22));
+}
+// (utliser pour les éléments qui ont un attribut de rotation)
+@mixin higherBoxShadow-45() {
+	@include boxShadow(14px 14px 28px rgba($darkestGrey, .25), 10px 10px 10px rgba($darkestGrey, .22));
+}
+@mixin higherBoxShadow-315() {
+	@include boxShadow(-14px 14px 28px rgba($darkestGrey, .25), -10px 10px 10px rgba($darkestGrey, .22));
+}*/
+
+/*@mixin highBoxShadow() {
+	@include boxShadow(0 1rem 3rem rgba(0, 0, 0, .175), 0 1rem 3rem rgba(0, 0, 0, .175));
+}
+
+@mixin basicBoxShadow() {
+	@include boxShadow(0 .5rem 1rem rgba(0, 0, 0, .15), 0 .5rem 1rem rgba(0, 0, 0, .15));
+}
+
+@mixin lowestBoxShadow() {
+	@include boxShadow(0 .125rem .25rem rgba(0, 0, 0, .075), 0 .125rem .25rem rgba(0, 0, 0, .075));
+}
+// (utliser pour les éléments qui ont un attribut de rotation)
+@mixin lowestBoxShadow-45() {
+	@include boxShadow(.125rem .125rem .25rem rgba(0, 0, 0, .075), .125rem .125rem .25rem rgba(0, 0, 0, .075));
+}
+@mixin lowestBoxShadow-315() {
+	@include boxShadow(-.125rem .125rem .25rem rgba(0, 0, 0, .075), -.125rem .125rem .25rem rgba(0, 0, 0, .075));
+}*/
+
+@mixin highBoxShadow() {
+	@include boxShadow(0 1rem 3rem rgba(0, 0, 0, .175));
+}
+@mixin basicBoxShadow() {
+	@include boxShadow(0 .5rem 1rem rgba(0, 0, 0, .15));
+}
+@mixin lowBoxShadow() {
+	@include boxShadow(0 .25rem .5rem rgba(0, 0, 0, .125));
+}
+@mixin lowBoxShadow-90() {
+	@include boxShadow(.25rem 0 .5rem rgba(0, 0, 0, .125));
+}
+@mixin lowBoxShadow-reverse() {
+	@include boxShadow(0 -.25rem .5rem rgba(0, 0, 0, .125));
+}
+@mixin lowestBoxShadow() {
+	@include boxShadow(0 .125rem .25rem rgba(0, 0, 0, .075));
+}
+@mixin lowestBoxShadow-reverse() {
+	@include boxShadow(0 -.125rem .25rem rgba(0, 0, 0, .075));
+}
+// (utliser pour les éléments qui ont un attribut de rotation)
+@mixin lowestBoxShadow-45() {
+	@include boxShadow(.125rem .125rem .25rem rgba(0, 0, 0, .075));
+}
+@mixin lowestBoxShadow-135() {
+	@include boxShadow(-.125rem -.125rem .25rem rgba(0, 0, 0, .075));
+}
+@mixin lowestBoxShadow-315() {
+	@include boxShadow(-.125rem .125rem .25rem rgba(0, 0, 0, .075));
+}
+
+/*@mixin lowestBoxShadow-inset() {
+	@include boxInset(0 -1px 3px rgba($darkestGrey, .12), 0 -1px 2px rgba($darkestGrey, .24));
+}
+
+@mixin buttonInset() {
+	@include boxInset(-12px 0 33px rgba($darkCTA, $alpha0));
+}
+
+@mixin buttonInsetHover() {
+	@include boxInset(-12px 0 33px $darkCTA);
+}*/
+
+// TRANSITIONS
+
+@mixin allTransition($duration) {
+	@include transition(all, $duration);
+}
+
+@mixin backgroundColorTransition($duration) {
+	@include transition(background-color, $duration);
+}
+
+@mixin colorTransition($duration) {
+	@include transition(color, $duration);
+}
+
+@mixin widthTransition($duration) {
+	@include transition(width, $duration);
+}
+
+@mixin boxShadowTransition($duration) {
+	@include transition(box-shadow, $duration);
+}
+
+// BORDERS
+
+@mixin basicBorder($width) {
+	@include border($width, rgba($darkestGrey, $alpha10));
+}
+
+/* EXTENDS */
+
+// TEXT SHADOW
+
+%extend-lowestTextShadow {
+	@include textShadow(0 1px 3px rgba($darkestGrey, .12), 0 1px 2px rgba($darkestGrey, .24));
+}
+%extend-basicTextShadow {
+	@include textShadow(0 3px 6px rgba($darkestGrey, .16), 0 3px 6px rgba($darkestGrey, .23));
+}

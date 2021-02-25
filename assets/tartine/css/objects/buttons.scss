@@ -1,0 +1,844 @@
+@import "../config.scss";
+
+/* HYPERLINK */
+
+.hyperlink {
+    display: inline-block;
+    color: $CTA !important;
+    line-height: 125%;
+    cursor: pointer;
+    @include border(0 0 1px 0, $CTA);
+    @include allTransition(basicDuration);
+    
+    &:hover {
+        @include border(0 0 1px 0, rgba($CTA, 0));
+        @include allTransition(basicDuration);
+    }
+}
+
+/* BUTTONS */
+
+.button {
+    font-family: 'montserratsemibold';
+    font-size: $basicFontSize;
+	display: inline-block;
+	overflow: hidden;
+	cursor: pointer;
+	//margin: 0 11px 0 0;
+    padding: 12px 0;
+    text-align: center;
+	border-radius: $pillRadius;
+	//background-color: $CTA;
+	//@include lowestBoxShadow();
+	@include allTransition($basicDuration);
+    
+    &.lvl1 {
+        background-color: $CTA;
+        color: $white;
+        @include boxInset(-66px 0 55px $darkCTA);
+    }
+    &.lvl2 {
+        padding: 10px 0;
+        border-width: 2px;
+        border-style: solid;
+        border-color: $darkCTA;
+        color: $darkCTA;
+    }
+    &.lvl3 {
+        color: $CTA;
+    }
+}
+	/*i {
+		@include buttonInset();
+	}*/
+
+	/*> * {
+		padding: 11px;
+		text-align: center;
+		line-height: normal;
+		text-decoration: none;
+		border: none;
+		vertical-align: top;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background: none;
+		color: $white;
+		@include boxShadowTransition($basicDuration);
+		@include boxInset(-33px 0 66px rgba($darkCTA, $alpha0));
+
+		i {
+			padding: 0 6px 0 0;
+			color: $white;
+			background: none;
+			@include noneBoxShadow();
+		}
+	}
+
+	a {
+		&:hover {
+			color: $white;
+		}
+	}
+
+	&.white {
+		background-color: $white;
+
+		i {
+			color: $CTA;
+			@include noneBoxShadow();
+			@include colorTransition($basicDuration);
+		}
+
+		> * {
+			color: $CTA;
+			@include noneBoxShadow();
+			@include colorTransition($basicDuration);
+
+			i {
+				color: $CTA;
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+			}
+		}
+
+		&.disabled {
+			background-color: rgba($basicGrey, $alpha50);
+		}
+
+		&:hover {
+			background-color: $white;
+
+			i {
+				color: $darkCTA;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+			}
+
+			> * {
+				color: $darkCTA;
+				@include noneBoxShadow();
+
+				i {
+					color: $darkCTA;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+				}
+			}
+		}
+
+		&.red {
+			background-color: $white;
+
+			i {
+				color: $basicRed;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+			}
+
+			> * {
+				color: $basicRed;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+
+				i {
+					color: $basicRed;
+					padding: 0 6px 0 0;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+				}
+			}
+
+			&:hover {
+				background-color: $white;
+
+				i {
+					color: $darkRed;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+				}
+
+				> * {
+					color: $darkRed;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+
+					i {
+						color: $darkRed;
+						@include noneBoxShadow();
+						@include colorTransition($basicDuration);
+					}
+				}
+			}
+		}
+	}
+	&.grey {
+		background-color: $basicGrey;
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkGrey, $alpha0));
+		}
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkGrey, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		&.disabled {
+			background-color: rgba($basicGrey, $alpha50);
+		}
+
+		&.tertiary {
+			background-color: rgba($basicGrey, $alpha0);
+			cursor: pointer;
+			@include border(1px, rgba($darkestGrey, $alpha0));
+
+			i {
+				color: $darkGrey;
+			}
+
+			> * {
+				color: $darkGrey;
+
+				i {
+					color: $darkGrey;
+				}
+			}
+
+			&:hover {
+				background-color: rgba($basicGrey, $alpha0);
+				@include border(1px, rgba($darkestGrey, $alpha10));
+
+				i {
+					color: $darkGrey;
+					@include noneBoxShadow();
+				}
+
+				> * {
+					color: $darkGrey;
+					@include noneBoxShadow();
+
+					i {
+						color: $darkGrey;
+						@include noneBoxShadow();
+					}
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $lightGrey;
+
+			i {
+				@include boxInset(-12px 0 28px $darkGrey);
+			}
+
+			> * {
+				@include boxInset(-33px 0 99px $darkGrey);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.active {
+		background-color: $active;
+
+		i {
+			@include boxInset(-12px 0 28px rgba($active, $alpha0));
+		}
+
+		> * {
+			@include boxInset(-33px 0 66px rgba($active, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		&.disabled {
+			background-color: rgba($active, $alpha50);
+		}
+
+		&:hover {
+			background-color: $lightActive;
+
+			i {
+				@include boxInset(-12px 0 28px $active);
+			}
+
+			> * {
+				@include boxInset(-33px 0 66px $active);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.green {
+		background-color: $darkGreen;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkGreen, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkGreen, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($darkGreen, $alpha50);
+			@include noneBoxShadow();
+
+			&:hover {
+				background-color: rgba($darkGreen, $alpha50);
+
+				> * {
+					background: none;
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $basicGreen;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkGreen);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkGreen);
+
+				&.shadow-hover-none {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.orange {
+		background-color: $basicOrange;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkOrange, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkOrange, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($basicOrange, $alpha50);
+		}
+
+		&:hover {
+			background-color: $basicOrange;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkOrange);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkOrange);
+			}
+		}
+	}
+	&.red {
+		background-color: $basicRed;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkRed, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkRed, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($basicRed, $alpha50);
+
+			&:hover {
+				background-color: rgba($basicRed, $alpha50);
+				@include lowestBoxShadow();
+
+				* {
+					cursor: default;
+					background: none;
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $basicRed;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkRed);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkRed);
+			}
+		}
+	}
+
+	&.tertiary {
+		background-color: rgba($CTA, $alpha0);
+		@include noneBoxShadow();
+		@include allTransition($basicDuration);
+
+		i {
+			color: $CTA;
+			@include allTransition($basicDuration);
+		}
+
+		> * {
+			padding: 10px;
+			color: $CTA;
+			@include allTransition($basicDuration);
+
+			i {
+				color: $CTA;
+			}
+		}
+
+		&:hover {
+			background-color: $lightCTA;
+			@include noneBoxShadow();
+			@include allTransition($basicDuration);
+
+			i {
+				color: $white;
+				@include allTransition($basicDuration);
+				@include boxInset(-12px 0 28px $darkCTA);
+			}
+
+			> * {
+				color: $white;
+				@include allTransition($basicDuration);
+				@include boxInset(-33px 0 99px $darkCTA);
+
+				i {
+					color: $white;
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+
+	&.disabled {
+		cursor: default;
+		// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+		background-color: rgba(129, 196, 237, 1);
+
+		&.rotate-315 {
+			@include lowestBoxShadow-315();
+
+			&:hover {
+				@include lowestBoxShadow-315();
+			}
+		}
+
+		&:hover {
+			// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+			background-color: rgba(129, 196, 237, 1);
+			@include lowestBoxShadow();
+
+			* {
+				background: none;
+				@include noneBoxShadow();
+			}
+		}
+	}
+
+	&.next {
+		> * {
+			display: flex;
+			align-items: center;
+			padding-right: 0;
+
+			label {
+				padding: 0;
+				cursor: pointer;
+				color: $white;
+			}
+			i {
+				padding-left: 11px;
+				padding-right: 11px;
+				@include noneBoxShadow();
+				@include transition(padding, $basicDuration);
+				@include delay($shortDuration);
+			}
+
+			&:hover {
+				i {
+					padding-left: 16px;
+					padding-right: 6px;
+					@include noneBoxShadow();
+					@include transition(padding, $basicDuration);
+					@include delay($shortDuration);
+				}
+			}
+		}
+	}
+
+	&.tiny {
+		> * {
+			@include boxInset(-11px 0 28px rgba($darkCTA, $alpha0));
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:hover {
+				@include boxInset(-11px 0 28px $darkCTA);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&.green {
+			> * {
+				@include boxInset(-11px 0 16px rgba($darkGreen, $alpha0));
+
+				&:hover {
+					@include boxInset(-11px 0 16px $darkGreen);
+				}
+			}
+		}
+		&.red {
+			> * {
+				@include boxInset(-11px 0 16px rgba($darkRed, $alpha0));
+
+				&:hover {
+					@include boxInset(-11px 0 16px $darkRed);
+				}
+			}
+		}
+	}
+
+	&.small {
+		> * {
+			@include boxInset(-44px 0 33px rgba($darkCTA, $alpha0));
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:hover {
+				@include boxInset(-44px 0 33px $darkCTA);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&.green {
+			> * {
+				@include boxInset(-44px 0 33px rgba($darkGreen, $alpha0));
+
+				&:hover {
+					@include boxInset(-44px 0 33px $darkGreen);
+				}
+			}
+		}
+		&.red {
+			> * {
+				@include boxInset(-44px 0 33px rgba($darkRed, $alpha0));
+
+				/*&:hover {
+					@include boxInset(-44px 0 33px $darkRed);
+				}
+			}
+		}
+	}
+
+	&.input {
+		width: auto;
+		cursor: default;
+		background-color: rgba($CTA, $alpha30);
+		@include noneBoxShadow();
+
+		input {
+			width: auto;
+			margin: 0 11px 10px;
+			padding: 11px 0 4px;
+			border-radius: 0;
+			outline: none;
+			color: $CTA;
+			@include insetBorder(0 0 1px, rgba($darkestGrey, $alpha10));
+			@include noneBoxShadow();
+		}
+
+		&:hover {
+			background-color: rgba($CTA, $alpha30);
+			@include noneBoxShadow();
+		}
+	}
+
+	&.rotate-315 {
+		@include lowestBoxShadow-315();
+
+		&:hover {
+			@include higherBoxShadow-315();
+		}
+	}
+	/*&.rotate-n180 {
+		@include lowestBoxShadow-180();
+
+		&:hover {
+			@include higherBoxShadow-180();
+		}
+	}*/
+
+	/*&.cancel {
+		text-align: center;
+		background-color: rgba($lighterGrey, $alpha0);
+		@include noneBoxShadow();
+		@include backgroundColorTransition($basicDuration);
+
+		> * {
+			width: 100%;
+			padding: 8px 0;
+			color: $basicGrey;
+			@include noneBoxShadow();
+			@include colorTransition($basicDuration);
+		}
+
+		&:hover {
+			background-color: $lighterGrey;
+			@include noneBoxShadow();
+			@include backgroundColorTransition($basicDuration);
+
+			> * {
+				color: $darkGrey;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+			}
+		}
+	}
+
+	&:hover {
+		background-color: $lightCTA;
+		@include higherBoxShadow();
+		@include allTransition($basicDuration);
+
+		i {
+			@include boxInset(-12px 0 28px $darkCTA);
+		}
+
+		> * {
+			@include boxShadowTransition($basicDuration);
+			@include boxInset(-33px 0 99px $darkCTA);
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	&:last-child {
+		margin: 0;
+	}*/
+
+/* -------------- */
+
+// POPUP
+
+popup,
+#popupInside {
+	.popup {
+		.popupContent {
+			.button {
+				border-radius: $smallestRadius;
+
+				> * {
+					padding: 6px 11px;
+				}
+			}
+		}
+		.popupButtons {
+			.button {
+				&.disabled {
+					cursor: default;
+
+					a,
+					button {
+						cursor: default;
+					}
+
+					&:hover {
+						// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+						background-color: rgba(129, 196, 237, 1);
+
+						a,
+						button {
+							background: none;
+							@include noneBoxShadow();
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// FIXED BUTTONS
+
+.fixedButtons {
+	position: fixed;
+	bottom: 66px;
+	right: 33px;
+	text-align: right;
+	z-index: 1100;
+	font-size: 0;
+
+	.icon {
+		padding: 0;
+		background-color: $CTA;
+
+		i {
+			width: 44px;
+			height: 44px;
+			padding: 12px;
+			font-size: $bigFontSize-1;
+			color: $white;
+		}
+	}
+
+	.fixedCircleButton {
+		display: inline-block;
+		width: 44px;
+		height: 44px;
+		margin: 0 11px 0 0;
+
+		i {
+			display: block;
+			width: 22px;
+			height: 22px;
+			margin: 11px;
+			text-align: center;
+
+			&.fa-user-plus {
+				position: relative;
+				left: 1px;
+			}
+		}
+	}
+
+	.button {
+		&.disabled {
+			&:hover {
+				// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+				background-color: rgba(129, 196, 237, 1);
+				@include lowestBoxShadow();
+
+				a,
+				button {
+					background: none;
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: $lg) {
+		bottom: 11px;
+	}
+}
+
+.addEdit {
+	.addEditParcours {
+		.parcoursPreview {
+			.fixedButtons {
+				right: auto !important;
+				left: 22px;
+
+				@media screen and (min-width: $lg) {
+					left: 77px;
+				}
+			}
+		}
+	}
+}
+
+// SIDE OBJECT
+
+.sideObject {
+	.defaultCard {
+		.subCard {
+			.element {
+				.value {
+					.button {
+						> * {
+							@include boxInset(-110px 0 154px rgba($darkCTA, $alpha0));
+						}
+
+						&:hover {
+							> * {
+								@include boxInset(-110px 0 154px $darkCTA);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// TREE
+
+.tree {
+	.button {
+		i {
+			@include noneBoxShadow();
+		}
+
+		&:hover {
+			i {
+				@include noneBoxShadow();
+			}
+		}
+	}
+}

@@ -1,0 +1,58 @@
+@import "../config.scss";
+
+/* TRANSITIONS */
+
+// all
+.transition-all {
+	@include transition(all, $basicDuration);
+}
+
+// height
+.transition-height {
+	@include transition(height, $basicDuration);
+}
+
+// top
+.transition-top {
+	@include transition(top, $basicDuration);
+}
+// bottom
+.transition-bottom {
+	@include transition(bottom, $basicDuration);
+}
+// right
+.transition-right {
+	@include transition(right, $basicDuration);
+}
+
+// color
+.transition-color {
+	@include transition(color, $basicDuration);
+}
+
+// border-color
+.transition-border-color {
+	@include transition(border-color, $basicDuration);
+}
+
+// shadow
+.transition-shadow {
+	@include transition(box-shadow, $basicDuration);
+}
+
+// opacity
+.transition-opacity {
+	@include transition(opacity, $basicDuration);
+}
+
+/* DELAYS */
+
+.delay-short {
+	@include delay($shortDuration);
+}
+.delay-basic {
+	@include delay($basicDuration);
+}
+.delay-long {
+	@include delay($longDuration);
+}

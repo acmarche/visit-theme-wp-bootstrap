@@ -1,0 +1,151 @@
+@import "../config.scss";
+
+/* COUNTER */
+
+.counter {
+	min-width: 13px;
+	height: 13px;
+	padding: 1px;
+	position: absolute;
+	text-align: center;
+	font-size: .625rem;
+	line-height: .7rem;
+	font-weight: 600;
+	border-radius: 6px;
+	color: $white;
+	//background-color: $lightActive;
+	//@include boxInset(-4px 0 6px $active);
+}
+
+// HEADER TOOLS
+
+.headerTools {
+	.counter {
+		top: 11px;
+		right: 11px;
+	}
+}
+
+// BOARD CONTAINER
+
+.boardContainer {
+	.subCard {
+		header {
+			.counter {
+				height: auto;
+				top: 11px;
+				left: 11px;
+				padding: 0;
+				font-size: 0;
+				border-radius: 0;
+				background: none;
+				@include noneBoxShadow();
+
+				/*p {
+					color: $active;
+
+					i {
+						padding: 0 6px 0 0;
+						color: $active;
+					}
+				}*/
+			}
+		}
+	}
+}
+
+// CHAT
+
+#chatChoice {
+	.animatedCounter {
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		position: fixed;
+		bottom: 66px;
+		right: 22px;
+		z-index: 10;
+		cursor: pointer;
+		border-radius: $biggestRadius;
+		//@extend %extend-roll-one;
+
+		@media screen and (min-width: $lg) {
+			bottom: 11px;
+		}
+
+		.counter {
+			min-width: 16px;
+			//padding: 3px 2px;
+			//height: 16px;
+			position: fixed;
+			//bottom: 9px;
+			right: 22px;
+			/*bottom: -2px;
+			right: 0;*/
+			z-index: 10;
+			border-radius: 22px;
+			//font-size: $shortFontSize-2;
+			//background-color: $active;
+			//@include lowestBoxShadow();
+			//@extend %extend-roll-coordinated-reverse-one;
+
+			width: 44px;
+			height: 44px;
+			padding: 12px 0;
+			bottom: 11px;
+			opacity: $alpha0;
+			line-height: 100%;
+			font-size: $bigFontSize-2;
+			@include delay($basicDuration);
+			//@include allTransition($longDuration);
+
+			&.show {
+				min-width: max-content;
+				width: 16px;
+				height: 16px;
+				padding: 3px 2px;
+				bottom: 9px;
+				opacity: $alpha100;
+				line-height: 99%;
+				font-size: $shortFontSize-2;
+				@include delay($longDuration);
+				@include allTransition($longDuration);
+			}
+		}
+
+		/*&:hover {
+			& + .chatHeader {
+				&.icon {
+					background-color: $lightCTA;
+					@include higherBoxShadow();
+
+					i {
+						@include buttonInsetHover();
+					}
+
+					&.active {
+						background-color: $lightActive;
+
+						i {
+							@include boxInset(-12px 0 33px $active);
+						}
+					}
+				}
+			}
+		}*/
+
+		/*&.benef {
+			@extend %extend-roll-infinite;
+			.counter {
+				@extend %extend-roll-coordinated-reverse-infinite;
+			}
+			&:hover,
+			&.opened {
+				animation-play-state: paused;
+				&.counter {
+					animation-play-state: paused;
+				}
+			}
+		}*/
+	}
+}

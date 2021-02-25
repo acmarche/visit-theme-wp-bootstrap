@@ -1,0 +1,186 @@
+<?php
+
+namespace VisitMarche\Theme\Inc;
+
+class AssetsLoad
+{
+    public function __construct()
+    {
+        add_action('wp_enqueue_scripts', [$this, 'visitmarcheAssets']);
+
+        if (Theme::isHomePage()) {
+            add_action('wp_enqueue_scripts', [$this, 'visitmarcheHome']);
+          //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
+        }
+
+        if ( ! is_category() && ! is_search() && ! is_front_page()) {
+       //     add_action('wp_enqueue_scripts', [$this, 'visitmarcheLeaft']);
+        //    add_action('wp_enqueue_scripts', [$this, 'visitmarcheLightGallery']);
+        //    add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
+        }
+
+    //    add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
+    }
+
+    function visitmarcheAssets()
+    {
+        wp_enqueue_style(
+            'visitmarche-bootstrap',
+            'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
+        wp_enqueue_style(
+            'visitmarche-fontawesome',
+            'https://use.fontawesome.com/releases/v5.15.2/css/all.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
+        wp_enqueue_style(
+            'visitmarche-base-style',
+            get_template_directory_uri().'/assets/tartine/css/base.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+
+        wp_enqueue_script(
+            'visitmarche-bootstrap-js',
+            'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js',
+            array('jquery'),
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+    /*    wp_enqueue_script(
+            'visitmarche-close-js',
+            get_template_directory_uri().'/assets/js/utils/navigation.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );*/
+    }
+
+    function visitmarcheHome()
+    {
+        wp_enqueue_style(
+            'visitmarche-home-style',
+            get_template_directory_uri().'/assets/tartine/css/home.css',
+            array()
+        );
+
+   /*     wp_enqueue_style(
+            'visitmarche-lightSlider-style',
+            get_template_directory_uri().'/assets/js/lightslider/css/lightslider.css',
+            array()
+        );
+
+        wp_enqueue_script(
+            'visitmarche-lightSlider-js',
+            get_template_directory_uri().'/assets/js/lightslider/js/lightslider.js',
+            array('jquery'),
+            wp_get_theme()->get('Version'),
+            true
+        );*/
+    }
+
+    function visitmarcheLightGallery()
+    {
+        wp_enqueue_style(
+            'visitmarche-lightSlider-style',
+            get_template_directory_uri().'/assets/js/lightGallery/dist/css/lightgallery.min.css',
+            array()
+        );
+
+        wp_enqueue_script(
+            'visitmarche-lightGallery-js',
+            get_template_directory_uri().'/assets/js/lightGallery/dist/js/lightgallery.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'visitmarche-lightGallery-zoom-js',
+            get_template_directory_uri().'/assets/js/lightGallery/modules/lg-zoom.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'visitmarche-lightGallery-mouse-js',
+            get_template_directory_uri().'/assets/js/lightGallery/lib/jquery.mousewheel.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_script(
+            'visitmarche-lightGallery-full-js',
+            get_template_directory_uri().'/assets/js/lightGallery/modules/lg-fullscreen.min.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
+    function visitmarcheLeaft()
+    {
+        wp_enqueue_style(
+            'visitmarche-leaflet',
+            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        wp_enqueue_script(
+            'visitmarche-leaflet-js',
+            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        wp_enqueue_script(
+            'visitmarche-zoom-js',
+            get_template_directory_uri().'/assets/js/components/Map/hooks/L.KML.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+    }
+
+    function readSpeaker()
+    {
+        wp_enqueue_script(
+            'visitmarche-readspeaker-js',
+            '//cdn1.readspeaker.com/script/11982/webReader/webReader.js?pids=wr',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        wp_enqueue_script(
+            'visitmarche-zoom-js',
+            get_template_directory_uri().'/assets/js/utils/zoom.js',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+    }
+
+    function loadSearchScreen()
+    {
+        wp_enqueue_script(
+            'visitmarche-react-search-screen',
+            get_template_directory_uri().'/assets/js/build/searchScreen.js',
+            ['wp-element'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
+    function loadSearchScreenHome()
+    {
+        wp_enqueue_script(
+            'visitmarche-react-search-screen-home',
+            get_template_directory_uri().'/assets/js/build/searchScreenHome.js',
+            ['wp-element'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
+}

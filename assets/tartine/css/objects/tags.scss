@@ -1,0 +1,53 @@
+@import "../config.scss";
+
+/* TAGS */
+
+.tagList {
+	li {
+		display: inline-block;
+		margin: 0 6px 6px 0;
+		padding: 6px;
+		border-radius: $smallestRadius;
+		@include border(1px, rgba($active, $alpha30));
+
+		span {
+			i {
+				padding: 0 6px 0 0;
+				color: $lightGrey;
+			}
+
+			a {
+				vertical-align: middle;
+
+				i {
+					padding: 0 0 0 6px;
+					color: $CTA;
+					@include colorTransition($basicDuration);
+				}
+
+				&.red {
+					i {
+						color: $basicRed;
+					}
+				}
+
+				&:hover {
+					i {
+						color: $darkCTA;
+						@include colorTransition($basicDuration);
+					}
+
+					&.red {
+						i {
+							color: $darkRed;
+						}
+					}
+				}
+			}
+		}
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+}

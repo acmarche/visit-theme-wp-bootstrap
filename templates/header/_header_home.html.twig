@@ -1,0 +1,146 @@
+   <!--OBJECT | HEADER-->
+    <header>
+        <div>
+            <a href="#">
+                <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo">
+            </a>
+
+            <!--OBJECT | NAV-->
+            <nav>
+
+                <!--home-->
+                <div class="home active">
+                    <a href="#" class="icon_custom position-relative">
+                        <i class="icon_nav i-home"></i>
+                        <span>Accueil</span>
+                    </a>
+                </div>
+                <!--search | visible on mobile/tablet && !homepage-extralarge-->
+                <div class="search d-xl-none">
+                    <a href="#">
+                        <i class="icon_nav i-search"></i>
+                        <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                    </a>
+
+                    <div class="searchScreen">
+                       <i class="graphicElement"></i>
+
+                        <ul>
+                            <li class="col-ls-12">
+                                <form class="h-32px">
+                                    <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
+                                    <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                                        <i class="i-search i-dark-grey w-16px h-16px"></i>
+                                    </button>
+                                </form>
+                                <!--TODO JF: branchement-->
+                                <a href="#" class="icon_custom">
+                                    <i class="i-times"></i>
+                                </a>
+                            </li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-patrimony"></i>Patrimoine</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-arts"></i>Arts</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-walks"></i>Balades</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-delicaties"></i>Gourmandises</a></li>
+                            <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-parties"></i>Fêtes</a></li>
+                        </ul>
+
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+                <!--organize-->
+                <div class="organize">
+                   <input type="checkbox" id="organize" name="organize"/>
+                    <a href="#" for="organize">
+                        <i class="icon_nav i-bars"></i>
+                        <span>S'organiser</span>
+                    </a>
+
+                    <div class="bubble">
+                        <i class="graphicElement"></i>
+                        <div class="shadow-sm">
+                            <a href="enjoy.html">Savourer</a>
+                            <a href="#">Bouger</a>
+                            <a href="#">Séjourner</a>
+                        </div>
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+                <!--practical-->
+                <div class="practical">
+                    <a href="#">
+                        <i class="icon_nav i-clock"></i>
+                        <span>Pratique</span>
+                    </a>
+                </div>
+                <!--more-->
+                <div class="more">
+                   <input type="checkbox" id="more" name="more"/>
+                    <a href="#" for="more">
+                        <i class="icon_nav i-plus"></i>
+                    </a>
+
+                    <div class="bubble">
+                        <i class="graphicElement"></i>
+                        <div class="shadow-sm">
+                            <a href="inspirations.html">Inspirations</a>
+                            <a href="events.html">Agenda</a>
+                        </div>
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+
+                <!--visible from extralarge-->
+                <!--inspirations-->
+                <div class="inspirations">
+                    <a href="inspirations.html">
+                        <span>Inspirations</span>
+                    </a>
+                </div>
+                <!--agenda-->
+                <div class="agenda">
+                    <a href="events.html">
+                        <span>Agenda</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!--language-->
+            <div class="language">
+               <input type="checkbox" id="language" name="language"/>
+                <a href="#" for="language">FR<i class="fas fa-caret-down"></i></a>
+
+                <div class="bubble">
+                    <i class="graphicElement"></i>
+                    <div>
+                        <a href="#">fr</a>
+                        <a href="#">nl</a>
+                        <a href="#">en</a>
+                    </div>
+                    <i class="graphicElement"></i>
+                </div>
+            </div>
+
+            <!--social-->
+            <div class="social">
+               <input type="checkbox" id="social" name="social"/>
+               <a href="#" for="social">
+                   <i class="fas fa-share-alt"></i>
+                   <i class="fas fa-times fs-basic"></i>
+               </a>
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+

@@ -1,0 +1,76 @@
+@import "../config.scss";
+
+/* RADIO TILINGS */
+
+.radioTilings {
+	.checkContainer {
+		label {
+			background-color: $white;
+			@include basicBorder(1px);
+			@include boxInset(-22px 0 44px rgba($darkCTA, $alpha0));
+			@include allTransition($basicDuration);
+
+			i {
+				color: $CTA;
+				@include colorTransition($basicDuration);
+			}
+			span {
+				@include colorTransition($basicDuration);
+			}
+		}
+
+		input {
+			&:hover {
+				& + label {
+					//background-color: $lightCTA;
+					@include boxInset(-22px 0 44px $darkCTA);
+					@include allTransition($basicDuration);
+
+					i {
+						color: $white;
+						@include colorTransition($basicDuration);
+					}
+					span {
+						color: $white;
+						@include colorTransition($basicDuration);
+					}
+				}
+			}
+
+			&:checked {
+				& + label {
+					//background-color: $lightActive;
+					//@include boxInset(-22px 0 44px $active);
+					@include allTransition($basicDuration);
+
+					i {
+						color: $white;
+						@include colorTransition($basicDuration);
+					}
+					span {
+						color: $white;
+						@include colorTransition($basicDuration);
+					}
+				}
+
+				&:hover {
+					& + label {
+						//background-color: $lightActive;
+						//@include border(1px, $active);
+						//@include boxInset(-22px 0 44px $active);
+						@include allTransition($basicDuration);
+
+						i {
+							color: $white;
+							@include colorTransition($basicDuration);
+						}
+						span {
+							color: $white;
+							@include colorTransition($basicDuration);
+						}
+					}
+				}
+			}
+		}
+	}
+}

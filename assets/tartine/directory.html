@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Studio Tartine">
+
+        <title>L'Effet Boeuf | Visit Marche</title>
+
+        <!--BOOTSTRAP-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/base.css">
+
+        <!--FONT-AWESOME-->
+        <script src="https://kit.fontawesome.com/346aed29e3.js" crossorigin="anonymous"></script>
+
+        <!--FAVICON-->
+        <link rel="icon" type="image/png" href="rsc/favicon.png" />
+    </head>
+
+    <body class="bg-white">
+
+        <!--OBJECT | HEADER-->
+        <header class="version_b">
+            <div>
+                <a href="index.html">
+                    <img src="rsc/img/img_logo_b.png" alt="logo">
+                </a>
+
+                <!--OBJECT | NAV-->
+                <nav class="version_b">
+
+                    <!--home-->
+                    <div class="home">
+                        <a href="index.html" class="icon_custom position-relative">
+                            <i class="icon_nav i-home"></i>
+                            <span>Accueil</span>
+                        </a>
+                    </div>
+                    <!--search | visible on mobile/tablet && !homepage-extralarge-->
+                    <div class="search">
+                        <a href="#">
+                            <i class="icon_nav i-search i-darkGrey"></i>
+                            <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
+                        </a>
+
+                        <div class="searchScreen">
+                           <i class="graphicElement"></i>
+
+                            <ul>
+                                <li class="col-ls-12">
+                                    <form class="h-32px">
+                                        <input type="search" placeholder="Que cherchez-vous ?" class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
+                                        <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                                            <i class="i-search i-dark-grey w-16px h-16px"></i>
+                                        </button>
+                                    </form>
+                                    <!--TODO JF: branchement-->
+                                    <a href="#" class="icon_custom">
+                                        <i class="i-times"></i>
+                                    </a>
+                                </li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-patrimony"></i>Patrimoine</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-arts"></i>Arts</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-walks"></i>Balades</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-delicaties"></i>Gourmandises</a></li>
+                                <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i class="i-parties"></i>Fêtes</a></li>
+                            </ul>
+
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+                    
+                    <!--organize-->
+                    <div class="organize">
+                       <input type="checkbox" id="organize" name="organize"/>
+                        <a href="#" for="organize">
+                            <i class="icon_nav i-bars"></i>
+                            <span>S'organiser</span>
+                        </a>
+
+                        <div class="bubble">
+                            <i class="graphicElement"></i>
+                            <div class="shadow-sm">
+                                <a href="enjoy.html">Savourer</a>
+                                <a href="#">Bouger</a>
+                                <a href="#">Séjourner</a>
+                            </div>
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+                    
+                    <!--practical-->
+                    <div class="practical">
+                        <a href="#">
+                            <i class="icon_nav i-clock"></i>
+                            <span>Pratique</span>
+                        </a>
+                    </div>
+                    
+                    <!--more-->
+                    <div class="more">
+                       <input type="checkbox" id="more" name="more"/>
+                        <a href="#" for="more">
+                            <i class="icon_nav i-plus"></i>
+                        </a>
+
+                        <div class="bubble">
+                            <i class="graphicElement"></i>
+                            <div>
+                                <a href="inspirations.html">Inspirations</a>
+                                <a href="events.html">Agenda</a>
+                            </div>
+                            <i class="graphicElement"></i>
+                        </div>
+                    </div>
+
+                    <!--visible from extralarge-->
+                    <!--inspirations-->
+                    <div class="inspirations">
+                        <a href="inspirations.html">
+                            <span>Inspirations</span>
+                        </a>
+                    </div>
+                    <!--agenda-->
+                    <div class="agenda">
+                        <a href="events.html">
+                            <span>Agenda</span>
+                        </a>
+                    </div>
+                </nav>
+
+                <!--language-->
+                <div class="language pl-32px">
+                   <input type="checkbox" id="language" name="language"/>
+                    <a href="#" for="language">FR<i class="fas fa-caret-down"></i></a>
+
+                    <div class="bubble">
+                        <i class="graphicElement"></i>
+                        <div class="shadow-sm">
+                            <a href="#">fr</a>
+                            <a href="#">nl</a>
+                            <a href="#">en</a>
+                        </div>
+                        <i class="graphicElement"></i>
+                    </div>
+                </div>
+
+                <!--social-->
+                <div class="social">
+                   <input type="checkbox" id="social" name="social"/>
+                   <a href="#" for="social">
+                       <i class="fas fa-share-alt"></i>
+                       <i class="fas fa-times fs-basic"></i>
+                   </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!--CONTENT-->
+        <section id="content" class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-80px pb-lg-66px mw-1440px mx-xl-auto w-100">
+
+            <!--DIRECTORY-->
+            <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
+
+                <!--back | TODO JF: lien dynamique vers la page précédente-->
+                <a href="search.html" class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à la recherche</a>
+
+                <!--title-->
+                <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">L'Effet Boeuf</h2>
+                
+                <!--category-->
+                <span class="text-primary ff-semibold pt-12px d-block fs-short-2">Restaurants</span>
+
+                <!--directory-->
+                <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
+                    <div class="d-flex flex-column align-items-center flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-md-0 flex-lg-nowrap px-md-0">
+                        <!--img/datas-->
+                        <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs overflow-hidden">
+                           
+                           <!--img-->
+                            <i class="bg-img-enjoy-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+                            
+                            <!--datas-->
+                            <div class="col-12 col-md-5 d-flex flex-column flex-ls-row flex-ls-wrap py-24px px-48px px-ls-12px align-self-stretch align-items-ls-start ml-auto bg-pastel">
+                               
+                               <!--address-->
+                                <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
+                                    <h4 class="ff-semibold fs-short-1">Adresse</h4>
+                                    <span class="fs-short-2 pt-8px d-block">Rue Victor Libert, 36 boîte A</span>
+                                    <span class="fs-short-2 pt-8px d-block">6900 Marche-en-Famenne</span>
+                                </div>
+                                
+                                <!--phone-->
+                                <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                                    <h4 class="ff-semibold fs-short-1">Téléphone</h4>
+                                    <a href="tel:084326940" class="fs-short-2 pt-8px d-block text-default">084 32 69 40</a>
+                                </div>
+                                
+                                <!--mail-->
+                                <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                                    <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
+                                    <a href="mailto:beaux.arts@marche.be" class="fs-short-2 pt-8px d-block text-default">beaux.arts@marche.be</a>
+                                </div>
+                                
+                                <!--website-->
+                                <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                                    <h4 class="ff-semibold fs-short-1">Site web</h4>
+                                    <a href="www.beauxarts-arlon.net" target="_blank" class="fs-short-2 pt-8px d-block text-default">www.beauxarts-arlon.net</a>
+                                </div>
+                                
+                                <!--schedule-->
+                                <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                                    <h4 class="ff-semibold fs-short-1">Horaires</h4>
+                                    <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
+                                    <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
+                                    <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--OBJECT | TAGS-->
+                        <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
+                            <ul class="object-tags">
+                                <li><a href="#" class="rounded-xs">École</a></li>
+                                <li><a href="#" class="rounded-xs">Jeunesse</a></li>
+                                <li><a href="#" class="rounded-xs">Devoirs</a></li>
+                                <li><a href="#" class="rounded-xs">Volontariat</a></li>
+                            </ul>
+                        </div>
+
+                        <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
+                        <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                          <input type="checkbox" id="text-dyn"/>
+                           <div for="text-dyn">
+                                <span class="more">Lire plus</span>
+                                <span class="less">Réduire</span>
+                            </div>
+                            <div for="text-dyn">
+                                <p>Enseignement secondaire artistique à horaire réduit subventionné par la Fédération Wallonie-Bruxelles.</p>
+                                
+                                <p>Enfants et adolescents :</p>
+                                <ul>
+                                    <li>Cours de formation pluridisciplinaire pour enfants et adolescents : dessin, peinture, volume</li>
+                                </ul>
+                                
+                                <p>Professeurs : Monique Simon - Chantal Reiter</p>
+                                <ul>
+                                    <li>6-8 ans : mercredi de 13h à 14h40; samedi de 9h à 12h20</li>
+                                    <li>9-11 ans : mercredi de 15h à 14h40; samedi de 10h40 à 12h20</li>
+                                    <li>12-17 ans : mercredi de 17h10 à 19h40; vendredi de 17h à 20h20</li>
+                                </ul>
+                                
+                                <p>À partir de 18 ans :</p>
+                                <ul>
+                                    <li>Dessin d'après un modèle vivant : Professeur : Dominiue Baudon; mardi de 13h40 à 20h20</li>
+                                    <li>Gravure : Professeur : Véronique Pierlot; mardi de 13h40 à 20h20</li>
+                                    <li>Peinture : Professeur : Manuel Alves Pereira; lundi de 13h40 à 20h20; Professeur : Nathalie Pirotte; vendredi de 13h40 à 20h20</li>
+                                    <li>Céramique : Professeur : Hugo Meert; mercredi de 13h40 à 20h20</li>
+                                    <li>Histoire de l'art et analyse esthétique : Professeur : Marie-Claire Toussaint</li>
+                                </ul>
+                                
+                                <p>Droit d'inscription :</p>
+                                <ul>
+                                    <li>Gratuit en-dessous de 12 ans (né(e) après le 31/12/2007) et plus de 12 ans inscrit dans l'enseignement primaire</li>
+                                    <li>75€ pour les élèves nès entre le 15/10/2001 et le 31/12/2007</li>
+                                    <li>188€ pour les élèves nés avant le 15/10/2001</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--OBJECT | SHARE-->
+                        <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
+                            <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                            <div class="pt-12px pt-md-16px object-share">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-link"></i></a>
+                                <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
+
+                        <!--previous/next-->
+                        <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                            <div class="col-6 p-0 d-flex">
+                                <a href="#" class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Fiche précédente</a>
+                            </div>
+                            <div class="col-6 p-0 d-flex justify-content-end">
+                                <a href="#" class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Fiche suivante<i class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
+                            </div>
+                        </div>
+
+                        <!--OBJECT | RECOM-->
+                        <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
+                            <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
+                            <div class="pt-12px object-recom">
+                                <a href="#" class="bg-img rounded-xs">
+                                    <i class="bg-img-enjoy-2">
+                                        <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                    </i>
+                                    <div class="col">
+                                        <h5 class="text-hover-primary">Le Baragou</h5>
+                                        <span class="text-primary">Restaurants</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-none d-lg-flex col-4 flex-column h-368px justify-content-between pl-30px">
+                     
+                     <!--OBJECT | SHARE-->
+                        <div class="w-100">
+                            <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                            <div class="pt-12px pt-md-16px object-share">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-link"></i></a>
+                                <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
+                      
+                      <!--OBJECT | TAGS-->
+                        <div class="overflow-hidden w-100 pt-24px">
+                            <ul class="object-tags">
+                                <li><a href="#" class="rounded-xs">École</a></li>
+                                <li><a href="#" class="rounded-xs">Jeunesse</a></li>
+                                <li><a href="#" class="rounded-xs">Devoirs</a></li>
+                                <li><a href="#" class="rounded-xs">Volontariat</a></li>
+                            </ul>
+                        </div>
+                       
+                        <!--OBJECT | RECOM-->
+                        <div class="pt-24px w-100">
+                            <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
+                            <div class="pt-22px object-recom">
+                                <a href="#" class="bg-img rounded-xs">
+                                    <i class="bg-img-enjoy-2">
+                                        <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                    </i>
+                                    <div class="col">
+                                        <h5 class="text-default text-hover-primary">Le Baragou</h5>
+                                        <span class="text-primary">Restaurants</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--OBJECT | FOOTER-->
+        <footer>
+            <section class="px-0 d-md-flex flex-md-wrap mx-md-n15px px-md-15px d-ls-flex flex-ls-wrap mx-ls-n15px pl-ls-15px col-xl-9 order-xl-2">
+                <div class="px-0 col-ls-6 col-ls-md-4 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Menu</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                        <li class="col-6 col-ls-12 col-md-12">
+                            <a href="inspirations.html">Inspirations</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-3 col-md-12 order-md-3">
+                            <a href="#">S'organiser</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-2 col-md-12 order-md-2">
+                            <a href="events.html">Agenda</a>
+                        </li>
+                        <li class="col-6 col-ls-12 order-ls-4 col-md-12 order-md-4">
+                            <a href="#">Pratique</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-6 pt-ls-0 col-ls-md-4 pt-md-0 pl-md-12px pl-ls-md-0 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Découvrez</h6>
+                    <ul class="d-flex flex-wrap mx-n11px">
+                       <li class="col-6">
+                            <a href="#">Patrimoine</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Arts</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Balades</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="#">Gourmandises</a>
+                        </li>
+                        <li class="col-6">
+                            <a href="category.html">Fêtes</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
+                    <h6>Contact</h6>
+                    <ul>
+                        <li>Hôtel de ville : <a href="tel:+3284327000">084 32 70 00</a></li>
+                        <li>Du lundi au jeudi : de 8h à 12h et de 13h à 17h</li>
+                        <li>Vendredi : de 8h à 12h et de 13h à 15h</li>
+                        <li class="d-flex">
+                            <a href="#" class="text-white border-0 pb-0">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="ml-11px text-white border-0 pb-0">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="d-flex mt-24px w-100 px-0 col-xl-3 border-xl-0 mt-xl-0 position-xl-initial">
+                <div class="col-6 col-xl-12 pt-24px pl-0 pt-xl-12px d-flex flex-wrap flex-column flex-ls-row flex-xl-row">
+                   <a href="index.html" class="d-block">
+                        <img src="rsc/img/img_logo.png" alt="logo" class="w-66px w-xl-88px">
+                    </a>
+                    <a href="#" class="d-block ml-ls-24px ml-ls-xl-40px ml-xl-40px mt-8px mt-ls-0">
+                        <img src="rsc/img/img_logo_marche.png" alt="logo" class="w-66px w-xl-88px">
+                    </a>
+                </div>
+                <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
+                    <a href="#" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">Vie privée</a>
+                    <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">Mentions légales</a>
+                    <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright © 2020<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br class="d-ls-md-none d-md-none">Tous droits réservés</small>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>
