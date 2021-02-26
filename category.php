@@ -29,6 +29,7 @@ Twig::rendPage(
     'category/index.html.twig',
     [
         'title' => $category->name,
+        'posts' => $posts,
     ]
 );
 

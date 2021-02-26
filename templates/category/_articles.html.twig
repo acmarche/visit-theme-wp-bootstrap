@@ -1,0 +1,28 @@
+<!--inspirations-->
+<div class="pt-40px d-flex mx-n15px flex-wrap mw-1440px">
+    <!--OBJECT | RECOM-->
+    {% for post in posts %}
+
+        {% if loop.index is divisible by(2) %}
+            {% set class = 'col-12 col-md-6' %}
+        {% else %}
+            {% set class = 'col-12 col-md-6 d-none d-md-block' %}
+        {% endif %}
+
+        <div class="{{ class }}">
+            <div class="object-recom py-8px">
+                <a href="#" class="bg-img rounded-xs mh-104px mh-xl-136px">
+                    <i style="background-image: url('{{ post.thumbnail_url }}'); background-size: cover; background-repeat: no-repeat;" class="w-104px w-xl-136px h-104px h-xl-136px">
+                        <b class="bg-img-bgcolor-hover-primary-55"></b>
+                    </i>
+                    <div class="col">
+                        <span class="pt-0 text-default fs-short-2 ellipsis">{{ post.post_title }}</span>
+                        <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-52px mh-xl-80px">
+                           {{ post.post_excerpt }}
+                        </h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
