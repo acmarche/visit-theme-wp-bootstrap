@@ -1,0 +1,57 @@
+<!--CONTENT-->
+<section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
+
+    <!--EVENTS_BG-->
+    <div class="bg-img-events">
+        <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
+
+            <!--back | TODO JF: lien dynamique vers la page précédente-->
+            <a href="index.html"
+               class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
+                        class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à
+                l'accueil</a>
+
+            <!--title-->
+            <h2 class="text-white lh-100">Agenda</h2>
+        </div>
+    </div>
+
+    <!--EVENTS-->
+    <div class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
+
+        <!--list | TODO JF: à brancher-->
+        <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
+
+            <!--event-1-->
+            {% set event = events[0] %}
+            <li class="object-card oc-event col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                {% include 'agenda/_event_line.html.twig' %}
+            </li>
+
+            <!--event-2-->
+            {% set event = events[1] %}
+            <li class="object-card oc-event pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                {% include 'agenda/_event_line.html.twig' %}
+            </li>
+
+            <!--event-3-->
+            {% set event = events[2] %}
+            <li class="object-card oc-event pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                {% include 'agenda/_event_line.html.twig' %}
+            </li>
+
+            <!--event-4-->
+            {% for event in events %}
+                {% if loop.index > 3 %}
+                    <li class="object-card oc-event pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                        {% include 'agenda/_event_line.html.twig' %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <a href="#"
+           class="button lvl3 mt-20px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">Charger
+            plus d'événements<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+    </div>
+</section>

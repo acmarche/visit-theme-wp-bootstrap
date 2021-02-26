@@ -1,0 +1,29 @@
+<a href="#" class="bg-img">
+    {% include 'agenda/list/_image.html.twig' %}
+    <div>
+
+        <!--date-->
+        <div class="col-3">
+            {% set date = event.dates[0] %}
+            <span>{{ date.day }}</span>
+            <span>{{ date.month }}</span>
+            <span>{{ date.year }}</span>
+        </div>
+
+        <!--other datas-->
+        <div class="col-9">
+
+            <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+            <h3 maxlenght="0">{{ event.titre }}</h3>
+
+            <small>{{ event.localisation.localite }}</small>
+
+            <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
+            <small>
+                {% for date in event.dates %}
+                    {{ date.date_deb }} {% if loop.last != true %} | {% endif %}
+                {% endfor %}
+            </small>
+        </div>
+    </div>
+</a>
