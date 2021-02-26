@@ -17,7 +17,9 @@ class Theme
         if ($uri === '/eyjafjallajokull/') {
             return true;
         }
-
+        if ($uri === '/') {
+            return true;
+        }
         return false;
     }
 }

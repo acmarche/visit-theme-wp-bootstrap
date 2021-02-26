@@ -2,6 +2,8 @@
 
 namespace VisitMarche\Theme;
 
+use AcMarche\Bottin\RouterBottin;
+use AcMarche\Pivot\RouterHades;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\Filter;
@@ -36,7 +38,8 @@ new SecurityConfig();
 /**
  * Ajout de routage pour pivot et bottin
  */
-//new Router();
+new RouterHades();
+new RouterBottin();
 /**
  * Balises pour le référencement
  */

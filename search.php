@@ -5,7 +5,6 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use AcMarche\Elasticsearch\Searcher;
-use AcMarche\Theme\Inc\Theme;
 use \Exception;
 
 get_header();
@@ -27,8 +26,6 @@ try {
             'message'   => $e->getMessage(),
             'title'     => 'Erreur lors de la recherche',
             'tags'      => [],
-            'color'     => Theme::getColorBlog(1),
-            'blogName'  => Theme::getTitleBlog(1),
             'relations' => [],
         ]
     );

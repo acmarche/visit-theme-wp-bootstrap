@@ -3,9 +3,9 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
 use VisitMarche\Theme\Inc\Router;
-use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 global $post;

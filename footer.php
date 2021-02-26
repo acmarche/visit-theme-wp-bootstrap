@@ -2,8 +2,7 @@
 
 namespace AcMarche\Theme;
 
-
-use VisitMarche\Theme\Lib\Twig;
+use AcMarche\Common\Twig;
 
 Twig::rendPage(
     'footer/footer.html.twig'

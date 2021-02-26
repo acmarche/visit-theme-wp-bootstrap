@@ -3,8 +3,8 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use AcMarche\Common\Twig;
 use Symfony\Component\HttpFoundation\Request;
-use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 

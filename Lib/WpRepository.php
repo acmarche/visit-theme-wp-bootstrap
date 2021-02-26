@@ -8,12 +8,12 @@ use WP_Query;
 
 class WpRepository
 {
-    public  function getCategoryBySlug(string $slug)
+    public function getCategoryBySlug(string $slug)
     {
         return get_category_by_slug($slug);
     }
 
-    public  function getTags(int $postId): array
+    public function getTags(int $postId): array
     {
         $tags = [];
         foreach (get_the_category($postId) as $category) {
@@ -42,6 +42,7 @@ class WpRepository
             $post = $querynews->next_post();
             $post->excerpt = $post->post_excerpt;
             $post->permalink = get_permalink($post->ID);
+            $post->thumbnail_url = $this->getPostThumbnail($post->ID);
             $posts[] = $post;
         }
 
@@ -84,7 +85,7 @@ class WpRepository
         return $children;
     }
 
-    public  function getRelations(int $postId): array
+    public function getRelations(int $postId): array
     {
         $categories = get_the_category($postId);
         $args = array(
@@ -119,7 +120,7 @@ class WpRepository
         return $recommandations;
     }
 
-    public  function getPageAlert(): ?WP_Post
+    public function getPageAlert(): ?WP_Post
     {
         switch_to_blog(1);
         $query = new WP_Query(array("page_id" => Theme::PAGE_ALERT, "post_status" => 'publish', 'post_type' => 'page'));
@@ -129,6 +130,19 @@ class WpRepository
         }
 
         return null;
+    }
+
+    public function getPostThumbnail(int $id): string
+    {
+        if (has_post_thumbnail($id)) {
+            $attachment_id = get_post_thumbnail_id($id);
+            $images = wp_get_attachment_image_src($attachment_id, 'original');
+            $post_thumbnail_url = $images[0];
+        } else {
+            $post_thumbnail_url = get_template_directory_uri().'/assets/images/404.jpg';
+        }
+
+        return $post_thumbnail_url;
     }
 
 
