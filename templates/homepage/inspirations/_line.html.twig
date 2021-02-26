@@ -1,9 +1,10 @@
-<a href="#"
+<a href="{{ inspiration.permalink }}"
    class="d-flex shadow-sm-1 border border-width-1px rounded-xs bg-img overflow-hidden h-214px h-md-206px h-ls-md-210px h-ls-lg-214px">
-    <i style="background-image: url('{{ inspiration.thumbnail_url }}'); background-size: cover; background-repeat: no-repeat;" class="w-100 p-0 bg-img-inspi-99 position-relative bg-img-size-hover-110 transition-all">
+    <i style="background-image: url('{{ inspiration.thumbnail_url }}'); background-size: cover; background-repeat: no-repeat;"
+       class="w-100 p-0 bg-img-inspi-99 position-relative bg-img-size-hover-110 transition-all">
         <b class="bg-gradient-img-90 d-block position-absolute top-0 bottom-0 left-0 right-0"></b>
         <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
     </i>
     <h3 class="text-white position-absolute z-10 shadow-text-sm pt-16px px-24px text-left lh-150 fs-big-1">
-  {{ inspiration.post_title }}</h3>
+        {{ inspiration.post_title }}</h3>
 </a>

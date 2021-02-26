@@ -8,7 +8,6 @@ use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\Filter;
 use VisitMarche\Theme\Inc\QueryAlter;
-use VisitMarche\Theme\Inc\Router;
 use VisitMarche\Theme\Inc\SecurityConfig;
 use VisitMarche\Theme\Inc\Seo;
 use VisitMarche\Theme\Inc\SettingsPage;

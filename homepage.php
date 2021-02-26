@@ -6,7 +6,6 @@ use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Template Name: Home-Page-Principal
