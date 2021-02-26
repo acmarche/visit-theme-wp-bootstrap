@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <!--visible from landscape&&small-->
-                {% set event = events[1] %}
+                {% set event = events[1] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none d-ls-sm-block col-ls-sm-6 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
                     <a href="#"
@@ -38,7 +38,7 @@
                         </div>
                     </a>
                 </li>
-                {% set event = events[2] %}
+                {% set event = events[2] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none d-md-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
                     <a href="#"
@@ -56,7 +56,7 @@
                 </li>
 
                 <!--visible from landscape&&medium / medium-->
-                {% set event = events[3] %}
+                {% set event = events[3] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
                     <a href="#"
@@ -74,7 +74,7 @@
                 </li>
 
                 <!--visible from landscape&&large / large-->
-                {% set event = events[4] %}
+                {% set event = events[4] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none col-ls-lg-12 px-ls-sm-4px pt-ls-md-8px d-ls-md-block d-md-block pt-lg-8px">
                     <a href="#"
@@ -100,7 +100,7 @@
                             <span class="d-block text-default ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">0000</span>
                         </div>
                         <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
-                            <h3 class="lh-125 fs-short-2 text-default pb-4px">Aucun évènements trouvés</h3>
+                            <h3 class="lh-125 fs-short-2 text-default pb-4px">Aucun événements trouvés</h3>
                             <small class="lh-100 fs-short-3 text-default">Marche</small>
                         </div>
                     </a>
@@ -109,7 +109,7 @@
         </ul>
     </div>
 
-    <a href="events.html"
+    <a href="/agenda"
        class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Tout
         l'agenda<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
 </div>
