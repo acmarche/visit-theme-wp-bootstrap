@@ -15,7 +15,7 @@ $title = single_cat_title('', false);
 
 $hadesRepository = new HadesRepository();
 try {
-    $hebergements = $hadesRepository->getHebergements();
+    $hebergements = $hadesRepository->getRestaurations();
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
@@ -28,7 +28,7 @@ try {
     return;
 }
 
-dump($hebergements);
+//dump($hebergements);
 
 Twig::rendPage(
     'hebergement/index.html.twig',
