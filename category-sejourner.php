@@ -8,6 +8,11 @@ use Psr\Cache\InvalidArgumentException;
 
 get_header();
 
+$cat_ID = get_queried_object_id();
+$category = get_category($cat_ID);
+$description = $description = category_description($cat_ID);
+$title = single_cat_title('', false);
+
 $hadesRepository = new HadesRepository();
 try {
     $hotels = $hadesRepository->getHotels();
@@ -15,7 +20,7 @@ try {
     Twig::rendPage(
         'errors/500.html.twig',
         [
-            'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+            'message' => 'Impossible de charger les hébergements: '.$e->getMessage(),
         ]
     );
     get_footer();
@@ -23,12 +28,13 @@ try {
     return;
 }
 
-dump($hotels);
+//dump($hotels);
 
 Twig::rendPage(
     'hebergement/index.html.twig',
     [
         'hebergements' => $hotels,
+        'titre' => $title,
     ]
 );
 
