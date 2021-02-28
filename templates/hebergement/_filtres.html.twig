@@ -1,0 +1,54 @@
+ <!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
+        <div class="d-md-none pr-12px border border-primary rounded-xs position-relative">
+            <i class="fas fa-angle-down position-absolute top-0 bottom-0 right-0 mr-16px fs-big-1 text-primary py-5px"></i>
+            <select name="categories" id="cat-select" class="fs-short-3 ff-semibold rounded-xs">
+                <option value="all" selected>Tout</option>
+                <option value="res">Restaurants</option>
+                <option value="bra">Brasseries</option>
+                <option value="bar">Bars</option>
+                <option value="tra">Traiteurs</option>
+                <option value="sna">Snacks</option>
+                <option value="gla">Glaciers</option>
+                <option value="hot">Hôtels</option>
+                <option value="cha">Chambres d'hôtes</option>
+            </select>
+        </div>
+        <!--categories | TODO JF: branchement des filtres | TODO TIBY: Voir pour tenter un branchement simulé-->
+        <ul class="cat-filters d-md-flex mw-448px flex-wrap justify-content-center align-items-center d-none">
+            <li class="mx-16px position-relative">
+                <input name="cat" id="cat-all" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="all" checked>
+                <label for="cat-all" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tout</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-res" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="res">
+                <label for="cat-res" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Restaurants</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-bra" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="bra">
+                <label for="cat-bra" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Brasseries</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-bar" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="bar">
+                <label for="cat-bar" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Bars</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-tra" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="tra">
+                <label for="cat-tra" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Traiteurs</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-sna" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="sna">
+                <label for="cat-sna" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Snacks</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-gla" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="gla">
+                <label for="cat-gla" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Glaciers</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-hot" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="hot">
+                <label for="cat-hot" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Hôtels</label>
+            </li>
+            <li class="px-0 position-relative">
+                <input name="cat" id="cat-cha" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio" value="cha">
+                <label for="cat-cha" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Chambres d'hôtes</label>
+            </li>
+        </ul>

@@ -1,0 +1,142 @@
+<!--CONTENT-->
+<section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
+
+    <!--ENJOY_BG-->
+    <div class="bg-img-enjoy">
+        <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
+
+            <!--back | TODO JF: lien dynamique vers la page précédente-->
+            <a href="/" class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à l'accueil</a>
+
+            <!--title-->
+            <h2 class="text-white lh-100">Savourer</h2>
+        </div>
+    </div>
+
+    <!--ENJOY-->
+    <div class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
+
+       {% include 'hebergement/_filtres.html.twig' %}
+
+        <!--list-->
+        <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
+            {% include 'hebergement/_list.html.twig' %}
+    {#
+            <li class="object-card oc-new col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                <a href="directory.html" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-1 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <h3 maxlenght="0">L'Effet Boeuf</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Restaurants</span>
+                    </div>
+                </a>
+            </li>
+            <li class="object-card oc-new pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                <a href="#" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-2 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <h3 maxlenght="0">Le Baragou</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Restaurants</span>
+                    </div>
+                </a>
+            </li>
+            <li class="object-card oc-new pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+                <a href="#" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-3 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <!--hide from landscape / medium-->
+                        <h3 class="d-ls-none d-md-none" maxlenght="0">Les Glaces de Lalie</h3>
+
+                        <!--visible from landscape / medium-->
+                        <h3 class="d-none d-md-block d-ls-block" maxlenght="0">La RSE : La responsabilité sociétale des entreprises</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Glaciers</span>
+                    </div>
+                </a>
+            </li>
+            <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                <a href="#" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-4 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <h3 maxlenght="0">Le Cercle</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Brasseries-Bars</span>
+                    </div>
+                </a>
+            </li>
+            <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                <a href="#" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-5 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <h3 maxlenght="0">L'Enka Toqué</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Snacks</span>
+                    </div>
+                </a>
+            </li>
+            <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
+                <a href="#" class="bg-img rounded-xs">
+                    <i class="bg-img-enjoy-6 bg-img-size-hover-110">
+                        <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
+                        <span class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
+                    </i>
+                    <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <h3 maxlenght="0">Le Nonna</h3>
+
+                        <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
+                        <p maxlenght="170">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur porro deleniti odio, officia impedit. Officia voluptate provident nobis at quia, iure minus eveniet ea...</p>
+
+                        <span class="text-primary">Snacks</span>
+                    </div>
+                </a>
+            </li>
+    #}
+        </ul>
+
+        <a href="#" class="button lvl3 mt-20px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">Charger plus d'éléments<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+    </div>
+</section>
