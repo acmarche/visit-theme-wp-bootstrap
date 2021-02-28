@@ -12,7 +12,7 @@ $hadesRemoteRepository = new HadesRemoteRepository();
 $hadesRepository = new HadesRepository();
 try {
     //$events = $hadesRemoteRepository->getHebergements(['hotel']);
-    $events = $hadesRepository->getHotels();
+    $events = $hadesRepository->getHebergements();
 } catch (InvalidArgumentException $e) {
     Twig::rendPage(
         'errors/500.html.twig',

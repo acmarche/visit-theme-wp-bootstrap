@@ -4,7 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
-use Psr\Cache\InvalidArgumentException;
+use Exception;
 
 get_header();
 
@@ -15,8 +15,8 @@ $title = single_cat_title('', false);
 
 $hadesRepository = new HadesRepository();
 try {
-    $hotels = $hadesRepository->getHotels();
-} catch (InvalidArgumentException $e) {
+    $hebergements = $hadesRepository->getHebergements();
+} catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
         [
@@ -28,13 +28,13 @@ try {
     return;
 }
 
-//dump($hotels);
+dump($hebergements);
 
 Twig::rendPage(
     'hebergement/index.html.twig',
     [
-        'hebergements' => $hotels,
-        'titre' => $title,
+        'hebergements' => $hebergements,
+        'title' => $title,
     ]
 );
 
