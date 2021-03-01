@@ -35,8 +35,17 @@ if ($hadesRefrubrique) {
             break;
     }
 
+    /*
+    wp_enqueue_script(
+        'react-app',
+        get_template_directory_uri().'/assets/js/build/category.js',
+        array('wp-element'),
+        wp_get_theme()->get('Version'),
+        true
+    );*/
+
     Twig::rendPage(
-        'category/hades/index.html.twig',
+        'category/index_hades.html.twig',
         [
             'filtres' => $filtres,
             'fiches' => $fiches,

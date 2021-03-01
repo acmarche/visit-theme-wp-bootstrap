@@ -1,0 +1,56 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base",
+    "wordpress"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "globals": {
+    "wp": true,
+    "wpApiSettings": true,
+    "window": true,
+    "document": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "wp"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": "off",
+    "indent": [
+      "error",
+      4
+    ],
+    "no-alert": 0,
+    "no-unused-vars": "warn",
+    "spaced-comment": "off",
+    "no-param-reassign": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        // allow devDependencies for packages
+        "devDependencies": true
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    // Vérifie les règles des Hooks
+    "react-hooks/exhaustive-deps": "warn"
+    // Vérifie les tableaux de dépendances
+  }
+}
