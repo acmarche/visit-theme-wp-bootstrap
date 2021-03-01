@@ -55,7 +55,7 @@ new Filter();
 /**
  * Add routes for api
  */
-//new Api();
+new Api();
 /**
  * Activer ou pas react
  */

@@ -13,15 +13,10 @@ class Api
     public function __construct()
     {
         if ( ! is_admin()) {
-            $this->registerCateogry();
+          //  $this->registerCateogry();
             $this->registerEvent();
-            //   $this->registerBottin();
-            $this->registerSearch();
-            $this->mapApi();
+
         }
-        //if (is_admin()) {
-        $this->registerBottin();
-        // }
     }
 
     public function registerEvent()
@@ -30,12 +25,12 @@ class Api
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'ca/v1',
-                    'events',
+                    'hades',
+                    'filtres/(?P<keyword>.*+)',
                     [
                         'methods'  => 'GET',
-                        'callback' => function () {
-                            return ApiData::ca_events();
+                        'callback' => function ($args) {
+                            return ApiData::hadesFiltres($args);
                         },
                     ]
                 );
@@ -43,42 +38,6 @@ class Api
         );
     }
 
-    public function registerBottin()
-    {
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'ca/v1',
-                    'bottinsocieteid',
-                    [
-                        'methods'             => 'GET',
-                        'callback'            => function () {
-                            return ApiData::ca_bottinSocieteId();
-                        },
-                        'permission_callback' => '__return_true',
-                    ]
-                );
-            }
-        );
-
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'ca/v1',
-                    'bottin/(?P<ficheId>.*+)',
-                    [
-                        'methods'             => 'GET',
-                        'callback'            => function ($args) {
-                            return ApiData::ca_bottin($args);
-                        },
-                        'permission_callback' => '__return_true',
-                    ]
-                );
-            }
-        );
-    }
 
     public function registerCateogry()
     {
@@ -99,92 +58,6 @@ class Api
         );
     }
 
-    public function registerSearch()
-    {
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'search',
-                    'search/(?P<keyword>.*+)',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::search($args);
-                        },
-                    ]
-                );
-            }
-        );
-
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'search',
-                    'suggest/(?P<keyword>.*+)',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::suggest($args);
-                        },
-                    ]
-                );
-            }
-        );
-    }
-
-    function mapApi()
-    {
-         add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'map',
-                    'kml/(?P<keyword>.*+)',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::mapKml($args);
-                        },
-                    ]
-                );
-            }
-        );
-
-         add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'map',
-                    'filtres',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function () {
-                            return ApiData::filtres();
-                        },
-                    ]
-                );
-            }
-        );
-
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'map',
-                    'data/(?P<keyword>.*+)',
-                    [
-                        'methods'  => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::mapData($args);
-                        },
-
-                    ]
-                );
-            }
-        );
-    }
 
     /**
      * Todo pour list/users !!

@@ -1,4 +1,4 @@
-import CategoryTitle from './CategoryTitle';
+import FiltresComposant from './FiltresComposant';
 
 const {
     useState,
@@ -6,23 +6,17 @@ const {
 } = wp.element;
 
 function Category() {
-    const [ selectedCategory, setSelectedCategory ] = useState( 0 );
-    const [ selectedCategoryTitle, setSelectedCategoryTitle ] = useState( '' );
+    const [ referenceHades, setReferenceHades ] = useState( '' );
+
     const name = 'app-category';
 
-    const mainCategory = document.getElementById( name )
-        .getAttribute( 'data-main-category-id' );
-    const categoryTitle = document.getElementById( name )
-        .getAttribute( 'data-site-name' );
-
     useEffect( () => {
-        setSelectedCategory( mainCategory );
-        setSelectedCategoryTitle( categoryTitle );
-    }, []);
+        setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
+    }, [ ]);
 
     return (
         <>
-            <CategoryTitle title={selectedCategoryTitle}/>
+            <FiltresComposant referenceHades={referenceHades}/>
         </>
     );
 }
