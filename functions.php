@@ -6,6 +6,7 @@ use AcMarche\Bottin\RouterBottin;
 use AcMarche\Pivot\RouterHades;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
+use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Filter;
 use VisitMarche\Theme\Inc\QueryAlter;
 use VisitMarche\Theme\Inc\SecurityConfig;
@@ -39,6 +40,10 @@ new SecurityConfig();
  */
 new RouterHades();
 new RouterBottin();
+/**
+ *
+ */
+new CategoryMetaBox();
 /**
  * Balises pour le référencement
  */

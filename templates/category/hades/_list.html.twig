@@ -1,19 +1,19 @@
-{% set hebergement = hebergements[0] %}
+{% set fiche = fiches[0] %}
 <li class="object-card oc-new col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'hebergement/_line.html.twig' %}
+    {% include 'category/hades/_line.html.twig' %}
 </li>
-{% set hebergement = hebergements[1] %}
+{% set fiche = fiches[1] %}
 <li class="object-card oc-new pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'hebergement/_line.html.twig' %}
+    {% include 'category/hades/_line.html.twig' %}
 </li>
-{% set hebergement = hebergements[2] %}
+{% set fiche = fiches[2] %}
 <li class="object-card oc-new pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'hebergement/_line.html.twig' %}
+    {% include 'category/hades/_line.html.twig' %}
 </li>
-{% for hebergement in hebergements %}
+{% for fiche in fiches %}
     {% if loop.index > 3 %}
         <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
-            {% include 'hebergement/_line.html.twig' %}
+            {% include 'category/hades/_line.html.twig' %}
         </li>
     {% endif %}
 {% endfor %}

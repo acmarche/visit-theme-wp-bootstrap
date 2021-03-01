@@ -3,6 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
+use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\Theme;
 
 ?>
@@ -21,19 +22,22 @@ use VisitMarche\Theme\Inc\Theme;
     <body class="bg-white">
     <?php
 wp_body_open();
+$menu = new Menu();
+$items = $menu->getAllItems();
+dump($items);
 
 if (Theme::isHomePage()) {
     Twig::rendPage(
         'header/_header_home.html.twig',
         [
-
+            'items' => $items,
         ]
     );
 } else {
     Twig::rendPage(
         'header/_header.html.twig',
         [
-
+            'items' => $items,
         ]
     );
 }
