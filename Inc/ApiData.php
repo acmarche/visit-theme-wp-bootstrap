@@ -50,7 +50,35 @@ class ApiData
         }
 
         $filtres[0] = 'Tout';
+
         return rest_ensure_response($filtres);
 
+    }
+
+    public static function hadesOffres(WP_REST_Request $request)
+    {
+        $keyword = $request->get_param('keyword');
+        if (!$keyword) {
+            Mailer::sendError("error carto", "missing param keyword");
+
+            return new WP_Error(500, 'missing param keyword');
+        }
+
+        switch ($keyword) {
+            case 'hebergements':
+                $filtres = Hades::LOGEMENTS;
+                break;
+            case 'restaurations':
+                $filtres = Hades::RESTAURATION;
+                break;
+            default:
+                $filtres = [$keyword];
+                break;
+        }
+
+        $hadesRepository = new HadesRepository();
+        $fiches = $hadesRepository->getHebergements();
+
+        return rest_ensure_response($fiches);
     }
 }

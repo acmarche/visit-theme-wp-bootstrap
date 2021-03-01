@@ -1,19 +1,12 @@
 import axios from '../../Axios';
 
 /**
- * @param {string|null} siteSlug
- * @param {int|null} mainCategoryId
+ * @param {string|null} category
  * @returns {Promise}
  */
-export function fetchPosts( siteSlug, mainCategoryId ) {
+export function fetchOffres( category ) {
     const params = {};
-
-    if ( mainCategoryId ) {
-
-        //params.parent = mainCategoryId;
-    }
-
-    const url = `${siteSlug}wp-json/jfs/v1/all/${mainCategoryId}`;
+    const url = `wp-json/hades/offres/${category}`;
 
     return axios.get( url, {
         params

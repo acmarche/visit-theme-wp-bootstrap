@@ -1,4 +1,6 @@
 import FiltresComposant from './FiltresComposant';
+import OffreResults from './OffreResults';
+import { fetchOffres } from './service/posts-service';
 
 const {
     useState,
@@ -7,16 +9,43 @@ const {
 
 function Category() {
     const [ referenceHades, setReferenceHades ] = useState( '' );
+    const [ offres, setOffres ] = useState([]);
+    const [ referenceOffre, setReferenceOffre ] = useState( '' );
 
+    async function loadOffres( quoi ) {
+        let response;
+        try {
+            console.log( `load: ${quoi}` );
+            response = await fetchOffres( quoi );
+            setOffres( Object.entries( response.data ) );
+        } catch ( e ) {
+            console.log( e );
+        }
+        return null;
+    }
+
+    console.log( referenceHades );
     const name = 'app-category';
-
     useEffect( () => {
         setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
-    }, [ ]);
+        if ( 0 < referenceHades.length ) {
+            loadOffres( referenceHades );
+        }
+    }, [ referenceHades ]);
+
+    useEffect( () => {
+        if ( 0 < referenceOffre.length ) {
+            loadOffres( referenceOffre );
+        }
+    }, [ referenceOffre ]);
 
     return (
         <>
-            <FiltresComposant referenceHades={referenceHades}/>
+            <FiltresComposant
+                referenceHades={referenceHades}
+                setReferenceOffre={setReferenceOffre}
+            />
+            <OffreResults offres={offres}/>
         </>
     );
 }

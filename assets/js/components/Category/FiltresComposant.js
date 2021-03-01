@@ -9,7 +9,7 @@ const {
 
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
-    const { referenceHades } = propos;
+    const { referenceHades, setReferenceOffre } = propos;
 
     async function loadFiltres() {
         let response;
@@ -31,11 +31,15 @@ function FiltresComposant( propos ) {
     const listItems = filtres.map( ([ key, value ]) => ( <FiltreItem
         value={value}
         key={key}
+        clef={key}
+        setReferenceOffre={setReferenceOffre}
     /> ) );
 
     const listOptions = filtres.map( ([ key, value ]) => ( <FiltreItemOption
         value={value}
+        clef={key}
         key={key}
+        setReferenceOffre={setReferenceOffre}
     /> ) );
 
     return (

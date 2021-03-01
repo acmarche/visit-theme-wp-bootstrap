@@ -36,6 +36,22 @@ class Api
                 );
             }
         );
+
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'hades',
+                    'offres/(?P<keyword>.*+)',
+                    [
+                        'methods'  => 'GET',
+                        'callback' => function ($args) {
+                            return ApiData::hadesOffres($args);
+                        },
+                    ]
+                );
+            }
+        );
     }
 
 
