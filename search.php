@@ -8,52 +8,20 @@ use AcMarche\Elasticsearch\Searcher;
 use \Exception;
 
 get_header();
-global $s;
 
-$searcher = new Searcher();
-$keyword  = get_search_query();
+global $wp_query;
 
-try {
-    $searching = $searcher->search($keyword);
-    $results   = $searching->getResults();
-    $count     = $searching->count();
-} catch (Exception $e) {
-    Mailer::sendError("wp error search", $e->getMessage());
+$keyword = get_search_query();
 
-    Twig::rendPage(
-        'errors/500.html.twig',
-        [
-            'message'   => $e->getMessage(),
-            'title'     => 'Erreur lors de la recherche',
-            'tags'      => [],
-            'relations' => [],
-        ]
-    );
-    get_footer();
-
-    return;
-}
-
-/*
-foreach ($results->getResults() as $result) {
-    $hit = $result->getHit();
-    dump($result->getDocument());
-}*/
-
-wp_enqueue_script(
-    'react-app',
-    get_template_directory_uri().'/assets/js/build/search.js',
-    array('wp-element'),
-    wp_get_theme()->get('Version'),
-    true
-);
+$count = (int)$wp_query->found_posts;
+$query = esc_html(get_search_query());
 
 Twig::rendPage(
-    'search/index_react.html.twig',
+    'search/index.html.twig',
     [
-        'keyword' => $keyword,
-        'hits'    => $results,
-        'count'   => $count,
+        'query' => $keyword,
+        'posts' => $wp_query->posts,
+        'count' => $count,
     ]
 );
 

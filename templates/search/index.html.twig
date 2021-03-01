@@ -1,0 +1,41 @@
+<!--CONTENT-->
+<section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
+
+    <!--SEARCH_BG-->
+    <div class="bg-img-search">
+        <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
+
+            <!--back | TODO JF: lien dynamique vers la page précédente-->
+            <a href="/"
+               class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
+                        class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à
+                l'accueil</a>
+
+            <!--title-->
+            <h2 class="text-white lh-100">Recherche</h2>
+        </div>
+    </div>
+
+    <!--SEARCH-->
+    <div class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
+
+        <!--search-->
+        <div class="mw-550px position-relative m-auto w-100">
+            <form method="get" action="/">
+                <input name="s" type="search" placeholder="Que cherchez-vous ?"
+                       class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3 bg-lighter">
+                <button type="submit"
+                        class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
+                    <!--<i class="fa fa-search text-dark-primary"></i>-->
+                    <i class="i-search i-dark-grey"></i>
+                </button>
+            </form>
+        </div>
+
+        <!--searched-->
+        <span class="pt-24px d-block text-center ff-semibold text-default fs-short-2">{{ count }} RÉSULTATS POUR "{{ query }}"</span>
+
+        <!--results-->
+        {% include 'search/_results.html.twig' %}
+    </div>
+</section>

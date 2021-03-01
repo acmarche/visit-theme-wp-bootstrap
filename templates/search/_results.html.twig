@@ -1,0 +1,22 @@
+<!--results-->
+<div class="pt-24px w-100 mw-1440px">
+    <ul class="d-flex mx-n12px flex-wrap">
+        {% for post in posts %}
+            <li class="pb-12px px-12px col-12 col-md-6">
+                <a href="#" class="border border-default p-24px shadow-sm d-block">
+                    <h3 class="fs-short-2 ff-semibold text-default text-hover-primary transition-all ellipsis">
+                        {{ post.post_title }}</h3>
+                    <span class="d-block pt-8px fs-short-3 ellipsis text-default">
+                        {{ post.post_excerpt }}
+                        </span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- TODO JF: à brancher -->
+    <a href="#"
+       class="button lvl3 mt-12px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">Charger
+        plus d'éléments<i
+                class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+</div>

@@ -23,8 +23,7 @@ use VisitMarche\Theme\Inc\Theme;
     <?php
 wp_body_open();
 $menu = new Menu();
-$items = $menu->getAllItems();
-dump($items);
+$items = $menu->getMenuTop();
 
 if (Theme::isHomePage()) {
     Twig::rendPage(

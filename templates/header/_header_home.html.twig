@@ -22,60 +22,13 @@
                     <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
                 </a>
 
-                <div class="searchScreen">
-                    <i class="graphicElement"></i>
-
-                    <ul>
-                        <li class="col-ls-12">
-                            <form class="h-32px">
-                                <input type="search" placeholder="Que cherchez-vous ?"
-                                       class="border-0 rounded-pill h-32px pl-16px pr-48px fs-short-3">
-                                <button class="position-absolute top-0 bottom-0 right-0 w-32px h-32px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
-                                    <i class="i-search i-dark-grey w-16px h-16px"></i>
-                                </button>
-                            </form>
-                            <!--TODO JF: branchement-->
-                            <a href="#" class="icon_custom">
-                                <i class="i-times"></i>
-                            </a>
-                        </li>
-                        <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i
-                                        class="i-patrimony"></i>Patrimoine</a></li>
-                        <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i
-                                        class="i-arts"></i>Arts</a></li>
-                        <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a
-                                    href="{{ template_directory }}/assets/tartine/" class="icon_custom"><i
-                                        class="i-walks"></i>Balades</a></li>
-                        <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i
-                                        class="i-delicaties"></i>Gourmandises</a></li>
-                        <li class="col-ls-6 col-ls-sm-4 col-xl-12 col-ls-xl-12"><a href="#" class="icon_custom"><i
-                                        class="i-parties"></i>Fêtes</a></li>
-                    </ul>
-
-                    <i class="graphicElement"></i>
-                </div>
+                {% include 'header/_search_screen.html.twig' %}
             </div>
             <!--organize-->
-            <div class="organize">
-                <input type="checkbox" id="organize" name="organize"/>
-                <a href="#" for="organize">
-                    <i class="icon_nav i-bars"></i>
-                    <span>S'organiser</span>
-                </a>
-
-                <div class="bubble">
-                    <i class="graphicElement"></i>
-                    <div class="shadow-sm">
-                        <a href="/t/sorganiser/savourer/">Savourer</a>
-                        <a href="/t/sorganiser/bouger/">Bouger</a>
-                        <a href="/t/sorganiser/sejourner/">Séjourner</a>
-                    </div>
-                    <i class="graphicElement"></i>
-                </div>
-            </div>
+            {% include 'header/_organize.html.twig' %}
             <!--practical-->
             <div class="practical">
-                <a href="/t/pratique">
+                <a href="{{ items.pratique.url }}">
                     <i class="icon_nav i-clock"></i>
                     <span>Pratique</span>
                 </a>
@@ -90,8 +43,8 @@
                 <div class="bubble">
                     <i class="graphicElement"></i>
                     <div class="shadow-sm">
-                        <a href="/t/inspiration">Inspirations</a>
-                        <a href="/t/agenda">Agenda</a>
+                        <a href="{{ items.inspirations.url }}">Inspirations</a>
+                        <a href="{{ items.agenda.url }}">Agenda</a>
                     </div>
                     <i class="graphicElement"></i>
                 </div>
@@ -100,20 +53,20 @@
             <!--visible from extralarge-->
             <!--inspirations-->
             <div class="inspirations">
-                <a href="/inspiration">
+                <a href="{{ items.inspirations.url }}">
                     <span>Inspirations</span>
                 </a>
             </div>
             <!--agenda-->
             <div class="agenda">
-                <a href="/agenda">
+                <a href="{{ items.agenda.url }}">
                     <span>Agenda</span>
                 </a>
             </div>
         </nav>
 
         <!--language-->
-        {% include 'header/_langues.html.twig' %}
+        {% include 'header/_langues.html.twig' with {'class':''} %}
 
         <!--social-->
         {% include 'header/_social.html.twig' %}
