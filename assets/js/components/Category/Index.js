@@ -17,6 +17,7 @@ function Category() {
         try {
             console.log( `load: ${quoi}` );
             response = await fetchOffres( quoi );
+            console.log( response.data );
             setOffres( Object.entries( response.data ) );
         } catch ( e ) {
             console.log( e );
@@ -24,7 +25,6 @@ function Category() {
         return null;
     }
 
-    console.log( referenceHades );
     const name = 'app-category';
     useEffect( () => {
         setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );

@@ -66,10 +66,10 @@ class ApiData
 
         switch ($keyword) {
             case 'hebergements':
-                $filtres = Hades::LOGEMENTS;
+                $filtres = array_keys(Hades::LOGEMENTS);
                 break;
             case 'restaurations':
-                $filtres = Hades::RESTAURATION;
+                $filtres = array_keys(Hades::RESTAURATION);
                 break;
             default:
                 $filtres = [$keyword];
@@ -77,7 +77,7 @@ class ApiData
         }
 
         $hadesRepository = new HadesRepository();
-        $fiches = $hadesRepository->getHebergements();
+        $fiches = $hadesRepository->getHebergements($filtres);
 
         return rest_ensure_response($fiches);
     }
