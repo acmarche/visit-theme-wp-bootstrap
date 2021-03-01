@@ -17,13 +17,9 @@
     </div>
 
     <!--ENJOY-->
-    <div class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
-        <div id="app-category" data-main-reference-hades="{{ referenceHades }}"
-             data-category-title="{{ title }}">
-        </div>
+    <div id="app-category" data-main-reference-hades="{{ referenceHades }}" class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
         <noscript>
             {% include 'category/hades/_filtres.html.twig' %}
-
             <!--list-->
             <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
                 {% include 'category/hades/_list.html.twig' %}
