@@ -9,36 +9,32 @@ const {
 
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
+    const { referenceHades } = propos;
 
     async function loadFiltres() {
         let response;
         try {
-            response = await fetchFiltres( propos.referenceHades );
-            setFiltres( response.data );
-            console.log( response.data );
-            console.log( filtres );
+            response = await fetchFiltres( referenceHades );
+            setFiltres( Object.entries( response.data ) );
         } catch ( e ) {
+            console.log( e );
         }
         return null;
     }
 
     useEffect( () => {
-        if ( 0 < propos.referenceHades.length ) { loadFiltres(); }
-    }, [ propos.referenceHades ]);
+        if ( 0 < referenceHades.length ) { loadFiltres(); }
+    }, [ referenceHades ]);
 
-    const listItems = Object.keys( filtres ).map( ( object, key ) => (
-        <FiltreItem
-            item={filtres[key]}
-            key={object}
-        />
-    ) );
+    const listItems = filtres.map( ([ key, value ]) => ( <FiltreItem
+        value={value}
+        key={key}
+    /> ) );
 
-    const listOptions = Object.arr( filtres ).map( ( object, key ) => (
-        <FiltreItemOption
-            item={filtres[key]}
-            key={object}
-        />
-    ) );
+    const listOptions = filtres.map( ([ key, value ]) => ( <FiltreItemOption
+        value={value}
+        key={key}
+    /> ) );
 
     return (
         <>

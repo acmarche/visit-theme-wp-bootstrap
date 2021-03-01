@@ -1,6 +1,6 @@
 function FiltreItemOption( propos ) {
-    const { item, key } = propos;
-    if ( null == item ) {
+    const { value, key } = propos;
+    if ( null == value ) {
         return ( <option
             key={0}
             value={0}
@@ -12,9 +12,9 @@ function FiltreItemOption( propos ) {
     return (
         <option
             key={key}
-            value={key}
+            value={value}
         >
-            {item}
+            {value}
         </option>
     );
 }
