@@ -23,7 +23,9 @@ function FiltresComposant( propos ) {
     }
 
     useEffect( () => {
-        if ( 0 < referenceHades.length ) { loadFiltres(); }
+        if ( 0 < referenceHades.length ) {
+            loadFiltres();
+        }
     }, [ referenceHades ]);
 
     const listItems = filtres.map( ([ key, value ]) => ( <FiltreItem

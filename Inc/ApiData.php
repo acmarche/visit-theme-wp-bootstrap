@@ -37,7 +37,6 @@ class ApiData
 
             return new WP_Error(500, 'missing param keyword');
         }
-
         switch ($keyword) {
             case 'hebergements':
                 $filtres = Hades::LOGEMENTS;
@@ -50,6 +49,7 @@ class ApiData
                 break;
         }
 
+        $filtres[0] = 'Tout';
         return rest_ensure_response($filtres);
 
     }

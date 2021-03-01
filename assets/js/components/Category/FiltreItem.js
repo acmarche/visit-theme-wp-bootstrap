@@ -7,7 +7,7 @@ function FiltreItem( propos ) {
         propos.setSelectedCategoryTitle( categoryTitle );
         document.title = categoryTitle;
     }
-    console.log( value );
+
     return (
         <>
             <li className="mx-16px position-relative">
