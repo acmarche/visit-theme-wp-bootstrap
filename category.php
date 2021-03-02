@@ -21,9 +21,9 @@ $hadesRefrubrique = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true
 if ($hadesRefrubrique) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getHebergements();
-    $all = Hades::allCategories();dump($all);
+    $all = Hades::allCategories();
     $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
-dump($filtres);
+
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/category.js',
