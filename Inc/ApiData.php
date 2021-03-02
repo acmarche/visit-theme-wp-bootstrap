@@ -20,7 +20,6 @@ use WP_REST_Response;
  */
 class ApiData
 {
-
     public static function ca_events()
     {
         $hadesRepository = new HadesRepository();
@@ -59,8 +58,14 @@ class ApiData
         $filtres = isset($all[$keyword]) ? array_keys($all[$keyword]) : [$keyword];
 
         $hadesRepository = new HadesRepository();
-        $fiches = $hadesRepository->getHebergements($filtres);
+        $offres = $hadesRepository->getHebergements($filtres);
+        array_map(
+            function ($offre) {
+                $offre->url = RouterHades::getUrlOffre($offre);
+            },
+            $offres
+        );
 
-        return rest_ensure_response($fiches);
+        return rest_ensure_response($offres);
     }
 }

@@ -18,7 +18,7 @@ function OffreItem( propos ) {
     Object.entries( offre.categories ).forEach( ([ id, values ]) => {
         categories.push( values.lib );
     });
-
+    console.log( offre.url );
     return (
         <>
             <li className={indexedClass[clef] ? indexedClass[clef] : indexedClass[3]}>

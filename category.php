@@ -7,6 +7,7 @@ use AcMarche\Common\Twig;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
+use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
@@ -21,6 +22,10 @@ $hadesRefrubrique = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true
 if ($hadesRefrubrique) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getHebergements();
+     array_map(function ($offre) {
+        $offre->url = RouterHades::getUrlOffre($offre);
+    }, $offres);
+
     $all = Hades::allCategories();
     $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
 
