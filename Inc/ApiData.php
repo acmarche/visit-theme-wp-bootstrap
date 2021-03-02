@@ -31,28 +31,19 @@ class ApiData
 
     public static function hadesFiltres(WP_REST_Request $request)
     {
-        $keyword = $request->get_param('keyword');
-        if (!$keyword) {
+        $hadesRefrubrique = $request->get_param('keyword');
+        if (!$hadesRefrubrique) {
             Mailer::sendError("error carto", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }
-        switch ($keyword) {
-            case 'hebergements':
-                $filtres = Hades::LOGEMENTS;
-                break;
-            case 'restaurations':
-                $filtres = Hades::RESTAURATION;
-                break;
-            default:
-                $filtres = [];
-                break;
-        }
+
+        $all = Hades::allCategories();
+        $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [];
 
         $filtres[0] = 'Tout';
 
         return rest_ensure_response($filtres);
-
     }
 
     public static function hadesOffres(WP_REST_Request $request)
@@ -64,17 +55,8 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
 
-        switch ($keyword) {
-            case 'hebergements':
-                $filtres = array_keys(Hades::LOGEMENTS);
-                break;
-            case 'restaurations':
-                $filtres = array_keys(Hades::RESTAURATION);
-                break;
-            default:
-                $filtres = [$keyword];
-                break;
-        }
+        $all = Hades::allCategories();
+        $filtres = isset($all[$keyword]) ? array_keys($all[$keyword]) : [$keyword];
 
         $hadesRepository = new HadesRepository();
         $fiches = $hadesRepository->getHebergements($filtres);

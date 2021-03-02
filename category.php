@@ -20,21 +20,10 @@ $hadesRefrubrique = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true
 
 if ($hadesRefrubrique) {
     $hadesRepository = new HadesRepository();
-    switch ($hadesRefrubrique) {
-        case 'hebergements':
-            $filtres = Hades::LOGEMENTS;
-            $fiches = $hadesRepository->getHebergements();
-            break;
-        case 'restaurations':
-            $filtres = Hades::RESTAURATION;
-            $fiches = $hadesRepository->getRestaurations();
-            break;
-        default:
-            $filtres = [];
-            $fiches = [];
-            break;
-    }
-
+    $offres = $hadesRepository->getHebergements();
+    $all = Hades::allCategories();dump($all);
+    $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
+dump($filtres);
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/category.js',
@@ -46,9 +35,9 @@ if ($hadesRefrubrique) {
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
-            'referenceHades'=>$hadesRefrubrique,
+            'referenceHades' => $hadesRefrubrique,
             'filtres' => $filtres,
-            'fiches' => $fiches,
+            'offres' => $offres,
             'title' => $title,
             'permalink' => $permalink,
         ]

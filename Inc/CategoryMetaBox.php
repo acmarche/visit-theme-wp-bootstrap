@@ -3,6 +3,8 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use AcMarche\Pivot\Hades;
+
 class CategoryMetaBox
 {
     const KEY_NAME_BOTTIN = 'bottin_refrubrique';
@@ -37,17 +39,19 @@ class CategoryMetaBox
                     <label>
                         <select name="<?php echo self::KEY_NAME_HADES ?>">
                             <option value="0"></option>
-                            <option value="evenements"<?php if ($hades_refrubrique == 'evenements') {
+                            <option value="<?php echo Hades::EVENEMENTS_KEY ?>"<?php if ($hades_refrubrique == Hades::EVENEMENTS_KEY) {
                                 echo 'selected = "selected"';
                             } ?>>
                                 Evènements
                             </option>
-                            <option value="hebergements"<?php if ($hades_refrubrique == 'hebergements') {
+                            <option value="<?php echo Hades::HEBERGEMENTS_KEY ?>"<?php if ($hades_refrubrique == Hades::HEBERGEMENTS_KEY) {
                                 echo 'selected = "selected"';
-                            } ?>>Hébergements</option>
-                            <option value="restaurations"<?php if ($hades_refrubrique == 'restaurations') {
+                            } ?>>Hébergements
+                            </option>
+                            <option value="<?php echo Hades::RESTAURATIONS_KEY ?>"<?php if ($hades_refrubrique == Hades::RESTAURATIONS_KEY) {
                                 echo 'selected = "selected"';
-                            } ?>>Restaurations</option>
+                            } ?>>Restaurations
+                            </option>
                         </select>
                     </label>
                     <p class="description">Indiquer la référence correspondant à la rubrique.</p>

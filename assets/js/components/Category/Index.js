@@ -15,9 +15,7 @@ function Category() {
     async function loadOffres( quoi ) {
         let response;
         try {
-            console.log( `load: ${quoi}` );
             response = await fetchOffres( quoi );
-            console.log( response.data );
             setOffres( Object.entries( response.data ) );
         } catch ( e ) {
             console.log( e );
