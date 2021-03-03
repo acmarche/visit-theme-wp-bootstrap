@@ -29,11 +29,6 @@ try {
     return;
 }
 
-$image = null;
-$images = $offre->medias;
-if (count($images) > 0) {
-    $image = $images[0]->url;
-}
 $tags = [];
 foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
@@ -41,18 +36,17 @@ foreach ($offre->categories as $category) {
 
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
-dump($offre->horaires);
+//dump($offre);
 
 Twig::rendPage(
     'offre/show.html.twig',
     [
         'title' => $offre->titre,
         'offre' => $offre,
-        'image' => $image,
         'contact' => $contact,
         'communication' => $communication,
         'tags' => $tags,
-        'images' => $images,
+        'images' => $offre->medias,
         'latitude' => $offre->geocode->latitude() ?? null,
         'longitude' => $offre->geocode->longitude() ?? null,
     ]
