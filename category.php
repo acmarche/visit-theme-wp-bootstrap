@@ -21,7 +21,11 @@ $hadesRefrubrique = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true
 
 if ($hadesRefrubrique) {
     $hadesRepository = new HadesRepository();
-    $offres = $hadesRepository->getHebergements();
+
+    $all = Hades::allCategories();
+    $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
+
+    $offres = $hadesRepository->getOffres($filtres);
      array_map(function ($offre) {
         $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
     }, $offres);
