@@ -3,9 +3,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Router;
 use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -43,12 +41,12 @@ foreach ($offre->categories as $category) {
 
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
-//dump($offre->medias);
+dump($offre->horaires);
 
 Twig::rendPage(
     'offre/show.html.twig',
     [
-        'title'=>$offre->titre,
+        'title' => $offre->titre,
         'offre' => $offre,
         'image' => $image,
         'contact' => $contact,

@@ -65,12 +65,16 @@
                         {% endif %}
 
                         <!--schedule-->
-                        <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                        {# <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             <h4 class="ff-semibold fs-short-1">Horaires</h4>
+                            {% for horaire in offre.horaires %}
+    <h4>{{ horaire.lib }}</h4>
+    <p>{{ horaire.texte }}</p>
+{% endfor %}
                             <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
-                        </div>
+                        </div> #}
                     </div>
                 </div>
 
@@ -92,9 +96,9 @@
                     </div>
                     <div for="text-dyn">
                         {% for description in offre.descriptions %}
-                            <p>      {{ description.texte|raw }} </p>
+                            <p>{{ description.texte|raw }} </p>
                         {% endfor %}
-
+                        {% include 'offre/_details.html.twig' %}
                         {% include 'offre/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>

@@ -4,8 +4,8 @@
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Common\Router;
-use AcMarche\Pivot\Event\Entity\Categorie;
-use AcMarche\Pivot\Event\Entity\Event;
+use AcMarche\Pivot\Entities\Categorie;
+use AcMarche\Pivot\Entities\OffreInterface;
 
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
@@ -28,7 +28,7 @@ class RouterHades extends Router
        //    $this->flushRoutes();
     }
 
-    public static function getUrlEvent(Event $event): string
+    public static function getUrlEvent(OffreInterface $event): string
     {
         return self::getBaseUrlSite().self::EVENT_URL.$event->id;
     }
@@ -38,7 +38,7 @@ class RouterHades extends Router
         return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
     }
 
-    public static function getUrlOffre(object $offre): string
+    public static function getUrlOffre(OffreInterface $offre): string
     {
         return self::getBaseUrlSite().self::OFFRE_URL.$offre->id;
     }
