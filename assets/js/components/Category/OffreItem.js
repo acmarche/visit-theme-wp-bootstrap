@@ -19,11 +19,24 @@ function OffreItem( propos ) {
         categories.push( values.lib );
     });
     console.log( offre.url );
+
+    let style = {
+    };
+    let classBg = 'bg-img-enjoy-1';
+
+    if ( 0 < offre.medias.length ) {
+        style = {
+            backgroundImage: `url(${offre.medias[0].url})`,
+            backgroundSize: 'cover'
+        };
+        classBg = '';
+    }
+
     return (
         <>
             <li className={indexedClass[clef] ? indexedClass[clef] : indexedClass[3]}>
                 <a href={offre.url} className="bg-img rounded-xs">
-                    <i className="bg-img-enjoy-1 bg-img-size-hover-110">
+                    <i style={style} className={`${classBg} bg-img-size-hover-110`}>
                         <b className="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
                         <span
                             className="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">Lire plus</span>
