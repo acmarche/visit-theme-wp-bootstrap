@@ -9,7 +9,7 @@ use VisitMarche\Theme\Lib\WpRepository;
 get_header();
 
 Twig::rendPage(
-    'page/404.html.twig',
+    'errors/404.html.twig',
     [
         'title' => '404',
         'posts' => [],
