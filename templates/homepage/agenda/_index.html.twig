@@ -8,7 +8,7 @@
                 {% set event = events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="px-0 col-ls-sm-6 col-ls-md-12 px-ls-sm-4px col-md-12 px-md-0">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
@@ -25,7 +25,7 @@
                 {% set event = events[1] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none d-ls-sm-block col-ls-sm-6 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
@@ -41,7 +41,7 @@
                 {% set event = events[2] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none d-md-block col-ls-sm-4 col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
@@ -59,7 +59,7 @@
                 {% set event = events[3] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none col-ls-md-12 px-ls-sm-4px pt-ls-md-8px d-md-block col-md-12 pt-md-8px px-md-0">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
@@ -77,7 +77,7 @@
                 {% set event = events[4] ?? events[0] %}
                 {% set date = event.dates[0] %}
                 <li class="d-none col-ls-lg-12 px-ls-sm-4px pt-ls-md-8px d-ls-md-block d-md-block pt-lg-8px">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">{{ date.day }}</span>
@@ -92,7 +92,7 @@
                 </li>
             {% else %}
                 <li class="px-0 col-ls-sm-6 col-ls-md-12 px-ls-sm-4px col-md-12 px-md-0">
-                    <a href="#"
+                    <a href="{{ event.url }}"
                        class="d-flex shadow-sm-1 ls-md-shadow-none border border-width-1px border-default md-shadow-none thumbnail t-border-hover-primary t-transition-border-color rounded-xs">
                         <div class="col-3 border-right border-width-1px border-default py-11px t-bgcolor-hover-primary t-border-hover-white t-transition-all">
                             <span class="d-block text-default ff-semibold lh-100 fs-big-1 t-color-hover-white t-transition-color">00</span>
@@ -109,7 +109,7 @@
         </ul>
     </div>
 
-    <a href="/agenda"
+    <a href="{{ urlAgenda }}"
        class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">Tout
         l'agenda<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
 </div>

@@ -28,19 +28,14 @@ class RouterHades extends Router
        //    $this->flushRoutes();
     }
 
-    public static function getUrlEvent(OffreInterface $event): string
-    {
-        return self::getBaseUrlSite().self::EVENT_URL.$event->id;
-    }
-
     public static function getUrlEventCategory(Categorie $categorie): string
     {
         return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
     }
 
-    public static function getUrlOffre(OffreInterface $offre): string
+    public static function getUrlOffre(OffreInterface $offre, string $prefix): string
     {
-        return self::getBaseUrlSite().self::OFFRE_URL.$offre->id;
+        return self::getBaseUrlSite().$prefix.$offre->id;
     }
 
     public function addRouteEvent()

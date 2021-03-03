@@ -58,10 +58,10 @@ class ApiData
         $filtres = isset($all[$keyword]) ? array_keys($all[$keyword]) : [$keyword];
 
         $hadesRepository = new HadesRepository();
-        $offres = $hadesRepository->getHebergements($filtres);
+        $offres = $hadesRepository->getOffres($filtres);
         array_map(
             function ($offre) {
-                $offre->url = RouterHades::getUrlOffre($offre);
+                $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
             },
             $offres
         );

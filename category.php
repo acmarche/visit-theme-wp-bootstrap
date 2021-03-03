@@ -23,7 +23,7 @@ if ($hadesRefrubrique) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getHebergements();
      array_map(function ($offre) {
-        $offre->url = RouterHades::getUrlOffre($offre);
+        $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
     }, $offres);
 
     $all = Hades::allCategories();
