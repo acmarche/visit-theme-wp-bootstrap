@@ -10,16 +10,15 @@ class AssetsLoad
 
         if (Theme::isHomePage()) {
             add_action('wp_enqueue_scripts', [$this, 'visitmarcheHome']);
-          //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
+            //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
-        if ( ! is_category() && ! is_search() && ! is_front_page()) {
-       //     add_action('wp_enqueue_scripts', [$this, 'visitmarcheLeaft']);
-        //    add_action('wp_enqueue_scripts', [$this, 'visitmarcheLightGallery']);
-        //    add_action('wp_enqueue_scripts', [$this, 'readSpeaker']);
+        if (!is_category() && !is_search() && !is_front_page()) {
+            add_action('wp_enqueue_scripts', [$this, 'visitmarcheLeaft']);
+            add_action('wp_enqueue_scripts', [$this, 'visitmarcheLightGallery']);
         }
 
-    //    add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
+        //    add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
     }
 
     function visitmarcheAssets()
@@ -53,13 +52,13 @@ class AssetsLoad
             true
         );
 
-    /*    wp_enqueue_script(
-            'visitmarche-close-js',
-            get_template_directory_uri().'/assets/js/utils/navigation.js',
-            array(),
-            wp_get_theme()->get('Version'),
-            true
-        );*/
+        /*    wp_enqueue_script(
+                'visitmarche-close-js',
+                get_template_directory_uri().'/assets/js/utils/navigation.js',
+                array(),
+                wp_get_theme()->get('Version'),
+                true
+            );*/
     }
 
     function visitmarcheHome()
@@ -70,19 +69,19 @@ class AssetsLoad
             array()
         );
 
-   /*     wp_enqueue_style(
-            'visitmarche-lightSlider-style',
-            get_template_directory_uri().'/assets/js/lightslider/css/lightslider.css',
-            array()
-        );
+        /*     wp_enqueue_style(
+                 'visitmarche-lightSlider-style',
+                 get_template_directory_uri().'/assets/js/lightslider/css/lightslider.css',
+                 array()
+             );
 
-        wp_enqueue_script(
-            'visitmarche-lightSlider-js',
-            get_template_directory_uri().'/assets/js/lightslider/js/lightslider.js',
-            array('jquery'),
-            wp_get_theme()->get('Version'),
-            true
-        );*/
+             wp_enqueue_script(
+                 'visitmarche-lightSlider-js',
+                 get_template_directory_uri().'/assets/js/lightslider/js/lightslider.js',
+                 array('jquery'),
+                 wp_get_theme()->get('Version'),
+                 true
+             );*/
     }
 
     function visitmarcheLightGallery()
@@ -139,7 +138,7 @@ class AssetsLoad
         );
         wp_enqueue_script(
             'visitmarche-zoom-js',
-            get_template_directory_uri().'/assets/js/components/Map/hooks/L.KML.js',
+            get_template_directory_uri().'/assets/js/utils/L.KML.js',
             array(),
             wp_get_theme()->get('Version')
         );

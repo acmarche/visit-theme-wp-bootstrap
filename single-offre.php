@@ -42,12 +42,13 @@ foreach ($offre->categories as $category) {
 }
 
 $contact = $offre->contactPrincipal();
-$communication = $offre->communciationPrincipal();
-dump($communication);
+$communication = $offre->communcationPrincipal();
+//dump($offre->medias);
 
 Twig::rendPage(
     'offre/show.html.twig',
     [
+        'title'=>$offre->titre,
         'offre' => $offre,
         'image' => $image,
         'contact' => $contact,
