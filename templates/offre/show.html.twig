@@ -30,28 +30,39 @@
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
                             <h4 class="ff-semibold fs-short-1">Adresse</h4>
-                            <span class="fs-short-2 pt-8px d-block">Rue Victor Libert, 36 boîte A</span>
-                            <span class="fs-short-2 pt-8px d-block">6900 Marche-en-Famenne</span>
+                            <span class="fs-short-2 pt-8px d-block">
+                                {% if contact %}
+                                    {{ contact.adresse }} {{ contact.numero }} {{ contact.boite }}
+                                {% endif %}
+                            </span>
+                            <span class="fs-short-2 pt-8px d-block">{{ offre.localisation.postal }} {{ offre.localisation.localite }}</span>
                         </div>
 
                         <!--phone-->
-                        <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                            <h4 class="ff-semibold fs-short-1">Téléphone</h4>
-                            <a href="tel:084326940" class="fs-short-2 pt-8px d-block text-default">084 32 69 40</a>
-                        </div>
+                        {% if communication.tel is defined %}
+                            <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                                <h4 class="ff-semibold fs-short-1">Téléphone</h4>
+                                <a href="tel:{{ communication.tel.value }}"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ communication.tel.value }}</a>
+                            </div>
+                        {% endif %}
 
                         <!--mail-->
+                        {% if communication.mail is defined %}
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
-                            <a href="mailto:beaux.arts@marche.be" class="fs-short-2 pt-8px d-block text-default">beaux.arts@marche.be</a>
+                            <a href="mailto:{{ communication.mail.value }}" class="fs-short-2 pt-8px d-block text-default">{{ communication.mail.value }}</a>
                         </div>
+                        {% endif %}
 
                         <!--website-->
+                        {% if communication.url is defined %}
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             <h4 class="ff-semibold fs-short-1">Site web</h4>
-                            <a href="www.beauxarts-arlon.net" target="_blank"
-                               class="fs-short-2 pt-8px d-block text-default">www.beauxarts-arlon.net</a>
+                            <a href="{{ communication.url.value }}" target="_blank"
+                               class="fs-short-2 pt-8px d-block text-default">{{ communication.url.value }}</a>
                         </div>
+                        {% endif %}
 
                         <!--schedule-->
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
