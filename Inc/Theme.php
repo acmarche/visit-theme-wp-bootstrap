@@ -14,9 +14,6 @@ class Theme
     {
         $request = Request::createFromGlobals();
         $uri     = $request->getRequestUri();
-        if ($uri === '/eyjafjallajokull/') {
-            return true;
-        }
         if ($uri === '/') {
             return true;
         }
