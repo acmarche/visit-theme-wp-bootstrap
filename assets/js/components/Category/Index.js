@@ -11,14 +11,16 @@ function Category() {
     const [ referenceHades, setReferenceHades ] = useState( '' );
     const [ offres, setOffres ] = useState([]);
     const [ referenceOffre, setReferenceOffre ] = useState( '' );
+    const [ isLoading, setIsLoading ] = useState( true );
 
     async function loadOffres( quoi ) {
+        setIsLoading( true );
         let response;
         try {
             response = await fetchOffres( quoi );
-            setOffres( Object.entries( response.data ) );
+            setOffres( Object.entries( response.data ) ); setIsLoading( false );
         } catch ( e ) {
-            console.log( e );
+            console.log( e ); setIsLoading( false );
         }
         return null;
     }
@@ -43,7 +45,10 @@ function Category() {
                 referenceHades={referenceHades}
                 setReferenceOffre={setReferenceOffre}
             />
-            <OffreResults offres={offres}/>
+            <OffreResults
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                offres={offres}/>
         </>
     );
 }
