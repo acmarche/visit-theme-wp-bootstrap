@@ -17,16 +17,19 @@ function Category() {
         setIsLoading( true );
         let response;
         try {
+            console.log( quoi );
             response = await fetchOffres( quoi );
-            setOffres( Object.entries( response.data ) ); setIsLoading( false );
+            setOffres( Object.entries( response.data ) );
+            setIsLoading( false );
         } catch ( e ) {
-            console.log( e ); setIsLoading( false );
+            console.log( e );
+            setIsLoading( false );
         }
         return null;
     }
 
-    const name = 'app-category';
     useEffect( () => {
+        const name = 'app-offres';
         setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
         if ( 0 < referenceHades.length ) {
             loadOffres( referenceHades );

@@ -49,7 +49,7 @@ class ApiData
     {
         $keyword = $request->get_param('keyword');
         if (!$keyword) {
-            Mailer::sendError("error carto", "missing param keyword");
+            Mailer::sendError("error hades offre", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }

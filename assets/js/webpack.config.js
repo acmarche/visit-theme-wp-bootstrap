@@ -5,9 +5,9 @@ module.exports = {
     ...defaults,
     mode: 'production',
     entry: {
-        category: [
-            `${path.resolve( __dirname, 'src' )}/category.js`
-        ],
+        offre: [
+            `${path.resolve( __dirname, 'src' )}/offre.js`
+        ]
     },
     externals: {
         react: 'React',

@@ -26,16 +26,19 @@ if ($hadesRefrubrique) {
     $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
 
     $offres = $hadesRepository->getOffres($filtres);
-     array_map(function ($offre) {
-        $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
-    }, $offres);
+    array_map(
+        function ($offre) {
+            $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
+        },
+        $offres
+    );
 
     $all = Hades::allCategories();
     $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
 
     wp_enqueue_script(
         'react-app',
-        get_template_directory_uri().'/assets/js/build/category.js',
+        get_template_directory_uri().'/assets/js/build/offre.js',
         array('wp-element'),
         wp_get_theme()->get('Version'),
         true
