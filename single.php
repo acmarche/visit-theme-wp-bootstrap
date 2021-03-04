@@ -3,7 +3,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Router;
 use AcMarche\Common\Twig;
 use AcMarche\Common\WpRepository;
 
@@ -18,8 +17,10 @@ if (has_post_thumbnail()) {
     }
 }
 
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$urlBack = get_category_link($currentCategory);
+
 $tags = WpRepository::getTags($post->ID);
-$urlBack = $tags[0]['url'];
 $relations = WpRepository::getRelations($post->ID);
 $next = null;
 if (count($relations) > 0) {
@@ -33,6 +34,7 @@ Twig::rendPage(
     'article/show.html.twig',
     [
         'post' => $post,
+        'currentCategory' => $currentCategory,
         'tags' => $tags,
         'image' => $image,
         'title' => $post->post_title,
