@@ -17,7 +17,7 @@ use AcMarche\Pivot\Entities\OffreInterface;
 class RouterHades extends Router
 {
     const PARAM_EVENT = 'codecgt';
-    const EVENT_URL = 'manifestation/';
+    const EVENT_URL = 'manifestation';
     const PARAM_OFFRE = 'codeoffre';
     const OFFRE_URL = 'offre';
 
@@ -34,6 +34,11 @@ class RouterHades extends Router
         return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
     }
 
+    public static function getUrlEvent(OffreInterface $offre, int $categoryId): string
+    {
+        return get_category_link($categoryId).self::EVENT_URL.'/'.$offre->id;
+    }
+
     public static function getUrlOffre(OffreInterface $offre, int $categoryId): string
     {
         return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
@@ -44,9 +49,17 @@ class RouterHades extends Router
         add_action(
             'init',
             function () {
+                $taxonomy = get_taxonomy('category');
+                $categoryBase = $taxonomy->rewrite['slug'];
+
+                //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
+                // [^/]* => veut dire tout sauf /
+                //url parser: /category/agenda/event/86/
+                //attention si pas sous categorie
+                //https://regex101.com/r/guhLuX/1
                 add_rewrite_rule(
-                    self::EVENT_URL.'([a-zA-Z0-9-]+)[/]?$',
-                    'index.php?'.self::PARAM_EVENT.'=$matches[1]',
+                    '^'.$categoryBase.'/agenda/([^/]*)/([^/]*)/([^/]*)/?',
+                    'index.php?category_name=$matches[1]/$matches[2]&'.self::PARAM_EVENT.'=$matches[3]',
                     'top'
                 );
             }

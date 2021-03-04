@@ -35,7 +35,7 @@ try {
         array_map(
             function ($event) use ($categoryAgenda) {
 
-                $event->url = RouterHades::getUrlOffre($event, $categoryAgenda->cat_ID);
+                $event->url = RouterHades::getUrlEvent($event, $categoryAgenda->cat_ID);
             },
             $events
         );
