@@ -25,7 +25,7 @@ class RouterHades extends Router
     {
         $this->addRouteEvent();
         $this->addRouteOffre();
-        add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
+        //add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
         //    $this->flushRoutes();
     }
 
@@ -77,37 +77,27 @@ class RouterHades extends Router
         );
     }
 
-    public function custom_rewrite_tag()
-    {
-        add_rewrite_tag('%offre%', '([^&]+)');
-    }
-
     public function addRouteOffre()
     {
         //Setup a rule
         add_action(
             'init',
             function () {
-              /*  global $wp_rewrite;
-                $termlink = $wp_rewrite->get_extra_permastruct('category');
-                $categoryBase = preg_replace("#%category%#", "", $termlink);///category/%category%
-                $categoryBase = preg_replace("#/#", "", $categoryBase);*/
-
                 $taxonomy = get_taxonomy('category');
-                $categoryBase=$taxonomy->rewrite['slug'];
+                $categoryBase = $taxonomy->rewrite['slug'];
 
-                //add_rewrite_rule('^nutrition/([^/]*)/([^/]*)/?','index.php?page_id=12&food=$matches[1]&variety=$matches[2]','top');
-                //'^category/([^/]*)/'.self::OFFRE_URL.'([a-zA-Z0-9-]+)[/]?$',
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
+                // [^/]* => veut dire tout sauf /
+                //url parser: /category/sorganiser/sejourner/offre/86/
+                //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
                 add_rewrite_rule(
                     '^'.$categoryBase.'/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
-                    'index.php?category_name=$matches[4]/$matches[2]&'.self::PARAM_OFFRE.'=$matches[4]',
+                    'index.php?category_name=$matches[1]/$matches[2]&'.self::PARAM_OFFRE.'=$matches[4]',
                     'top'
                 );
             }
         );
-        //^category/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?
         //Whitelist the query param
         add_filter(
             'query_vars',
@@ -125,8 +115,6 @@ class RouterHades extends Router
                 if (is_admin() || !$wp_query->is_main_query()) {
                     return $template;
                 }
-                dump($wp_query->query);
-                dump(get_query_var(self::PARAM_OFFRE));
                 if (get_query_var(self::PARAM_OFFRE) == false ||
                     get_query_var(self::PARAM_OFFRE) == '') {
                     return $template;
@@ -136,4 +124,10 @@ class RouterHades extends Router
             }
         );
     }
+
+    public function custom_rewrite_tag()
+    {
+        add_rewrite_tag('%offre%', '([^&]+)');//utilite?
+    }
+
 }

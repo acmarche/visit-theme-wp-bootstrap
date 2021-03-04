@@ -9,12 +9,15 @@ use VisitMarche\Theme\Inc\RouterHades;
 
 get_header();
 
+$cat_ID = get_queried_object_id();
+$category = get_category($cat_ID);
+
 $hadesRepository = new HadesRepository();
 try {
     $events = $hadesRepository->getEvents();
     array_map(
-        function ($event) {
-            $event->url = RouterHades::getUrlOffre($event, RouterHades::EVENT_URL);
+        function ($event) use ($cat_ID) {
+            $event->url = RouterHades::getUrlOffre($event, $cat_ID);
         },
         $events
     );

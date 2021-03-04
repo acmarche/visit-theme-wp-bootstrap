@@ -7,7 +7,8 @@ use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
-
+global $wp_rewrite;
+dump($wp_rewrite);
 Twig::rendPage(
     'errors/404.html.twig',
     [
