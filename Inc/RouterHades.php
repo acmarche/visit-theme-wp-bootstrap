@@ -61,7 +61,7 @@ class RouterHades extends Router
                 {
                     add_rewrite_rule(
                         '^'.$categoryBase.'/'.$categoryAgenda->slug.'/([^/]*)/([^/]*)/?',
-                        'index.php?category_name=$matches[1]&'.self::PARAM_EVENT.'=$matches[2]',
+                        'index.php?category_name='.$categoryAgenda->slug.'&'.self::PARAM_EVENT.'=$matches[2]',
                         'top'
                     );
                 }

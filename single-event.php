@@ -13,6 +13,10 @@ get_header();
 $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
 $hadesRepository = new HadesRepository();
 
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$urlBack = get_category_link($currentCategory);
+$nameBack = $currentCategory->name;
+
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
     // dump($offre);
@@ -54,6 +58,9 @@ Twig::rendPage(
     'agenda/show.html.twig',
     [
         'title' => $offre->titre,
+        'currentCategory' => $currentCategory,
+        'urlBack' => $urlBack,
+        'nameBack' => $nameBack,
         'offre' => $offre,
         'contact' => $contact,
         'communication' => $communication,
