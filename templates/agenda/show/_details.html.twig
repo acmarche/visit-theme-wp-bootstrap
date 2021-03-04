@@ -1,0 +1,7 @@
+<!--schedule-->
+<div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+    {% for horaire in offre.horaires %}
+        <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
+        <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
+    {% endfor %}
+</div>
