@@ -51,17 +51,20 @@ class RouterHades extends Router
             function () {
                 $taxonomy = get_taxonomy('category');
                 $categoryBase = $taxonomy->rewrite['slug'];
-
+                $categoryAgenda = get_category_by_slug('agenda');
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
-                //url parser: /category/agenda/event/86/
+                //url parser: /category/agenda/event/866/
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
-                add_rewrite_rule(
-                    '^'.$categoryBase.'/agenda/([^/]*)/([^/]*)/([^/]*)/?',
-                    'index.php?category_name=$matches[1]/$matches[2]&'.self::PARAM_EVENT.'=$matches[3]',
-                    'top'
-                );
+                if ($categoryAgenda)
+                {
+                    add_rewrite_rule(
+                        '^'.$categoryBase.'/'.$categoryAgenda->slug.'/([^/]*)/([^/]*)/?',
+                        'index.php?category_name=$matches[1]&'.self::PARAM_EVENT.'=$matches[2]',
+                        'top'
+                    );
+                }
             }
         );
         add_filter(
