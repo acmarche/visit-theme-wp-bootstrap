@@ -6,14 +6,15 @@
     <div class="bg-white pt-24px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column">
 
         <!--back | TODO JF: lien dynamique vers la page précédente-->
-        <a href="/"
+        <a href="{{ urlBack }}"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à </a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
+            à {{ currentCategory.name }}</a>
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre }}</h2>
 
         <!--category-->
-        <span class="text-primary ff-semibold pt-12px d-block fs-short-2">Restaurants</span>
+        <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
 
         <!--directory-->
         <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
@@ -28,12 +29,7 @@
 
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
-                            <h4 class="ff-semibold fs-short-1">Adresse</h4>
-                            <span class="fs-short-2 pt-8px d-block">
-                                {% if contact %}
-                                    {{ contact.adresse }} {{ contact.numero }} {{ contact.boite }}
-                                {% endif %}
-                            </span>
+                            <h4 class="ff-semibold fs-short-1">Où</h4>
                             <span class="fs-short-2 pt-8px d-block">{{ offre.localisation.postal }} {{ offre.localisation.localite }}</span>
                         </div>
 
@@ -65,16 +61,13 @@
                         {% endif %}
 
                         <!--schedule-->
-                        {# <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                            <h4 class="ff-semibold fs-short-1">Horaires</h4>
+                        <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             {% for horaire in offre.horaires %}
-    <h4>{{ horaire.lib }}</h4>
-    <p>{{ horaire.texte }}</p>
-{% endfor %}
-                            <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
-                            <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
-                            <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
-                        </div> #}
+                                <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
+                                <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
+                            {% endfor %}
+                        </div>
+
                     </div>
                 </div>
 
@@ -98,8 +91,8 @@
                         {% for description in offre.descriptions %}
                             <p>{{ description.texte|raw }} </p>
                         {% endfor %}
-                        {% include 'offre/_details.html.twig' %}
-                        {% include 'offre/_images.html.twig' %}
+                        {% include 'agenda/show/_details.html.twig' %}
+                        {% include 'agenda/show/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>
                 </div>
@@ -117,35 +110,47 @@
                 </div>
 
                 <!--previous/next-->
-                <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    <div class="col-6 p-0 d-flex">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
-                                    class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Fiche
-                            précédente</a>
+
+                {% if relations | length > 0 %}
+                    {% set relation = relations|first %}
+                    <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                        <div class="col-6 p-0 d-flex">
+                            <a href="{{ relation.url }}"
+                               class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
+                                        class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>
+                                {{ relation.title }}
+                            </a>
+                        </div>
+                    {% set relation = relations|last %}
+                        <div class="col-6 p-0 d-flex justify-content-end">
+                            <a href="{{ relation.url }}"
+                               class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">
+                                {{ relation.title }}<i
+                                        class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
+                        </div>
                     </div>
-                    <div class="col-6 p-0 d-flex justify-content-end">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Fiche
-                            suivante<i
-                                    class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
-                    </div>
-                </div>
+                {% endif %}
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
-                    <div class="pt-12px object-recom">
-                        <a href="#" class="bg-img rounded-xs">
-                            <i class="bg-img-enjoy-2">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-hover-primary">Le Baragou</h5>
-                                <span class="text-primary">Restaurants</span>
-                            </div>
-                        </a>
-                    </div>
+                    {% if relations | length > 0 %}
+                        {% set relation = random(relations) %}
+                        <div class="pt-12px object-recom">
+                            <a href="#" class="bg-img rounded-xs">
+                                <i {% if relation.image is defined %}style="background-image: url('{{ relation.image }}');"{% endif %} {% if relation.image is not defined %}class="bg-img-enjoy-2"{% endif %}>
+                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                </i>
+                                <div class="col">
+                                    <h5 class="text-hover-primary">{{ relation.title }}</h5>
+                                    <span class="text-primary">
+                                    {% set categorie = relation.categories | first %}
+                                        {{ categorie.lib }}
+                                </span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 
@@ -175,17 +180,23 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
                     <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
-                    <div class="pt-22px object-recom">
-                        <a href="#" class="bg-img rounded-xs">
-                            <i class="bg-img-enjoy-2">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-default text-hover-primary">Le Baragou</h5>
-                                <span class="text-primary">Restaurants</span>
-                            </div>
-                        </a>
-                    </div>
+                    {% if relations | length > 0 %}
+                        {% set relation = random(relations) %}
+                        <div class="pt-22px object-recom">
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
+                                <i {% if relation.image is defined %}style="background-image: url('{{ relation.image }}');"{% endif %} {% if relation.image is not defined %}class="bg-img-enjoy-2"{% endif %}>
+                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                </i>
+                                <div class="col">
+                                    <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
+                                    <span class="text-primary">
+                                        {% set categorie = relation.categories | first %}
+                                        {{ categorie.lib }}
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

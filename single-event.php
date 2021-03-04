@@ -50,9 +50,10 @@ foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
+$relations = $hadesRepository->getEventRelations($offre, $currentCategory->cat_ID);
+
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
-//dump($offre);
 
 Twig::rendPage(
     'agenda/show.html.twig',
@@ -64,6 +65,7 @@ Twig::rendPage(
         'offre' => $offre,
         'contact' => $contact,
         'communication' => $communication,
+        'relations' => $relations,
         'tags' => $tags,
         'images' => $offre->medias,
         'latitude' => $offre->geocode->latitude() ?? null,
