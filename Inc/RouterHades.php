@@ -19,13 +19,14 @@ class RouterHades extends Router
     const PARAM_EVENT = 'codecgt';
     const EVENT_URL = 'manifestation/';
     const PARAM_OFFRE = 'codeoffre';
-    const OFFRE_URL = 'offre/';
+    const OFFRE_URL = 'offre';
 
     public function __construct()
     {
         $this->addRouteEvent();
         $this->addRouteOffre();
-       //    $this->flushRoutes();
+        add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
+        //    $this->flushRoutes();
     }
 
     public static function getUrlEventCategory(Categorie $categorie): string
@@ -35,6 +36,11 @@ class RouterHades extends Router
 
     public static function getUrlOffre(OffreInterface $offre, string $prefix): string
     {
+        $url = get_category_link(get_category_by_slug('sejourner'));
+        $prefix = 'codeoffre';
+
+        return '/?cat=7&'.$prefix.'='.$offre->id;
+
         return self::getBaseUrlSite().$prefix.$offre->id;
     }
 
@@ -76,18 +82,45 @@ class RouterHades extends Router
         );
     }
 
+    public function custom_rewrite_tag()
+    {
+        add_rewrite_tag('%food%', '([^&]+)');
+        add_rewrite_tag('%variety%', '([^&]+)');
+        add_rewrite_tag('%offre%', '([^&]+)');
+    }
+
     public function addRouteOffre()
     {
+
+        global $wp_rewrite;
+        $extra = $wp_rewrite->extra_permastructs;
+        $categoryBase = preg_replace("#%category%#","",$extra['category']['struct']);///category/%category%
+
+        $url = get_category_link(get_category_by_slug('sejourner'));
+        //dump($url);
+        //Setup a rule
         add_action(
             'init',
             function () {
+                //add_rewrite_rule('^nutrition/([^/]*)/([^/]*)/?','index.php?page_id=12&food=$matches[1]&variety=$matches[2]','top');
+
+                /*   add_rewrite_rule(
+                       '^category/sorganiser/sejourner/([^/]*)/?',
+                       'index.php?category_name=sorganiser/sejourner&codeoffre=$matches[1]',
+                       'top'
+                   );*/
+                //'^category/([^/]*)/'.self::OFFRE_URL.'([a-zA-Z0-9-]+)[/]?$',
+                //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
+                //https://regex101.com/r/guhLuX/1
                 add_rewrite_rule(
-                    self::OFFRE_URL.'([a-zA-Z0-9-]+)[/]?$',
-                    'index.php?'.self::PARAM_OFFRE.'=$matches[1]',
+                    '^category/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
+                    'index.php?category_name=$matches[1]/$matches[1]&'.self::PARAM_OFFRE.'=$matches[4]',
                     'top'
                 );
             }
         );
+        //^category/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?
+        //Whitelist the query param
         add_filter(
             'query_vars',
             function ($query_vars) {
@@ -96,6 +129,7 @@ class RouterHades extends Router
                 return $query_vars;
             }
         );
+        //Add a handler to send it off to a template file
         add_action(
             'template_include',
             function ($template) {
@@ -103,7 +137,8 @@ class RouterHades extends Router
                 if (is_admin() || !$wp_query->is_main_query()) {
                     return $template;
                 }
-
+                dump($wp_query->query);
+                dump(get_query_var(self::PARAM_OFFRE));
                 if (get_query_var(self::PARAM_OFFRE) == false ||
                     get_query_var(self::PARAM_OFFRE) == '') {
                     return $template;
