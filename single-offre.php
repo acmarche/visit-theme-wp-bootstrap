@@ -10,13 +10,15 @@ use VisitMarche\Theme\Inc\RouterHades;
 
 get_header();
 
-global $wp_query;
-$codeCgt = $wp_query->get(RouterHades::PARAM_OFFRE);
+$codeCgt = get_query_var(RouterHades::PARAM_OFFRE);
+
+$currentCategory = get_category_by_slug(get_query_var('category_name'));
+$urlBack = get_category_link($currentCategory);
+$nameBack = $currentCategory->name;
 
 $hadesRepository = new HadesRepository();
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
-    // dump($offre);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
@@ -24,6 +26,16 @@ try {
             'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
         ]
     );
+    get_footer();
+
+    return;
+}
+
+if (!$offre) {
+    Twig::rendPage('errors/404.html.twig', [
+
+    ]);
+
     get_footer();
 
     return;
@@ -43,10 +55,13 @@ Twig::rendPage(
     [
         'title' => $offre->titre,
         'offre' => $offre,
+        'currentCategory' => $currentCategory,
         'contact' => $contact,
         'communication' => $communication,
         'tags' => $tags,
         'images' => $offre->medias,
+        'urlBack' => $urlBack,
+        'nameBack' => $nameBack,
         'latitude' => $offre->geocode->latitude() ?? null,
         'longitude' => $offre->geocode->longitude() ?? null,
     ]

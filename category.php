@@ -27,8 +27,8 @@ if ($hadesRefrubrique) {
 
     $offres = $hadesRepository->getOffres($filtres);
     array_map(
-        function ($offre) {
-            $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
+        function ($offre) use($cat_ID) {
+            $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
         },
         $offres
     );

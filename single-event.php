@@ -10,9 +10,9 @@ use VisitMarche\Theme\Inc\RouterHades;
 
 get_header();
 
-global $wp_query;
-$codeCgt = $wp_query->get(RouterHades::PARAM_EVENT);
+$codeCgt = get_query_var(RouterHades::PARAM_EVENT);
 $hadesRepository = new HadesRepository();
+
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
     // dump($offre);
@@ -28,6 +28,19 @@ try {
     return;
 }
 
+if (!$offre) {
+    Twig::rendPage(
+        'errors/404.html.twig',
+        [
+
+        ]
+    );
+
+    get_footer();
+
+    return;
+}
+
 $tags = [];
 foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
@@ -38,7 +51,7 @@ $communication = $offre->communcationPrincipal();
 //dump($offre);
 
 Twig::rendPage(
-    'offre/show.html.twig',
+    'agenda/show.html.twig',
     [
         'title' => $offre->titre,
         'offre' => $offre,

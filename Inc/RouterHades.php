@@ -34,14 +34,9 @@ class RouterHades extends Router
         return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
     }
 
-    public static function getUrlOffre(OffreInterface $offre, string $prefix): string
+    public static function getUrlOffre(OffreInterface $offre, int $categoryId): string
     {
-        $url = get_category_link(get_category_by_slug('sejourner'));
-        $prefix = 'codeoffre';
-
-        return '/?cat=7&'.$prefix.'='.$offre->id;
-
-        return self::getBaseUrlSite().$prefix.$offre->id;
+        return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
     }
 
     public function addRouteEvent()
@@ -84,37 +79,30 @@ class RouterHades extends Router
 
     public function custom_rewrite_tag()
     {
-        add_rewrite_tag('%food%', '([^&]+)');
-        add_rewrite_tag('%variety%', '([^&]+)');
         add_rewrite_tag('%offre%', '([^&]+)');
     }
 
     public function addRouteOffre()
     {
-
-        global $wp_rewrite;
-        $extra = $wp_rewrite->extra_permastructs;
-        $categoryBase = preg_replace("#%category%#","",$extra['category']['struct']);///category/%category%
-
-        $url = get_category_link(get_category_by_slug('sejourner'));
-        //dump($url);
         //Setup a rule
         add_action(
             'init',
             function () {
-                //add_rewrite_rule('^nutrition/([^/]*)/([^/]*)/?','index.php?page_id=12&food=$matches[1]&variety=$matches[2]','top');
+              /*  global $wp_rewrite;
+                $termlink = $wp_rewrite->get_extra_permastruct('category');
+                $categoryBase = preg_replace("#%category%#", "", $termlink);///category/%category%
+                $categoryBase = preg_replace("#/#", "", $categoryBase);*/
 
-                /*   add_rewrite_rule(
-                       '^category/sorganiser/sejourner/([^/]*)/?',
-                       'index.php?category_name=sorganiser/sejourner&codeoffre=$matches[1]',
-                       'top'
-                   );*/
+                $taxonomy = get_taxonomy('category');
+                $categoryBase=$taxonomy->rewrite['slug'];
+
+                //add_rewrite_rule('^nutrition/([^/]*)/([^/]*)/?','index.php?page_id=12&food=$matches[1]&variety=$matches[2]','top');
                 //'^category/([^/]*)/'.self::OFFRE_URL.'([a-zA-Z0-9-]+)[/]?$',
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 //https://regex101.com/r/guhLuX/1
                 add_rewrite_rule(
-                    '^category/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
-                    'index.php?category_name=$matches[1]/$matches[1]&'.self::PARAM_OFFRE.'=$matches[4]',
+                    '^'.$categoryBase.'/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
+                    'index.php?category_name=$matches[4]/$matches[2]&'.self::PARAM_OFFRE.'=$matches[4]',
                     'top'
                 );
             }

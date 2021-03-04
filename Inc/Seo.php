@@ -4,8 +4,7 @@
 namespace VisitMarche\Theme\Inc;
 
 
-use VisitMarche\Bottin\Repository\BottinRepository;
-use VisitMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\Repository\HadesRepository;
 
 class Seo
 {
@@ -19,7 +18,7 @@ class Seo
     static function assignMetaInfo(): void
     {
         if (Theme::isHomePage()) {
-            self::metaBottinHomePage();
+            self::metaHomePage();
         }
 
         $cat_id = get_query_var('cat');
@@ -29,24 +28,10 @@ class Seo
 
         $postId = get_query_var('p');
         if ($postId) {
-            if ($postId == Theme::PAGE_CARTO) {
-                self::metaCartographie();
-            } else {
-                self::metaPost($postId);
-            }
+            self::metaPost($postId);
         }
 
-        $slugFiche = get_query_var(Router::PARAM_BOTTIN_FICHE);
-        if ($slugFiche) {
-            self::metaBottinFiche($slugFiche);
-        }
-
-        $slugCategory = get_query_var(Router::PARAM_BOTTIN_CATEGORY);
-        if ($slugCategory) {
-            self::metaBottinCategory($slugCategory);
-        }
-
-        $codeCgt = get_query_var(Router::PARAM_EVENT);
+        $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
         if ($codeCgt) {
             self::metaBottinEvent($codeCgt);
         }
@@ -62,51 +47,12 @@ class Seo
         }
     }
 
-    /**
-     * @param string $slugFiche
-     */
-    private static function metaBottinFiche(string $slugFiche)
-    {
-        $bottinRepository = new BottinRepository();
-        $fiche            = $bottinRepository->getFicheBySlug($slugFiche);
-        if ($fiche) {
-            $cats                 = '';
-            $categories           = $bottinRepository->getCategoriesOfFiche($fiche->id);
-            $comment              = $fiche->comment1.' '.$fiche->comment2;
-            self::$metas['title'] = $fiche->societe.' | ';
-            foreach ($categories as $category) {
-                $cats .= $category->name;
-            }
-            self::$metas['keywords']    = $cats;
-            self::$metas['description'] = $comment;
-        }
-    }
-
-    private static function metaBottinCategory($slug)
-    {
-        $bottinRepository = new BottinRepository();
-        $category         = $bottinRepository->getCategoryBySlug($slug);
-
-        if ($category) {
-            self::$metas['title']       = $category->name;
-            self::$metas['description'] = $category->description;
-            $children                   = $bottinRepository->getCategories($category->id);
-            $cats                       = array_map(
-                function ($category) {
-                    return $category->name;
-                },
-                $children
-            );
-            self::$metas['keywords']    = join(',', $cats);
-        }
-    }
-
     private static function metaBottinEvent(string $codeCgt)
     {
         $hadesRepository = new HadesRepository();
-        $event           = $hadesRepository->getEvent($codeCgt);
+        $event = $hadesRepository->getOffre($codeCgt);
         if ($event) {
-            self::$metas['title']       = $event->titre.' | Agenda des manifestations ';
+            self::$metas['title'] = $event->titre.' | Agenda des manifestations ';
             self::$metas['description'] = join(
                 ',',
                 array_map(
@@ -116,13 +62,13 @@ class Seo
                     $event->descriptions
                 )
             );
-            $keywords                   = array_map(
+            $keywords = array_map(
                 function ($category) {
                     return $category->lib;
                 },
                 $event->categories
             );
-            $keywords                   = array_merge(
+            $keywords = array_merge(
                 $keywords,
                 array_map(
                     function ($category) {
@@ -131,32 +77,32 @@ class Seo
                     $event->selections
                 )
             );
-            self::$metas['keywords']    = join(",", $keywords);
+            self::$metas['keywords'] = join(",", $keywords);
         }
     }
 
-    private static function metaBottinHomePage()
+    private static function metaHomePage()
     {
-        self::$metas['title']       = self::baseTitle("Page d'accueil");
+        self::$metas['title'] = self::baseTitle("Page d'accueil");
         self::$metas['description'] = get_bloginfo('description', 'display');
-        self::$metas['keywords']    = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Administration communal';
+        self::$metas['keywords'] = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Tourisme, Horeca';
     }
 
     private static function metaCategory(int $cat_id)
     {
-        $category                   = get_category($cat_id);
-        self::$metas['title']       = self::baseTitle("");
+        $category = get_category($cat_id);
+        self::$metas['title'] = self::baseTitle("");
         self::$metas['description'] = $category->description;
-        self::$metas['keywords']    = '';
+        self::$metas['keywords'] = '';
     }
 
     private static function metaPost(int $postId)
     {
-        $post                       = get_post($postId);
-        self::$metas['title']       = self::baseTitle("");
+        $post = get_post($postId);
+        self::$metas['title'] = self::baseTitle("");
         self::$metas['description'] = $post->post_excerpt;
-        $tags                       = get_the_category($post->ID);
-        self::$metas['keywords']    = join(
+        $tags = get_the_category($post->ID);
+        self::$metas['keywords'] = join(
             ',',
             array_map(
                 function ($tag) {

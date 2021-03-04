@@ -9,6 +9,7 @@ use VisitMarche\Theme\Inc\Filter;
 use VisitMarche\Theme\Inc\QueryAlter;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Inc\SecurityConfig;
+use VisitMarche\Theme\Inc\Seo;
 use VisitMarche\Theme\Inc\SetupTheme;
 use VisitMarche\Theme\Inc\WidgetLoad;
 
@@ -37,13 +38,13 @@ new SecurityConfig();
  */
 new RouterHades();
 /**
- *
+ * Pour hades
  */
 new CategoryMetaBox();
 /**
  * Balises pour le référencement
  */
-//new Seo();
+new Seo();
 /**
  * Actions sur les filtres de wp
  */
