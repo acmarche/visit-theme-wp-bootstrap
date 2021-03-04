@@ -30,6 +30,7 @@ if (Theme::isHomePage()) {
         'header/_header_home.html.twig',
         [
             'items' => $items,
+            'icones'=>$menu->getIcones()
         ]
     );
 } else {
@@ -37,6 +38,7 @@ if (Theme::isHomePage()) {
         'header/_header.html.twig',
         [
             'items' => $items,
+            'icones'=>$menu->getIcones()
         ]
     );
 }

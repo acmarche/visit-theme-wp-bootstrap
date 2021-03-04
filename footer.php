@@ -3,9 +3,17 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Twig;
+use VisitMarche\Theme\Inc\Menu;
+
+$menu = new Menu();
+$items = $menu->getMenuTop();
 
 Twig::rendPage(
-    'footer/footer.html.twig'
+    'footer/footer.html.twig',
+    [
+        'items' => $items,
+        'icones' => $menu->getIcones(),
+    ]
 );
 wp_footer();
 Twig::rendPage(

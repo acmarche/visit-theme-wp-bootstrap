@@ -5,6 +5,7 @@ namespace AcMarche\Theme;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Twig;
 use Exception;
+use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
@@ -45,6 +46,9 @@ try {
     Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
+$menu = new Menu();
+$items = $menu->getMenuTop();
+
 Twig::rendPage(
     'homepage/index.html.twig',
     [
@@ -52,6 +56,8 @@ Twig::rendPage(
         'inspirations' => $inspirations,
         'urlAgenda' => $urlAgenda,
         'urlInspiration' => $urlInspiration,
+        'items' => $items,
+        'icones' => $menu->getIcones(),
     ]
 );
 
