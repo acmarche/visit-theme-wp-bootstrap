@@ -3,7 +3,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;

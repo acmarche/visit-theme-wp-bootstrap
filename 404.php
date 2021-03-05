@@ -3,9 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Router;
-use AcMarche\Common\Twig;
-use VisitMarche\Theme\Inc\CategoryMetaBox;
-use VisitMarche\Theme\Lib\WpRepository;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 global $wp_rewrite;

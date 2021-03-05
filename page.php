@@ -3,8 +3,7 @@
 namespace AcMarche\Theme;
 
 
-use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
+use AcMarche\Theme\Lib\Twig;
 
 get_header();
 global $post;

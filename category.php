@@ -3,7 +3,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Inc\CategoryMetaBox;

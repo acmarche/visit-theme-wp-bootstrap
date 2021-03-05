@@ -3,7 +3,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -50,7 +50,7 @@ foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
-$relations = $hadesRepository->getEventRelations($offre, $currentCategory->cat_ID);
+$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
 
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();

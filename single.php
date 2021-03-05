@@ -3,8 +3,8 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Twig;
-use AcMarche\Common\WpRepository;
+use AcMarche\Theme\Lib\Twig;
+use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
 global $post;
@@ -16,12 +16,12 @@ if (has_post_thumbnail()) {
         $image = $images[0];
     }
 }
-
+$wpRepository = new WpRepository();
 $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
 
-$tags = WpRepository::getTags($post->ID);
-$relations = WpRepository::getRelations($post->ID);
+$tags = $wpRepository->getTags($post->ID);
+$relations = $wpRepository->getRelations($post->ID);
 $next = null;
 if (count($relations) > 0) {
     $next = $relations[0];

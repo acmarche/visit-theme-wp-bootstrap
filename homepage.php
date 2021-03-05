@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use Exception;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -30,7 +30,7 @@ $categoryAgenda = get_category_by_slug('agenda');
 $urlAgenda = '/';
 
 try {
-    $events = $hadesRepository->getEvents();
+    $events = $hadesRepository->getEvents($categoryAgenda->cat_ID);
     if ($categoryAgenda) {
         $urlAgenda = get_category_link($categoryAgenda);
         array_map(

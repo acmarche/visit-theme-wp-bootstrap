@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Twig;
+use AcMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Psr\Cache\InvalidArgumentException;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -14,7 +14,7 @@ $category = get_category($cat_ID);
 
 $hadesRepository = new HadesRepository();
 try {
-    $events = $hadesRepository->getEvents();
+    $events = $hadesRepository->getEvents($cat_ID);
     array_map(
         function ($event) use ($cat_ID) {
             $event->url = RouterHades::getUrlOffre($event, $cat_ID);
