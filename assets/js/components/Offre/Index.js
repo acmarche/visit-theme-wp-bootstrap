@@ -9,16 +9,18 @@ const {
 
 function Category() {
     const [ referenceHades, setReferenceHades ] = useState( '' );
+    const [ categoryId, setCategoryId ] = useState( 0 );
     const [ offres, setOffres ] = useState([]);
     const [ referenceOffre, setReferenceOffre ] = useState( '' );
     const [ isLoading, setIsLoading ] = useState( true );
 
-    async function loadOffres( quoi ) {
+    async function loadOffres( referenceString ) {
         setIsLoading( true );
         let response;
         try {
-            console.log( quoi );
-            response = await fetchOffres( quoi );
+            console.log( referenceString );
+            console.log( categoryId );
+            response = await fetchOffres( categoryId, referenceString );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
         } catch ( e ) {
@@ -31,6 +33,9 @@ function Category() {
     useEffect( () => {
         const name = 'app-offres';
         setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
+        setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
+
+        console.log( categoryId );
         if ( 0 < referenceHades.length ) {
             loadOffres( referenceHades );
         }
