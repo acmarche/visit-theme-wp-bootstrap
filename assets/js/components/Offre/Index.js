@@ -18,8 +18,6 @@ function Category() {
         setIsLoading( true );
         let response;
         try {
-            console.log( referenceString );
-            console.log( categoryId );
             response = await fetchOffres( categoryId, referenceString );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
@@ -34,8 +32,6 @@ function Category() {
         const name = 'app-offres';
         setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
-
-        console.log( categoryId );
         if ( 0 < referenceHades.length ) {
             loadOffres( referenceHades );
         }

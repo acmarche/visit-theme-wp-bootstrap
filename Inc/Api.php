@@ -12,8 +12,8 @@ class Api
 {
     public function __construct()
     {
-        if ( ! is_admin()) {
-          //  $this->registerCateogry();
+        if (!is_admin()) {
+            //  $this->registerCateogry();
             $this->registerEvent();
 
         }
@@ -28,7 +28,7 @@ class Api
                     'hades',
                     'filtres/(?P<keyword>.*+)',
                     [
-                        'methods'  => 'GET',
+                        'methods' => 'GET',
                         'callback' => function ($args) {
                             return ApiData::hadesFiltres($args);
                         },
@@ -42,9 +42,9 @@ class Api
             function () {
                 register_rest_route(
                     'hades',
-                    'offres/(?P<keyword>.*+)',
+                    'offres/(?P<category>[\d]+)/(?P<keyword>[\w]+)',
                     [
-                        'methods'  => 'GET',
+                        'methods' => 'GET',
                         'callback' => function ($args) {
                             return ApiData::hadesOffres($args);
                         },
@@ -64,7 +64,7 @@ class Api
                     'jfs/v1',
                     'all/(?P<catParent>.*+)',
                     [
-                        'methods'  => 'GET',
+                        'methods' => 'GET',
                         'callback' => function ($args) {
                             return ApiData::findPosts($args);
                         },
@@ -91,7 +91,7 @@ class Api
 
                 // No authentication has been performed yet.
                 // Return an error if user is not logged in.
-                if ( ! is_user_logged_in()) {
+                if (!is_user_logged_in()) {
                     return new \WP_Error(
                         'rest_not_logged_in',
                         __('You are not currently logged in.'),

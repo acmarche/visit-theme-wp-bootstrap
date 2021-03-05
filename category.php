@@ -27,7 +27,7 @@ if ($hadesRefrubrique) {
 
     $offres = $hadesRepository->getOffres($filtres);
     array_map(
-        function ($offre) use($cat_ID) {
+        function ($offre) use ($cat_ID) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
         },
         $offres
@@ -47,6 +47,7 @@ if ($hadesRefrubrique) {
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
+            'category' => $category,
             'referenceHades' => $hadesRefrubrique,
             'filtres' => $filtres,
             'offres' => $offres,
@@ -75,6 +76,9 @@ Twig::rendPage(
     'category/index.html.twig',
     [
         'title' => $category->name,
+        'category' => $category,
+        'urlBack' => $urlBack,
+        'nameBack' => $nameBack,
         'posts' => $posts,
     ]
 );

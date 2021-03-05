@@ -48,7 +48,8 @@ class ApiData
     public static function hadesOffres(WP_REST_Request $request)
     {
         $keyword = $request->get_param('keyword');
-        if (!$keyword) {
+        $category = (int)$request->get_param('category');
+        if (!$keyword or !$category) {
             Mailer::sendError("error hades offre", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
@@ -60,8 +61,8 @@ class ApiData
         $hadesRepository = new HadesRepository();
         $offres = $hadesRepository->getOffres($filtres);
         array_map(
-            function ($offre) {
-                $offre->url = RouterHades::getUrlOffre($offre, RouterHades::OFFRE_URL);
+            function ($offre) use ($category) {
+                $offre->url = RouterHades::getUrlOffre($offre, $category);
             },
             $offres
         );
