@@ -67,6 +67,7 @@ $children = $wpRepository->getChildrenOfCategory($cat_ID);
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $parent = $wpRepository->getParentCategory($cat_ID);
 
+$urlBack = '/';
 if ($parent) {
     $urlBack = get_category_link($parent->term_id);
     $nameBack = $parent->name;
