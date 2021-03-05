@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AcMarche\Theme\Lib;
+namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
@@ -20,7 +20,7 @@ class Twig
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
-        if ( ! $path) {
+        if (!$path) {
             $path = get_template_directory().'/templates';
         }
 
@@ -29,8 +29,8 @@ class Twig
         $environment = new Environment(
             $loader,
             [
-                'cache'            => ABSPATH.'var/cache',
-                'debug'            => WP_DEBUG,
+                'cache' => ABSPATH.'var/cache',
+                'debug' => WP_DEBUG,
                 'strict_variables' => WP_DEBUG,
             ]
         );
@@ -45,7 +45,6 @@ class Twig
         $environment->addFilter(self::categoryLink());
         $environment->addFunction(self::showTemplate());
         $environment->addFunction(self::currentUrl());
-        $environment->addFunction(self::wwwUrl());
         $environment->addFunction(self::isExternalUrl());
 
         return $environment;
@@ -63,9 +62,9 @@ class Twig
             echo $twig->render(
                 'errors/500.html.twig',
                 [
-                    'message'   => $e->getMessage(),
-                    'title'     => "La page n'a pas pu être chargée",
-                    'tags'      => [],
+                    'message' => $e->getMessage(),
+                    'title' => "La page n'a pas pu être chargée",
+                    'tags' => [],
                     'relations' => [],
                 ]
             );
@@ -92,10 +91,25 @@ class Twig
             function (): string {
                 if (true === WP_DEBUG) {
                     global $template;
+
                     return 'template: '.$template;
                 }
 
                 return '';
+            }
+        );
+    }
+
+    /**
+     * For sharing pages
+     * @return TwigFunction
+     */
+    public static function currentUrl(): TwigFunction
+    {
+        return new TwigFunction(
+            'currentUrl',
+            function (): string {
+                return Router::getCurrentUrl();
             }
         );
     }
@@ -106,7 +120,7 @@ class Twig
             'isExternalUrl',
             function (string $url): bool {
                 if (preg_match("#http#", $url)) {
-                    if ( ! preg_match("#https://new.marche.be#", $url)) {
+                    if (!preg_match("#https://new.marche.be#", $url)) {
                         return true;
                     }
 

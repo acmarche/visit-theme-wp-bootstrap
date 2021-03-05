@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Theme\Lib\Twig;
+use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Inc\Menu;
 
 $menu = new Menu();
