@@ -92,7 +92,7 @@ class Seo
     {
         $category = get_category($cat_id);
         self::$metas['title'] = self::baseTitle("");
-        self::$metas['description'] = $category->description;
+        self::$metas['description'] = self::cleanString($category->description);
         self::$metas['keywords'] = '';
     }
 
@@ -135,6 +135,14 @@ class Seo
         $base .= ' Ville de Marche-en-Famenne';
 
         return $begin.' '.$base;
+    }
+
+    private static function cleanString(string $description): string
+    {
+        $description = trim(strip_tags($description));
+        $description = preg_replace("#\"#", "", $description);
+
+        return $description;
     }
 
 }

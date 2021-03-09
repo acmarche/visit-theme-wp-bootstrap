@@ -6,12 +6,8 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
-use Elastica\Exception\InvalidException;
 use WP_Error;
-use WP_HTTP_Response;
-use WP_Query;
 use WP_REST_Request;
-use WP_REST_Response;
 
 /**
  * Enregistrement des routes pour les api pour les composants react
@@ -20,14 +16,6 @@ use WP_REST_Response;
  */
 class ApiData
 {
-    public static function ca_events()
-    {
-        $hadesRepository = new HadesRepository();
-        $events = $hadesRepository->getEvents();
-
-        return rest_ensure_response($events);
-    }
-
     public static function hadesFiltres(WP_REST_Request $request)
     {
         $hadesRefrubrique = $request->get_param('keyword');

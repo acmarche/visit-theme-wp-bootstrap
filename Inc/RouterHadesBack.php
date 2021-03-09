@@ -14,7 +14,7 @@ use AcMarche\Pivot\Entities\OffreInterface;
  * Class Router
  * @package AcMarche\Theme\Inc
  */
-class RouterHades extends Router
+class RouterHadesBack extends Router
 {
     const PARAM_EVENT = 'codecgt';
     const EVENT_URL = 'manifestation';
@@ -49,16 +49,15 @@ class RouterHades extends Router
         add_action(
             'init',
             function () {
-                $taxonomy = get_taxonomy('category');
-                $categoryBase = $taxonomy->rewrite['slug'];
+                $taxonomy       = get_taxonomy('category');
+                $categoryBase   = $taxonomy->rewrite['slug'];
                 $categoryAgenda = get_category_by_slug('agenda');
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
                 //url parser: /category/agenda/event/866/
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
-                if ($categoryAgenda)
-                {
+                if ($categoryAgenda) {
                     add_rewrite_rule(
                         '^'.$categoryBase.'/'.$categoryAgenda->slug.'/([^/]*)/([^/]*)/?',
                         'index.php?category_name='.$categoryAgenda->slug.'&'.self::PARAM_EVENT.'=$matches[2]',
@@ -79,7 +78,7 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || !$wp_query->is_main_query()) {
+                if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
 
@@ -99,7 +98,7 @@ class RouterHades extends Router
         add_action(
             'init',
             function () {
-                $taxonomy = get_taxonomy('category');
+                $taxonomy     = get_taxonomy('category');
                 $categoryBase = $taxonomy->rewrite['slug'];
 
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
@@ -128,7 +127,7 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || !$wp_query->is_main_query()) {
+                if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
                 if (get_query_var(self::PARAM_OFFRE) == false ||
@@ -146,13 +145,4 @@ class RouterHades extends Router
         add_rewrite_tag('%offre%', '([^&]+)');//utilite?
     }
 
-    public static function setRouteEvents(array $events)
-    {
-        array_map(
-            function ($event) {
-                $event->url = self::getUrlEvent($event);
-            },
-            $events
-        );
-    }
 }

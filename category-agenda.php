@@ -14,7 +14,7 @@ $category = get_category($cat_ID);
 
 $hadesRepository = new HadesRepository();
 try {
-    $events = $hadesRepository->getEvents($cat_ID);
+    $events = $hadesRepository->getEvents();
     array_map(
         function ($event) use ($cat_ID) {
             $event->url = RouterHades::getUrlOffre($event, $cat_ID);
