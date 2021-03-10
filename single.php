@@ -30,6 +30,10 @@ $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
 
+$imagesCat = ['baiser.png', 'eglise.png', 'sacdos.png', 'statue.png', 'tambour.png',];
+$rand_keys = array_rand($imagesCat, 1);
+$imgcat = $imagesCat[$rand_keys];
+
 Twig::rendPage(
     'article/show.html.twig',
     [
@@ -42,6 +46,7 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'content' => $content,
         'next' => $next,
+        'imgcat' => $imgcat,
     ]
 );
 get_footer();
