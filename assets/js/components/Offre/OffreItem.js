@@ -18,8 +18,7 @@ function OffreItem( propos ) {
         categories.push( values.lib );
     });
 
-    let style = {
-    };
+    let style = {};
     let classBg = 'bg-img-enjoy-1';
 
     if ( 0 < offre.medias.length ) {
@@ -46,7 +45,7 @@ function OffreItem( propos ) {
                         <h3 maxlenght="0">{offre.titre}</h3>
 
                         <p maxlenght="170">
-                            {description.slice( 0, 170 )}
+                            {description && description.slice( 0, 170 )}
                         </p>
 
                         <span className="text-primary">
