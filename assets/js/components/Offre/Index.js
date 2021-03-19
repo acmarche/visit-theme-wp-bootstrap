@@ -21,7 +21,6 @@ function Category() {
             console.log( categoryId, referenceString );
             response = await fetchOffres( categoryId, referenceString );
             setOffres( Object.entries( response.data ) );
-            console.log( response.data );
             setIsLoading( false );
         } catch ( e ) {
             console.log( e );
