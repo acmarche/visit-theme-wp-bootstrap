@@ -24,7 +24,8 @@ function OffreItem( propos ) {
     if ( 0 < offre.medias.length ) {
         style = {
             backgroundImage: `url(${offre.medias[0].url})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         };
         classBg = '';
     }
