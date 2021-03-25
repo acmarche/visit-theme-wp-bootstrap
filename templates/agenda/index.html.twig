@@ -9,10 +9,10 @@
             <a href="/"
                class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
                         class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
-                Retour à l'accueil</a>
+                {{ 'back.homepage'|trans }}</a>
 
             <!--title-->
-            <h2 class="text-white lh-100">{{ 'Agenda'|trans }}</h2>
+            <h2 class="text-white lh-100">{{ 'agenda.title'|trans }}</h2>
         </div>
     </div>
 
@@ -51,7 +51,8 @@
         </ul>
 
         <a href="#"
-           class="button lvl3 mt-20px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">Charger
-            plus d'événements<i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
+           class="button lvl3 mt-20px align-self-ls-md-center align-self-md-center position-relative left-0 d-flex justify-content-center">
+            {{ 'agenda.moreevents'|trans }}
+            <i class="fas fa-angle-down d-ls-md-inline pl-8px pl-md-12px fs-basic d-md-inline"></i></a>
     </div>
 </section>
