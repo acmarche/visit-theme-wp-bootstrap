@@ -6,7 +6,12 @@ namespace VisitMarche\Theme\Lib;
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\OffreInterface;
+use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
+use Symfony\Component\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -51,8 +56,11 @@ class Twig
         // wp_get_environment_type();
         if (WP_DEBUG) {
             $environment->addExtension(new DebugExtension());
-            $environment->addExtension(new StringExtension());
         }
+
+        $translator = self::iniTranslator();
+        $environment->addExtension(new TranslationExtension($translator));
+        $environment->addExtension(new StringExtension());
 
         $environment->addGlobal('template_directory', get_template_directory_uri());
         $environment->addFilter(self::categoryLink());
@@ -155,5 +163,18 @@ class Twig
                 return false;
             }
         );
+    }
+
+    private static function iniTranslator(): TranslatorInterface
+    {
+        $translator = new Translator('fr_FR');
+        $yamlLoader = new YamlFileLoader();
+        $xmlLoader = new XliffFileLoader();
+        $translator->addLoader('yaml', $yamlLoader);
+        $translator->addLoader('xml', $xmlLoader);
+        $translator->addResource('yaml', 'translations/messages.fr.yaml', 'fr');
+        $translator->addResource('xml', 'translations/messages.fr.xml', 'fr');
+
+        return $translator;
     }
 }
