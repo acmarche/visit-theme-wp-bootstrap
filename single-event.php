@@ -19,7 +19,6 @@ $nameBack = $currentCategory->name;
 
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
-    // dump($offre);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
@@ -50,15 +49,15 @@ foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
-$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
-
+//$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
+$relations = [];
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
 Twig::rendPage(
     'agenda/show.html.twig',
     [
-        'title' => $offre->titre,
+        'title' => $offre->getTitre(),
         'currentCategory' => $currentCategory,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,

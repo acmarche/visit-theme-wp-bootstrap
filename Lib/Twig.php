@@ -5,6 +5,8 @@ namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
+use AcMarche\Pivot\Entities\OffreInterface;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -17,6 +19,17 @@ use Twig\TwigFunction;
 
 class Twig
 {
+    /**
+     * @var \Symfony\Component\PropertyAccess\PropertyAccessor
+     */
+    private $propertyAccessor;
+
+    public function __construct()
+    {
+
+        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+    }
+
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
@@ -43,6 +56,7 @@ class Twig
 
         $environment->addGlobal('template_directory', get_template_directory_uri());
         $environment->addFilter(self::categoryLink());
+        $environment->addFilter(self::translation());
         $environment->addFunction(self::showTemplate());
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::isExternalUrl());
@@ -80,6 +94,17 @@ class Twig
             'category_link',
             function (int $categoryId): ?string {
                 return get_category_link($categoryId);
+            }
+        );
+    }
+
+    protected static function translation(): TwigFilter
+    {
+        return new TwigFilter(
+            'translationjf',
+            function ($x, OffreInterface $offre, string $property): ?string {
+
+                return $offre->$property->languages['fr'];
             }
         );
     }
