@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="agenda.title">
+                <source>agenda.title</source>
+                <target>Agenda</target>
+            </trans-unit>
+            <trans-unit id="back.homepage">
+                <source>back.homepage</source>
+                <target>Retour à l'accueil</target>
+            </trans-unit>
+            <trans-unit id="agenda.moreevents">
+                <source>agenda.moreevents</source>
+                <target>Charger plus d'événements</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
