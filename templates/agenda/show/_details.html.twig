@@ -1,8 +1,8 @@
 <h3 class="mb-2 mt-2"><strong>Renseignements</strong></h3>
-
+<p>
 {% for contact in offre.contacts %}
     {% if contact.lib('fr') %}
-        <strong>{{ contact.lib('fr') }}</strong>
+        <strong>{{ contact.lib('fr') }}</strong><br/>
     {% endif %}
     {% if contact.noms %}
         <p>   {{ contact.noms }} {{ contact.prenoms }}</p>
@@ -11,6 +11,7 @@
     <span>{{ contact.adresse }} {{ contact.numero }}<br/>
         {{ contact.postal }} {{ contact.localite }}</span><br/>
     {% for communication in contact.communications %}
-        <span><strong>{{ communication.lib('fr') }}</strong> {{ communication.val }}</span><br/><br/>
+        <span><strong>{{ communication.lib('fr') }}</strong> {{ communication.val }}</span><br/>
     {% endfor %}
 {% endfor %}
+</p>
