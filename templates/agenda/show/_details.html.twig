@@ -11,6 +11,6 @@
     <span>{{ contact.adresse }} {{ contact.numero }}<br/>
         {{ contact.postal }} {{ contact.localite }}</span><br/>
     {% for communication in contact.communications %}
-        <span><strong>{{ communication.name }}</strong> {{ communication.value }}</span><br/><br/>
+        <span><strong>{{ communication.lib('fr') }}</strong> {{ communication.val }}</span><br/><br/>
     {% endfor %}
 {% endfor %}

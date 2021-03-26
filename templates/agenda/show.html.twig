@@ -89,8 +89,8 @@
                     </div>
                     <div for="text-dyn">
                         {% for description in offre.descriptions %}
-                            <p>{{ description.lib.('fr')|raw }} </p>
-                            <p>{{ description.texte.('fr')|raw }} </p>
+                            <p>{{ description.lib('fr')|raw }} </p>
+                            <p>{{ description.texte('fr')|raw }} </p>
                         {% endfor %}
                         {% include 'agenda/show/_details.html.twig' %}
                         {% include 'agenda/show/_images.html.twig' %}
