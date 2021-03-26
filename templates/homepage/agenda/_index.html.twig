@@ -1,7 +1,7 @@
 <!--events-->
 <div class="pt-55px px-0 col-md-4 d-md-flex flex-md-column pt-md-0 px-md-15px pt-ls-md-0 col-ls-md-4 d-ls-md-flex flex-ls-md-column px-xl-30px mw-md-544px">
     <div class="p-ls-md-8px ls-md-shadow-sm-1 p-md-8px md-shadow-sm-1 rounded-xs">
-        <h2 class="text-ls-md-left text-md-left">{{ 'Agenda'|trans }}</h2>
+        <h2 class="text-ls-md-left text-md-left">{{ 'agenda.title'|trans }}</h2>
         <ul class="pt-24px pt-ls-md-32px d-ls-sm-flex mx-ls-sm-n4px flex-ls-md-column pt-md-32px flex-md-column">
             {% if events|length > 0 %}
                 <!--always visible-->
@@ -100,7 +100,7 @@
                             <span class="d-block text-default ff-semibold lh-100 fs-short-3 t-color-hover-white t-transition-color">0000</span>
                         </div>
                         <div class="col-9 py-11px pl-28px pl-ls-sm-14px pr-14px align-self-center text-left lh-0 pl-md-14px">
-                            <h3 class="lh-125 fs-short-2 text-default pb-4px">{{ 'Aucun événements trouvés'|trans }}</h3>
+                            <h3 class="lh-125 fs-short-2 text-default pb-4px">{{ 'events.notfound'|trans }}</h3>
                             <small class="lh-100 fs-short-3 text-default">Marche</small>
                         </div>
                     </a>
@@ -111,5 +111,5 @@
 
     <a href="{{ urlAgenda }}"
        class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">
-        {{ 'Tout l''agenda'|trans }}<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+        {{ 'events.all'|trans }}<i class="fas fa-angle-right d-none d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
 </div>

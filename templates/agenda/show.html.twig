@@ -11,7 +11,7 @@
                     class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
             à {{ currentCategory.name }}</a>
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre|translationjf(offre, 'libelle') }}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre('fr')}}</h2>
 
         <!--category-->
         <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
@@ -63,8 +63,8 @@
                         <!--schedule-->
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             {% for horaire in offre.horaires %}
-                                <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
-                                <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
+                                <h4 class="ff-semibold fs-short-1">{{ horaire.lib('fr') }}</h4>
+                                <span class="fs-short-2 pt-8px d-block">{{ horaire.texte('fr') }}</span>
                             {% endfor %}
                         </div>
 

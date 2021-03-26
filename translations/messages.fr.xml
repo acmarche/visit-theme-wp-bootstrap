@@ -14,6 +14,14 @@
                 <source>agenda.moreevents</source>
                 <target>Charger plus d'événements</target>
             </trans-unit>
+            <trans-unit id="events.notfound">
+                <source>events.notfound</source>
+                <target>Evènements non trouvés</target>
+            </trans-unit>
+            <trans-unit id="events.all">
+                <source>events.all</source>
+                <target>Tout l'agenda</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

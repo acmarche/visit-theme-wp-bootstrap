@@ -41,9 +41,10 @@ if (!$offre) {
     return;
 }
 
+$language = 'fr';
 $tags = [];
 foreach ($offre->categories as $category) {
-    $tags[] = ['name' => $category->lib, 'url' => RouterHades::getUrlEventCategory($category)];
+    $tags[] = ['name' => $category->getLib($language), 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
 $contact = $offre->contactPrincipal();
@@ -53,7 +54,7 @@ $communication = $offre->communcationPrincipal();
 Twig::rendPage(
     'offre/show.html.twig',
     [
-        'title' => $offre->titre,
+        'title' => $offre->getTitre($language),
         'offre' => $offre,
         'currentCategory' => $currentCategory,
         'contact' => $contact,

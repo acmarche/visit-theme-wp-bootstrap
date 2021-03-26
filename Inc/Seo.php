@@ -33,7 +33,7 @@ class Seo
 
         $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
         if ($codeCgt) {
-            self::metaBottinEvent($codeCgt);
+            self::metaHadesOffre($codeCgt);
         }
 
         echo '<title>'.self::$metas['title'].'</title>';
@@ -47,34 +47,35 @@ class Seo
         }
     }
 
-    private static function metaBottinEvent(string $codeCgt)
+    private static function metaHadesOffre(string $codeCgt)
     {
+        $language = 'fr';
         $hadesRepository = new HadesRepository();
-        $event = $hadesRepository->getOffre($codeCgt);
-        if ($event) {
-            self::$metas['title'] = $event->titre.' | Agenda des manifestations ';
+        $offre = $hadesRepository->getOffre($codeCgt);
+        if ($offre) {
+            self::$metas['title'] = $offre->getTitre($language).' | Agenda des manifestations ';
             self::$metas['description'] = join(
                 ',',
                 array_map(
-                    function ($description) {
-                        return $description->texte;
+                    function ($description) use ($language) {
+                        return $description->getTexte($language);
                     },
-                    $event->descriptions
+                    $offre->descriptions
                 )
             );
             $keywords = array_map(
-                function ($category) {
-                    return $category->lib;
+                function ($category)use ($language) {
+                    return $category->getLib($language);
                 },
-                $event->categories
+                $offre->categories
             );
             $keywords = array_merge(
                 $keywords,
                 array_map(
-                    function ($category) {
-                        return $category->lib;
+                    function ($selection) {
+                        return $selection->lib;
                     },
-                    $event->selections
+                    $offre->selections
                 )
             );
             self::$metas['keywords'] = join(",", $keywords);

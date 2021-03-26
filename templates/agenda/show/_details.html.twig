@@ -1,8 +1,8 @@
 <h3 class="mb-2 mt-2"><strong>Renseignements</strong></h3>
 
 {% for contact in offre.contacts %}
-    {% if contact.lib %}
-        <strong>{{ contact.lib }}</strong>
+    {% if contact.lib('fr') %}
+        <strong>{{ contact.lib('fr') }}</strong>
     {% endif %}
     {% if contact.noms %}
         <p>   {{ contact.noms }} {{ contact.prenoms }}</p>
