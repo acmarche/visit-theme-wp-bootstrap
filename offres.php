@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Template Name: Page-Offres
+ */
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Repository\HadesRemoteRepository;

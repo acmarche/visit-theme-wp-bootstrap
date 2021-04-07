@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Template Name: Home-Page-Principal
+ */
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
@@ -10,9 +12,6 @@ use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\WpRepository;
 use AcMarche\Pivot\Repository\HadesRepository;
 
-/**
- * Template Name: Home-Page-Principal
- */
 get_header();
 
 $wpRepository = new WpRepository();
