@@ -26,13 +26,23 @@ foreach ($categoryUtils->categories as $category) {
             $categoryUtils->initLvl1($category);
             continue;
         }
+        $categoryUtils->root['items'] = $categoryUtils->lvl2;
         $categoryUtils->tree[] = $categoryUtils->root;
         $categoryUtils->initLvl1($category);
     }
 
     if ($category->lvl2) {
+        //  if($closeLvl2 ==false) {
         $categoryUtils->addLevel2($category);
         $closeLvl1 = true;
+        //      continue;
+        //  }
+        //  $categoryUtils->lvl2[] = $category;
+    }
+
+    if ($category->lvl3) {
+           $categoryUtils->addLevel3($category);
+            $closeLvl2 = true;
     }
 
     if (preg_match("#Événements#", $category->lvl1)) {
