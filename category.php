@@ -33,9 +33,6 @@ if ($hadesRefrubrique) {
         $offres
     );
 
-    $all = Hades::allCategories();
-    $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
-
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/offre.js',
