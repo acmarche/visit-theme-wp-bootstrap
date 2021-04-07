@@ -5,6 +5,7 @@ namespace VisitMarche\Theme\Lib;
 use VisitMarche\Theme\Inc\Theme;
 use WP_Post;
 use WP_Query;
+use wpdb;
 
 class WpRepository
 {
@@ -113,7 +114,7 @@ class WpRepository
                 'title' => $post->post_title,
                 'url' => get_permalink($post->ID),
                 'image' => $image,
-                'tags'  => self::getTags($post->ID),
+                'tags' => self::getTags($post->ID),
             ];
 
         }
@@ -146,5 +147,14 @@ class WpRepository
         return $post_thumbnail_url;
     }
 
+    public function getCategoriesHades()
+    {
+        /**
+         * @var wpdb $wpdb
+         */
+        global $wpdb;
+
+        return $wpdb->get_results("SELECT * FROM hades");
+    }
 
 }
