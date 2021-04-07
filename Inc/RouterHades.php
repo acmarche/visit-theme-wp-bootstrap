@@ -146,13 +146,4 @@ class RouterHades extends Router
         add_rewrite_tag('%offre%', '([^&]+)');//utilite?
     }
 
-    public static function setRouteEvents(array $events)
-    {
-        array_map(
-            function ($event) {
-                $event->url = self::getUrlEvent($event);
-            },
-            $events
-        );
-    }
 }
