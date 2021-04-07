@@ -23,7 +23,7 @@ foreach ($categories as $category) {
         $category->count = $count;
     }
     if (preg_match("#Economie#", $category->lvl1)) {
-        break;
+        //break;
     }
 }
 
