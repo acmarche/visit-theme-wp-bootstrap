@@ -13,41 +13,34 @@ get_header();
 
 $hadesRemoteRepository = new HadesRemoteRepository();
 $categoryUtils = new CategoryUtils();
-$tree = [];
-$first = true;
-$lvl2 = $lvl3 = false;
+
+$closeLvl1 = $closeLvl2 = $closeLvl3 = false;
+
 $categoryUtils->initLvl();
+
+$item = [];
 foreach ($categoryUtils->categories as $category) {
 
     if ($category->lvl1) {
-        if ($lvl2) {
-            $categoryUtils->finishLvl();
-            dump($categoryUtils->lvl);
-            $categoryUtils->initLvl();
-            $lvl2 = false;
+        if ($closeLvl1 == false) {
+            $categoryUtils->initLvl1($category);
+            continue;
         }
-        $categoryUtils->lvl['name'] = $category->lvl1;
+        $categoryUtils->tree[] = $categoryUtils->root;
+        $categoryUtils->initLvl1($category);
     }
 
     if ($category->lvl2) {
-        $lvl2 = true;
-        if ($lvl3) {
-            $categoryUtils->finishLvl3();
-            $lvl3 = false;
-        }
         $categoryUtils->addLevel2($category);
+        $closeLvl1 = true;
     }
 
-    if ($category->lvl3) {
-        $lvl3 = true;
-        $categoryUtils->addLevel3($category);
-    }
-
-    if (preg_match("#Economie#", $category->lvl1)) {
+    if (preg_match("#Événements#", $category->lvl1)) {
         break;
     }
 }
 
+dump($categoryUtils->tree);
 
 //$offres = $hadesRepository->getOffres();
 //dump($offres);
