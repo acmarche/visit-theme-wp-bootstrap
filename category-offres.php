@@ -22,7 +22,7 @@ $filtres = [$hadesRefrubrique];
 
 $offres = $hadesRepository->getOffres($filtres);
 array_map(
-    function ($offre) use ($cat_ID) {dump($offre);
+    function ($offre) use ($cat_ID) {
         $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
     },
     $offres

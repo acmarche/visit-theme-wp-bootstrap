@@ -8,28 +8,23 @@ function OffreItem( propos ) {
         'object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px'
     ];
 
-    let description = '';
-    if ( 0 < offre.descriptions.length ) {
-        description = offre.descriptions[0].texte;
-    }
-
     const categories = [];
     Object.entries( offre.categories ).forEach( ([ id, values ]) => {
-        categories.push( values.lib );
+        categories.push( values.titre );
     });
 
     let style = {};
     let classBg = 'bg-img-enjoy-1';
 
-    if ( 0 < offre.medias.length ) {
+    if ( 0 < offre.image ) {
         style = {
-            backgroundImage: `url(${offre.medias[0].url})`,
+            backgroundImage: `url(${offre.image.url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         };
         classBg = '';
     }
-
+    console.log( offre );
     return (
         <>
             <li className={indexedClass[clef] ? indexedClass[clef] : indexedClass[3]}>
@@ -46,7 +41,7 @@ function OffreItem( propos ) {
                         <h3 maxlenght="0">{offre.titre}</h3>
 
                         <p maxlenght="170">
-                            {description && description.slice( 0, 170 )}
+                            {offre.description && offre.description.slice( 0, 170 )}
                         </p>
 
                         <span className="text-primary">

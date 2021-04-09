@@ -54,7 +54,6 @@ class Api
         );
     }
 
-
     public function registerCateogry()
     {
         add_action(

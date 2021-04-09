@@ -51,6 +51,19 @@ class ApiData
         array_map(
             function ($offre) use ($category) {
                 $offre->url = RouterHades::getUrlOffre($offre, $category);
+                $offre->titre = $offre->getTitre('fr');
+                $description = null;
+                if (count($offre->descriptions) > 0) {
+                    $description = $offre->descriptions[0]->getTexte('fr');
+                }
+                $offre->description = $description;
+                array_map(
+                    function ($category) {
+                        $category->titre = $category->getLib('fr');
+                    },
+                    $offre->categories
+                );
+                $offre->image = $offre->firstImage();
             },
             $offres
         );
