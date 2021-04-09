@@ -12,22 +12,20 @@ use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
 
-$hadesRefrubrique = $_GET['cgt'];
-$cat_ID = 1;
-$category = get_category($cat_ID);
-
+$hadesRefrubrique = $_GET['cgt'] ?? '';
+$category = get_category_by_slug('show');
 $hadesRepository = new HadesRepository();
 
 $filtres = [$hadesRefrubrique];
 
 $offres = $hadesRepository->getOffres($filtres);
+$cat_ID = $category->cat_ID;
 array_map(
     function ($offre) use ($cat_ID) {
         $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
     },
     $offres
 );
-
 
 $urlBack = '/';
 $nameBack = 'accueil';

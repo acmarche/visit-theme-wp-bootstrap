@@ -19,7 +19,6 @@ $nameBack = $currentCategory->name;
 $hadesRepository = new HadesRepository();
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
-    dump($offre);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
