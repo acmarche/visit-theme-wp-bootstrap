@@ -8,12 +8,15 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1; }
+    opacity: 1;
+  }
   50% {
-    opacity: 0; }
+    opacity: 0;
+  }
   100% {
-    opacity: 1; } }
-
+    opacity: 1;
+  }
+}
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -34,20 +37,23 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg); }
+    transform: rotate(-30deg);
+  }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
+    transform: rotate(360deg);
+  }
+}
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -56,13 +62,15 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg); }
+    transform: rotate(55deg);
+  }
   100% {
     bottom: -2px;
     right: 0;
@@ -70,8 +78,9 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg); } }
-
+    transform: rotate(-1800deg);
+  }
+}
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
@@ -127,45 +136,45 @@
 }*/
 /* EXTENDS */
 /* COLORS */
-/* line 6, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-gradient-img {
   background: -webkit-linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -moz-linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -ms-linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -o-linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
-  background: linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important; }
+  background: linear-gradient(90deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
+}
 
-/* line 9, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-gradient-img-90 {
   background: -webkit-linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -moz-linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -ms-linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
   background: -o-linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
-  background: linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important; }
+  background: linear-gradient(180deg, rgba(77, 77, 77, 0.35), rgba(231, 218, 203, 0.35)) !important;
+}
 
-/* line 12, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-cat-pat {
-  background-color: #aab7d8 !important; }
+  background-color: #aab7d8 !important;
+}
 
-/* line 15, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-cat-art {
-  background-color: #f5cc73 !important; }
+  background-color: #f5cc73 !important;
+}
 
-/* line 18, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-cat-wal {
-  background-color: #64966f !important; }
+  background-color: #64966f !important;
+}
 
-/* line 21, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-cat-del {
-  background-color: #efbfb1 !important; }
+  background-color: #efbfb1 !important;
+}
 
-/* line 24, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-cat-par {
-  background-color: #efd7cd !important; }
+  background-color: #efd7cd !important;
+}
 
-/* line 30, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .filter-grey {
-  filter: grayscale(1); }
+  filter: grayscale(1);
+}
 
 /*.bg-active {
 	background-color: $active !important;
@@ -173,89 +182,89 @@
 /*.bg-gradient-active {
 	@include gradient(90deg, $lightActive, $active);
 }*/
-/* line 43, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-primary {
-  background-color: #fd8383 !important; }
+  background-color: #fd8383 !important;
+}
 
-/* line 46, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-primary-55 {
-  background-color: rgba(253, 131, 131, 0.55) !important; }
+  background-color: rgba(253, 131, 131, 0.55) !important;
+}
 
-/* line 49, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-gradient-primary {
   background: -webkit-linear-gradient(90deg, #fd8383, #487f89) !important;
   background: -moz-linear-gradient(90deg, #fd8383, #487f89) !important;
   background: -ms-linear-gradient(90deg, #fd8383, #487f89) !important;
   background: -o-linear-gradient(90deg, #fd8383, #487f89) !important;
-  background: linear-gradient(90deg, #fd8383, #487f89) !important; }
+  background: linear-gradient(90deg, #fd8383, #487f89) !important;
+}
 
-/* line 53, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-dark-primary {
-  background-color: #487f89 !important; }
+  background-color: #487f89 !important;
+}
 
-/* line 57, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-white-75 {
-  background-color: rgba(255, 255, 255, 0.75) !important; }
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
 
-/* line 61, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-secondary {
-  background-color: gray !important; }
+  background-color: gray !important;
+}
 
-/* line 65, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-dark {
-  background-color: #636061 !important; }
+  background-color: #636061 !important;
+}
 
-/* line 68, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-dark-90 {
-  background-color: rgba(99, 96, 97, 0.9) !important; }
+  background-color: rgba(99, 96, 97, 0.9) !important;
+}
 
-/* line 72, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-darkest {
-  background-color: #050032 !important; }
+  background-color: #050032 !important;
+}
 
-/* line 75, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-darkest-10 {
-  background-color: rgba(5, 0, 50, 0.1) !important; }
+  background-color: rgba(5, 0, 50, 0.1) !important;
+}
 
-/* line 79, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-light {
-  background-color: #bdc3c3 !important; }
+  background-color: #bdc3c3 !important;
+}
 
-/* line 82, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-lighter {
-  background-color: #ededec !important; }
+  background-color: #ededec !important;
+}
 
-/* line 85, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-lighter-55 {
-  background-color: rgba(237, 237, 236, 0.55) !important; }
+  background-color: rgba(237, 237, 236, 0.55) !important;
+}
 
-/* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-danger {
-  background-color: #de2c01 !important; }
+  background-color: #de2c01 !important;
+}
 
-/* line 91, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-success {
-  background-color: #16ba99 !important; }
+  background-color: #16ba99 !important;
+}
 
-/* line 94, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-success-10 {
-  background-color: rgba(22, 186, 153, 0.1) !important; }
+  background-color: rgba(22, 186, 153, 0.1) !important;
+}
 
-/* line 97, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-gradient-success {
   background: -webkit-linear-gradient(90deg, #14be78, #16ba99) !important;
   background: -moz-linear-gradient(90deg, #14be78, #16ba99) !important;
   background: -ms-linear-gradient(90deg, #14be78, #16ba99) !important;
   background: -o-linear-gradient(90deg, #14be78, #16ba99) !important;
-  background: linear-gradient(90deg, #14be78, #16ba99) !important; }
+  background: linear-gradient(90deg, #14be78, #16ba99) !important;
+}
 
-/* line 101, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-pastel {
-  background-color: #e7dacb !important; }
+  background-color: #e7dacb !important;
+}
 
-/* line 105, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .bg-none {
-  background: none !important; }
+  background: none !important;
+}
 
 /*.text-active {
 	color: $active !important;
@@ -263,13 +272,13 @@
 /*.text-light-primary {
 	color: $lightCTA !important;
 }*/
-/* line 117, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-primary {
-  color: #fd8383 !important; }
+  color: #fd8383 !important;
+}
 
-/* line 120, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-dark-primary {
-  color: #487f89 !important; }
+  color: #487f89 !important;
+}
 
 /*.text-light-blue {
 	color: $lightBlue !important;
@@ -277,60 +286,55 @@
 /*.text-dark-blue {
 	color: $darkBlue !important;
 }*/
-/* line 129, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-secondary {
-  color: gray !important; }
+  color: gray !important;
+}
 
-/* line 132, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-default {
-  color: #636061 !important; }
+  color: #636061 !important;
+}
 
-/* line 135, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-darkest-10 {
-  color: rgba(5, 0, 50, 0.1); }
+  color: rgba(5, 0, 50, 0.1);
+}
 
-/* line 138, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-darkest-30 {
-  color: rgba(5, 0, 50, 0.3); }
+  color: rgba(5, 0, 50, 0.3);
+}
 
-/* line 141, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-light {
-  color: #bdc3c3 !important; }
+  color: #bdc3c3 !important;
+}
 
-/* line 144, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-danger {
-  color: #de2c01 !important; }
+  color: #de2c01 !important;
+}
 
-/* line 147, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-success {
-  color: #16ba99 !important; }
+  color: #16ba99 !important;
+}
 
-/* line 150, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 .text-success-50 {
-  color: rgba(22, 186, 153, 0.5); }
+  color: rgba(22, 186, 153, 0.5);
+}
 
-/* line 159, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
 a:hover.bg-hover-white {
-  background-color: white !important; }
-
-/* line 162, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
+  background-color: white !important;
+}
 a:hover .bg-hover-white {
-  background-color: white !important; }
-
-/* line 166, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
+  background-color: white !important;
+}
 a:hover.text-hover-primary {
-  color: #fd8383 !important; }
-
-/* line 169, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
+  color: #fd8383 !important;
+}
 a:hover .text-hover-primary {
-  color: #fd8383 !important; }
-
-/* line 173, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
+  color: #fd8383 !important;
+}
 a:hover.text-hover-default {
-  color: #636061 !important; }
-
-/* line 176, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/overBootstrap/colors.scss */
+  color: #636061 !important;
+}
 a:hover .text-hover-default {
-  color: #636061 !important; }
+  color: #636061 !important;
+}
 
 /*# sourceMappingURL=colors.css.map */
