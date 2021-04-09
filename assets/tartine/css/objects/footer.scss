@@ -9,8 +9,10 @@ footer {
     
     @media screen {
         @media (orientation: landscape) {
-            padding-bottom: 24px;
-            padding-left: 66px;
+            @media (min-width: $sm) {
+                padding-bottom: 24px;
+                padding-left: 66px;
+            }
         }
         
         @media (min-width: $md) {

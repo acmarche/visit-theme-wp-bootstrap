@@ -8,15 +8,12 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1;
-  }
+    opacity: 1; }
   50% {
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
+
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -37,23 +34,20 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
+    transform: rotate(-30deg); }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
+
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -62,15 +56,13 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg);
-  }
+    transform: rotate(55deg); }
   100% {
     bottom: -2px;
     right: 0;
@@ -78,9 +70,8 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg);
-  }
-}
+    transform: rotate(-1800deg); } }
+
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
@@ -136,6 +127,7 @@
 }*/
 /* EXTENDS */
 /* HEADER */
+/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
 header {
   max-width: 1920px;
   margin: auto;
@@ -144,104 +136,105 @@ header {
   left: 0;
   right: 0;
   z-index: 1030;
-  width: 100%;
-}
-@media screen and (orientation: landscape) {
+  width: 100%; }
+
+@media screen and (orientation: landscape) and (min-width: 576px) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header {
     width: calc(100% - 42px);
-    left: 42px;
-  }
-}
+    left: 42px; } }
+
 @media screen and (orientation: landscape) and (min-width: 992px) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header {
     width: 100%;
-    left: 0;
-  }
-}
-header.version_b > div > div.language a {
-  color: #636061;
-}
-header > div {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 1.5rem;
-  align-items: center;
-  margin: auto;
-  flex-wrap: wrap;
-  /* ------- */
-  /* - NAV - */
-  /* ------- */
-}
-@media screen and (min-width: 1200px) {
+    left: 0; } }
+  /* line 33, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header.version_b > div > div.language a {
+    color: #636061; }
+  /* line 41, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header > div {
-    padding-right: 3rem;
-  }
-}
-header > div > a {
-  flex-grow: 1;
-  height: 60px;
-  padding: 12px 1.5rem;
-}
-@media screen and (orientation: landscape) {
-  header > div > a {
-    adding: 6px 1.5rem 6px 9px;
-  }
-}
-@media screen and (min-width: 768px) {
-  header > div > a {
-    padding: 3px 1.5rem;
-  }
-}
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1.5rem;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+    /* ------- */
+    /* - NAV - */
+    /* ------- */ }
+
 @media screen and (min-width: 1200px) {
+  /* line 41, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div {
+    padding-right: 3rem; } }
+    /* line 55, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+    header > div > a {
+      flex-grow: 1;
+      height: 60px;
+      padding: 12px 1.5rem; }
+
+@media screen and (orientation: landscape) and (min-width: 576px) {
+  /* line 55, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > a {
+    padding: 6px 1.5rem 6px 9px; } }
+
+@media screen and (min-width: 768px) {
+  /* line 55, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > a {
+    padding: 3px 1.5rem; } }
+
+@media screen and (min-width: 1200px) {
+  /* line 55, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header > div > a {
     flex-grow: none;
     height: 88px;
-    padding: 24px 3rem;
-  }
-}
-header > div > a > img {
-  height: 100%;
-  /*@media screen and (min-width: $md) {
-      width: 18px;
-  }*/
-}
-header > div > div {
-  text-align: right;
-}
+    padding: 24px 3rem; } }
+      /* line 77, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+      header > div > a > img {
+        height: 100%;
+        /*@media screen and (min-width: $md) {
+                    width: 18px;
+                }*/ }
+    /* line 92, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+    header > div > div {
+      text-align: right; }
+
 @media screen and (min-width: 1200px) {
+  /* line 92, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header > div > div {
     display: flex;
     justify-content: flex-end;
     height: 42px;
-    align-items: center;
-  }
-}
-header > div > div.language {
-  position: relative;
-  padding-left: 1.5rem;
-  padding-right: 0;
-}
+    align-items: center; } }
+      /* line 106, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+      header > div > div.language {
+        position: relative;
+        padding-left: 1.5rem;
+        padding-right: 0; }
+
 @media screen and (min-width: 1200px) {
+  /* line 106, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header > div > div.language {
-    padding-left: 3rem;
-  }
-  header > div > div.language:hover > .bubble {
-    opacity: 0;
-    top: auto;
-    -webkit-transition: none;
-    -moz-transition: none;
-    -ms-transition: none;
-    -o-transition: none;
-    transition: none;
-  }
-}
-header > div > div.language input[type=checkbox] {
-  width: 50px;
-  height: 25px;
-  z-index: 20;
-}
+    padding-left: 3rem; }
+    /* line 116, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+    header > div > div.language:hover > .bubble {
+      opacity: 0;
+      top: auto;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -ms-transition: none;
+      -o-transition: none;
+      transition: none; } }
+        /* line 125, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+        header > div > div.language input[type="checkbox"] {
+          width: 50px;
+          height: 25px;
+          z-index: 20; }
+
 @media screen and (min-width: 1200px) {
-  header > div > div.language input[type=checkbox]:hover + a {
+  /* line 133, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > div.language input[type="checkbox"]:hover + a {
     background-color: #fd8383;
     color: white;
     text-shadow: 0 0 0 rgba(5, 0, 50, 0);
@@ -254,269 +247,267 @@ header > div > div.language input[type=checkbox] {
     -moz-transition: all 0.25s ease-in-out;
     -ms-transition: all 0.25s ease-in-out;
     -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out;
-  }
-}
-header > div > div.language input[type=checkbox]:checked + a {
-  background-color: #fd8383;
-  color: white;
-  text-shadow: 0 0 0 rgba(5, 0, 50, 0);
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox]:checked + a + .bubble {
-  height: 66px;
-  top: calc(100% + 7px);
-  opacity: 1;
-}
+    transition: all 0.25s ease-in-out; } }
+          /* line 145, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+          header > div > div.language input[type="checkbox"]:checked + a {
+            background-color: #fd8383;
+            color: white;
+            text-shadow: 0 0 0 rgba(5, 0, 50, 0);
+            -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out; }
+            /* line 152, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.language input[type="checkbox"]:checked + a + .bubble {
+              height: 66px;
+              top: calc(100% + 7px);
+              opacity: 1; }
+
 @media screen and (min-width: 1200px) {
-  header > div > div.language input[type=checkbox]:checked + a + .bubble {
-    top: 100%;
-  }
-}
-header > div > div.language input[type=checkbox]:checked + a + .bubble .graphicElement {
-  top: -5px;
-  opacity: 1;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox]:checked + a + .bubble div {
-  display: flex;
-  flex-direction: column;
-  height: 66px;
-}
-header > div > div.language input[type=checkbox] + a + .bubble {
-  top: 0;
-  width: 49px;
-  height: 24px;
-  left: auto;
-  right: 0;
-  margin: auto;
-  opacity: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox] + a + .bubble .graphicElement {
-  top: 1px;
-  opacity: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox] + a + .bubble div {
-  height: 24px;
-  overflow: hidden;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox] + a + .bubble div a {
-  display: block;
-  border-radius: 0;
-  font-size: 0.75rem;
-  background-color: white;
-  color: #636061;
-  text-shadow: none;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox] + a + .bubble div a:hover {
-  color: #fd8383;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-header > div > div.language input[type=checkbox] + a + .bubble div a:first-child {
-  border-radius: 4px 4px 0 0;
-}
-header > div > div.language input[type=checkbox] + a + .bubble div a:last-child {
-  border-radius: 0 0 4px 4px;
-}
-header > div > div.language a {
-  margin: 0;
-  width: 50px;
-  height: auto;
-  padding: 5px 0;
-  border-radius: 4px;
-  background: none;
-  color: white;
-  font-family: "montserratsemibold";
-  text-transform: uppercase;
-  text-shadow: 0 1px 3px rgba(5, 0, 50, 0.12), 0 1px 2px rgba(5, 0, 50, 0.24);
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div.language a i {
-  padding-left: 6px;
-  padding-right: 0;
-}
-header > div > div.social {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  margin-left: 0.75rem;
-}
+  /* line 152, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > div.language input[type="checkbox"]:checked + a + .bubble {
+    top: 100%; } }
+              /* line 163, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.language input[type="checkbox"]:checked + a + .bubble .graphicElement {
+                top: -5px;
+                opacity: 1;
+                -webkit-transition: all 0.25s ease-in-out;
+                -moz-transition: all 0.25s ease-in-out;
+                -ms-transition: all 0.25s ease-in-out;
+                -o-transition: all 0.25s ease-in-out;
+                transition: all 0.25s ease-in-out; }
+              /* line 169, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.language input[type="checkbox"]:checked + a + .bubble div {
+                display: flex;
+                flex-direction: column;
+                height: 66px; }
+          /* line 179, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+          header > div > div.language input[type="checkbox"] + a + .bubble {
+            top: 0;
+            width: 49px;
+            height: 24px;
+            left: auto;
+            right: 0;
+            margin: auto;
+            opacity: 0;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out; }
+            /* line 189, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.language input[type="checkbox"] + a + .bubble .graphicElement {
+              top: 1px;
+              opacity: 0;
+              -webkit-transition: all 0.25s ease-in-out;
+              -moz-transition: all 0.25s ease-in-out;
+              -ms-transition: all 0.25s ease-in-out;
+              -o-transition: all 0.25s ease-in-out;
+              transition: all 0.25s ease-in-out; }
+            /* line 195, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.language input[type="checkbox"] + a + .bubble div {
+              height: 24px;
+              overflow: hidden;
+              -webkit-transition: all 0.25s ease-in-out;
+              -moz-transition: all 0.25s ease-in-out;
+              -ms-transition: all 0.25s ease-in-out;
+              -o-transition: all 0.25s ease-in-out;
+              transition: all 0.25s ease-in-out; }
+              /* line 200, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.language input[type="checkbox"] + a + .bubble div a {
+                display: block;
+                border-radius: 0;
+                font-size: 0.75rem;
+                background-color: white;
+                color: #636061;
+                text-shadow: none;
+                -webkit-transition: color 0.25s ease-in-out;
+                -moz-transition: color 0.25s ease-in-out;
+                -ms-transition: color 0.25s ease-in-out;
+                -o-transition: color 0.25s ease-in-out;
+                transition: color 0.25s ease-in-out; }
+                /* line 209, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+                header > div > div.language input[type="checkbox"] + a + .bubble div a:hover {
+                  color: #fd8383;
+                  -webkit-transition: color 0.25s ease-in-out;
+                  -moz-transition: color 0.25s ease-in-out;
+                  -ms-transition: color 0.25s ease-in-out;
+                  -o-transition: color 0.25s ease-in-out;
+                  transition: color 0.25s ease-in-out; }
+                /* line 214, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+                header > div > div.language input[type="checkbox"] + a + .bubble div a:first-child {
+                  border-radius: 4px 4px 0 0; }
+                /* line 217, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+                header > div > div.language input[type="checkbox"] + a + .bubble div a:last-child {
+                  border-radius: 0 0 4px 4px; }
+        /* line 226, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+        header > div > div.language a {
+          margin: 0;
+          width: 50px;
+          height: auto;
+          padding: 5px 0;
+          border-radius: 4px;
+          background: none;
+          color: white;
+          font-family: 'montserratsemibold';
+          text-transform: uppercase;
+          text-shadow: 0 1px 3px rgba(5, 0, 50, 0.12), 0 1px 2px rgba(5, 0, 50, 0.24);
+          -webkit-transition: all 0.25s ease-in-out;
+          -moz-transition: all 0.25s ease-in-out;
+          -ms-transition: all 0.25s ease-in-out;
+          -o-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out; }
+          /* line 239, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+          header > div > div.language a i {
+            padding-left: 6px;
+            padding-right: 0; }
+      /* line 246, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+      header > div > div.social {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        margin-left: .75rem; }
+
 @media screen and (min-width: 1200px) {
+  /* line 246, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
   header > div > div.social {
     width: auto;
     height: auto;
     text-align: right;
-    margin-left: 0;
-  }
-}
-header > div > div.social input[type=checkbox] {
-  width: 24px;
-  height: 24px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
-}
+    margin-left: 0; } }
+        /* line 262, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+        header > div > div.social input[type="checkbox"] {
+          width: 24px;
+          height: 24px;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 20; }
+
 @media screen and (min-width: 1200px) {
-  header > div > div.social input[type=checkbox] {
-    display: none;
-  }
-}
-header > div > div.social input[type=checkbox]:checked + a {
-  background-color: white;
-  color: #fd8383;
-}
-header > div > div.social input[type=checkbox]:checked + a:first-of-type i.fa-share-alt {
-  display: none;
-}
-header > div > div.social input[type=checkbox]:checked + a:first-of-type i.fa-times {
-  display: block;
-}
-header > div > div.social input[type=checkbox]:checked + a + a {
-  top: 32px;
-}
-header > div > div.social input[type=checkbox]:checked + a + a + a {
-  top: 64px;
-}
-header > div > div.social input[type=checkbox]:checked + a + a + a + a {
-  top: 96px;
-}
-header > div > div.social input[type=checkbox]:checked + a + a + a + a + a {
-  top: 128px;
-}
-header > div > div.social input[type=checkbox] + a,
-header > div > div.social input[type=checkbox] + a + a,
-header > div > div.social input[type=checkbox] + a + a + a,
-header > div > div.social input[type=checkbox] + a + a + a + a,
-header > div > div.social input[type=checkbox] + a + a + a + a + a {
-  position: absolute;
-  margin: 0;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
+  /* line 262, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > div.social input[type="checkbox"] {
+    display: none; } }
+          /* line 278, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+          header > div > div.social input[type="checkbox"]:checked + a {
+            background-color: white;
+            color: #fd8383; }
+            /* line 285, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.social input[type="checkbox"]:checked + a:first-of-type i.fa-share-alt {
+              display: none; }
+            /* line 288, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.social input[type="checkbox"]:checked + a:first-of-type i.fa-times {
+              display: block; }
+            /* line 294, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.social input[type="checkbox"]:checked + a + a {
+              top: 32px; }
+              /* line 297, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.social input[type="checkbox"]:checked + a + a + a {
+                top: 64px; }
+                /* line 300, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+                header > div > div.social input[type="checkbox"]:checked + a + a + a + a {
+                  top: 96px; }
+                  /* line 303, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+                  header > div > div.social input[type="checkbox"]:checked + a + a + a + a + a {
+                    top: 128px; }
+          /* line 312, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+          header > div > div.social input[type="checkbox"] + a,
+          header > div > div.social input[type="checkbox"] + a + a,
+          header > div > div.social input[type="checkbox"] + a + a + a,
+          header > div > div.social input[type="checkbox"] + a + a + a + a,
+          header > div > div.social input[type="checkbox"] + a + a + a + a + a {
+            position: absolute;
+            margin: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+
 @media screen and (min-width: 1200px) {
-  header > div > div.social input[type=checkbox] + a,
-header > div > div.social input[type=checkbox] + a + a,
-header > div > div.social input[type=checkbox] + a + a + a,
-header > div > div.social input[type=checkbox] + a + a + a + a,
-header > div > div.social input[type=checkbox] + a + a + a + a + a {
+  /* line 312, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > div.social input[type="checkbox"] + a,
+  header > div > div.social input[type="checkbox"] + a + a,
+  header > div > div.social input[type="checkbox"] + a + a + a,
+  header > div > div.social input[type="checkbox"] + a + a + a + a,
+  header > div > div.social input[type="checkbox"] + a + a + a + a + a {
     position: relative;
-    margin-left: 11px;
-  }
-}
-header > div > div.social input[type=checkbox] + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a + a + a:first-of-type {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
+    margin-left: 11px; } }
+            /* line 332, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+            header > div > div.social input[type="checkbox"] + a:first-of-type,
+            header > div > div.social input[type="checkbox"] + a + a:first-of-type,
+            header > div > div.social input[type="checkbox"] + a + a + a:first-of-type,
+            header > div > div.social input[type="checkbox"] + a + a + a + a:first-of-type,
+            header > div > div.social input[type="checkbox"] + a + a + a + a + a:first-of-type {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 10; }
+
 @media screen and (min-width: 1200px) {
-  header > div > div.social input[type=checkbox] + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a + a:first-of-type,
-header > div > div.social input[type=checkbox] + a + a + a + a + a:first-of-type {
-    display: none;
-  }
-}
-header > div > div.social input[type=checkbox] + a:first-of-type i.fa-share-alt,
-header > div > div.social input[type=checkbox] + a + a:first-of-type i.fa-share-alt,
-header > div > div.social input[type=checkbox] + a + a + a:first-of-type i.fa-share-alt,
-header > div > div.social input[type=checkbox] + a + a + a + a:first-of-type i.fa-share-alt,
-header > div > div.social input[type=checkbox] + a + a + a + a + a:first-of-type i.fa-share-alt {
-  display: block;
-  position: relative;
-  left: -1px;
-}
-header > div > div.social input[type=checkbox] + a:first-of-type i.fa-times,
-header > div > div.social input[type=checkbox] + a + a:first-of-type i.fa-times,
-header > div > div.social input[type=checkbox] + a + a + a:first-of-type i.fa-times,
-header > div > div.social input[type=checkbox] + a + a + a + a:first-of-type i.fa-times,
-header > div > div.social input[type=checkbox] + a + a + a + a + a:first-of-type i.fa-times {
-  display: none;
-}
-header > div > div > a {
-  color: #636061;
-  background-color: white;
-  margin-left: 11px;
-  padding: 5px 0;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  border-radius: 50%;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div > a:hover {
-  color: white;
-  background-color: #fd8383;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-header > div > div > a > i {
-  padding: 0 0.25rem;
-  font-size: 0.825rem;
-}
+  /* line 332, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+  header > div > div.social input[type="checkbox"] + a:first-of-type,
+  header > div > div.social input[type="checkbox"] + a + a:first-of-type,
+  header > div > div.social input[type="checkbox"] + a + a + a:first-of-type,
+  header > div > div.social input[type="checkbox"] + a + a + a + a:first-of-type,
+  header > div > div.social input[type="checkbox"] + a + a + a + a + a:first-of-type {
+    display: none; } }
+              /* line 345, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.social input[type="checkbox"] + a:first-of-type i.fa-share-alt,
+              header > div > div.social input[type="checkbox"] + a + a:first-of-type i.fa-share-alt,
+              header > div > div.social input[type="checkbox"] + a + a + a:first-of-type i.fa-share-alt,
+              header > div > div.social input[type="checkbox"] + a + a + a + a:first-of-type i.fa-share-alt,
+              header > div > div.social input[type="checkbox"] + a + a + a + a + a:first-of-type i.fa-share-alt {
+                display: block;
+                position: relative;
+                left: -1px; }
+              /* line 350, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+              header > div > div.social input[type="checkbox"] + a:first-of-type i.fa-times,
+              header > div > div.social input[type="checkbox"] + a + a:first-of-type i.fa-times,
+              header > div > div.social input[type="checkbox"] + a + a + a:first-of-type i.fa-times,
+              header > div > div.social input[type="checkbox"] + a + a + a + a:first-of-type i.fa-times,
+              header > div > div.social input[type="checkbox"] + a + a + a + a + a:first-of-type i.fa-times {
+                display: none; }
+      /* line 359, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+      header > div > div > a {
+        color: #636061;
+        background-color: white;
+        margin-left: 11px;
+        padding: 5px 0;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
+        -ms-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out; }
+        /* line 371, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+        header > div > div > a:hover {
+          color: white;
+          background-color: #fd8383;
+          -webkit-transition: all 0.25s ease-in-out;
+          -moz-transition: all 0.25s ease-in-out;
+          -ms-transition: all 0.25s ease-in-out;
+          -o-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out; }
+        /* line 377, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/header.scss */
+        header > div > div > a > i {
+          padding: 0 .25rem;
+          font-size: .825rem; }
 
 /*# sourceMappingURL=header.css.map */

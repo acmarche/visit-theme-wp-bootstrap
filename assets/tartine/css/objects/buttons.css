@@ -8,15 +8,12 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1;
-  }
+    opacity: 1; }
   50% {
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
+
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -37,23 +34,20 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
+    transform: rotate(-30deg); }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
+
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -62,15 +56,13 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg);
-  }
+    transform: rotate(55deg); }
   100% {
     bottom: -2px;
     right: 0;
@@ -78,9 +70,8 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg);
-  }
-}
+    transform: rotate(-1800deg); } }
+
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
@@ -136,6 +127,7 @@
 }*/
 /* EXTENDS */
 /* HYPERLINK */
+/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .hyperlink {
   display: inline-block;
   color: #fd8383 !important;
@@ -148,22 +140,22 @@
   -moz-transition: all basicDuration ease-in-out;
   -ms-transition: all basicDuration ease-in-out;
   -o-transition: all basicDuration ease-in-out;
-  transition: all basicDuration ease-in-out;
-}
-.hyperlink:hover {
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: rgba(253, 131, 131, 0);
-  -webkit-transition: all basicDuration ease-in-out;
-  -moz-transition: all basicDuration ease-in-out;
-  -ms-transition: all basicDuration ease-in-out;
-  -o-transition: all basicDuration ease-in-out;
-  transition: all basicDuration ease-in-out;
-}
+  transition: all basicDuration ease-in-out; }
+  /* line 13, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .hyperlink:hover {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: rgba(253, 131, 131, 0);
+    -webkit-transition: all basicDuration ease-in-out;
+    -moz-transition: all basicDuration ease-in-out;
+    -ms-transition: all basicDuration ease-in-out;
+    -o-transition: all basicDuration ease-in-out;
+    transition: all basicDuration ease-in-out; }
 
 /* BUTTONS */
+/* line 21, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .button {
-  font-family: "montserratsemibold";
+  font-family: 'montserratsemibold';
   font-size: 1rem;
   display: inline-block;
   overflow: hidden;
@@ -175,791 +167,791 @@
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.button.lvl1 {
-  background-color: #fd8383;
-  color: white;
-  -webkit-box-shadow: -66px 0 55px #487f89 inset !important;
-  -moz-box-shadow: -66px 0 55px #487f89 inset !important;
-  -ms-box-shadow: -66px 0 55px #487f89 inset !important;
-  -o-box-shadow: -66px 0 55px #487f89 inset !important;
-  box-shadow: -66px 0 55px #487f89 inset !important;
-}
-.button.lvl2 {
-  padding: 10px 0;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #487f89;
-  color: #487f89;
-}
-.button.lvl3 {
-  color: #fd8383;
-}
+  transition: all 0.25s ease-in-out; }
+  /* line 35, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .button.lvl1 {
+    background-color: #fd8383;
+    color: white;
+    -webkit-box-shadow: -66px 0 55px #487f89 inset !important;
+    -moz-box-shadow: -66px 0 55px #487f89 inset !important;
+    -ms-box-shadow: -66px 0 55px #487f89 inset !important;
+    -o-box-shadow: -66px 0 55px #487f89 inset !important;
+    box-shadow: -66px 0 55px #487f89 inset !important; }
+  /* line 40, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .button.lvl2 {
+    padding: 10px 0;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #487f89;
+    color: #487f89; }
+  /* line 47, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .button.lvl3 {
+    color: #fd8383; }
 
 /*i {
-	@include buttonInset();
-}*/
+		@include buttonInset();
+	}*/
 /*> * {
-	padding: 11px;
-	text-align: center;
-	line-height: normal;
-	text-decoration: none;
-	border: none;
-	vertical-align: top;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background: none;
-	color: $white;
-	@include boxShadowTransition($basicDuration);
-	@include boxInset(-33px 0 66px rgba($darkCTA, $alpha0));
-
-	i {
-		padding: 0 6px 0 0;
-		color: $white;
+		padding: 11px;
+		text-align: center;
+		line-height: normal;
+		text-decoration: none;
+		border: none;
+		vertical-align: top;
+		-webkit-appearance: none;
+		-moz-appearance: none;
 		background: none;
-		@include noneBoxShadow();
-	}
-}
-
-a {
-	&:hover {
 		color: $white;
+		@include boxShadowTransition($basicDuration);
+		@include boxInset(-33px 0 66px rgba($darkCTA, $alpha0));
+
+		i {
+			padding: 0 6px 0 0;
+			color: $white;
+			background: none;
+			@include noneBoxShadow();
+		}
 	}
-}
 
-&.white {
-	background-color: $white;
-
-	i {
-		color: $CTA;
-		@include noneBoxShadow();
-		@include colorTransition($basicDuration);
+	a {
+		&:hover {
+			color: $white;
+		}
 	}
 
-	> * {
-		color: $CTA;
-		@include noneBoxShadow();
-		@include colorTransition($basicDuration);
+	&.white {
+		background-color: $white;
 
 		i {
 			color: $CTA;
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-			@include colorTransition($basicDuration);
-		}
-	}
-
-	&.disabled {
-		background-color: rgba($basicGrey, $alpha50);
-	}
-
-	&:hover {
-		background-color: $white;
-
-		i {
-			color: $darkCTA;
 			@include noneBoxShadow();
 			@include colorTransition($basicDuration);
 		}
 
 		> * {
-			color: $darkCTA;
-			@include noneBoxShadow();
-
-			i {
-				color: $darkCTA;
-				@include noneBoxShadow();
-				@include colorTransition($basicDuration);
-			}
-		}
-	}
-
-	&.red {
-		background-color: $white;
-
-		i {
-			color: $basicRed;
-			@include noneBoxShadow();
-			@include colorTransition($basicDuration);
-		}
-
-		> * {
-			color: $basicRed;
+			color: $CTA;
 			@include noneBoxShadow();
 			@include colorTransition($basicDuration);
 
 			i {
-				color: $basicRed;
+				color: $CTA;
 				padding: 0 6px 0 0;
 				@include noneBoxShadow();
 				@include colorTransition($basicDuration);
 			}
 		}
 
+		&.disabled {
+			background-color: rgba($basicGrey, $alpha50);
+		}
+
 		&:hover {
 			background-color: $white;
 
 			i {
-				color: $darkRed;
+				color: $darkCTA;
 				@include noneBoxShadow();
 				@include colorTransition($basicDuration);
 			}
 
 			> * {
-				color: $darkRed;
+				color: $darkCTA;
+				@include noneBoxShadow();
+
+				i {
+					color: $darkCTA;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+				}
+			}
+		}
+
+		&.red {
+			background-color: $white;
+
+			i {
+				color: $basicRed;
 				@include noneBoxShadow();
 				@include colorTransition($basicDuration);
+			}
+
+			> * {
+				color: $basicRed;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+
+				i {
+					color: $basicRed;
+					padding: 0 6px 0 0;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+				}
+			}
+
+			&:hover {
+				background-color: $white;
 
 				i {
 					color: $darkRed;
 					@include noneBoxShadow();
 					@include colorTransition($basicDuration);
 				}
+
+				> * {
+					color: $darkRed;
+					@include noneBoxShadow();
+					@include colorTransition($basicDuration);
+
+					i {
+						color: $darkRed;
+						@include noneBoxShadow();
+						@include colorTransition($basicDuration);
+					}
+				}
 			}
 		}
 	}
-}
-&.grey {
-	background-color: $basicGrey;
-
-	i {
-		@include boxInset(-12px 0 28px rgba($darkGrey, $alpha0));
-	}
-
-	> * {
-		@include boxInset(-33px 0 99px rgba($darkGrey, $alpha0));
+	&.grey {
+		background-color: $basicGrey;
 
 		i {
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-		}
-	}
-
-	&.disabled {
-		background-color: rgba($basicGrey, $alpha50);
-	}
-
-	&.tertiary {
-		background-color: rgba($basicGrey, $alpha0);
-		cursor: pointer;
-		@include border(1px, rgba($darkestGrey, $alpha0));
-
-		i {
-			color: $darkGrey;
+			@include boxInset(-12px 0 28px rgba($darkGrey, $alpha0));
 		}
 
 		> * {
-			color: $darkGrey;
+			@include boxInset(-33px 0 99px rgba($darkGrey, $alpha0));
 
 			i {
-				color: $darkGrey;
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
 			}
 		}
 
-		&:hover {
+		&.disabled {
+			background-color: rgba($basicGrey, $alpha50);
+		}
+
+		&.tertiary {
 			background-color: rgba($basicGrey, $alpha0);
-			@include border(1px, rgba($darkestGrey, $alpha10));
+			cursor: pointer;
+			@include border(1px, rgba($darkestGrey, $alpha0));
 
 			i {
 				color: $darkGrey;
-				@include noneBoxShadow();
 			}
 
 			> * {
 				color: $darkGrey;
-				@include noneBoxShadow();
 
 				i {
 					color: $darkGrey;
+				}
+			}
+
+			&:hover {
+				background-color: rgba($basicGrey, $alpha0);
+				@include border(1px, rgba($darkestGrey, $alpha10));
+
+				i {
+					color: $darkGrey;
+					@include noneBoxShadow();
+				}
+
+				> * {
+					color: $darkGrey;
+					@include noneBoxShadow();
+
+					i {
+						color: $darkGrey;
+						@include noneBoxShadow();
+					}
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $lightGrey;
+
+			i {
+				@include boxInset(-12px 0 28px $darkGrey);
+			}
+
+			> * {
+				@include boxInset(-33px 0 99px $darkGrey);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.active {
+		background-color: $active;
+
+		i {
+			@include boxInset(-12px 0 28px rgba($active, $alpha0));
+		}
+
+		> * {
+			@include boxInset(-33px 0 66px rgba($active, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		&.disabled {
+			background-color: rgba($active, $alpha50);
+		}
+
+		&:hover {
+			background-color: $lightActive;
+
+			i {
+				@include boxInset(-12px 0 28px $active);
+			}
+
+			> * {
+				@include boxInset(-33px 0 66px $active);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.green {
+		background-color: $darkGreen;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkGreen, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkGreen, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($darkGreen, $alpha50);
+			@include noneBoxShadow();
+
+			&:hover {
+				background-color: rgba($darkGreen, $alpha50);
+
+				> * {
+					background: none;
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $basicGreen;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkGreen);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkGreen);
+
+				&.shadow-hover-none {
+					@include noneBoxShadow();
+				}
+			}
+		}
+	}
+	&.orange {
+		background-color: $basicOrange;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkOrange, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkOrange, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($basicOrange, $alpha50);
+		}
+
+		&:hover {
+			background-color: $basicOrange;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkOrange);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkOrange);
+			}
+		}
+	}
+	&.red {
+		background-color: $basicRed;
+
+		> * {
+			@include boxInset(-33px 0 99px rgba($darkRed, $alpha0));
+
+			i {
+				padding: 0 6px 0 0;
+				@include noneBoxShadow();
+			}
+		}
+
+		i {
+			@include boxInset(-12px 0 28px rgba($darkRed, $alpha0));
+		}
+
+		&.disabled {
+			background-color: rgba($basicRed, $alpha50);
+
+			&:hover {
+				background-color: rgba($basicRed, $alpha50);
+				@include lowestBoxShadow();
+
+				* {
+					cursor: default;
+					background: none;
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $basicRed;
+
+			> * {
+				@include boxInset(-33px 0 99px $darkRed);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+
+			i {
+				@include boxInset(-12px 0 28px $darkRed);
+			}
+		}
+	}
+
+	&.tertiary {
+		background-color: rgba($CTA, $alpha0);
+		@include noneBoxShadow();
+		@include allTransition($basicDuration);
+
+		i {
+			color: $CTA;
+			@include allTransition($basicDuration);
+		}
+
+		> * {
+			padding: 10px;
+			color: $CTA;
+			@include allTransition($basicDuration);
+
+			i {
+				color: $CTA;
+			}
+		}
+
+		&:hover {
+			background-color: $lightCTA;
+			@include noneBoxShadow();
+			@include allTransition($basicDuration);
+
+			i {
+				color: $white;
+				@include allTransition($basicDuration);
+				@include boxInset(-12px 0 28px $darkCTA);
+			}
+
+			> * {
+				color: $white;
+				@include allTransition($basicDuration);
+				@include boxInset(-33px 0 99px $darkCTA);
+
+				i {
+					color: $white;
 					@include noneBoxShadow();
 				}
 			}
 		}
 	}
 
-	&:hover {
-		background-color: $lightGrey;
+	&.disabled {
+		cursor: default;
+		// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+		background-color: rgba(129, 196, 237, 1);
 
-		i {
-			@include boxInset(-12px 0 28px $darkGrey);
-		}
+		&.rotate-315 {
+			@include lowestBoxShadow-315();
 
-		> * {
-			@include boxInset(-33px 0 99px $darkGrey);
-
-			i {
-				@include noneBoxShadow();
+			&:hover {
+				@include lowestBoxShadow-315();
 			}
 		}
-	}
-}
-&.active {
-	background-color: $active;
-
-	i {
-		@include boxInset(-12px 0 28px rgba($active, $alpha0));
-	}
-
-	> * {
-		@include boxInset(-33px 0 66px rgba($active, $alpha0));
-
-		i {
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-		}
-	}
-
-	&.disabled {
-		background-color: rgba($active, $alpha50);
-	}
-
-	&:hover {
-		background-color: $lightActive;
-
-		i {
-			@include boxInset(-12px 0 28px $active);
-		}
-
-		> * {
-			@include boxInset(-33px 0 66px $active);
-
-			i {
-				@include noneBoxShadow();
-			}
-		}
-	}
-}
-&.green {
-	background-color: $darkGreen;
-
-	> * {
-		@include boxInset(-33px 0 99px rgba($darkGreen, $alpha0));
-
-		i {
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-		}
-	}
-
-	i {
-		@include boxInset(-12px 0 28px rgba($darkGreen, $alpha0));
-	}
-
-	&.disabled {
-		background-color: rgba($darkGreen, $alpha50);
-		@include noneBoxShadow();
 
 		&:hover {
-			background-color: rgba($darkGreen, $alpha50);
-
-			> * {
-				background: none;
-				@include noneBoxShadow();
-			}
-		}
-	}
-
-	&:hover {
-		background-color: $basicGreen;
-
-		> * {
-			@include boxInset(-33px 0 99px $darkGreen);
-
-			i {
-				@include noneBoxShadow();
-			}
-		}
-
-		i {
-			@include boxInset(-12px 0 28px $darkGreen);
-
-			&.shadow-hover-none {
-				@include noneBoxShadow();
-			}
-		}
-	}
-}
-&.orange {
-	background-color: $basicOrange;
-
-	> * {
-		@include boxInset(-33px 0 99px rgba($darkOrange, $alpha0));
-
-		i {
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-		}
-	}
-
-	i {
-		@include boxInset(-12px 0 28px rgba($darkOrange, $alpha0));
-	}
-
-	&.disabled {
-		background-color: rgba($basicOrange, $alpha50);
-	}
-
-	&:hover {
-		background-color: $basicOrange;
-
-		> * {
-			@include boxInset(-33px 0 99px $darkOrange);
-
-			i {
-				@include noneBoxShadow();
-			}
-		}
-
-		i {
-			@include boxInset(-12px 0 28px $darkOrange);
-		}
-	}
-}
-&.red {
-	background-color: $basicRed;
-
-	> * {
-		@include boxInset(-33px 0 99px rgba($darkRed, $alpha0));
-
-		i {
-			padding: 0 6px 0 0;
-			@include noneBoxShadow();
-		}
-	}
-
-	i {
-		@include boxInset(-12px 0 28px rgba($darkRed, $alpha0));
-	}
-
-	&.disabled {
-		background-color: rgba($basicRed, $alpha50);
-
-		&:hover {
-			background-color: rgba($basicRed, $alpha50);
+			// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
+			background-color: rgba(129, 196, 237, 1);
 			@include lowestBoxShadow();
 
 			* {
-				cursor: default;
 				background: none;
 				@include noneBoxShadow();
 			}
 		}
 	}
 
-	&:hover {
-		background-color: $basicRed;
-
+	&.next {
 		> * {
-			@include boxInset(-33px 0 99px $darkRed);
+			display: flex;
+			align-items: center;
+			padding-right: 0;
 
-			i {
-				@include noneBoxShadow();
-			}
-		}
-
-		i {
-			@include boxInset(-12px 0 28px $darkRed);
-		}
-	}
-}
-
-&.tertiary {
-	background-color: rgba($CTA, $alpha0);
-	@include noneBoxShadow();
-	@include allTransition($basicDuration);
-
-	i {
-		color: $CTA;
-		@include allTransition($basicDuration);
-	}
-
-	> * {
-		padding: 10px;
-		color: $CTA;
-		@include allTransition($basicDuration);
-
-		i {
-			color: $CTA;
-		}
-	}
-
-	&:hover {
-		background-color: $lightCTA;
-		@include noneBoxShadow();
-		@include allTransition($basicDuration);
-
-		i {
-			color: $white;
-			@include allTransition($basicDuration);
-			@include boxInset(-12px 0 28px $darkCTA);
-		}
-
-		> * {
-			color: $white;
-			@include allTransition($basicDuration);
-			@include boxInset(-33px 0 99px $darkCTA);
-
-			i {
+			label {
+				padding: 0;
+				cursor: pointer;
 				color: $white;
+			}
+			i {
+				padding-left: 11px;
+				padding-right: 11px;
 				@include noneBoxShadow();
+				@include transition(padding, $basicDuration);
+				@include delay($shortDuration);
+			}
+
+			&:hover {
+				i {
+					padding-left: 16px;
+					padding-right: 6px;
+					@include noneBoxShadow();
+					@include transition(padding, $basicDuration);
+					@include delay($shortDuration);
+				}
 			}
 		}
 	}
-}
 
-&.disabled {
-	cursor: default;
-	// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
-	background-color: rgba(129, 196, 237, 1);
+	&.tiny {
+		> * {
+			@include boxInset(-11px 0 28px rgba($darkCTA, $alpha0));
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:hover {
+				@include boxInset(-11px 0 28px $darkCTA);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&.green {
+			> * {
+				@include boxInset(-11px 0 16px rgba($darkGreen, $alpha0));
+
+				&:hover {
+					@include boxInset(-11px 0 16px $darkGreen);
+				}
+			}
+		}
+		&.red {
+			> * {
+				@include boxInset(-11px 0 16px rgba($darkRed, $alpha0));
+
+				&:hover {
+					@include boxInset(-11px 0 16px $darkRed);
+				}
+			}
+		}
+	}
+
+	&.small {
+		> * {
+			@include boxInset(-44px 0 33px rgba($darkCTA, $alpha0));
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:hover {
+				@include boxInset(-44px 0 33px $darkCTA);
+
+				i {
+					@include noneBoxShadow();
+				}
+			}
+		}
+
+		&.green {
+			> * {
+				@include boxInset(-44px 0 33px rgba($darkGreen, $alpha0));
+
+				&:hover {
+					@include boxInset(-44px 0 33px $darkGreen);
+				}
+			}
+		}
+		&.red {
+			> * {
+				@include boxInset(-44px 0 33px rgba($darkRed, $alpha0));
+
+				/*&:hover {
+					@include boxInset(-44px 0 33px $darkRed);
+				}
+			}
+		}
+	}
+
+	&.input {
+		width: auto;
+		cursor: default;
+		background-color: rgba($CTA, $alpha30);
+		@include noneBoxShadow();
+
+		input {
+			width: auto;
+			margin: 0 11px 10px;
+			padding: 11px 0 4px;
+			border-radius: 0;
+			outline: none;
+			color: $CTA;
+			@include insetBorder(0 0 1px, rgba($darkestGrey, $alpha10));
+			@include noneBoxShadow();
+		}
+
+		&:hover {
+			background-color: rgba($CTA, $alpha30);
+			@include noneBoxShadow();
+		}
+	}
 
 	&.rotate-315 {
 		@include lowestBoxShadow-315();
 
 		&:hover {
-			@include lowestBoxShadow-315();
+			@include higherBoxShadow-315();
 		}
 	}
-
-	&:hover {
-		// NOTE TVO : équivalence opaque à rgba($CTA, $alpha50)
-		background-color: rgba(129, 196, 237, 1);
-		@include lowestBoxShadow();
-
-		* {
-			background: none;
-			@include noneBoxShadow();
-		}
-	}
-}
-
-&.next {
-	> * {
-		display: flex;
-		align-items: center;
-		padding-right: 0;
-
-		label {
-			padding: 0;
-			cursor: pointer;
-			color: $white;
-		}
-		i {
-			padding-left: 11px;
-			padding-right: 11px;
-			@include noneBoxShadow();
-			@include transition(padding, $basicDuration);
-			@include delay($shortDuration);
-		}
+	/*&.rotate-n180 {
+		@include lowestBoxShadow-180();
 
 		&:hover {
-			i {
-				padding-left: 16px;
-				padding-right: 6px;
-				@include noneBoxShadow();
-				@include transition(padding, $basicDuration);
-				@include delay($shortDuration);
-			}
+			@include higherBoxShadow-180();
 		}
-	}
-}
-
-&.tiny {
-	> * {
-		@include boxInset(-11px 0 28px rgba($darkCTA, $alpha0));
-
-		i {
-			@include noneBoxShadow();
-		}
-
-		&:hover {
-			@include boxInset(-11px 0 28px $darkCTA);
-
-			i {
-				@include noneBoxShadow();
-			}
-		}
-	}
-
-	&.green {
-		> * {
-			@include boxInset(-11px 0 16px rgba($darkGreen, $alpha0));
-
-			&:hover {
-				@include boxInset(-11px 0 16px $darkGreen);
-			}
-		}
-	}
-	&.red {
-		> * {
-			@include boxInset(-11px 0 16px rgba($darkRed, $alpha0));
-
-			&:hover {
-				@include boxInset(-11px 0 16px $darkRed);
-			}
-		}
-	}
-}
-
-&.small {
-	> * {
-		@include boxInset(-44px 0 33px rgba($darkCTA, $alpha0));
-
-		i {
-			@include noneBoxShadow();
-		}
-
-		&:hover {
-			@include boxInset(-44px 0 33px $darkCTA);
-
-			i {
-				@include noneBoxShadow();
-			}
-		}
-	}
-
-	&.green {
-		> * {
-			@include boxInset(-44px 0 33px rgba($darkGreen, $alpha0));
-
-			&:hover {
-				@include boxInset(-44px 0 33px $darkGreen);
-			}
-		}
-	}
-	&.red {
-		> * {
-			@include boxInset(-44px 0 33px rgba($darkRed, $alpha0));
-
-			/*&:hover {
-				@include boxInset(-44px 0 33px $darkRed);
-			}
-		}
-	}
-}
-
-&.input {
-	width: auto;
-	cursor: default;
-	background-color: rgba($CTA, $alpha30);
-	@include noneBoxShadow();
-
-	input {
-		width: auto;
-		margin: 0 11px 10px;
-		padding: 11px 0 4px;
-		border-radius: 0;
-		outline: none;
-		color: $CTA;
-		@include insetBorder(0 0 1px, rgba($darkestGrey, $alpha10));
-		@include noneBoxShadow();
-	}
-
-	&:hover {
-		background-color: rgba($CTA, $alpha30);
-		@include noneBoxShadow();
-	}
-}
-
-&.rotate-315 {
-	@include lowestBoxShadow-315();
-
-	&:hover {
-		@include higherBoxShadow-315();
-	}
-}
-/*&.rotate-n180 {
-	@include lowestBoxShadow-180();
-
-	&:hover {
-		@include higherBoxShadow-180();
-	}
-}*/
+	}*/
 /*&.cancel {
-	text-align: center;
-	background-color: rgba($lighterGrey, $alpha0);
-	@include noneBoxShadow();
-	@include backgroundColorTransition($basicDuration);
-
-	> * {
-		width: 100%;
-		padding: 8px 0;
-		color: $basicGrey;
-		@include noneBoxShadow();
-		@include colorTransition($basicDuration);
-	}
-
-	&:hover {
-		background-color: $lighterGrey;
+		text-align: center;
+		background-color: rgba($lighterGrey, $alpha0);
 		@include noneBoxShadow();
 		@include backgroundColorTransition($basicDuration);
 
 		> * {
-			color: $darkGrey;
+			width: 100%;
+			padding: 8px 0;
+			color: $basicGrey;
 			@include noneBoxShadow();
 			@include colorTransition($basicDuration);
 		}
+
+		&:hover {
+			background-color: $lighterGrey;
+			@include noneBoxShadow();
+			@include backgroundColorTransition($basicDuration);
+
+			> * {
+				color: $darkGrey;
+				@include noneBoxShadow();
+				@include colorTransition($basicDuration);
+			}
+		}
 	}
-}
 
-&:hover {
-	background-color: $lightCTA;
-	@include higherBoxShadow();
-	@include allTransition($basicDuration);
-
-	i {
-		@include boxInset(-12px 0 28px $darkCTA);
-	}
-
-	> * {
-		@include boxShadowTransition($basicDuration);
-		@include boxInset(-33px 0 99px $darkCTA);
+	&:hover {
+		background-color: $lightCTA;
+		@include higherBoxShadow();
+		@include allTransition($basicDuration);
 
 		i {
-			@include noneBoxShadow();
+			@include boxInset(-12px 0 28px $darkCTA);
 		}
 
-		&:focus {
-			outline: none;
+		> * {
+			@include boxShadowTransition($basicDuration);
+			@include boxInset(-33px 0 99px $darkCTA);
+
+			i {
+				@include noneBoxShadow();
+			}
+
+			&:focus {
+				outline: none;
+			}
 		}
 	}
-}
 
-&:last-child {
-	margin: 0;
-}*/
+	&:last-child {
+		margin: 0;
+	}*/
 /* -------------- */
+/* line 693, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 popup .popup .popupContent .button,
 #popupInside .popup .popupContent .button {
-  border-radius: 4px;
-}
-popup .popup .popupContent .button > *,
-#popupInside .popup .popupContent .button > * {
-  padding: 6px 11px;
-}
+  border-radius: 4px; }
+  /* line 696, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  popup .popup .popupContent .button > *,
+  #popupInside .popup .popupContent .button > * {
+    padding: 6px 11px; }
+
+/* line 703, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 popup .popup .popupButtons .button.disabled,
 #popupInside .popup .popupButtons .button.disabled {
-  cursor: default;
-}
-popup .popup .popupButtons .button.disabled a,
-popup .popup .popupButtons .button.disabled button,
-#popupInside .popup .popupButtons .button.disabled a,
-#popupInside .popup .popupButtons .button.disabled button {
-  cursor: default;
-}
-popup .popup .popupButtons .button.disabled:hover,
-#popupInside .popup .popupButtons .button.disabled:hover {
-  background-color: #81c4ed;
-}
-popup .popup .popupButtons .button.disabled:hover a,
-popup .popup .popupButtons .button.disabled:hover button,
-#popupInside .popup .popupButtons .button.disabled:hover a,
-#popupInside .popup .popupButtons .button.disabled:hover button {
-  background: none;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -ms-box-shadow: none !important;
-  -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
+  cursor: default; }
+  /* line 706, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  popup .popup .popupButtons .button.disabled a,
+  popup .popup .popupButtons .button.disabled button,
+  #popupInside .popup .popupButtons .button.disabled a,
+  #popupInside .popup .popupButtons .button.disabled button {
+    cursor: default; }
+  /* line 711, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  popup .popup .popupButtons .button.disabled:hover,
+  #popupInside .popup .popupButtons .button.disabled:hover {
+    background-color: #81c4ed; }
+    /* line 715, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    popup .popup .popupButtons .button.disabled:hover a,
+    popup .popup .popupButtons .button.disabled:hover button,
+    #popupInside .popup .popupButtons .button.disabled:hover a,
+    #popupInside .popup .popupButtons .button.disabled:hover button {
+      background: none;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      -ms-box-shadow: none !important;
+      -o-box-shadow: none !important;
+      box-shadow: none !important; }
 
+/* line 729, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .fixedButtons {
   position: fixed;
   bottom: 66px;
   right: 33px;
   text-align: right;
   z-index: 1100;
-  font-size: 0;
-}
-.fixedButtons .icon {
-  padding: 0;
-  background-color: #fd8383;
-}
-.fixedButtons .icon i {
-  width: 44px;
-  height: 44px;
-  padding: 12px;
-  font-size: 1.25rem;
-  color: white;
-}
-.fixedButtons .fixedCircleButton {
-  display: inline-block;
-  width: 44px;
-  height: 44px;
-  margin: 0 11px 0 0;
-}
-.fixedButtons .fixedCircleButton i {
-  display: block;
-  width: 22px;
-  height: 22px;
-  margin: 11px;
-  text-align: center;
-}
-.fixedButtons .fixedCircleButton i.fa-user-plus {
-  position: relative;
-  left: 1px;
-}
-.fixedButtons .button.disabled:hover {
-  background-color: #81c4ed;
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-.fixedButtons .button.disabled:hover a,
-.fixedButtons .button.disabled:hover button {
-  background: none;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -ms-box-shadow: none !important;
-  -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
-@media screen and (min-width: 992px) {
-  .fixedButtons {
-    bottom: 11px;
-  }
-}
+  font-size: 0; }
+  /* line 737, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .fixedButtons .icon {
+    padding: 0;
+    background-color: #fd8383; }
+    /* line 741, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    .fixedButtons .icon i {
+      width: 44px;
+      height: 44px;
+      padding: 12px;
+      font-size: 1.25rem;
+      color: white; }
+  /* line 750, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .fixedButtons .fixedCircleButton {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    margin: 0 11px 0 0; }
+    /* line 756, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    .fixedButtons .fixedCircleButton i {
+      display: block;
+      width: 22px;
+      height: 22px;
+      margin: 11px;
+      text-align: center; }
+      /* line 763, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+      .fixedButtons .fixedCircleButton i.fa-user-plus {
+        position: relative;
+        left: 1px; }
+  /* line 772, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+  .fixedButtons .button.disabled:hover {
+    background-color: #81c4ed;
+    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    -ms-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    -o-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+    /* line 777, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    .fixedButtons .button.disabled:hover a,
+    .fixedButtons .button.disabled:hover button {
+      background: none;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      -ms-box-shadow: none !important;
+      -o-box-shadow: none !important;
+      box-shadow: none !important; }
+  @media screen and (min-width: 992px) {
+    /* line 729, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    .fixedButtons {
+      bottom: 11px; } }
 
+/* line 794, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .addEdit .addEditParcours .parcoursPreview .fixedButtons {
   right: auto !important;
-  left: 22px;
-}
-@media screen and (min-width: 992px) {
-  .addEdit .addEditParcours .parcoursPreview .fixedButtons {
-    left: 77px;
-  }
-}
+  left: 22px; }
+  @media screen and (min-width: 992px) {
+    /* line 794, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
+    .addEdit .addEditParcours .parcoursPreview .fixedButtons {
+      left: 77px; } }
 
+/* line 814, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .sideObject .defaultCard .subCard .element .value .button > * {
   -webkit-box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important;
   -moz-box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important;
   -ms-box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important;
   -o-box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important;
-  box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important;
-}
+  box-shadow: -110px 0 154px rgba(72, 127, 137, 0) inset !important; }
+
+/* line 819, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .sideObject .defaultCard .subCard .element .value .button:hover > * {
   -webkit-box-shadow: -110px 0 154px #487f89 inset !important;
   -moz-box-shadow: -110px 0 154px #487f89 inset !important;
   -ms-box-shadow: -110px 0 154px #487f89 inset !important;
   -o-box-shadow: -110px 0 154px #487f89 inset !important;
-  box-shadow: -110px 0 154px #487f89 inset !important;
-}
+  box-shadow: -110px 0 154px #487f89 inset !important; }
 
+/* line 834, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .tree .button i {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   -ms-box-shadow: none !important;
   -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
+  box-shadow: none !important; }
+
+/* line 839, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/buttons.scss */
 .tree .button:hover i {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   -ms-box-shadow: none !important;
   -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
+  box-shadow: none !important; }
 
 /*# sourceMappingURL=buttons.css.map */

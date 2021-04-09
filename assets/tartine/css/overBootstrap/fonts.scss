@@ -92,7 +92,9 @@
 
 .fs-ls-big-1 {
     @media screen and (orientation: landscape) {
-        font-size: $bigFontSize-1 !important;
+        @media (min-width: $sm) {
+            font-size: $bigFontSize-1 !important;
+        }
     }
 }
 

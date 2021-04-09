@@ -9,7 +9,7 @@
     
     @media screen {
         @media (orientation: landscape) {
-            background-size: 325%;
+            //background-size: 325%;
 
             @media (min-width: $sm) {
                 background-size: 300%;
@@ -93,8 +93,10 @@
                         
                         @media screen {
                             @media (orientation: landscape) {
-                                flex-wrap: wrap;
-                                flex-direction: row;
+                                @media (min-width: $sm) {
+                                    flex-wrap: wrap;
+                                    flex-direction: row;
+                                }
                             }
                         }
 

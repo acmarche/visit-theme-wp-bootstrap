@@ -65,17 +65,23 @@
 }
 .position-ls-absolute {
     @media screen and (orientation: landscape) {
-        position: absolute !important;
+        @media (min-width: $sm) {
+            position: absolute !important;
+        }
     }
 }
 .position-ls-relative {
     @media screen and (orientation: landscape) {
-        position: relative!important;
+        @media (min-width: $sm) {
+            position: relative!important;
+        }
     }
 }
 .position-ls-fixed {
     @media screen and (orientation: landscape) {
-        position: fixed !important;
+        @media (min-width: $sm) {
+            position: fixed !important;
+        }
     }
 }
 
@@ -97,7 +103,9 @@
 // .z-ls-1030
 .z-ls-1030 {
     @media screen and (orientation: landscape) {
-        z-index: 1030 !important;
+        @media (min-width: $sm) {
+            z-index: 1030 !important;
+        }
     }
 }
 
