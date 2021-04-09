@@ -16,15 +16,15 @@ function OffreItem( propos ) {
     let style = {};
     let classBg = 'bg-img-enjoy-1';
 
-    if ( 0 < offre.image ) {
+    if ( offre.image ) {
         style = {
-            backgroundImage: `url(${offre.image.url})`,
+            backgroundImage: `url(${offre.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         };
         classBg = '';
     }
-    console.log( offre );
+
     return (
         <>
             <li className={indexedClass[clef] ? indexedClass[clef] : indexedClass[3]}>
