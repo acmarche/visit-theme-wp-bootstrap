@@ -4,4 +4,22 @@
         <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
         <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
     {% endfor %}
+
+    <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
+    {% for contact in offre.contacts %}
+        {% if contact.lib('fr') %}
+            <strong>{{ contact.lib('fr') }}</strong>   <br/>
+        {% endif %}
+        {% if contact.noms %}
+            {{ contact.noms }} {{ contact.prenoms }} <br/>
+        {% endif %}
+        <br/>
+        {{ contact.adresse }} {{ contact.numero }}
+        <br/>
+        {{ contact.postal }} {{ contact.l_nom }}<br/><br/>
+        {% for communication in contact.communications %}
+            <strong>{{ communication.lib.get('fr') }}</strong> {{ communication.val }}
+            <br/>
+        {% endfor %}
+    {% endfor %}
 </div>

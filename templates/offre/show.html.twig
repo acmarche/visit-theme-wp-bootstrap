@@ -8,7 +8,8 @@
         <!--back | TODO JF: lien dynamique vers la page précédente-->
         <a href="{{ urlBack }}"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à {{ nameBack }}</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
+            à {{ nameBack }}</a>
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre }}</h2>
 
@@ -29,12 +30,12 @@
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
                             <h4 class="ff-semibold fs-short-1">Adresse</h4>
-                            <span class="fs-short-2 pt-8px d-block">
-                                {% if contact %}
+                            {% if contact %}
+                                <span class="fs-short-2 pt-8px d-block">
                                     {{ contact.adresse }} {{ contact.numero }} {{ contact.boite }}
-                                {% endif %}
                             </span>
-                            <span class="fs-short-2 pt-8px d-block">{{ offre.localisation.postal }} {{ offre.localisation.localite }}</span>
+                                <span class="fs-short-2 pt-8px d-block">{{ contact.postal }} {{ contact.l_nom }}</span>
+                            {% endif %}
                         </div>
 
                         <!--phone-->
@@ -89,12 +90,8 @@
 
                 <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
                 <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    <input type="checkbox" id="text-dyn"/>
                     <div for="text-dyn">
-                        <span class="more">Lire plus</span>
-                        <span class="less">Réduire</span>
-                    </div>
-                    <div for="text-dyn">
+                        <p>ici</p>
                         {% for description in offre.descriptions %}
                             <p>{{ description.texte|raw }} </p>
                         {% endfor %}

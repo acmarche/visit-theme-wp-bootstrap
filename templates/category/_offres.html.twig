@@ -19,7 +19,7 @@
                     <div class="col">
                         <span class="pt-0 text-default fs-short-2 ellipsis">{{ offre.titre }}</span>
                         <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-52px mh-xl-80px">
-                            ..............
+                            {{ offre.descriptions|length > 0 ? offre.descriptions.0.lib('fr') }}
                         </h5>
                     </div>
                 </a>

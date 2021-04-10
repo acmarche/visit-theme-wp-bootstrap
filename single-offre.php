@@ -19,6 +19,7 @@ $nameBack = $currentCategory->name;
 $hadesRepository = new HadesRepository();
 try {
     $offre = $hadesRepository->getOffre($codeCgt);
+    dump($offre);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
@@ -49,7 +50,6 @@ foreach ($offre->categories as $category) {
 
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
-//dump($offre);
 
 Twig::rendPage(
     'offre/show.html.twig',
