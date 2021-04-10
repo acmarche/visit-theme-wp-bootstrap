@@ -1,4 +1,5 @@
 <!--CONTENT-->
+
 <section id="content"
          class="pt-42px pb-36px pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0 pt-xl-80px pb-lg-66px mw-1440px mx-xl-auto w-100">
 
@@ -8,8 +9,9 @@
         <!--back | TODO JF: lien dynamique vers la page précédente-->
         <a href="{{ urlBack }}"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
-            à {{ nameBack }}</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
+            Retour à {{ nameBack }}</a>
+
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre }}</h2>
 
@@ -23,7 +25,8 @@
                 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs overflow-hidden">
 
                     <!--img-->
-                    {% include 'offre/_image.html.twig' %}
+                    <i class="bg-img-enjoy-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+
                     <!--datas-->
                     <div class="col-12 col-md-5 d-flex flex-column flex-ls-row flex-ls-wrap py-24px px-48px px-ls-12px align-self-stretch align-items-ls-start ml-auto bg-pastel">
 
@@ -42,8 +45,7 @@
                         {% if offre.telPrincipal %}
                             <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">Téléphone</h4>
-                                <a href="tel:{{ offre.telPrincipal }}"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.telPrincipal }}</a>
+                                <a href="tel:{{ offre.telPrincipal }}" class="fs-short-2 pt-8px d-block text-default">{{ offre.telPrincipal }}</a>
                             </div>
                         {% endif %}
 
@@ -51,8 +53,8 @@
                         {% if offre.emailPrincipal %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
-                                <a href="mailto:{{ offre.emailPrincipal }}"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.emailPrincipal }}</a>
+                                <a href="mailto:{{ offre.emailPrincipal }}" class="fs-short-2 pt-8px d-block text-default">
+                                    {{ offre.emailPrincipal }}</a>
                             </div>
                         {% endif %}
 
@@ -66,38 +68,70 @@
                         {% endif %}
 
                         <!--schedule-->
-                        {# <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
+                        <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             <h4 class="ff-semibold fs-short-1">Horaires</h4>
-                            {% for horaire in offre.horaires %}
-    <h4>{{ horaire.lib }}</h4>
-    <p>{{ horaire.texte }}</p>
-{% endfor %}
                             <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
-                        </div> #}
+                        </div>
                     </div>
                 </div>
 
                 <!--OBJECT | TAGS-->
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
                     <ul class="object-tags">
-                        {% for tag in tags %}
-                            <li><a href="#" class="rounded-xs">{{ tag.name }}</a></li>
-                        {% endfor %}
+                        <li><a href="#" class="rounded-xs">École</a></li>
+                        <li><a href="#" class="rounded-xs">Jeunesse</a></li>
+                        <li><a href="#" class="rounded-xs">Devoirs</a></li>
+                        <li><a href="#" class="rounded-xs">Volontariat</a></li>
                     </ul>
                 </div>
 
                 <!--OBJECT | TEXT-DYN | TODO JF : brancher la possibilité d'ouvrir/réduire le content avec un ellipsis + condition sur l'extend-->
                 <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
+                    <input type="checkbox" id="text-dyn"/>
                     <div for="text-dyn">
-                        <p>ici</p>
-                        {% for description in offre.descriptions %}
-                            <p>{{ description.texte|raw }} </p>
-                        {% endfor %}
-                        {% include 'offre/_details.html.twig' %}
-                        {% include 'offre/_images.html.twig' %}
-                        {% include 'map/_carte.html.twig' %}
+                        <span class="more">Lire plus</span>
+                        <span class="less">Réduire</span>
+                    </div>
+                    <div for="text-dyn">
+                        <p>Enseignement secondaire artistique à horaire réduit subventionné par la Fédération
+                            Wallonie-Bruxelles.</p>
+
+                        <p>Enfants et adolescents :</p>
+                        <ul>
+                            <li>Cours de formation pluridisciplinaire pour enfants et adolescents : dessin, peinture,
+                                volume
+                            </li>
+                        </ul>
+
+                        <p>Professeurs : Monique Simon - Chantal Reiter</p>
+                        <ul>
+                            <li>6-8 ans : mercredi de 13h à 14h40; samedi de 9h à 12h20</li>
+                            <li>9-11 ans : mercredi de 15h à 14h40; samedi de 10h40 à 12h20</li>
+                            <li>12-17 ans : mercredi de 17h10 à 19h40; vendredi de 17h à 20h20</li>
+                        </ul>
+
+                        <p>À partir de 18 ans :</p>
+                        <ul>
+                            <li>Dessin d'après un modèle vivant : Professeur : Dominiue Baudon; mardi de 13h40 à 20h20
+                            </li>
+                            <li>Gravure : Professeur : Véronique Pierlot; mardi de 13h40 à 20h20</li>
+                            <li>Peinture : Professeur : Manuel Alves Pereira; lundi de 13h40 à 20h20; Professeur :
+                                Nathalie Pirotte; vendredi de 13h40 à 20h20
+                            </li>
+                            <li>Céramique : Professeur : Hugo Meert; mercredi de 13h40 à 20h20</li>
+                            <li>Histoire de l'art et analyse esthétique : Professeur : Marie-Claire Toussaint</li>
+                        </ul>
+
+                        <p>Droit d'inscription :</p>
+                        <ul>
+                            <li>Gratuit en-dessous de 12 ans (né(e) après le 31/12/2007) et plus de 12 ans inscrit dans
+                                l'enseignement primaire
+                            </li>
+                            <li>75€ pour les élèves nès entre le 15/10/2001 et le 31/12/2007</li>
+                            <li>188€ pour les élèves nés avant le 15/10/2001</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -105,10 +139,8 @@
                 <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
                     <div class="pt-12px pt-md-16px object-share">
-                        <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="{{ currentUrl() }}"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-link"></i></a>
                         <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
                     </div>
                 </div>
@@ -152,10 +184,8 @@
                 <div class="w-100">
                     <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
                     <div class="pt-12px pt-md-16px object-share">
-                        <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="{{ currentUrl() }}"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-link"></i></a>
                         <a href="#" class="d-none d-xl-flex"><i class="fas fa-print"></i></a>
                     </div>
                 </div>
@@ -163,9 +193,10 @@
                 <!--OBJECT | TAGS-->
                 <div class="overflow-hidden w-100 pt-24px">
                     <ul class="object-tags">
-                        {% for tag in tags %}
-                            <li><a href="#" class="rounded-xs">{{ tag.name }}</a></li>
-                        {% endfor %}
+                        <li><a href="#" class="rounded-xs">École</a></li>
+                        <li><a href="#" class="rounded-xs">Jeunesse</a></li>
+                        <li><a href="#" class="rounded-xs">Devoirs</a></li>
+                        <li><a href="#" class="rounded-xs">Volontariat</a></li>
                     </ul>
                 </div>
 
@@ -188,7 +219,6 @@
         </div>
     </div>
 </section>
-
 
 <script type="text/javascript">
     jQuery(document)
