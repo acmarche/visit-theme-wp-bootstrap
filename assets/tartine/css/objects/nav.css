@@ -8,15 +8,12 @@
 }*/
 @keyframes pulsar {
   0% {
-    opacity: 1;
-  }
+    opacity: 1; }
   50% {
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
+
 /*@keyframes echo-active {
 	0% {
 		@include boxShadow(0 0 0 rgba(255, 136, 27, 0), 0 0 0 rgba(255, 136, 27, 0));
@@ -37,23 +34,20 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
+    transform: rotate(-30deg); }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
+
 @keyframes roll-coordinated-reverse {
   0% {
     bottom: -2px;
@@ -62,15 +56,13 @@
     -moz-transform: rotate(0);
     -ms-transform: rotate(0);
     -o-transform: rotate(0);
-    transform: rotate(0);
-  }
+    transform: rotate(0); }
   10% {
     -webkit-transform: rotate(55deg);
     -moz-transform: rotate(55deg);
     -ms-transform: rotate(55deg);
     -o-transform: rotate(55deg);
-    transform: rotate(55deg);
-  }
+    transform: rotate(55deg); }
   100% {
     bottom: -2px;
     right: 0;
@@ -78,9 +70,8 @@
     -moz-transform: rotate(-1800deg);
     -ms-transform: rotate(-1800deg);
     -o-transform: rotate(-1800deg);
-    transform: rotate(-1800deg);
-  }
-}
+    transform: rotate(-1800deg); } }
+
 /* VARIABLES */
 /*- ONLY FOR THIS PROJECT -*/
 /*- END | ONLY FOR THIS PROJECT -*/
@@ -136,6 +127,7 @@
 }*/
 /* EXTENDS */
 /* NAV */
+/* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
 nav {
   display: flex;
   position: fixed;
@@ -150,18 +142,19 @@ nav {
   -moz-box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   -ms-box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   -o-box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
+  box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+
+@media screen and (orientation: landscape) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav {
     width: 42px;
     flex-direction: column;
     top: 0;
     left: 0;
-    right: auto;
-  }
-}
+    right: auto; } }
+
 @media screen and (min-width: 768px) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav {
     width: 42px;
     flex-direction: column;
@@ -175,30 +168,29 @@ nav {
     -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  }
-}
-@media screen and (min-width: 768px) and (orientation: landscape) {
-  nav {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    border-radius: 0;
-    overflow: initial;
-  }
-}
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important; } }
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: auto;
+      border-radius: 0;
+      overflow: initial; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav {
     top: auto;
     bottom: 24px;
     left: auto;
     right: 24px;
     border-radius: 4px;
-    overflow: hidden;
-  }
-}
+    overflow: hidden; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 5, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav {
     position: relative;
     width: initial;
@@ -216,486 +208,485 @@ nav {
     -moz-box-shadow: none !important;
     -ms-box-shadow: none !important;
     -o-box-shadow: none !important;
-    box-shadow: none !important;
-  }
-}
+    box-shadow: none !important; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 77, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav.version_b > div > a span {
-    color: #636061;
-  }
-}
-nav > div {
-  flex: auto;
-  position: relative;
-  /*&.all {
-
-      @media screen {
-          @media (min-width: $xl) {
-              padding: 0;
-              margin: 0 15px;
-              order: 1;
-          }
-      }
-
-      .subnav {
-          display: flex;
-          flex-direction: column;
-          position: fixed;
-          top: 100%;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 0;
-          background-color: $darkCTA;
-          @include transition(top, $basicDuration);
-
-          @media screen {
-              @media (min-width: $xl) {
-                  display: none;
-                  //top: -147px;
-                  top: 66px;
-                  bottom: auto;
-                  flex-direction: initial;
-                  max-width: 1920px;
-                  margin: auto;
-                  overflow: hidden;
-                  @include lowestBoxShadow();
-              }
-          }
-
-          > ul {
-              display: flex;
-              flex-direction: column;
-
-              @media screen and (orientation: landscape) {
-                  flex-wrap: wrap;
-                  flex-direction: row;
-                  align-items: flex-start;
-              }
-
-              @media screen {
-                  @media (min-width: $xl) {
-                      height: auto;
-                      flex-direction: column;
-                  }
-              }
-
-              > li {
-                  padding: 0;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: stretch;
-                  position: initial;
-
-                  @media screen {
-                      @media (min-width: $xl) {
-                          align-items: flex-end;
-                      }
-                  }
-
-                  &:hover {
-                      > a {
-                          background-color: $white;
-                          color: $CTA;
-                          @include allTransition($basicDuration);
-                      }
-
-                      > div {
-                          left: 0;
-                          @include transition(left, $basicDuration);
-
-                          @media screen {
-                              @media (min-width: $xl) {
-                                  display: flex;
-                                  left: auto;
-                              }
-                          }
-                      }
-                  }
-
-                  > a {
-                      font-family: 'montserratsemibold';
-                      font-size: $shortFontSize-3;
-                      color: $white;
-                      text-align: left;
-                      padding: 10px 24px;
-                      white-space: nowrap;
-                      display: flex;
-                      align-items: center;
-                      justify-content: space-between;
-                      @include allTransition($basicDuration);
-
-                      @media screen {
-                          @media (min-width: $xl) {
-                              padding: 0 36px 0 999px;
-                              display: initial;
-                          }
-                      }
-                  }
-
-                  > div {
-                      display: flex;
-                      position: absolute;
-                      top: 0;
-                      bottom: 0;
-                      left: 100%;
-                      right: 0;
-                      padding: 0 0 24px;
-                      overflow-y: auto;
-                      background-color: $white;
-                      flex-direction: column;
-                      @include transition(left, $basicDuration);
-
-                      @media screen {
-                          @media (orientation: landscape) {
-                              flex-wrap: wrap;
-                              flex-direction: row;
-                              justify-content: flex-start;
-                          }
-
-                          @media (min-width: $xl) {
-                              display: none;
-                              left: auto;
-                              padding: 0;
-                              flex-direction: row;
-                              overflow: initial;
-                          }
-                      }
-
-                      > ul {
-                          text-align: left;
-
-                          @media screen {
-                              @media (orientation: landscape) {
-                                  display: flex;
-                                  flex-direction: column;
-                                  padding: 0;
-                              }
-
-                              @media (min-width: $xl) {
-                                  font-family: 'montserratlight';
-                                  padding: 12px 0;
-                              }
-                          }
-
-                          > li {
-                              display: flex;
-
-                              @media screen {
-                                  @media (min-width: $xl) {
-                                      height: 22px;
-                                  }
-                              }
-
-                              > a {
-                                  width: 100%;
-                                  font-family: 'montserratsemibold';
-                                  padding: 10px 24px;
-                                  font-size: $shortFontSize-3;
-                                  color: $darkCTA;
-                                  @include transition(color, $basicDuration);
-
-                                  @media screen {
-                                      @media (min-width: $xl) {
-                                          font-family: 'montserratlight';
-                                          padding: 0 0 0 36px;
-                                      }
-                                  }
-
-                                  &:hover {
-                                      text-decoration: none;
-                                      color: $CTA;
-                                      @include transition(color, $basicDuration);
-                                  }
-
-                                  > i {
-                                      font-size: $shortFontSize-3;
-                                      padding-left: 8px;
-                                  }
-                              }
-                          }
-                      }
-                  }
-
-                  &.c-adm {
-                      &:hover {
-                          > a {
-                              color: $c-adm;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-adm;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-
-                      h3 {
-                          color: $c-adm;
-                      }
-                  }
-                  &.c-cit {
-                      &:hover {
-                          > a {
-                              color: $c-cit;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-cit;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-
-                      h3 {
-                          color: $c-cit;
-                      }
-                  }
-                  &.c-cul {
-                      &:hover {
-                          > a {
-                              color: $c-cul;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-cul;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-cul;
-                      }
-                  }
-                  &.c-eco {
-                      &:hover {
-                          > a {
-                              color: $c-eco;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-eco;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-eco;
-                      }
-                  }
-                  &.c-enf {
-                      &:hover {
-                          > a {
-                              color: $c-enf;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-enf;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-enf;
-                      }
-                  }
-                  &.c-san {
-                      &:hover {
-                          > a {
-                              color: $c-san;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-san;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-san;
-                      }
-                  }
-                  &.c-soc {
-                      &:hover {
-                          > a {
-                              color: $c-soc;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-soc;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-soc;
-                      }
-                  }
-                  &.c-spo {
-                      &:hover {
-                          > a {
-                              color: $c-spo;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-spo;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-spo;
-                      }
-                  }
-                  &.c-tou {
-                      &:hover {
-                          > a {
-                              color: $c-tou;
-                          }
-                      }
-
-                      > div {
-                          > ul {
-                              > li {
-                                  > a {
-                                      &:hover {
-                                          color: $c-tou;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                      h3 {
-                          color: $c-tou;
-                      }
-                  }
-              }
-          }
-      }
-
-      &:hover {
-
-          .subnav {
-              top: 0;
-              z-index: 10;
-              @include transition(top, $basicDuration);
-
-              @media screen {
-                  @media (min-width: $xl) {
-                      display: block;
-                      top: 66px;
-                  }
-              }
-          }
-      }
-  }*/
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
+    color: #636061; } }
+  /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div {
-    height: 20%;
-  }
-}
+    flex: auto;
+    position: relative;
+    /*&.all {
+            
+            @media screen {
+                @media (min-width: $xl) {
+                    padding: 0;
+                    margin: 0 15px;
+                    order: 1;
+                }
+            }
+            
+            .subnav {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 0;
+                background-color: $darkCTA;
+                @include transition(top, $basicDuration);
+                
+                @media screen {
+                    @media (min-width: $xl) {
+                        display: none;
+                        //top: -147px;
+                        top: 66px;
+                        bottom: auto;
+                        flex-direction: initial;
+                        max-width: 1920px;
+                        margin: auto;
+                        overflow: hidden;
+                        @include lowestBoxShadow();
+                    }
+                }
+                
+                > ul {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    @media screen and (orientation: landscape) {
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        align-items: flex-start;
+                    }
+                    
+                    @media screen {
+                        @media (min-width: $xl) {
+                            height: auto;
+                            flex-direction: column;
+                        }
+                    }
+                    
+                    > li {
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                        position: initial;
+                        
+                        @media screen {
+                            @media (min-width: $xl) {
+                                align-items: flex-end;
+                            }
+                        }
+                        
+                        &:hover {
+                            > a {
+                                background-color: $white;
+                                color: $CTA;
+                                @include allTransition($basicDuration);
+                            }
+                            
+                            > div {
+                                left: 0;
+                                @include transition(left, $basicDuration);
+                                
+                                @media screen {
+                                    @media (min-width: $xl) {
+                                        display: flex;
+                                        left: auto;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        > a {
+                            font-family: 'montserratsemibold';
+                            font-size: $shortFontSize-3;
+                            color: $white;
+                            text-align: left;
+                            padding: 10px 24px;
+                            white-space: nowrap;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            @include allTransition($basicDuration);
+                            
+                            @media screen {
+                                @media (min-width: $xl) {
+                                    padding: 0 36px 0 999px;
+                                    display: initial;
+                                }
+                            }
+                        }
+                        
+                        > div {
+                            display: flex;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 100%;
+                            right: 0;
+                            padding: 0 0 24px;
+                            overflow-y: auto;
+                            background-color: $white;
+                            flex-direction: column;
+                            @include transition(left, $basicDuration);
+                            
+                            @media screen {
+                                @media (orientation: landscape) {
+                                    flex-wrap: wrap;
+                                    flex-direction: row;
+                                    justify-content: flex-start;
+                                }
+                                
+                                @media (min-width: $xl) {
+                                    display: none;
+                                    left: auto;
+                                    padding: 0;
+                                    flex-direction: row;
+                                    overflow: initial;
+                                }
+                            }
+                            
+                            > ul {
+                                text-align: left;
+                                
+                                @media screen {
+                                    @media (orientation: landscape) {
+                                        display: flex;
+                                        flex-direction: column;
+                                        padding: 0;
+                                    }
+                                    
+                                    @media (min-width: $xl) {
+                                        font-family: 'montserratlight';
+                                        padding: 12px 0;
+                                    }
+                                }
+                                
+                                > li {
+                                    display: flex;
+                                    
+                                    @media screen {
+                                        @media (min-width: $xl) {
+                                            height: 22px;
+                                        }
+                                    }
+                                    
+                                    > a {
+                                        width: 100%;
+                                        font-family: 'montserratsemibold';
+                                        padding: 10px 24px;
+                                        font-size: $shortFontSize-3;
+                                        color: $darkCTA;
+                                        @include transition(color, $basicDuration);
+                                        
+                                        @media screen {
+                                            @media (min-width: $xl) {
+                                                font-family: 'montserratlight';
+                                                padding: 0 0 0 36px;
+                                            }
+                                        }
+                                        
+                                        &:hover {
+                                            text-decoration: none;
+                                            color: $CTA;
+                                            @include transition(color, $basicDuration);
+                                        }
+                                        
+                                        > i {
+                                            font-size: $shortFontSize-3;
+                                            padding-left: 8px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        &.c-adm {
+                            &:hover {
+                                > a {
+                                    color: $c-adm;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-adm;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            h3 {
+                                color: $c-adm;
+                            }
+                        }
+                        &.c-cit {
+                            &:hover {
+                                > a {
+                                    color: $c-cit;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-cit;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            h3 {
+                                color: $c-cit;
+                            }
+                        }
+                        &.c-cul {
+                            &:hover {
+                                > a {
+                                    color: $c-cul;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-cul;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-cul;
+                            }
+                        }
+                        &.c-eco {
+                            &:hover {
+                                > a {
+                                    color: $c-eco;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-eco;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-eco;
+                            }
+                        }
+                        &.c-enf {
+                            &:hover {
+                                > a {
+                                    color: $c-enf;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-enf;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-enf;
+                            }
+                        }
+                        &.c-san {
+                            &:hover {
+                                > a {
+                                    color: $c-san;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-san;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-san;
+                            }
+                        }
+                        &.c-soc {
+                            &:hover {
+                                > a {
+                                    color: $c-soc;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-soc;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-soc;
+                            }
+                        }
+                        &.c-spo {
+                            &:hover {
+                                > a {
+                                    color: $c-spo;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-spo;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-spo;
+                            }
+                        }
+                        &.c-tou {
+                            &:hover {
+                                > a {
+                                    color: $c-tou;
+                                }
+                            }
+                            
+                            > div {
+                                > ul {
+                                    > li {
+                                        > a {
+                                            &:hover {
+                                                color: $c-tou;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            h3 {
+                                color: $c-tou;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &:hover {
+                
+                .subnav {
+                    top: 0;
+                    z-index: 10;
+                    @include transition(top, $basicDuration);
+                    
+                    @media screen {
+                        @media (min-width: $xl) {
+                            display: block;
+                            top: 66px;
+                        }
+                    }
+                }
+            }
+        }*/ }
+
+@media screen and (orientation: landscape) {
+  /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div {
+    height: 20%; } }
+
 @media screen and (min-width: 992px) {
+  /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div {
-    height: 42px;
-  }
-}
+    height: 42px; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 88, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div {
     flex: initial;
-    padding: 0 15px;
-  }
-}
+    padding: 0 15px; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 105, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search {
     padding: 0;
     margin: 0 0 0 16px;
-    order: 6;
-  }
-}
+    order: 6; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 114, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search > a {
-    width: 42px;
-  }
-}
-@media (min-width: 1200px) {
-  nav > div.search > a > i.icon_nav {
-    display: block;
-    -webkit-transition: opacity 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out;
-  }
-  nav > div.search > a > i.icon_nav:last-child {
-    opacity: 0;
-  }
-}
-nav > div.search .searchScreen {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  background-color: white;
-  -webkit-transition: top 0.25s ease-in-out;
-  -moz-transition: top 0.25s ease-in-out;
-  -ms-transition: top 0.25s ease-in-out;
-  -o-transition: top 0.25s ease-in-out;
-  transition: top 0.25s ease-in-out;
-}
+    width: 42px; } }
+    @media (min-width: 1200px) {
+      /* line 122, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.search > a > i.icon_nav {
+        display: block;
+        -webkit-transition: opacity 0.25s ease-in-out;
+        -moz-transition: opacity 0.25s ease-in-out;
+        -ms-transition: opacity 0.25s ease-in-out;
+        -o-transition: opacity 0.25s ease-in-out;
+        transition: opacity 0.25s ease-in-out; }
+        /* line 127, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.search > a > i.icon_nav:last-child {
+          opacity: 0; } }
+    /* line 135, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 100%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0;
+      background-color: white;
+      -webkit-transition: top 0.25s ease-in-out;
+      -moz-transition: top 0.25s ease-in-out;
+      -ms-transition: top 0.25s ease-in-out;
+      -o-transition: top 0.25s ease-in-out;
+      transition: top 0.25s ease-in-out; }
+
 @media screen and (min-width: 1200px) {
+  /* line 135, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen {
     width: auto;
     display: flex;
@@ -715,173 +706,172 @@ nav > div.search .searchScreen {
     -moz-transition: margin-left 0.45s ease-in-out;
     -ms-transition: margin-left 0.45s ease-in-out;
     -o-transition: margin-left 0.45s ease-in-out;
-    transition: margin-left 0.45s ease-in-out;
-  }
-}
-nav > div.search .searchScreen .graphicElement {
-  display: none;
-  position: absolute;
-  margin: 0 auto;
-  background-color: white;
-}
+    transition: margin-left 0.45s ease-in-out; } }
+      /* line 163, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.search .searchScreen .graphicElement {
+        display: none;
+        position: absolute;
+        margin: 0 auto;
+        background-color: white; }
+
 @media screen and (min-width: 1200px) {
+  /* line 163, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen .graphicElement {
-    display: block;
-  }
-}
-nav > div.search .searchScreen .graphicElement:first-child {
-  width: 20px;
-  height: 20px;
-  top: 0;
-  bottom: auto;
-  left: 70px;
-  right: auto;
-  z-index: 0;
-  -webkit-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -moz-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -ms-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -o-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -webkit-transition: top 0.25s ease-in-out;
-  -moz-transition: top 0.25s ease-in-out;
-  -ms-transition: top 0.25s ease-in-out;
-  -o-transition: top 0.25s ease-in-out;
-  transition: top 0.25s ease-in-out;
-}
-nav > div.search .searchScreen .graphicElement:last-child {
-  width: 45px;
-  height: 24px;
-  top: 0;
-  bottom: auto;
-  left: 57px;
-  right: auto;
-  z-index: 20;
-}
-nav > div.search .searchScreen > ul {
-  display: flex;
-  flex-direction: column;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
+    display: block; } }
+        /* line 175, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.search .searchScreen .graphicElement:first-child {
+          width: 20px;
+          height: 20px;
+          top: 0;
+          bottom: auto;
+          left: 70px;
+          right: auto;
+          z-index: 0;
+          -webkit-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          -moz-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          -ms-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          -o-box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          -webkit-transition: top 0.25s ease-in-out;
+          -moz-transition: top 0.25s ease-in-out;
+          -ms-transition: top 0.25s ease-in-out;
+          -o-transition: top 0.25s ease-in-out;
+          transition: top 0.25s ease-in-out; }
+        /* line 188, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.search .searchScreen .graphicElement:last-child {
+          width: 45px;
+          height: 24px;
+          top: 0;
+          bottom: auto;
+          left: 57px;
+          right: auto;
+          z-index: 20; }
+      /* line 199, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.search .searchScreen > ul {
+        display: flex;
+        flex-direction: column; }
+
+@media screen and (orientation: landscape) {
+  /* line 199, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen > ul {
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
-  }
-}
+    align-items: flex-start; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 199, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen > ul {
-    flex-direction: column;
-  }
-}
-nav > div.search .searchScreen > ul > li {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-nav > div.search .searchScreen > ul > li:first-child {
-  padding: 24px 24px 12px;
-  flex-direction: row;
-}
-nav > div.search .searchScreen > ul > li:first-child > form {
-  flex-grow: 1;
-  position: relative;
-}
+    flex-direction: column; } }
+        /* line 217, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.search .searchScreen > ul > li {
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch; }
+          /* line 218, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+          nav > div.search .searchScreen > ul > li:first-child {
+            padding: 24px 24px 12px;
+            flex-direction: row; }
+            /* line 222, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.search .searchScreen > ul > li:first-child > form {
+              flex-grow: 1;
+              position: relative; }
+
 @media screen and (min-width: 1200px) {
+  /* line 222, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li:first-child > form {
-    min-width: 200px;
-  }
-}
-nav > div.search .searchScreen > ul > li:first-child > form input {
-  background-color: #ededec;
-}
-nav > div.search .searchScreen > ul > li:first-child > a {
-  padding: 0;
-  margin-left: 12px;
-}
+    min-width: 200px; } }
+              /* line 232, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+              nav > div.search .searchScreen > ul > li:first-child > form input {
+                background-color: #ededec; }
+            /* line 237, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.search .searchScreen > ul > li:first-child > a {
+              padding: 0;
+              margin-left: 12px; }
+
 @media screen and (min-width: 1200px) {
+  /* line 237, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li:first-child > a {
-    display: none;
-  }
-}
-nav > div.search .searchScreen > ul > li:first-child > a i {
-  margin-right: 0;
-}
-nav > div.search .searchScreen > ul > li > a {
-  font-family: "montserratsemibold";
-  font-size: 0.75rem;
-  color: #636061;
-  text-align: left;
-  padding: 10px 24px;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
+    display: none; } }
+              /* line 247, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+              nav > div.search .searchScreen > ul > li:first-child > a i {
+                margin-right: 0; }
+          /* line 258, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+          nav > div.search .searchScreen > ul > li > a {
+            font-family: 'montserratsemibold';
+            font-size: 0.75rem;
+            color: #636061;
+            text-align: left;
+            padding: 10px 24px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center; }
+
 @media screen and (min-width: 1200px) {
+  /* line 270, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search .searchScreen > ul > li > a:hover {
     color: white;
-    background-color: #fd8383;
-  }
-  nav > div.search .searchScreen > ul > li > a:hover i.i-patrimony {
-    background-image: url(../../rsc/svg/icon_patrimony_white.svg);
-  }
-  nav > div.search .searchScreen > ul > li > a:hover i.i-arts {
-    background-image: url(../../rsc/svg/icon_arts_white.svg);
-  }
-  nav > div.search .searchScreen > ul > li > a:hover i.i-walks {
-    background-image: url(../../rsc/svg/icon_walks_white.svg);
-  }
-  nav > div.search .searchScreen > ul > li > a:hover i.i-delicaties {
-    background-image: url(../../rsc/svg/icon_delicaties_white.svg);
-  }
-  nav > div.search .searchScreen > ul > li > a:hover i.i-parties {
-    background-image: url(../../rsc/svg/icon_parties_white.svg);
-  }
-}
-nav > div.search .searchScreen > ul > li > a i {
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  margin-right: 12px;
-}
+    background-color: #fd8383; }
+    /* line 275, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen > ul > li > a:hover i.i-patrimony {
+      background-image: url(../../rsc/svg/icon_patrimony_white.svg); }
+    /* line 278, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen > ul > li > a:hover i.i-arts {
+      background-image: url(../../rsc/svg/icon_arts_white.svg); }
+    /* line 281, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen > ul > li > a:hover i.i-walks {
+      background-image: url(../../rsc/svg/icon_walks_white.svg); }
+    /* line 284, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen > ul > li > a:hover i.i-delicaties {
+      background-image: url(../../rsc/svg/icon_delicaties_white.svg); }
+    /* line 287, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search .searchScreen > ul > li > a:hover i.i-parties {
+      background-image: url(../../rsc/svg/icon_parties_white.svg); } }
+            /* line 295, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.search .searchScreen > ul > li > a i {
+              width: 20px;
+              height: 20px;
+              background-size: contain;
+              margin-right: 12px; }
+
 @media screen and (min-width: 1200px) {
+  /* line 307, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search:hover > a {
     -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    box-shadow: 0 -42px 0 #fd8383 inset !important;
-  }
-}
-@media screen and (min-width: 1200px) and (min-width: 1200px) {
-  nav > div.search:hover > a > i.icon_nav {
-    -webkit-transition: opacity 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out;
-  }
-  nav > div.search:hover > a > i.icon_nav:first-child {
-    opacity: 0;
-  }
-  nav > div.search:hover > a > i.icon_nav:last-child {
-    opacity: 1;
-  }
-}
-nav > div.search:hover .searchScreen {
-  top: 0;
-  -webkit-transition: top 0.25s ease-in-out;
-  -moz-transition: top 0.25s ease-in-out;
-  -ms-transition: top 0.25s ease-in-out;
-  -o-transition: top 0.25s ease-in-out;
-  transition: top 0.25s ease-in-out;
-}
+    box-shadow: 0 -42px 0 #fd8383 inset !important; } }
+  @media screen and (min-width: 1200px) and (min-width: 1200px) {
+    /* line 313, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search:hover > a > i.icon_nav {
+      -webkit-transition: opacity 0.25s ease-in-out;
+      -moz-transition: opacity 0.25s ease-in-out;
+      -ms-transition: opacity 0.25s ease-in-out;
+      -o-transition: opacity 0.25s ease-in-out;
+      transition: opacity 0.25s ease-in-out; }
+      /* line 317, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.search:hover > a > i.icon_nav:first-child {
+        opacity: 0; }
+      /* line 320, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.search:hover > a > i.icon_nav:last-child {
+        opacity: 1; } }
+    /* line 330, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search:hover .searchScreen {
+      top: 0;
+      -webkit-transition: top 0.25s ease-in-out;
+      -moz-transition: top 0.25s ease-in-out;
+      -ms-transition: top 0.25s ease-in-out;
+      -o-transition: top 0.25s ease-in-out;
+      transition: top 0.25s ease-in-out; }
+
 @media screen and (min-width: 1200px) {
+  /* line 330, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.search:hover .searchScreen {
     top: 76px;
     margin-left: -58px;
@@ -889,349 +879,355 @@ nav > div.search:hover .searchScreen {
     -moz-transition: margin-left 0.45s ease-in-out;
     -ms-transition: margin-left 0.45s ease-in-out;
     -o-transition: margin-left 0.45s ease-in-out;
-    transition: margin-left 0.45s ease-in-out;
-  }
-  nav > div.search:hover .searchScreen .graphicElement:first-child {
-    top: -10px;
-    -webkit-transition: top 0.25s ease-in-out;
-    -moz-transition: top 0.25s ease-in-out;
-    -ms-transition: top 0.25s ease-in-out;
-    -o-transition: top 0.25s ease-in-out;
-    transition: top 0.25s ease-in-out;
-    -webkit-transition-delay: 0.45s;
-    -moz-transition-delay: 0.45s;
-    -ms-transition-delay: 0.45s;
-    -o-transition-delay: 0.45s;
-    transition-delay: 0.45s;
-  }
-}
+    transition: margin-left 0.45s ease-in-out; }
+    /* line 342, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.search:hover .searchScreen .graphicElement:first-child {
+      top: -10px;
+      -webkit-transition: top 0.25s ease-in-out;
+      -moz-transition: top 0.25s ease-in-out;
+      -ms-transition: top 0.25s ease-in-out;
+      -o-transition: top 0.25s ease-in-out;
+      transition: top 0.25s ease-in-out;
+      -webkit-transition-delay: 0.45s;
+      -moz-transition-delay: 0.45s;
+      -ms-transition-delay: 0.45s;
+      -o-transition-delay: 0.45s;
+      transition-delay: 0.45s; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 763, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.organize {
     order: 4;
     padding: 0;
-    cursor: pointer;
-  }
-}
+    cursor: pointer; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize:hover input[type=checkbox] + a + .bubble {
+  /* line 777, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize:hover input[type="checkbox"] + a + .bubble {
     height: 84px;
     top: calc(100% + 5px);
-    bottom: auto;
-  }
-  nav > div.organize:hover input[type=checkbox] + a + .bubble div {
-    height: 84px;
-    -webkit-transition: height 0.25s ease-in-out;
-    -moz-transition: height 0.25s ease-in-out;
-    -ms-transition: height 0.25s ease-in-out;
-    -o-transition: height 0.25s ease-in-out;
-    transition: height 0.25s ease-in-out;
-  }
+    bottom: auto; }
+    /* line 782, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize:hover input[type="checkbox"] + a + .bubble div {
+      height: 84px;
+      -webkit-transition: height 0.25s ease-in-out;
+      -moz-transition: height 0.25s ease-in-out;
+      -ms-transition: height 0.25s ease-in-out;
+      -o-transition: height 0.25s ease-in-out;
+      transition: height 0.25s ease-in-out; }
+  /* line 790, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.organize:hover > a {
     -webkit-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -4px 0 #fd8383 inset !important;
-    box-shadow: 0 -4px 0 #fd8383 inset !important;
-  }
-}
-nav > div.organize input[type=checkbox] {
-  width: 65px;
-  height: 42px;
-  left: 0;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.organize input[type=checkbox] {
+    box-shadow: 0 -4px 0 #fd8383 inset !important; } }
+    /* line 797, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"] {
+      width: 65px;
+      height: 42px;
+      left: 0; }
+
+@media screen and (orientation: landscape) {
+  /* line 797, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] {
     width: 42px;
-    height: 100%;
-  }
-}
+    height: 100%; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.organize input[type=checkbox] {
-    width: 42px;
-  }
-}
+  /* line 797, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] {
+    width: 42px; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox] {
+  /* line 797, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] {
     width: 75.3px;
     height: 100%;
     left: 15px;
-    right: 15px;
-  }
-}
-nav > div.organize input[type=checkbox]:checked + a {
-  -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  box-shadow: 0 -42px 0 #fd8383 inset !important;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.organize input[type=checkbox]:checked + a {
+    right: 15px; } }
+      /* line 821, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.organize input[type="checkbox"]:checked + a {
+        -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        box-shadow: 0 -42px 0 #fd8383 inset !important; }
+
+@media screen and (orientation: landscape) {
+  /* line 821, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"]:checked + a {
     -webkit-box-shadow: 42px 0 0 #fd8383 inset !important;
     -moz-box-shadow: 42px 0 0 #fd8383 inset !important;
     -ms-box-shadow: 42px 0 0 #fd8383 inset !important;
     -o-box-shadow: 42px 0 0 #fd8383 inset !important;
-    box-shadow: 42px 0 0 #fd8383 inset !important;
-  }
-}
-@media screen and (orientation: landscape) and (min-width: 768px) {
-  nav > div.organize input[type=checkbox]:checked + a {
-    -webkit-box-shadow: 42px 0 0 #fd8383 inset !important;
-    -moz-box-shadow: 42px 0 0 #fd8383 inset !important;
-    -ms-box-shadow: 42px 0 0 #fd8383 inset !important;
-    -o-box-shadow: 42px 0 0 #fd8383 inset !important;
-    box-shadow: 42px 0 0 #fd8383 inset !important;
-  }
-}
-@media screen and (orientation: landscape) and (min-width: 768px) {
-  nav > div.organize input[type=checkbox]:checked + a {
-    -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    box-shadow: 0 -42px 0 #fd8383 inset !important;
-  }
-}
+    box-shadow: 42px 0 0 #fd8383 inset !important; } }
+  @media screen and (orientation: landscape) and (min-width: 768px) {
+    /* line 821, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"]:checked + a {
+      -webkit-box-shadow: 42px 0 0 #fd8383 inset !important;
+      -moz-box-shadow: 42px 0 0 #fd8383 inset !important;
+      -ms-box-shadow: 42px 0 0 #fd8383 inset !important;
+      -o-box-shadow: 42px 0 0 #fd8383 inset !important;
+      box-shadow: 42px 0 0 #fd8383 inset !important; } }
+  @media screen and (orientation: landscape) and (min-width: 768px) {
+    /* line 821, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"]:checked + a {
+      -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
+      -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
+      -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
+      -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
+      box-shadow: 0 -42px 0 #fd8383 inset !important; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox]:checked + a {
+  /* line 821, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"]:checked + a {
     -webkit-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -4px 0 #fd8383 inset !important;
-    box-shadow: 0 -4px 0 #fd8383 inset !important;
-  }
-}
-nav > div.organize input[type=checkbox]:checked + a + .bubble {
-  height: 84px;
-  top: auto;
-  bottom: calc(100% + 5px);
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.organize input[type=checkbox]:checked + a + .bubble {
-    top: -5px;
+    box-shadow: 0 -4px 0 #fd8383 inset !important; } }
+        /* line 842, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.organize input[type="checkbox"]:checked + a + .bubble {
+          height: 84px;
+          top: auto;
+          bottom: calc(100% + 5px); }
+
+@media screen and (orientation: landscape) {
+  /* line 842, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"]:checked + a + .bubble {
+    top: -11px;
     bottom: auto;
-    left: calc(100% + 5px);
-  }
-}
+    left: calc(100% + 5px); } }
+  @media screen and (orientation: landscape) and (min-width: 576px) {
+    /* line 842, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"]:checked + a + .bubble {
+      top: -5px; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.organize input[type=checkbox]:checked + a + .bubble {
+  /* line 842, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"]:checked + a + .bubble {
     top: auto;
     bottom: 107px;
-    left: auto;
-  }
-}
+    left: auto; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox]:checked + a + .bubble {
+  /* line 842, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"]:checked + a + .bubble {
     top: calc(100% + 5px);
     bottom: auto;
-    opacity: 1;
-  }
-  nav > div.organize input[type=checkbox]:checked + a + .bubble div {
-    height: 84px;
-    -webkit-transition: height 0.25s ease-in-out;
-    -moz-transition: height 0.25s ease-in-out;
-    -ms-transition: height 0.25s ease-in-out;
-    -o-transition: height 0.25s ease-in-out;
-    transition: height 0.25s ease-in-out;
-  }
-}
+    opacity: 1; }
+    /* line 869, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"]:checked + a + .bubble div {
+      height: 84px;
+      -webkit-transition: height 0.25s ease-in-out;
+      -moz-transition: height 0.25s ease-in-out;
+      -ms-transition: height 0.25s ease-in-out;
+      -o-transition: height 0.25s ease-in-out;
+      transition: height 0.25s ease-in-out; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox] + a {
-    margin: auto 15px;
-  }
-  nav > div.organize input[type=checkbox] + a:hover {
-    -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
-    -moz-box-shadow: 0 0 0 #fd8383 inset !important;
-    -ms-box-shadow: 0 0 0 #fd8383 inset !important;
-    -o-box-shadow: 0 0 0 #fd8383 inset !important;
-    box-shadow: 0 0 0 #fd8383 inset !important;
-  }
-}
-nav > div.organize input[type=checkbox] + a + .bubble {
-  left: 0;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.organize input[type=checkbox] + a + .bubble {
-    top: -5px;
+  /* line 879, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a {
+    margin: auto 15px; }
+    /* line 884, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"] + a:hover {
+      -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
+      -moz-box-shadow: 0 0 0 #fd8383 inset !important;
+      -ms-box-shadow: 0 0 0 #fd8383 inset !important;
+      -o-box-shadow: 0 0 0 #fd8383 inset !important;
+      box-shadow: 0 0 0 #fd8383 inset !important; } }
+      /* line 890, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.organize input[type="checkbox"] + a + .bubble {
+        left: 0; }
+
+@media screen and (orientation: landscape) {
+  /* line 890, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble {
+    top: -11px;
     bottom: auto;
-    left: -80px;
-  }
-}
+    left: -80px; } }
+  @media screen and (orientation: landscape) and (min-width: 576px) {
+    /* line 890, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.organize input[type="checkbox"] + a + .bubble {
+      top: -5px; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.organize input[type=checkbox] + a + .bubble {
+  /* line 890, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble {
     position: fixed;
     top: auto;
     bottom: -84px;
     left: auto;
-    right: 75px;
-  }
-}
+    right: 75px; } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox] + a + .bubble {
+  /* line 890, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble {
     position: absolute;
     height: 4px;
     top: calc(100% - 4px);
     bottom: auto;
     right: auto;
-    padding: 0 15px;
-  }
-}
-nav > div.organize input[type=checkbox] + a + .bubble .graphicElement {
-  top: calc(100% - 5px);
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.organize input[type=checkbox] + a + .bubble .graphicElement {
+    padding: 0 15px; } }
+        /* line 922, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.organize input[type="checkbox"] + a + .bubble .graphicElement {
+          top: calc(100% - 5px); }
+
+@media screen and (orientation: landscape) {
+  /* line 922, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble .graphicElement {
     top: 38px;
     bottom: auto;
     left: auto;
-    right: calc(100% - 5px);
-  }
-}
+    right: calc(100% - 5px); } }
+
 @media screen and (min-width: 768px) {
-  nav > div.organize input[type=checkbox] + a + .bubble .graphicElement {
+  /* line 922, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble .graphicElement {
     top: calc(100% - 27px);
-    left: calc(100% - 5px);
-  }
-}
+    left: calc(100% - 5px); } }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox] + a + .bubble .graphicElement {
+  /* line 922, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble .graphicElement {
     top: -5px;
     left: 0;
-    right: 0;
-  }
-}
-nav > div.organize input[type=checkbox] + a + .bubble div {
-  width: 75.3px;
-  overflow: hidden;
-  -webkit-transition: height 0.25s ease-in-out;
-  -moz-transition: height 0.25s ease-in-out;
-  -ms-transition: height 0.25s ease-in-out;
-  -o-transition: height 0.25s ease-in-out;
-  transition: height 0.25s ease-in-out;
-}
+    right: 0; } }
+        /* line 946, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.organize input[type="checkbox"] + a + .bubble div {
+          width: 75.3px;
+          overflow: hidden;
+          -webkit-transition: height 0.25s ease-in-out;
+          -moz-transition: height 0.25s ease-in-out;
+          -ms-transition: height 0.25s ease-in-out;
+          -o-transition: height 0.25s ease-in-out;
+          transition: height 0.25s ease-in-out; }
+
 @media screen and (min-width: 1200px) {
-  nav > div.organize input[type=checkbox] + a + .bubble div {
-    height: 4px;
-  }
-}
-nav > div.organize input[type=checkbox] + a + .bubble div a {
-  display: block;
-  background-color: white;
-  padding: 5px 0;
-  border-radius: 0;
-  font-family: "montserratsemibold";
-  color: #636061;
-  font-size: 0.75rem;
-  line-height: 150%;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-nav > div.organize input[type=checkbox] + a + .bubble div a:hover {
-  color: #fd8383;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-nav > div.organize input[type=checkbox] + a + .bubble div a:first-child {
-  border-radius: 4px 4px 0 0;
-}
-nav > div.organize input[type=checkbox] + a + .bubble div a:last-child {
-  border-radius: 0 0 4px 4px;
-}
+  /* line 946, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.organize input[type="checkbox"] + a + .bubble div {
+    height: 4px; } }
+          /* line 957, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+          nav > div.organize input[type="checkbox"] + a + .bubble div a {
+            display: block;
+            background-color: white;
+            padding: 5px 0;
+            border-radius: 0;
+            font-family: 'montserratsemibold';
+            color: #636061;
+            font-size: 0.75rem;
+            line-height: 150%;
+            -webkit-transition: color 0.25s ease-in-out;
+            -moz-transition: color 0.25s ease-in-out;
+            -ms-transition: color 0.25s ease-in-out;
+            -o-transition: color 0.25s ease-in-out;
+            transition: color 0.25s ease-in-out; }
+            /* line 968, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.organize input[type="checkbox"] + a + .bubble div a:hover {
+              color: #fd8383;
+              -webkit-transition: color 0.25s ease-in-out;
+              -moz-transition: color 0.25s ease-in-out;
+              -ms-transition: color 0.25s ease-in-out;
+              -o-transition: color 0.25s ease-in-out;
+              transition: color 0.25s ease-in-out; }
+            /* line 973, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.organize input[type="checkbox"] + a + .bubble div a:first-child {
+              border-radius: 4px 4px 0 0; }
+            /* line 976, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.organize input[type="checkbox"] + a + .bubble div a:last-child {
+              border-radius: 0 0 4px 4px; }
+
 @media screen and (min-width: 1200px) {
+  /* line 985, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.practical {
-    order: 5;
-  }
-}
-nav > div.more {
-  position: relative;
-}
+    order: 5; } }
+    /* line 992, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.more {
+      position: relative; }
+
 @media screen and (min-width: 1200px) {
+  /* line 992, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.more {
-    display: none;
-  }
-}
-nav > div.more > input[type=checkbox] {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  z-index: 20;
-}
-nav > div.more > input[type=checkbox] + a {
-  -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
-  -moz-box-shadow: 0 0 0 #fd8383 inset !important;
-  -ms-box-shadow: 0 0 0 #fd8383 inset !important;
-  -o-box-shadow: 0 0 0 #fd8383 inset !important;
-  box-shadow: 0 0 0 #fd8383 inset !important;
-  -webkit-transition: box-shadow 0.25s ease-in-out;
-  -moz-transition: box-shadow 0.25s ease-in-out;
-  -ms-transition: box-shadow 0.25s ease-in-out;
-  -o-transition: box-shadow 0.25s ease-in-out;
-  transition: box-shadow 0.25s ease-in-out;
-}
-nav > div.more > input[type=checkbox] + a + .bubble {
-  width: max-content;
-  top: auto;
-  bottom: 100%;
-  right: 8px;
-  background-color: white;
-  opacity: 0;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.more > input[type=checkbox] + a + .bubble {
+    display: none; } }
+      /* line 1001, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div.more > input[type="checkbox"] {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        z-index: 20; }
+        /* line 1007, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.more > input[type="checkbox"] + a {
+          -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
+          -moz-box-shadow: 0 0 0 #fd8383 inset !important;
+          -ms-box-shadow: 0 0 0 #fd8383 inset !important;
+          -o-box-shadow: 0 0 0 #fd8383 inset !important;
+          box-shadow: 0 0 0 #fd8383 inset !important;
+          -webkit-transition: box-shadow 0.25s ease-in-out;
+          -moz-transition: box-shadow 0.25s ease-in-out;
+          -ms-transition: box-shadow 0.25s ease-in-out;
+          -o-transition: box-shadow 0.25s ease-in-out;
+          transition: box-shadow 0.25s ease-in-out; }
+          /* line 1011, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+          nav > div.more > input[type="checkbox"] + a + .bubble {
+            width: max-content;
+            top: auto;
+            bottom: 100%;
+            right: 8px;
+            background-color: white;
+            opacity: 0;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+            -moz-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+            -ms-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+            -o-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out; }
+
+@media screen and (orientation: landscape) {
+  /* line 1011, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble {
     bottom: 8px;
     left: -100%;
-    right: auto;
-  }
-}
+    right: auto; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.more > input[type=checkbox] + a + .bubble {
+  /* line 1011, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble {
     position: fixed;
     bottom: -88px;
-    right: 74px;
-  }
-}
+    right: 74px; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  nav > div.more > input[type=checkbox] + a + .bubble {
+  /* line 1011, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble {
     position: fixed;
     bottom: -88px;
     left: auto;
-    right: 74px;
-  }
-}
-nav > div.more > input[type=checkbox] + a + .bubble .graphicElement {
-  top: auto;
-  left: auto;
-}
-nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
-  width: 20px;
-  height: 20px;
-  bottom: -10px;
-  right: 14px;
-  -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-  box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
+    right: 74px; } }
+            /* line 1044, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement {
+              top: auto;
+              left: auto; }
+              /* line 1048, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+              nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
+                width: 20px;
+                height: 20px;
+                bottom: -10px;
+                right: 14px;
+                -webkit-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+                -moz-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+                -ms-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+                -o-box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important;
+                box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.125) !important; }
+
+@media screen and (orientation: landscape) {
+  /* line 1048, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
     bottom: 10px;
     left: -10px;
     right: auto;
@@ -1239,22 +1235,22 @@ nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child 
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-  }
-}
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
+  /* line 1048, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
     bottom: 11px;
     right: -10px;
     -webkit-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-  }
-}
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child {
+  /* line 1048, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:first-child {
     bottom: 11px;
     left: auto;
     right: -10px;
@@ -1262,234 +1258,234 @@ nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:first-child 
     -moz-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -ms-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
     -o-box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important;
-  }
-}
-nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
-  width: 40px;
-  height: 20px;
-  bottom: 0;
-  right: 5px;
-  border-radius: 4px;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  transform: none;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
+    box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.125) !important; } }
+              /* line 1078, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+              nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
+                width: 40px;
+                height: 20px;
+                bottom: 0;
+                right: 5px;
+                border-radius: 4px;
+                -webkit-transform: none;
+                -moz-transform: none;
+                -ms-transform: none;
+                -o-transform: none;
+                transform: none; }
+
+@media screen and (orientation: landscape) {
+  /* line 1078, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
     left: 0;
-    right: auto;
-  }
-}
+    right: auto; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
+  /* line 1078, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
-    right: 0;
-  }
-}
+    right: 0; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  nav > div.more > input[type=checkbox] + a + .bubble .graphicElement:last-child {
+  /* line 1078, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"] + a + .bubble .graphicElement:last-child {
     width: 20px;
     height: 45px;
     bottom: 0;
     left: auto;
-    right: 0;
-  }
-}
-nav > div.more > input[type=checkbox] + a + .bubble div {
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0;
-  text-align: left;
-}
-nav > div.more > input[type=checkbox] + a + .bubble div a {
-  font-family: "montserratsemibold";
-  font-size: 0.75rem;
-  padding: 8px 24px 8px 12px;
-  color: #636061;
-  position: relative;
-  z-index: 30;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-nav > div.more > input[type=checkbox] + a + .bubble div a:hover {
-  color: #fd8383;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  -ms-transition: color 0.25s ease-in-out;
-  -o-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
-nav > div.more > input[type=checkbox]:checked + a {
-  -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -webkit-transition: box-shadow 0.25s ease-in-out;
-  -moz-transition: box-shadow 0.25s ease-in-out;
-  -ms-transition: box-shadow 0.25s ease-in-out;
-  -o-transition: box-shadow 0.25s ease-in-out;
-  transition: box-shadow 0.25s ease-in-out;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.more > input[type=checkbox]:checked + a {
+    right: 0; } }
+            /* line 1114, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+            nav > div.more > input[type="checkbox"] + a + .bubble div {
+              display: flex;
+              flex-direction: column;
+              padding: 8px 0;
+              text-align: left; }
+              /* line 1120, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+              nav > div.more > input[type="checkbox"] + a + .bubble div a {
+                font-family: 'montserratsemibold';
+                font-size: 0.75rem;
+                padding: 8px 24px 8px 12px;
+                color: #636061;
+                position: relative;
+                z-index: 30;
+                -webkit-transition: color 0.25s ease-in-out;
+                -moz-transition: color 0.25s ease-in-out;
+                -ms-transition: color 0.25s ease-in-out;
+                -o-transition: color 0.25s ease-in-out;
+                transition: color 0.25s ease-in-out; }
+                /* line 1129, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+                nav > div.more > input[type="checkbox"] + a + .bubble div a:hover {
+                  color: #fd8383;
+                  -webkit-transition: color 0.25s ease-in-out;
+                  -moz-transition: color 0.25s ease-in-out;
+                  -ms-transition: color 0.25s ease-in-out;
+                  -o-transition: color 0.25s ease-in-out;
+                  transition: color 0.25s ease-in-out; }
+        /* line 1139, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+        nav > div.more > input[type="checkbox"]:checked + a {
+          -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
+          -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
+          -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
+          -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
+          box-shadow: 0 -42px 0 #fd8383 inset !important;
+          -webkit-transition: box-shadow 0.25s ease-in-out;
+          -moz-transition: box-shadow 0.25s ease-in-out;
+          -ms-transition: box-shadow 0.25s ease-in-out;
+          -o-transition: box-shadow 0.25s ease-in-out;
+          transition: box-shadow 0.25s ease-in-out; }
+
+@media screen and (orientation: landscape) {
+  /* line 1139, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"]:checked + a {
     -webkit-box-shadow: 42px 0 0 #fd8383 inset !important;
     -moz-box-shadow: 42px 0 0 #fd8383 inset !important;
     -ms-box-shadow: 42px 0 0 #fd8383 inset !important;
     -o-box-shadow: 42px 0 0 #fd8383 inset !important;
-    box-shadow: 42px 0 0 #fd8383 inset !important;
-  }
-}
+    box-shadow: 42px 0 0 #fd8383 inset !important; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  nav > div.more > input[type=checkbox]:checked + a {
+  /* line 1139, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"]:checked + a {
     -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    box-shadow: 0 -42px 0 #fd8383 inset !important;
-  }
-}
-nav > div.more > input[type=checkbox]:checked + a + .bubble {
-  bottom: 50px;
-  opacity: 1;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
-  nav > div.more > input[type=checkbox]:checked + a + .bubble {
+    box-shadow: 0 -42px 0 #fd8383 inset !important; } }
+          /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+          nav > div.more > input[type="checkbox"]:checked + a + .bubble {
+            bottom: 50px;
+            opacity: 1;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out; }
+
+@media screen and (orientation: landscape) {
+  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
     bottom: 8px;
-    left: 50px;
-  }
-}
+    left: 50px; } }
+
 @media screen and (min-width: 768px) {
-  nav > div.more > input[type=checkbox]:checked + a + .bubble {
+  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
     bottom: 24px;
-    right: 74px;
-  }
-}
+    right: 74px; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
-  nav > div.more > input[type=checkbox]:checked + a + .bubble {
+  /* line 1155, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+  nav > div.more > input[type="checkbox"]:checked + a + .bubble {
     bottom: 24px;
     left: auto;
-    right: 74px;
-  }
-}
-nav > div.inspirations {
-  display: none;
-  order: 2;
-}
+    right: 74px; } }
+    /* line 1183, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.inspirations {
+      display: none;
+      order: 2; }
+
 @media screen and (min-width: 1200px) {
+  /* line 1183, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.inspirations {
     display: flex;
-    align-items: center;
-  }
-}
-nav > div.agenda {
-  display: none;
-  order: 3;
-}
+    align-items: center; } }
+    /* line 1194, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.agenda {
+      display: none;
+      order: 3; }
+
 @media screen and (min-width: 1200px) {
+  /* line 1194, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.agenda {
     display: flex;
-    align-items: center;
-  }
-}
-nav > div.active > a {
-  background-color: #fd8383;
-}
+    align-items: center; } }
+    /* line 1207, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div.active > a {
+      background-color: #fd8383; }
+
 @media screen and (min-width: 1200px) {
+  /* line 1207, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div.active > a {
     background: none;
     -webkit-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -4px 0 #fd8383 inset !important;
-    box-shadow: 0 -4px 0 #fd8383 inset !important;
-  }
-}
-nav > div > a {
-  display: flex;
-  height: 42px;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.25rem;
-  -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
-  -moz-box-shadow: 0 0 0 #fd8383 inset !important;
-  -ms-box-shadow: 0 0 0 #fd8383 inset !important;
-  -o-box-shadow: 0 0 0 #fd8383 inset !important;
-  box-shadow: 0 0 0 #fd8383 inset !important;
-  -webkit-transition: box-shadow 0.25s ease-in-out;
-  -moz-transition: box-shadow 0.25s ease-in-out;
-  -ms-transition: box-shadow 0.25s ease-in-out;
-  -o-transition: box-shadow 0.25s ease-in-out;
-  transition: box-shadow 0.25s ease-in-out;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
+    box-shadow: 0 -4px 0 #fd8383 inset !important; } }
+    /* line 1219, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div > a {
+      display: flex;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+      -webkit-box-shadow: 0 0 0 #fd8383 inset !important;
+      -moz-box-shadow: 0 0 0 #fd8383 inset !important;
+      -ms-box-shadow: 0 0 0 #fd8383 inset !important;
+      -o-box-shadow: 0 0 0 #fd8383 inset !important;
+      box-shadow: 0 0 0 #fd8383 inset !important;
+      -webkit-transition: box-shadow 0.25s ease-in-out;
+      -moz-transition: box-shadow 0.25s ease-in-out;
+      -ms-transition: box-shadow 0.25s ease-in-out;
+      -o-transition: box-shadow 0.25s ease-in-out;
+      transition: box-shadow 0.25s ease-in-out; }
+
+@media screen and (orientation: landscape) {
+  /* line 1219, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a {
     height: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-  }
-}
+    right: 0; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
+  /* line 1219, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a {
-    height: 42px;
-  }
-}
+    height: 42px; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 1219, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a {
-    position: initial;
-  }
-}
-nav > div > a:hover {
-  -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-  box-shadow: 0 -42px 0 #fd8383 inset !important;
-  -webkit-transition: box-shadow 0.25s ease-in-out;
-  -moz-transition: box-shadow 0.25s ease-in-out;
-  -ms-transition: box-shadow 0.25s ease-in-out;
-  -o-transition: box-shadow 0.25s ease-in-out;
-  transition: box-shadow 0.25s ease-in-out;
-}
-@media screen and (orientation: landscape) and (min-width: 576px) {
+    position: initial; } }
+      /* line 1249, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div > a:hover {
+        -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
+        box-shadow: 0 -42px 0 #fd8383 inset !important;
+        -webkit-transition: box-shadow 0.25s ease-in-out;
+        -moz-transition: box-shadow 0.25s ease-in-out;
+        -ms-transition: box-shadow 0.25s ease-in-out;
+        -o-transition: box-shadow 0.25s ease-in-out;
+        transition: box-shadow 0.25s ease-in-out; }
+
+@media screen and (orientation: landscape) {
+  /* line 1249, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 42px 0 0 #fd8383 inset !important;
     -moz-box-shadow: 42px 0 0 #fd8383 inset !important;
     -ms-box-shadow: 42px 0 0 #fd8383 inset !important;
     -o-box-shadow: 42px 0 0 #fd8383 inset !important;
-    box-shadow: 42px 0 0 #fd8383 inset !important;
-  }
-}
+    box-shadow: 42px 0 0 #fd8383 inset !important; } }
+
 @media screen and (min-width: 992px) and (orientation: landscape) {
+  /* line 1249, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -ms-box-shadow: 0 -42px 0 #fd8383 inset !important;
     -o-box-shadow: 0 -42px 0 #fd8383 inset !important;
-    box-shadow: 0 -42px 0 #fd8383 inset !important;
-  }
-}
+    box-shadow: 0 -42px 0 #fd8383 inset !important; } }
+
 @media screen and (min-width: 1200px) {
+  /* line 1249, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a:hover {
     -webkit-box-shadow: 0 -4px 0 #fd8383 inset !important;
     -moz-box-shadow: 0 -4px 0 #fd8383 inset !important;
@@ -1497,45 +1493,43 @@ nav > div > a:hover {
     -o-box-shadow: 0 -4px 0 #fd8383 inset !important;
     box-shadow: 0 -4px 0 #fd8383 inset !important;
     /*@media (orientation: landscape) {
-        @include boxShadow(0 -42px 0 $CTA inset);
-    }*/
-  }
-}
-nav > div > a i {
-  font-size: 1.25rem;
-}
+                            @include boxShadow(0 -42px 0 $CTA inset);
+                        }*/ } }
+      /* line 1273, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div > a i {
+        font-size: 1.25rem; }
+
 @media screen and (min-width: 1200px) {
+  /* line 1276, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a i.icon_nav {
     display: none;
     /*@media (orientation: landscape) {
-        display: flex;
-    }*/
-  }
-}
-nav > div > a.icon_custom .i-dark-primary {
-  display: none;
-}
+                                display: flex;
+                            }*/ } }
+      /* line 1290, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div > a.icon_custom .i-dark-primary {
+        display: none; }
+
 @media screen and (min-width: 1200px) {
+  /* line 1290, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a.icon_custom .i-dark-primary {
     display: inline;
     margin-right: 8px;
-    background-size: auto;
-  }
-  nav > div > a.icon_custom .i-dark-primary.i-bars {
-    height: 10px;
-  }
-}
-nav > div > a span {
-  display: none;
-  color: white;
-  font-size: 0.825rem;
-  font-family: "montserratsemibold";
-  text-shadow: 0 1px 3px rgba(5, 0, 50, 0.12), 0 1px 2px rgba(5, 0, 50, 0.24);
-}
+    background-size: auto; }
+    /* line 1299, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+    nav > div > a.icon_custom .i-dark-primary.i-bars {
+      height: 10px; } }
+      /* line 1307, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
+      nav > div > a span {
+        display: none;
+        color: white;
+        font-size: 0.825rem;
+        font-family: 'montserratsemibold';
+        text-shadow: 0 1px 3px rgba(5, 0, 50, 0.12), 0 1px 2px rgba(5, 0, 50, 0.24); }
+
 @media screen and (min-width: 1200px) {
+  /* line 1307, /Users/tibyvoesters/Google Drive/Studio Tartine/projects/commune_marche/site/integration/visit_marche/css/objects/nav.scss */
   nav > div > a span {
-    display: block;
-  }
-}
+    display: block; } }
 
 /*# sourceMappingURL=nav.css.map */

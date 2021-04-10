@@ -14,10 +14,8 @@ header {
     
     @media screen {
         @media (orientation: landscape) {
-            @media (min-width: $sm) {
-                width: calc(100% - 42px);
-                left: 42px;
-            }
+            width: calc(100% - 42px);
+            left: 42px;
             
             @media (min-width: $lg) {
                 width: 100%;
@@ -59,9 +57,7 @@ header {
 
             @media screen {
                 @media (orientation: landscape) {
-                    @media (min-width: $sm) {
-                        padding: 6px 1.5rem 6px 9px;
-                    }
+                    adding: 6px 1.5rem 6px 9px;
                 }
                 
                 @media (min-width: $md) {

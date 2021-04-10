@@ -22,8 +22,8 @@
 // georgia
 @font-face {
     font-family: 'georgiabold';
-    src: url('../rsc/fonts/georgia_bold-webfont.woff2') format('woff2'),
-         url('../rsc/fonts/georgia_bold-webfont.woff') format('woff');
+    src: url('georgia_bold-webfont.woff2') format('woff2'),
+         url('georgia_bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -33,7 +33,7 @@
 div,
 section {
     font-size: 0;
-
+    
     a,
     i,
     p,
@@ -56,12 +56,12 @@ html {
     background-color: rgb(245, 245, 245);
 }
 body {
-
+    
     // footer at bottom
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    
     min-height: 100%;
     height: auto;
     max-width: 1920px;
@@ -124,7 +124,7 @@ h1 {
     font-family: 'montserratsemibold';
 	font-size: $bigFontSize-1;
     color: $white;
-
+    
     /*@media screen and (min-width: $md) {
         font-size: $basicFontSize;
     }*/
@@ -147,7 +147,7 @@ h6 {
 
 p {
 	line-height: 150%;
-
+    
     + p {
         padding-top: 1rem;
     }
@@ -166,7 +166,7 @@ a {
 
 strong {
     font-family: 'montserratsemibold';
-}
+} 
 
 /*
 .zebre {
@@ -312,7 +312,7 @@ input {
 
 	&:focus {
 		color: $darkCTA;
-
+        
         /*~ label {
             color: $darkCTA;
         }*/
@@ -333,14 +333,14 @@ input {
 		cursor: default;
 		opacity: .5;
 	}
-
+    
     &[type = "email"] {
         padding-right: 38px;
-
+        
         &:empty {
             // TODO | color: $lightBlue;
             // TODO | border-color: $lightBlue;
-
+            
             & + i + i + .emptyField {
                 display: block;
                 // TODO | color: $lightBlue;
@@ -349,36 +349,36 @@ input {
         &:valid {
             color: $basicGreen;
             border-color: $basicGreen;
-
+            
             & + .fa-times + .fa-check {
                 display: block;
                 color: $basicGreen;
-
+                
                 & + .emptyField {
                     display: none;
-
+                    
                     & + .badfield {
                         display: none;
-
+                        
                         & + .goodField {
                             display: block;
                             color: $basicGreen;
                         }
-                    }
+                    } 
                 }
             }
         }
         &:invalid {
             color: $basicRed;
             border-color: $basicRed;
-
+            
             & + .fa-times {
                 display: block;
                 color: $basicRed;
-
+                
                 & + i + .emptyField {
                     display: none;
-
+                    
                     & + .badField {
                         display: block;
                         color: $basicRed;
@@ -386,7 +386,7 @@ input {
                 }
             }
         }
-
+        
         & + i,
         & + i + i {
             display: none;
@@ -399,7 +399,7 @@ input {
             bottom: auto;
             left: auto;
             right: 0;
-
+            
             & + small,
             & + small + small,
             & + small + small + small {
@@ -427,7 +427,7 @@ input {
             i {
                 opacity: 0;
             }
-
+            
 			&.alert {
 				.fal {
 					display: block;
@@ -452,7 +452,7 @@ input {
 			background-color: $darkCTA;
             border-style: hidden;
 			@include allTransition($basicDuration);
-
+            
             i {
                 opacity: 1;
             }
@@ -525,7 +525,7 @@ input {
 			color: $white;
 		}
 	}
-
+    
     &.button {
         &.lvl1 {
             border: none;
@@ -555,13 +555,13 @@ textarea {
 		color: $darkCTA;
 		outline-color: $darkCTA;
 	}
-
+    
     &:empty {
         & + .emptyField {
             display: block;
         }
     }
-
+    
     & + small {
         display: none;
         padding: 4px 0 0;
