@@ -52,6 +52,7 @@ if ($filtresString) {
                 'offres' => $offres,
                 'title' => $title,
                 'permalink' => $permalink,
+        'url'=>'',
             ]
         );
 
@@ -83,6 +84,7 @@ if ($filtresString) {
             'urlBack' => $urlBack,
             'nameBack' => $nameBack,
             'offres' => $offres,
+        'url'=>'',
         ]
     );
 
@@ -113,6 +115,7 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
         'posts' => $posts,
+        'url'=>'',
     ]
 );
 
