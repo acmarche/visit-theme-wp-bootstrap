@@ -13,10 +13,11 @@ class Theme
     static function isHomePage(): bool
     {
         $request = Request::createFromGlobals();
-        $uri     = $request->getRequestUri();
+        $uri = $request->getPathInfo();
         if ($uri === '/') {
             return true;
         }
+
         return false;
     }
 }
