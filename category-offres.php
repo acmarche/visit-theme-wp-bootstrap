@@ -3,13 +3,10 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Utils\CategoryUtils;
-use VisitMarche\Theme\Lib\Twig;
-use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
-use VisitMarche\Theme\Inc\CategoryMetaBox;
+use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Inc\RouterHades;
-use VisitMarche\Theme\Lib\WpRepository;
+use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
