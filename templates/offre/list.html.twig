@@ -78,7 +78,7 @@
                                     </td>
                                     <td>
                                         {% if category.category_id %}
-                                            <a href="/category/offres/?cgt={{ category.category_id }}" target="_blank">
+                                            <a href="{{ categoryUrl }}/?cgt={{ category.category_id }}" target="_blank">
                                                 {{ category.category_id }}
                                             </a>
                                         {% endif %}
