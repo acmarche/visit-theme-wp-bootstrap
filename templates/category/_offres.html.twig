@@ -18,8 +18,14 @@
                     </i>
                     <div class="col">
                         <span class="pt-0 text-default fs-short-2 ellipsis">{{ offre.titre }}</span>
-                        <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-52px mh-xl-80px">
-                            {{ offre.descriptions|length > 0 ? offre.descriptions.0.lib('fr') }}
+                        <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-72px mh-xl-80px">
+                            {{ offre.descriptions|length > 0 ? offre.descriptions.0.texte.get('fr')|u.truncate(90,'...') }}
+                            {% if offre.contactPrincipal %}
+                                {% set contact = offre.contactPrincipal %}
+                                {% if contact.l_nom %}<br />
+                                    <span>{{ contact.adresse }} {{ contact.numero }} {{ contact.l_nom }}</span>
+                                {% endif %}
+                            {% endif %}
                         </h5>
                     </div>
                 </a>
@@ -35,7 +41,9 @@
                     <div class="col">
                         <span class="pt-0 text-default fs-short-2 ellipsis">Aucun article</span>
                         <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-52px mh-xl-80px">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident veritatis eius, nostrum eos, explicabo repudiandae laborum rerum magni, nesciunt nemo quod tenetur omnis dolorum facilis illum. Obcaecati, nobis, a...
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident veritatis eius,
+                            nostrum eos, explicabo repudiandae laborum rerum magni, nesciunt nemo quod tenetur omnis
+                            dolorum facilis illum. Obcaecati, nobis, a...
                         </h5>
                     </div>
                 </a>
