@@ -57,8 +57,7 @@ class RouterHades extends Router
                 //url parser: /category/agenda/event/866/
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
-                if ($categoryAgenda)
-                {
+                if ($categoryAgenda) {
                     add_rewrite_rule(
                         '^'.$categoryBase.'/'.$categoryAgenda->slug.'/([^/]*)/([^/]*)/?',
                         'index.php?category_name='.$categoryAgenda->slug.'&'.self::PARAM_EVENT.'=$matches[2]',
@@ -104,12 +103,12 @@ class RouterHades extends Router
 
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
-                //url parser: /category/sorganiser/sejourner/offre/86/
-                //attention si pas sous categorie
-                //https://regex101.com/r/guhLuX/1
+                //category/sorganiser/bouger/escalade/offre/78934/
+                //category/sorganiser/savourer/offre/8040/
+                //https://regex101.com/r/pnR7x3/1
                 add_rewrite_rule(
-                    '^'.$categoryBase.'/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?',
-                    'index.php?category_name=$matches[1]/$matches[2]&'.self::PARAM_OFFRE.'=$matches[4]',
+                    '^'.$categoryBase.'/((\w)+/?){1,4}(/offre/)(\d+)/?$',
+                    'index.php?category_name=$matches[1]&'.self::PARAM_OFFRE.'=$matches[4]',
                     'top'
                 );
             }
