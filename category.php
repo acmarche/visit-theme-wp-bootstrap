@@ -3,6 +3,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
@@ -14,18 +15,56 @@ get_header();
 
 $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
-$description = $description = category_description($cat_ID);
+$description = category_description($cat_ID);
 $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
-$hadesRefrubrique = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true);
+$filtresString = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true);
 
-if ($hadesRefrubrique) {
+if ($filtresString) {
+
     $hadesRepository = new HadesRepository();
-
     $all = Hades::allCategories();
-    $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [$hadesRefrubrique];
+    $filtres = $all[$filtresString] ?? [];
 
+    if (count($filtres) > 0) {
+        $offres = $hadesRepository->getOffres($filtres);
+        array_map(
+            function ($offre) use ($cat_ID) {
+                $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
+            },
+            $offres
+        );
+
+        wp_enqueue_script(
+            'react-app',
+            get_template_directory_uri().'/assets/js/build/offre.js',
+            array('wp-element'),
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+        Twig::rendPage(
+            'category/index_hades.html.twig',
+            [
+                'category' => $category,
+                'referenceHades' => $filtresString,
+                'filtres' => $filtres,
+                'offres' => $offres,
+                'title' => $title,
+                'permalink' => $permalink,
+            ]
+        );
+
+        get_footer();
+
+        return;
+    }
+
+    $filtres = explode(',', $filtresString);
+    $categoryUtils = new CategoryUtils();
+    $titles = $categoryUtils->getNamesByKey($filtres);
     $offres = $hadesRepository->getOffres($filtres);
+    $cat_ID = $category->cat_ID;
     array_map(
         function ($offre) use ($cat_ID) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
@@ -33,29 +72,24 @@ if ($hadesRefrubrique) {
         $offres
     );
 
-    wp_enqueue_script(
-        'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
-        array('wp-element'),
-        wp_get_theme()->get('Version'),
-        true
-    );
+    $urlBack = '/';
+    $nameBack = 'accueil';
 
     Twig::rendPage(
-        'category/index_hades.html.twig',
+        'category/test_index.html.twig',
         [
+            'titles' => $titles,
             'category' => $category,
-            'referenceHades' => $hadesRefrubrique,
-            'filtres' => $filtres,
+            'urlBack' => $urlBack,
+            'nameBack' => $nameBack,
             'offres' => $offres,
-            'title' => $title,
-            'permalink' => $permalink,
         ]
     );
 
     get_footer();
 
     return;
+
 }
 
 $wpRepository = new WpRepository();

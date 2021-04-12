@@ -3,8 +3,6 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Hades;
-
 class CategoryMetaBox
 {
     const KEY_NAME_BOTTIN = 'bottin_refrubrique';
@@ -37,24 +35,11 @@ class CategoryMetaBox
                 <th scope="row" valign="top"><label for="bottin_refrubrique">Référence hades</label></th>
                 <td>
                     <label>
-                        <select name="<?php echo self::KEY_NAME_HADES ?>">
-                            <option value="0"></option>
-                            <option value="<?php echo Hades::EVENEMENTS_KEY ?>"<?php if ($hades_refrubrique == Hades::EVENEMENTS_KEY) {
-                                echo 'selected = "selected"';
-                            } ?>>
-                                Evènements
-                            </option>
-                            <option value="<?php echo Hades::HEBERGEMENTS_KEY ?>"<?php if ($hades_refrubrique == Hades::HEBERGEMENTS_KEY) {
-                                echo 'selected = "selected"';
-                            } ?>>Hébergements
-                            </option>
-                            <option value="<?php echo Hades::RESTAURATIONS_KEY ?>"<?php if ($hades_refrubrique == Hades::RESTAURATIONS_KEY) {
-                                echo 'selected = "selected"';
-                            } ?>>Restaurations
-                            </option>
-                        </select>
+                        <input type="text" name="hades_refrubrique" style="width: 100%;" autocomplete="off"
+                               value="<?php echo $hades_refrubrique ?>">
                     </label>
-                    <p class="description">Indiquer la référence correspondant à la rubrique.</p>
+                    <p class="description">Indiquer les références hades, séparées par une virgule</p>
+                    <p class="description"><a href="/index-des-offres" target="_blank">Liste des références</a></p>
                 </td>
             </tr>
         </table>
@@ -66,8 +51,17 @@ class CategoryMetaBox
         $meta_key = self::KEY_NAME_HADES;
 
         if (isset($_POST[$meta_key]) && $_POST[$meta_key] != '') {
-            $meta_value = $_POST[$meta_key];
-            update_term_meta($term_id, $meta_key, $meta_value);
+            $filtresString = $_POST[$meta_key];
+            $filtres = explode(',', $filtresString);
+            foreach ($filtres as $key => $filtre) {
+                $filtre = trim($filtre);
+                if ($filtre == '') {
+                    unset($filtres[$key]);
+                    continue;
+                }
+                $filtres[$key] = $filtre;
+            }
+            update_term_meta($term_id, $meta_key, join(',', $filtres));
         } else {
             delete_term_meta($term_id, $meta_key);
         }
