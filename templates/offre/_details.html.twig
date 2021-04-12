@@ -1,25 +1,22 @@
-<!--schedule-->
-<div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-    {% for horaire in offre.horaires %}
-        <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
-        <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
-    {% endfor %}
+{% for horaire in offre.horaires %}
+    <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
+    <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
+{% endfor %}
 
-    <h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
-    {% for contact in offre.contacts %}
-        {% if contact.lib('fr') %}
-            <strong>{{ contact.lib('fr') }}</strong>   <br/>
-        {% endif %}
-        {% if contact.noms %}
-            {{ contact.noms }} {{ contact.prenoms }} <br/>
-        {% endif %}
+<h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
+{% for contact in offre.contacts %}
+    {% if contact.lib.get('fr') %}
+        <p><strong>{{ contact.lib.get('fr') }}</strong></p>
+    {% endif %}
+    {% if contact.noms %}
+        <p> {{ contact.noms }} {{ contact.prenoms }} </p>
+    {% endif %}
+    <br/>
+    <p> {{ contact.adresse }} {{ contact.numero }}</p>
+    <br/>
+    <span>{{ contact.postal }} {{ contact.l_nom }}</span><br/><p>
+    {% for communication in contact.communications %}
+        <strong>{{ communication.lib.get('fr') }}</strong> {{ communication.val }}
         <br/>
-        {{ contact.adresse }} {{ contact.numero }}
-        <br/>
-        {{ contact.postal }} {{ contact.l_nom }}<br/><br/>
-        {% for communication in contact.communications %}
-            <strong>{{ communication.lib.get('fr') }}</strong> {{ communication.val }}
-            <br/>
-        {% endfor %}
-    {% endfor %}
-</div>
+    {% endfor %}</p>
+{% endfor %}

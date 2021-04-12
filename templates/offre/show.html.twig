@@ -69,13 +69,13 @@
                             </div>
                         {% endif %}
 
-                        <!--schedule-->
+                        <!--schedule
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                             <h4 class="ff-semibold fs-short-1">Horaires</h4>
                             <span class="fs-short-2 pt-8px d-block">Mercredi 13h à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Vendredi 14h30 à 17h30</span>
                             <span class="fs-short-2 pt-8px d-block">Samedi 9h à 12h30</span>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="#" class="rounded-xs">{{ tag.name }}</a></li>
+                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -169,7 +169,7 @@
                 <div class="overflow-hidden w-100 pt-24px">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="#" class="rounded-xs">{{ tag.name }}</a></li>
+                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

@@ -33,9 +33,12 @@ try {
 }
 
 if (!$offre) {
-    Twig::rendPage('errors/404.html.twig', [
+    Twig::rendPage(
+        'errors/404.html.twig',
+        [
 
-    ]);
+        ]
+    );
 
     get_footer();
 
@@ -45,7 +48,10 @@ if (!$offre) {
 $language = 'fr';
 $tags = [];
 foreach ($offre->categories as $category) {
-    $tags[] = ['name' => $category->getLib($language), 'url' => RouterHades::getUrlEventCategory($category)];
+    $tags[] = [
+        'name' => $category->getLib($language),
+        'url' => '/category/offres/?cgt='.$category->id,
+    ];
 }
 
 $contact = $offre->contactPrincipal();

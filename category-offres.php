@@ -3,6 +3,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
@@ -17,6 +18,8 @@ $category = get_category_by_slug('show');
 $hadesRepository = new HadesRepository();
 
 $filtres = [$hadesRefrubrique];
+$categoryUtils = new CategoryUtils();
+$title = $categoryUtils->getNameByKey($hadesRefrubrique);
 
 $offres = $hadesRepository->getOffres($filtres);
 $cat_ID = $category->cat_ID;
@@ -33,7 +36,7 @@ $nameBack = 'accueil';
 Twig::rendPage(
     'category/test_index.html.twig',
     [
-        'title' => $hadesRefrubrique,
+        'title' => $title,
         'category' => $category,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
