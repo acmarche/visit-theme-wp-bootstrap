@@ -31,7 +31,6 @@ class Twig
 
     public function __construct()
     {
-
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
     }
 
