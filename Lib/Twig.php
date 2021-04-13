@@ -162,7 +162,9 @@ class Twig
         $translator->addLoader('yaml', $yamlLoader);
         $translator->addLoader('xml', $xmlLoader);
         $translator->addResource('yaml', get_template_directory().'/translations/messages.fr.yaml', 'fr');
-        $translator->addResource('xml', get_template_directory().'/translations/messages.fr.xml', 'fr');
+        $translator->addResource('yaml', get_template_directory().'/translations/messages.nl.yaml', 'nl');
+        $translator->addResource('yaml', get_template_directory().'/translations/messages.en.yaml', 'en');
+    //    $translator->addResource('xml', get_template_directory().'/translations/messages.fr.xml', 'fr');
 
         return $translator;
     }
