@@ -51,6 +51,7 @@ class Twig
         $environment->addExtension(new StringExtension());
 
         $environment->addGlobal('template_directory', get_template_directory_uri());
+        $environment->addGlobal('locale', LocaleHelper::getSelectedLanguage());
         $environment->addFilter(self::categoryLink());
         $environment->addFilter(self::translation());
         $environment->addFunction(self::showTemplate());
