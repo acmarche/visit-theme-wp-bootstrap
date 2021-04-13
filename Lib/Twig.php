@@ -46,7 +46,7 @@ class Twig
             $environment->addExtension(new DebugExtension());
         }
 
-        $translator = self::iniTranslator();
+        $translator = LocaleHelper::iniTranslator();
         $environment->addExtension(new TranslationExtension($translator));
         $environment->addExtension(new StringExtension());
 
@@ -142,7 +142,7 @@ class Twig
             'isExternalUrl',
             function (string $url): bool {
                 if (preg_match("#http#", $url)) {
-                    if (!preg_match("#https://new.marche.be#", $url)) {
+                    if (!preg_match("#https://visitmarche.be#", $url)) {
                         return true;
                     }
 
@@ -152,20 +152,5 @@ class Twig
                 return false;
             }
         );
-    }
-
-    private static function iniTranslator(): TranslatorInterface
-    {
-        $translator = new Translator('fr_FR');
-        $yamlLoader = new YamlFileLoader();
-        $xmlLoader = new XliffFileLoader();
-        $translator->addLoader('yaml', $yamlLoader);
-        $translator->addLoader('xml', $xmlLoader);
-        $translator->addResource('yaml', get_template_directory().'/translations/messages.fr.yaml', 'fr');
-        $translator->addResource('yaml', get_template_directory().'/translations/messages.nl.yaml', 'nl');
-        $translator->addResource('yaml', get_template_directory().'/translations/messages.en.yaml', 'en');
-    //    $translator->addResource('xml', get_template_directory().'/translations/messages.fr.xml', 'fr');
-
-        return $translator;
     }
 }
