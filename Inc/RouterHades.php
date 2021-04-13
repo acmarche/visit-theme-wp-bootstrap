@@ -3,6 +3,7 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\Categorie;
 use AcMarche\Pivot\Entities\OffreInterface;
@@ -49,19 +50,20 @@ class RouterHades extends Router
             function () {
                 $taxonomy = get_taxonomy('category');
                 $categoryBase = $taxonomy->rewrite['slug'];
-                $categoryAgenda = get_category_by_slug('agenda');
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
                 //url parser: /category/agenda/event/866/
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
-                if ($categoryAgenda) {
-                    add_rewrite_rule(
-                        '^'.$categoryBase.'/'.$categoryAgenda->slug.'/([^/]*)/([^/]*)/?',
-                        'index.php?category_name='.$categoryAgenda->slug.'&'.self::PARAM_EVENT.'=$matches[2]',
-                        'top'
-                    );
-                }
+                //https://regex101.com/r/H8lm1w/1
+                //^[a-z][a-z]/(?:(\w+)/)([\w-]+)/manifestation/(\d+)/?$
+               // Mailer::sendError("regex",'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$' );
+                add_rewrite_rule(
+                    //'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
+                    '^'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
+                    'index.php?category_name=$matches[1]&'.self::PARAM_EVENT.'=$matches[2]',
+                    'top'
+                );
             }
         );
         add_filter(
