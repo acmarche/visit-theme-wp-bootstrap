@@ -50,7 +50,7 @@ foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->getLib($language), 'url' => RouterHades::getUrlEventCategory($category)];
 }
 
-$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
+$relations = $hadesRepository->getOffresSameCategories($offre);
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
