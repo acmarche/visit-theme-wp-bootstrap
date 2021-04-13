@@ -14,7 +14,7 @@ class Theme
     {
         $request = Request::createFromGlobals();
         $uri = $request->getPathInfo();
-        if ($uri === '/') {
+        if ($uri === '/' || $uri === '/fr' || $uri === '/nl' || $uri === '/en') {
             return true;
         }
 
