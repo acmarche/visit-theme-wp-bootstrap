@@ -1,0 +1,16 @@
+agenda:
+  title: 'Agenda'
+  moreevents: 'Laad meer evenementen'
+decouvrez:
+  marche: 'Ontdek'
+suggestions: 'Suggestions'
+inspiration:
+  home: 'Vakantie-ideeën en inspiraties'
+all:
+  experiences: 'Alle ervaringen'
+events:
+  notfound: 'Gebeurtenissen niet gevonden'
+  all: 'Alle evenementen'
+discover_them: 'Ontdek ze'
+different:
+  festivities: 'Kent u onze verschillende festiviteiten ?'

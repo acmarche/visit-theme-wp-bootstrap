@@ -2,9 +2,11 @@
 /**
  * Template Name: Home-Page-Principal
  */
+
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use Exception;
 use VisitMarche\Theme\Inc\Menu;
@@ -14,6 +16,7 @@ use AcMarche\Pivot\Repository\HadesRepository;
 
 get_header();
 
+$language = LocaleHelper::getSelectedLanguage();
 $wpRepository = new WpRepository();
 $hadesRepository = new HadesRepository();
 
@@ -45,6 +48,8 @@ try {
     Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
+$intro = $wpRepository->getIntro();
+
 $menu = new Menu();
 $items = $menu->getMenuTop();
 
@@ -57,6 +62,8 @@ Twig::rendPage(
         'urlInspiration' => $urlInspiration,
         'items' => $items,
         'icones' => $menu->getIcones(),
+        'language' => $language,
+        'intro' => $intro,
     ]
 );
 

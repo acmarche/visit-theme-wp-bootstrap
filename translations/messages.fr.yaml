@@ -1,3 +1,16 @@
 agenda:
-  title: Agenda
-  moreevents: Charger plus d'évènements
+  title: 'Agenda'
+  moreevents: 'Charger plus d''évènements'
+decouvrez:
+  marche: 'Découvrez'
+suggestions: 'Suggestions'
+inspiration:
+  home: 'Idées de séjour et inspirations'
+all:
+  experiences: 'Toutes les expériences'
+events:
+  notfound: 'Aucun évènements trouvés'
+  all: 'Tous les évènements'
+discover_them: 'Découvrez-les'
+different:
+  festivities: 'Connaissez-vous nos différentes festivités ?'

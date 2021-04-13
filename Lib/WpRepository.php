@@ -157,4 +157,19 @@ class WpRepository
         return $wpdb->get_results("SELECT * FROM hades");
     }
 
+    public function getIntro(): string
+    {
+        $intro = '<p>Intro vide</p>';
+        $pageIntro = get_page_by_path('intro');
+        if ($pageIntro) {
+            $intro = get_the_content(null, null, $pageIntro);
+            $intro = apply_filters('the_content', $intro);
+            $intro = str_replace(']]>', ']]&gt;', $intro);
+            $intro = str_replace('<p>', '', $intro);
+            $intro = str_replace('</p>', '', $intro);
+        }
+
+        return $intro;
+    }
+
 }

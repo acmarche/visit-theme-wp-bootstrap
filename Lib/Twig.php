@@ -7,7 +7,6 @@ use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\OffreInterface;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Translation\Loader\XliffFileLoader;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
@@ -24,16 +23,6 @@ use Twig\TwigFunction;
 
 class Twig
 {
-    /**
-     * @var \Symfony\Component\PropertyAccess\PropertyAccessor
-     */
-    private $propertyAccessor;
-
-    public function __construct()
-    {
-        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
-    }
-
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
@@ -110,8 +99,9 @@ class Twig
         return new TwigFilter(
             'translationjf',
             function ($x, OffreInterface $offre, string $property): ?string {
+                $selectedLanguage = LocaleHelper::getSelectedLanguage();
 
-                return $offre->$property->languages['fr'];
+                return $offre->$property->languages[$selectedLanguage];
             }
         );
     }

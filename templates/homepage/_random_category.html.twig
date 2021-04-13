@@ -4,10 +4,12 @@
         <img src="{{ template_directory }}/assets/tartine/rsc/img/img_cat01.png" alt="image categorie 1"
              class="col-8 col-ls-4 col-ls-lg-2 col-md-4 col-lg-2 position-relative mt-n80px">
         <h2 class="ff-light text-white text-ls-left text-md-left fs-big-2 fw-100 py-6px col-12 col-ls-8 col-ls-lg-7 col-md-8 col-lg-6 col-xl-8 px-0 fs-ls-big-1 fs-md-big-2 fs-ls-md-big-2">
-            Connaissez-vous nos différentes festivités ?</h2>
+            {{ 'different.festivities'|trans }}
+        </h2>
         <div class="col-12 col-lg-3 col-xl-2 pt-16px pt-lg-4px pt-xl-16px px-0 d-flex justify-content-end">
             <a href="/"
-               class="button lvl2 text-white text-hover-default bg-hover-white border-width-1px border-white px-24px">Découvrez-les</a>
+               class="button lvl2 text-white text-hover-default bg-hover-white border-width-1px border-white px-24px">
+                {{ 'discover_them'|trans }}</a>
         </div>
     </div>
 </div>

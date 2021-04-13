@@ -49,29 +49,25 @@ class Menu
 
     public function getIcones(): array
     {
-        return [
-            'arts' => [
-                'url' => get_category_link(get_category_by_slug('arts')),
-                'name' => get_category_by_slug('arts'),
-            ],
-            'balades' => [
-                'url' => get_category_link(get_category_by_slug('balades')),
-                'name' => get_category_by_slug('balades'),
-            ],
-            'fetes' => [
-                'url' => get_category_link(get_category_by_slug('fetes')),
-                'name' => get_category_by_slug('fetes'),
-            ],
-            'gourmandises' => [
-                'url' => get_category_link(get_category_by_slug('gourmandises')),
-                'name' => get_category_by_slug('gourmandises'),
-            ],
-            'patrimoine' => [
-                'url' => get_category_link(get_category_by_slug('patrimoine')),
-                'name' => get_category_by_slug('patrimoine'),
-            ],
+        $icones = [
+            'arts' => get_category_by_slug('arts'),
+            'balades' => get_category_by_slug('balades'),
+            'fetes' => get_category_by_slug('fetes'),
+            'gourmandises' => get_category_by_slug('gourmandises'),
+            'patrimoine' => get_category_by_slug('patrimoine'),
         ];
+        $icones = array_map(
+            function ($icone) {
+                if ($icone) {
+                    $icone->url = get_category_link($icone);
+                }
 
+                return $icone;
+            },
+            $icones
+        );
+
+        return $icones;
     }
 
     public function getMenuTop(): array

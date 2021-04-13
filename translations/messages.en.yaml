@@ -1,0 +1,16 @@
+agenda:
+  title: 'Agenda'
+  moreevents: 'More events'
+decouvrez:
+  marche: 'Discover'
+suggestions: 'Suggest'
+inspiration:
+  home: 'Holiday ideas and inspirations'
+all:
+  experiences: 'All experiences'
+events:
+  notfound: 'Events not found'
+  all: 'All events'
+discover_them: 'Discover them'
+different:
+  festivities: 'Do you know our different festivities ?'
