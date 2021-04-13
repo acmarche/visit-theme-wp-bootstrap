@@ -52,7 +52,7 @@ $intro = $wpRepository->getIntro();
 
 $menu = new Menu();
 $items = $menu->getMenuTop();
-dump($menu->getIcones());
+
 Twig::rendPage(
     'homepage/index.html.twig',
     [
