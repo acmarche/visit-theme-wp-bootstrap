@@ -3,6 +3,7 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Exception;
@@ -43,7 +44,7 @@ if (!$offre) {
 
     return;
 }
-$language = 'fr';
+$language = LocaleHelper::getSelectedLanguage();
 $tags = [];
 foreach ($offre->categories as $category) {
     $tags[] = ['name' => $category->getLib($language), 'url' => RouterHades::getUrlEventCategory($category)];
