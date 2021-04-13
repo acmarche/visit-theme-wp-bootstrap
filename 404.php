@@ -6,6 +6,8 @@ use AcMarche\Common\Router;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
+global $wp_query;
+dump($wp_query);
 
 $url = Router::getCurrentUrl();
 Twig::rendPage(
