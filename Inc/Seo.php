@@ -5,6 +5,7 @@ namespace VisitMarche\Theme\Inc;
 
 
 use AcMarche\Pivot\Repository\HadesRepository;
+use VisitMarche\Theme\Lib\LocaleHelper;
 
 class Seo
 {
@@ -49,7 +50,7 @@ class Seo
 
     private static function metaHadesOffre(string $codeCgt)
     {
-        $language = 'fr';
+        $language = LocaleHelper::getSelectedLanguage();
         $hadesRepository = new HadesRepository();
         $offre = $hadesRepository->getOffre($codeCgt);
         if ($offre) {

@@ -6,6 +6,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
+use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Error;
 use WP_REST_Request;
 
@@ -48,18 +49,19 @@ class ApiData
 
         $hadesRepository = new HadesRepository();
         $offres = $hadesRepository->getOffres($filtres);
+        $language = LocaleHelper::getSelectedLanguage();
         array_map(
-            function ($offre) use ($category) {
+            function ($offre) use ($category, $language) {
                 $offre->url = RouterHades::getUrlOffre($offre, $category);
-                $offre->titre = $offre->getTitre('fr');
+                $offre->titre = $offre->getTitre($language);
                 $description = null;
                 if (count($offre->descriptions) > 0) {
-                    $description = $offre->descriptions[0]->getTexte('fr');
+                    $description = $offre->descriptions[0]->getTexte($language);
                 }
                 $offre->description = $description;
                 array_map(
-                    function ($category) {
-                        $category->titre = $category->getLib('fr');
+                    function ($category) use ($language) {
+                        $category->titre = $category->getLib($language);
                     },
                     $offre->categories
                 );
