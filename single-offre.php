@@ -54,6 +54,7 @@ foreach ($offre->categories as $category) {
     ];
 }
 
+$relations = $hadesRepository->getOffresSameCategories($offre);
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
@@ -69,6 +70,7 @@ Twig::rendPage(
         'images' => $offre->medias,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
+        'relations' => $relations,
         'latitude' => $offre->geocode->latitude() ?? null,
         'longitude' => $offre->geocode->longitude() ?? null,
     ]

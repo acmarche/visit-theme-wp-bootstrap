@@ -137,17 +137,24 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
-                    <div class="pt-12px object-recom">
-                        <a href="#" class="bg-img rounded-xs">
-                            <i class="bg-img-enjoy-2">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-hover-primary">Le Baragou</h5>
-                                <span class="text-primary">Restaurants</span>
-                            </div>
-                        </a>
-                    </div>
+                    {% if relations | length > 0 %}
+                        {% set relation = relations|first %}
+                        <div class="pt-12px object-recom">
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
+                                <i class="bg-img-enjoy-2">
+                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                </i>
+                                <div class="col">
+                                    <h5 class="text-hover-primary">{{ relation.title }}</h5>
+                                    <span class="text-primary">
+                                        {% for categorie in relation.categories %}
+                                            {{ categorie.lib.get(locale) }}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 
@@ -177,17 +184,24 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
                     <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
-                    <div class="pt-22px object-recom">
-                        <a href="#" class="bg-img rounded-xs">
-                            <i class="bg-img-enjoy-2">
-                                <b class="bg-img-bgcolor-hover-primary-55"></b>
-                            </i>
-                            <div class="col">
-                                <h5 class="text-default text-hover-primary">Le Baragou</h5>
-                                <span class="text-primary">Restaurants</span>
-                            </div>
-                        </a>
-                    </div>
+                    {% if relations | length > 0 %}
+                        {% set relation = relations|first %}
+                        <div class="pt-22px object-recom">
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
+                                <i class="bg-img-enjoy-2">
+                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
+                                </i>
+                                <div class="col">
+                                    <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
+                                    <span class="text-primary">
+                                        {% for categorie in relation.categories %}
+                                            {{ categorie.lib.get(locale) }}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

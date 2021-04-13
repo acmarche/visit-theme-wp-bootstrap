@@ -11,7 +11,7 @@
                     class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
             à {{ currentCategory.name }}</a>
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale)}}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale) }}</h2>
 
         <!--category-->
         <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
@@ -122,7 +122,7 @@
                                 {{ relation.title }}
                             </a>
                         </div>
-                    {% set relation = relations|last %}
+                        {% set relation = relations|last %}
                         <div class="col-6 p-0 d-flex justify-content-end">
                             <a href="{{ relation.url }}"
                                class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">
@@ -145,9 +145,10 @@
                                 <div class="col">
                                     <h5 class="text-hover-primary">{{ relation.title }}</h5>
                                     <span class="text-primary">
-                                    {% set categorie = relation.categories | first %}
-                                        {{ categorie.lib }}
-                                </span>
+                                        {% for categorie in relation.categories %}
+                                            {{ categorie.lib.get(locale) }}
+                                        {% endfor %}
+                                    </span>
                                 </div>
                             </a>
                         </div>
@@ -191,8 +192,9 @@
                                 <div class="col">
                                     <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
                                     <span class="text-primary">
-                                        {% set categorie = relation.categories | first %}
-                                        {{ categorie.lib }}
+                                        {% for categorie in relation.categories %}
+                                            {{ categorie.lib.get(locale) }}
+                                        {% endfor %}
                                     </span>
                                 </div>
                             </a>
