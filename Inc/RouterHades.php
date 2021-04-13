@@ -25,8 +25,6 @@ class RouterHades extends Router
     {
         $this->addRouteEvent();
         $this->addRouteOffre();
-        //add_action('init', [$this, 'custom_rewrite_tag'], 10, 0);
-        //    $this->flushRoutes();
     }
 
     public static function getUrlEventCategory(Categorie $categorie): string
@@ -106,9 +104,12 @@ class RouterHades extends Router
                 //category/sorganiser/bouger/escalade/offre/78934/
                 //category/sorganiser/savourer/offre/8040/
                 //https://regex101.com/r/pnR7x3/1
+                //moi: '^'.$categoryBase.'/((\w)+/?){1,4}(/offre/)(\d+)/?$',
+                //https://stackoverflow.com/questions/67060063/im-trying-to-capture-data-in-a-web-url-with-regex
+                //^category/(?:(\w+)/){1,3}offre/(\d+)/?$
                 add_rewrite_rule(
-                    '^'.$categoryBase.'/((\w)+/?){1,4}(/offre/)(\d+)/?$',
-                    'index.php?category_name=$matches[1]&'.self::PARAM_OFFRE.'=$matches[4]',
+                    '^'.$categoryBase.'/(?:(\w+)/){1,3}offre/(\d+)/?$',
+                    'index.php?category_name=$matches[1]&'.self::PARAM_OFFRE.'=$matches[2]',
                     'top'
                 );
             }
