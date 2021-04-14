@@ -7,8 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Theme
 {
-    const PAGE_ALERT = 9570;
-    const PAGE_CARTO = 20644;//tourisme
+    const PAGE_INTRO = 115;
 
     static function isHomePage(): bool
     {
