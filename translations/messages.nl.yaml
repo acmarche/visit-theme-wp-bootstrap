@@ -30,3 +30,5 @@ private:
   life: 'Prive leven'
   notice: 'Juridische kennisgeving'
   right: 'Alle rechten voorbehouden'
+search:
+  placeholder: 'Wat zoek je ?'

@@ -30,3 +30,5 @@ private:
   life: 'Vie privé'
   notice: 'Mention légale'
   right: 'Tous droits réservés'
+search:
+  placeholder: 'Que cherchez-vous ?'
