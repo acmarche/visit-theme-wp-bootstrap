@@ -169,6 +169,7 @@ class WpRepository
             $intro = str_replace('<p>', '', $intro);
             $intro = str_replace('</p>', '', $intro);
         }
+        dump($intro);
 
         return $intro;
     }
