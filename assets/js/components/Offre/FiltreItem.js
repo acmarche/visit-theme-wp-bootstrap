@@ -1,8 +1,8 @@
 function FiltreItem( propos ) {
-    const { value, clef, setReferenceOffre } = propos;
+    const { value, clef, setFiltreSelected } = propos;
 
     function handleClick( categoryId, categoryTitle ) {
-        setReferenceOffre( categoryId );
+        setFiltreSelected( categoryId );
     }
 
     return (

@@ -9,13 +9,14 @@ const {
 
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
-    const { referenceHades, setReferenceOffre } = propos;
+    const { categoryId, setFiltreSelected } = propos;
 
     async function loadFiltres() {
         let response;
         try {
-            response = await fetchFiltres( referenceHades );
+            response = await fetchFiltres( categoryId );
             setFiltres( Object.entries( response.data ) );
+            setFiltreSelected();
         } catch ( e ) {
             console.log( e );
         }
@@ -23,23 +24,26 @@ function FiltresComposant( propos ) {
     }
 
     useEffect( () => {
-        if ( 0 < referenceHades.length ) {
+        if ( 0 < categoryId ) {
             loadFiltres();
         }
-    }, [ referenceHades ]);
+    }, [ categoryId ]);
+
+    if ( 2 > filtres.length ) {
+        return ( <></> );
+    }
 
     const listItems = filtres.map( ([ key, value ]) => ( <FiltreItem
         value={value}
         key={key}
         clef={key}
-        setReferenceOffre={setReferenceOffre}
+        setFiltreSelected={setFiltreSelected}
     /> ) );
 
     const listOptions = filtres.map( ([ key, value ]) => ( <FiltreItemOption
         value={value}
         clef={key}
         key={key}
-        setReferenceOffre={setReferenceOffre}
     /> ) );
 
     return (

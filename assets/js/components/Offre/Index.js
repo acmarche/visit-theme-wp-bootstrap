@@ -8,18 +8,17 @@ const {
 } = wp.element;
 
 function Category() {
-    const [ referenceHades, setReferenceHades ] = useState( '' );
     const [ categoryId, setCategoryId ] = useState( 0 );
     const [ offres, setOffres ] = useState([]);
-    const [ referenceOffre, setReferenceOffre ] = useState( '' );
+    const [ filtreSelected, setFiltreSelected ] = useState( '' );
     const [ isLoading, setIsLoading ] = useState( true );
 
-    async function loadOffres( referenceString ) {
+    async function loadOffres( ) {
         setIsLoading( true );
         let response;
         try {
-            console.log( categoryId, referenceString );
-            response = await fetchOffres( categoryId, referenceString );
+            console.log( categoryId, filtreSelected );
+            response = await fetchOffres( categoryId, filtreSelected );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
         } catch ( e ) {
@@ -31,24 +30,20 @@ function Category() {
 
     useEffect( () => {
         const name = 'app-offres';
-        setReferenceHades( document.getElementById( name ).getAttribute( 'data-main-reference-hades' ) );
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
-        if ( 0 < referenceHades.length ) {
-            loadOffres( referenceHades );
-        }
-    }, [ referenceHades ]);
+    }, [ ]);
 
     useEffect( () => {
-        if ( 0 < referenceOffre.length ) {
-            loadOffres( referenceOffre );
+        if ( filtreSelected ) {
+            loadOffres( );
         }
-    }, [ referenceOffre ]);
+    }, [ filtreSelected ]);
 
     return (
         <>
             <FiltresComposant
-                referenceHades={referenceHades}
-                setReferenceOffre={setReferenceOffre}
+                categoryId={categoryId}
+                setFiltreSelected={setFiltreSelected}
             />
             <OffreResults
                 isLoading={isLoading}
