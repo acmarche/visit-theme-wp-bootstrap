@@ -4,6 +4,7 @@ namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Common\Cache;
 use Symfony\Contracts\Cache\CacheInterface;
+use VisitMarche\Theme\Lib\LocaleHelper;
 
 class Menu
 {
@@ -39,8 +40,10 @@ class Menu
 
     public function getIcones(): array
     {
+        $language = LocaleHelper::getSelectedLanguage();
+
         return $this->cache->get(
-            'icones_home',
+            'icones_home_'.$language,
             function () {
                 $icones = [
                     'arts' => get_category_by_slug('arts'),
@@ -67,8 +70,10 @@ class Menu
 
     public function getMenuTop(): array
     {
+        $language = LocaleHelper::getSelectedLanguage();
+
         return $this->cache->get(
-            'menu_top',
+            'menu_top_'.$language,
             function () {
                 $menu = [
                     'sorganiser' => get_category_by_slug('sorganiser'),

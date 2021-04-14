@@ -50,6 +50,7 @@ try {
 
 $intro = $wpRepository->getIntro();
 $menu = new Menu();
+$icones = $menu->getIcones();
 
 Twig::rendPage(
     'homepage/index.html.twig',
@@ -58,7 +59,7 @@ Twig::rendPage(
         'inspirations' => $inspirations,
         'urlAgenda' => $urlAgenda,
         'urlInspiration' => $urlInspiration,
-        'icones' => $menu->getIcones(),
+        'icones' => $icones,
         'language' => $language,
         'intro' => $intro,
     ]
