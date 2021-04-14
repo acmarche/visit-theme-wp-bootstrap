@@ -40,7 +40,7 @@ class Menu
     public function getIcones(): array
     {
         return $this->cache->get(
-            'icones_home'.time(),
+            'icones_home',
             function () {
                 $icones = [
                     'arts' => get_category_by_slug('arts'),
@@ -68,7 +68,7 @@ class Menu
     public function getMenuTop(): array
     {
         return $this->cache->get(
-            'menu_top'.time(),
+            'menu_top',
             function () {
                 $menu = [
                     'sorganiser' => get_category_by_slug('sorganiser'),
