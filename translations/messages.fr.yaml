@@ -32,3 +32,7 @@ private:
   right: 'Tous droits réservés'
 search:
   placeholder: 'Que cherchez-vous ?'
+filter:
+  all: 'Tout'
+url:
+  back_home: 'Retour à l''accueil'

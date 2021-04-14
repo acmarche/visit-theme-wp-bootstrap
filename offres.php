@@ -13,7 +13,7 @@ get_header();
 
 $categoryUtils = new CategoryUtils();
 $categoryUtils->setCounts();
-$categories= isset($_GET['notempty']) ?$categoryUtils->getCategoriesNotEmpty() : $categoryUtils->categories;
+$categories = isset($_GET['notempty']) ? $categoryUtils->getCategoriesNotEmpty() : $categoryUtils->categories;
 
 $currentUrl = Router::getCurrentUrl();
 $category = get_category_by_slug('offres');

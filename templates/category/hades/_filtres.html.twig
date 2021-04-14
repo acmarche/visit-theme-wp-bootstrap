@@ -2,9 +2,9 @@
 <div class="d-md-none pr-12px border border-primary rounded-xs position-relative">
     <i class="fas fa-angle-down position-absolute top-0 bottom-0 right-0 mr-16px fs-big-1 text-primary py-5px"></i>
     <select name="categories" id="cat-select" class="fs-short-3 ff-semibold rounded-xs">
-        <option value="all" selected>Tout</option>
+        <option value="all" selected>{{ 'filter.all'|trans }}</option>
         {% for key, nom in filtres %}
-            <option value="key">nom</option>
+            <option value="{{ key }}">{{ nom }}</option>
         {% endfor %}
     </select>
 </div>
@@ -13,7 +13,7 @@
     <li class="mx-16px position-relative">
         <input name="cat" id="cat-all" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100" type="radio"
                value="all" checked>
-        <label for="cat-all" class="py-4px px-8px fs-short-2 ff-semibold transition-color">Tout</label>
+        <label for="cat-all" class="py-4px px-8px fs-short-2 ff-semibold transition-color">{{ 'filter.all'|trans }}</label>
     </li>
     {% for key, nom in filtres %}
         <li class="px-0 position-relative">

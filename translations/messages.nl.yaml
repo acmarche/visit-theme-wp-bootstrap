@@ -32,3 +32,7 @@ private:
   right: 'Alle rechten voorbehouden'
 search:
   placeholder: 'Wat zoek je ?'
+filter:
+  all: 'Alle'
+url:
+  back_home: 'Terug naar huis'

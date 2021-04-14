@@ -4,6 +4,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Utils\CategoryUtils;
+use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
@@ -19,12 +20,16 @@ $description = category_description($cat_ID);
 $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 $filtresString = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HADES, true);
+$language = LocaleHelper::getSelectedLanguage();
 
 if ($filtresString) {
 
     $hadesRepository = new HadesRepository();
     $all = Hades::allCategories();
-    $filtres = $all[$filtresString] ?? [];
+    $filtres = $all[$filtresString] ?? explode(',', $filtresString);
+
+    $categoryUtils = new CategoryUtils();
+    $filtres = $categoryUtils->translateFiltres($filtres, $language);
 
     if (count($filtres) > 0) {
         $offres = $hadesRepository->getOffres($filtres);
@@ -52,7 +57,6 @@ if ($filtresString) {
                 'offres' => $offres,
                 'title' => $title,
                 'permalink' => $permalink,
-
             ]
         );
 
@@ -60,38 +64,6 @@ if ($filtresString) {
 
         return;
     }
-
-    $filtres = explode(',', $filtresString);
-    $categoryUtils = new CategoryUtils();
-    $titles = $categoryUtils->getNamesByKey($filtres);
-    $offres = $hadesRepository->getOffres($filtres);
-    $cat_ID = $category->cat_ID;
-    array_map(
-        function ($offre) use ($cat_ID) {
-            $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
-        },
-        $offres
-    );
-
-    $urlBack = '/';
-    $nameBack = 'accueil';
-
-    Twig::rendPage(
-        'category/test_index.html.twig',
-        [
-            'titles' => $titles,
-            'category' => $category,
-            'urlBack' => $urlBack,
-            'nameBack' => $nameBack,
-            'offres' => $offres,
-
-        ]
-    );
-
-    get_footer();
-
-    return;
-
 }
 
 $wpRepository = new WpRepository();
@@ -100,8 +72,11 @@ $children = $wpRepository->getChildrenOfCategory($cat_ID);
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $parent = $wpRepository->getParentCategory($cat_ID);
 
-$urlBack = '/';
-$nameBack = 'accueil';
+
+$translator = LocaleHelper::iniTranslator();
+
+$urlBack = '/'.$language;
+$nameBack = $translator->trans('menu.home');
 if ($parent) {
     $urlBack = get_category_link($parent->term_id);
     $nameBack = $parent->name;
@@ -115,7 +90,7 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
         'posts' => $posts,
-        'url'=>'',
+        'url' => '',
     ]
 );
 

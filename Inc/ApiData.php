@@ -6,6 +6,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Error;
 use WP_REST_Request;
@@ -19,17 +20,21 @@ class ApiData
 {
     public static function hadesFiltres(WP_REST_Request $request)
     {
-        $hadesRefrubrique = $request->get_param('keyword');
-        if (!$hadesRefrubrique) {
+        $filtresString = $request->get_param('keyword');
+        if (!$filtresString) {
             Mailer::sendError("error carto", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }
 
         $all = Hades::allCategories();
-        $filtres = isset($all[$hadesRefrubrique]) ? $all[$hadesRefrubrique] : [];
+        $filtres = $all[$filtresString] ?? explode(',', $filtresString);
 
-        $filtres[0] = 'Tout';
+        $categoryUtils = new CategoryUtils();
+        $language = LocaleHelper::getSelectedLanguage();
+        $filtres = $categoryUtils->translateFiltres($filtres, $language);
+        $translator = LocaleHelper::iniTranslator();
+        $filtres[0] = $translator->trans('filter.all');
 
         return rest_ensure_response($filtres);
     }
