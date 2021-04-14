@@ -14,3 +14,5 @@ events:
 discover_them: 'Discover them'
 different:
   festivities: 'Do you know our different festivities ?'
+menu:
+  home: 'Home'

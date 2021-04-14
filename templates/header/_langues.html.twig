@@ -1,14 +1,14 @@
 <!--language-->
 <div class="language {{ class }}">
     <input type="checkbox" id="language" name="language"/>
-    <a href="#" for="language">FR<i class="fas fa-caret-down"></i></a>
+    <a href="#" for="language">{{ locale|title }}<i class="fas fa-caret-down"></i></a>
 
     <div class="bubble">
         <i class="graphicElement"></i>
         <div>
-            <a href="#">fr</a>
-            <a href="#">nl</a>
-            <a href="#">en</a>
+            <a href="/fr">fr</a>
+            <a href="/nl">nl</a>
+            <a href="/en">en</a>
         </div>
         <i class="graphicElement"></i>
     </div>

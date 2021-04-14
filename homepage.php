@@ -49,9 +49,7 @@ try {
 }
 
 $intro = $wpRepository->getIntro();
-
 $menu = new Menu();
-$items = $menu->getMenuTop();
 
 Twig::rendPage(
     'homepage/index.html.twig',
@@ -60,7 +58,6 @@ Twig::rendPage(
         'inspirations' => $inspirations,
         'urlAgenda' => $urlAgenda,
         'urlInspiration' => $urlInspiration,
-        'items' => $items,
         'icones' => $menu->getIcones(),
         'language' => $language,
         'intro' => $intro,

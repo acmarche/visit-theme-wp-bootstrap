@@ -37,80 +37,59 @@ class Menu
         return wp_get_nav_menu_items($menu, $args);
     }
 
-    public function getAllItems(): array
+    public function getIcones(): array
     {
         return $this->cache->get(
-            Cache::MENU_CACHE_NAME.time(),
-            function (): array {
-                return $this->getItems();
+            'icones_home'.time(),
+            function () {
+                $icones = [
+                    'arts' => get_category_by_slug('arts'),
+                    'balades' => get_category_by_slug('balades'),
+                    'fetes' => get_category_by_slug('fetes'),
+                    'gourmandises' => get_category_by_slug('gourmandises'),
+                    'patrimoine' => get_category_by_slug('patrimoine'),
+                ];
+                $icones = array_map(
+                    function ($icone) {
+                        if ($icone) {
+                            $icone->url = get_category_link($icone);
+                        }
+
+                        return $icone;
+                    },
+                    $icones
+                );
+
+                return $icones;
             }
         );
     }
 
-    public function getIcones(): array
-    {
-        $icones = [
-            'arts' => get_category_by_slug('arts'),
-            'balades' => get_category_by_slug('balades'),
-            'fetes' => get_category_by_slug('fetes'),
-            'gourmandises' => get_category_by_slug('gourmandises'),
-            'patrimoine' => get_category_by_slug('patrimoine'),
-        ];
-        $icones = array_map(
-            function ($icone) {
-                if ($icone) {
-                    $icone->url = get_category_link($icone);
-                }
-
-                return $icone;
-            },
-            $icones
-        );
-
-        return $icones;
-    }
-
     public function getMenuTop(): array
     {
-        $menu = [];
-        $menu['sorganiser'] = [
-            'url' => get_category_link(get_category_by_slug('sorganiser')),
-            'name' => get_category_by_slug('sorganiser'),
-            'sejourner' => [
-                'url' => get_category_link(get_category_by_slug('sejourner')),
-                'name' => get_category_by_slug('sejourner')->name,
-            ],
-            'savourer' => [
-                'url' => get_category_link(get_category_by_slug('savourer')),
-                'name' => get_category_by_slug('savourer')->name,
-            ],
-            'bouger' => [
-                'url' => get_category_link(get_category_by_slug('bouger')),
-                'name' => get_category_by_slug('bouger')->name,
-            ],
-        ];
-        $menu['inspirations'] = [
-            'url' => get_category_link(get_category_by_slug('inspirations')),
-            'name' => get_category_by_slug('inspirations'),
-        ];
-        $menu['pratique'] = [
-            'url' => get_category_link(get_category_by_slug('pratique')),
-            'name' => get_category_by_slug('pratique'),
-        ];
-        $menu['agenda'] = [
-            'url' => get_category_link(get_category_by_slug('agenda')),
-            'name' => get_category_by_slug('agenda'),
-        ];
+        return $this->cache->get(
+            'menu_top'.time(),
+            function () {
+                $menu = [
+                    'sorganiser' => get_category_by_slug('sorganiser'),
+                    'sejourner' => get_category_by_slug('sejourner'),
+                    'savourer' => get_category_by_slug('savourer'),
+                    'bouger' => get_category_by_slug('bouger'),
+                    'inspirations' => get_category_by_slug('inspirations'),
+                    'pratique' => get_category_by_slug('pratique'),
+                    'agenda' => get_category_by_slug('agenda'),
+                ];
+                $menu = array_map(
+                    function ($item) {
+                        $item->url = get_category_link($item);
 
-        return $menu;
+                        return $item;
+                    },
+                    $menu
+                );
+
+                return $menu;
+            }
+        );
     }
-
-    private function searchItem(string $key)
-    {
-        foreach ($this->getAllItems() as $item) {
-
-        }
-    }
-
-
 }

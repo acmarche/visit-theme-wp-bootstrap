@@ -1,7 +1,7 @@
 <!--OBJECT | HEADER-->
 <header>
     <div>
-        <a href="/">
+        <a href="/{{ locale }}">
             <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo">
         </a>
         <!--OBJECT | NAV-->
@@ -9,9 +9,9 @@
 
             <!--home-->
             <div class="home">
-                <a href="/" class="icon_custom position-relative">
+                <a href="/{{ locale }}" class="icon_custom position-relative">
                     <i class="icon_nav i-home"></i>
-                    <span>Accueil</span>
+                    <span>{{ 'menu.home'|trans }}</span>
                 </a>
             </div>
             <!--search | visible on mobile/tablet && !homepage-extralarge-->
@@ -29,7 +29,7 @@
             <div class="practical">
                 <a href="{{ items.pratique.url }}">
                     <i class="icon_nav i-clock"></i>
-                    <span>Pratique</span>
+                    <span>{{ items.pratique.name }}</span>
                 </a>
             </div>
             <!--more-->
@@ -42,8 +42,8 @@
                 <div class="bubble">
                     <i class="graphicElement"></i>
                     <div>
-                        <a href="{{ items.inspirations.url }}">Inspirations</a>
-                        <a href="{{ items.agenda.url }}">Agenda</a>
+                        <a href="{{ items.inspirations.url }}">{{ items.inspirations.name }}</a>
+                        <a href="{{ items.agenda.url }}">{{ items.agenda.name }}</a>
                     </div>
                     <i class="graphicElement"></i>
                 </div>
@@ -53,13 +53,13 @@
             <!--inspirations-->
             <div class="inspirations">
                 <a href="{{ items.inspirations.url }}">
-                    <span>Inspirations</span>
+                    <span>{{ items.inspirations.name }}</span>
                 </a>
             </div>
             <!--agenda-->
             <div class="agenda">
                 <a href="{{ items.agenda.url }}">
-                    <span>Agenda</span>
+                    <span>{{ items.agenda.name }}</span>
                 </a>
             </div>
         </nav>

@@ -2,13 +2,14 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\Theme;
-
+$locale = LocaleHelper::getSelectedLanguage();
 ?>
     <!DOCTYPE html>
-    <html lang="fr">
+    <html lang="<?php echo $locale ?>">
     <head>
         <meta charset="<?php bloginfo('charset'); ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,13 +25,14 @@ use VisitMarche\Theme\Inc\Theme;
 wp_body_open();
 $menu = new Menu();
 $items = $menu->getMenuTop();
+$icones = $menu->getIcones();
 
 if (Theme::isHomePage()) {
     Twig::rendPage(
         'header/_header_home.html.twig',
         [
             'items' => $items,
-            'icones'=>$menu->getIcones()
+            'icones' => $icones,
         ]
     );
 } else {
@@ -38,7 +40,7 @@ if (Theme::isHomePage()) {
         'header/_header.html.twig',
         [
             'items' => $items,
-            'icones'=>$menu->getIcones()
+            'icones' => $icones,
         ]
     );
 }
