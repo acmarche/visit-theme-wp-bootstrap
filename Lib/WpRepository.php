@@ -161,7 +161,7 @@ class WpRepository
     {
         $intro = '<p>Intro vide</p>';
         $pageIntro = get_page_by_path('intro');
-        dump($pageIntro);
+        dump($pageIntro);dump(ICL_LANGUAGE_CODE);
         if ($pageIntro) {
             $intro = get_the_content(null, null, $pageIntro);
             $intro = apply_filters('the_content', $intro);
