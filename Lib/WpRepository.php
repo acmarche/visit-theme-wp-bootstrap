@@ -160,7 +160,8 @@ class WpRepository
     public function getIntro(): string
     {
         $intro = '<p>Intro vide</p>';
-        $pageIntro = get_page_by_path('intro');
+        $introId = apply_filters('wpml_object_id', 47, 'page', true);
+        $pageIntro = get_post($introId);
 
         if ($pageIntro) {
             $intro = get_the_content(null, null, $pageIntro);
