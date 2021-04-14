@@ -42,7 +42,7 @@ class Api
             function () {
                 register_rest_route(
                     'hades',
-                    'offres/(?P<category>[\d]+)/(?P<keyword>[\w]+)',
+                    'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w]*)',
                     [
                         'methods' => 'GET',
                         'callback' => function ($args) {

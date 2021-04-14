@@ -2,12 +2,17 @@ import axios from '../../Axios';
 
 /**
  * @param {int} categoryId
- * @param {string} codeHades
+ * @param {string|null} filtre
  * @returns {Promise}
  */
-export function fetchOffres( categoryId, codeHades ) {
+export function fetchOffres( categoryId, filtre ) {
     const params = {};
-    const url = `wp-json/hades/offres/${categoryId}/${codeHades}`;
+
+    if ( filtre ) {
+        params.filtre = filtre;
+    }
+
+    const url = `wp-json/hades/offres/${categoryId}`;
 
     return axios.get( url, {
         params

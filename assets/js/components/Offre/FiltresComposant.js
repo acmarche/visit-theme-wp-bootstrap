@@ -15,8 +15,8 @@ function FiltresComposant( propos ) {
         let response;
         try {
             response = await fetchFiltres( categoryId );
-            setFiltres( Object.entries( response.data ) );
-            setFiltreSelected();
+            const filtres2 = Object.entries( response.data );
+            setFiltres( filtres2 );
         } catch ( e ) {
             console.log( e );
         }

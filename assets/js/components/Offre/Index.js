@@ -10,10 +10,11 @@ const {
 function Category() {
     const [ categoryId, setCategoryId ] = useState( 0 );
     const [ offres, setOffres ] = useState([]);
-    const [ filtreSelected, setFiltreSelected ] = useState( '' );
+    const [ filtreSelected, setFiltreSelected ] = useState( null );
     const [ isLoading, setIsLoading ] = useState( true );
 
     async function loadOffres( ) {
+        console.log( 'loading offres', categoryId, filtreSelected );
         setIsLoading( true );
         let response;
         try {
@@ -34,10 +35,9 @@ function Category() {
     }, [ ]);
 
     useEffect( () => {
-        if ( filtreSelected ) {
-            loadOffres( );
-        }
-    }, [ filtreSelected ]);
+        console.log( filtreSelected );
+        if ( 0 < categoryId ) { loadOffres( ); }
+    }, [ categoryId, filtreSelected ]);
 
     return (
         <>
@@ -47,7 +47,6 @@ function Category() {
             />
             <OffreResults
                 isLoading={isLoading}
-                setIsLoading={setIsLoading}
                 offres={offres}/>
         </>
     );

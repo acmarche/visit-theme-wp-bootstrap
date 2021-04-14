@@ -7,6 +7,7 @@ use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Pivot\Utils\CategoryUtils;
+use VisitMarche\Theme\Lib\HadesUtils;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Error;
 use WP_REST_Request;
@@ -20,19 +21,14 @@ class ApiData
 {
     public static function hadesFiltres(WP_REST_Request $request)
     {
-        $filtresString = $request->get_param('keyword');
-        if (!$filtresString) {
-            Mailer::sendError("error carto", "missing param keyword");
+        $categoryId = $request->get_param('keyword');
+        if (!$categoryId) {
+            Mailer::sendError("error cat id filtres", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }
-
-        $all = Hades::allCategories();
-        $filtres = $all[$filtresString] ?? explode(',', $filtresString);
-
         $categoryUtils = new CategoryUtils();
-        $language = LocaleHelper::getSelectedLanguage();
-        $filtres = $categoryUtils->translateFiltres($filtres, $language);
+        $filtres = $categoryUtils->getFiltresCategory($categoryId);
         $translator = LocaleHelper::iniTranslator();
         $filtres[0] = $translator->trans('filter.all');
 
@@ -41,23 +37,27 @@ class ApiData
 
     public static function hadesOffres(WP_REST_Request $request)
     {
-        $keyword = $request->get_param('keyword');
-        $category = (int)$request->get_param('category');
-        if (!$keyword or !$category) {
+        $filtreString = $request->get_param('filtre');
+        $categoryId = (int)$request->get_param('category');
+        if (!$categoryId) {
             Mailer::sendError("error hades offre", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }
+        if (!$filtreString) {
+            $categoryUtils = new CategoryUtils();
+            $filtres = $categoryUtils->getFiltresCategory($categoryId);
+        }
+        else {
+            $filtres =[$filtreString];
+        }
 
-        $all = Hades::allCategories();
-        $filtres = isset($all[$keyword]) ? array_keys($all[$keyword]) : [$keyword];
-
+        $language = LocaleHelper::getSelectedLanguage();
         $hadesRepository = new HadesRepository();
         $offres = $hadesRepository->getOffres($filtres);
-        $language = LocaleHelper::getSelectedLanguage();
         array_map(
-            function ($offre) use ($category, $language) {
-                $offre->url = RouterHades::getUrlOffre($offre, $category);
+            function ($offre) use ($categoryId, $language) {
+                $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
                 $offre->titre = $offre->getTitre($language);
                 $description = null;
                 if (count($offre->descriptions) > 0) {
