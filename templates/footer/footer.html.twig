@@ -3,48 +3,48 @@
     <section
             class="px-0 d-md-flex flex-md-wrap mx-md-n15px px-md-15px d-ls-flex flex-ls-wrap mx-ls-n15px pl-ls-15px col-xl-9 order-xl-2">
         <div class="px-0 col-ls-6 col-ls-md-4 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
-            <h6>Menu</h6>
+            <h6>{{ 'menu.title'|trans }}</h6>
             <ul class="d-flex flex-wrap mx-n11px">
                 <li class="col-6 col-ls-12 col-md-12" title="">
-                    <a href="{{ items.inspirations.url }}">Inspirations</a>
+                    <a href="{{ items.inspirations.url }}">{{ items.inspirations.name }}</a>
                 </li>
                 <li class="col-6 col-ls-12 order-ls-3 col-md-12 order-md-3">
-                    <a href="{{ items.sorganiser.url }}">S'organiser</a>
+                    <a href="{{ items.sorganiser.url }}">{{ items.sorganiser.name }}</a>
                 </li>
                 <li class="col-6 col-ls-12 order-ls-2 col-md-12 order-md-2">
-                    <a href="{{ items.agenda.url }}">Agenda</a>
+                    <a href="{{ items.agenda.url }}">{{ items.agenda.name }}</a>
                 </li>
                 <li class="col-6 col-ls-12 order-ls-4 col-md-12 order-md-4">
-                    <a href="{{ items.pratique.url }}">Pratique</a>
+                    <a href="{{ items.pratique.url }}">{{ items.pratique.name }}</a>
                 </li>
             </ul>
         </div>
         <div class="pt-24px px-0 col-ls-6 pt-ls-0 col-ls-md-4 pt-md-0 pl-md-12px pl-ls-md-0 col-md-6 col-lg-4 border-xl-left border-white-25 pl-xl-14px">
-            <h6>Découvrez</h6>
+            <h6>{{ 'discover'|trans }}</h6>
             <ul class="d-flex flex-wrap mx-n11px">
                 <li class="col-6">
-                    <a href="{{ icones.patrimoine.url }}">Patrimoine</a>
+                    <a href="{{ icones.patrimoine.url }}">{{ icones.patrimoine.name }}</a>
                 </li>
                 <li class="col-6">
-                    <a href="{{ icones.arts.url }}">Arts</a>
+                    <a href="{{ icones.arts.url }}">{{ icones.arts.name }}</a>
                 </li>
                 <li class="col-6">
-                    <a href="{{ icones.balades.url }}">Balades</a>
+                    <a href="{{ icones.balades.url }}">{{ icones.balades.name }}</a>
                 </li>
                 <li class="col-6">
-                    <a href="{{ icones.gourmandises.url }}">Gourmandises</a>
+                    <a href="{{ icones.gourmandises.url }}">{{ icones.gourmandises.name }}</a>
                 </li>
                 <li class="col-6">
-                    <a href="{{ icones.fetes.url }}">Fêtes</a>
+                    <a href="{{ icones.fetes.url }}">{{ icones.fetes.name }}</a>
                 </li>
             </ul>
         </div>
         <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
-            <h6>Contact</h6>
+            <h6>{{ 'menu.contact'|trans }}</h6>
             <ul>
-                <li>Hôtel de ville : <a href="tel:+3284327000">084 32 70 00</a></li>
-                <li>Du lundi au jeudi : de 8h à 12h et de 13h à 17h</li>
-                <li>Vendredi : de 8h à 12h et de 13h à 15h</li>
+                <li>{{ 'town_hall'|trans}} : <a href="tel:+3284327000">+3284 32 70 00</a></li>
+                <li>{{ 'hours.week'|trans}} : {{ 'hours.week_time'|trans }}</li>
+                <li>{{ 'hours.friday'|trans}} : {{ 'hours.friday_time'|trans }}</li>
                 <li class="d-flex">
                     <a href="https://www.facebook.com/VisitMarcheenfamenne" class="text-white border-0 pb-0">
                         <i class="fab fa-facebook-f"></i>
@@ -74,13 +74,11 @@
             </a>
         </div>
         <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
-            <a href="{{ showTemplate() }}" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">Vie privée</a>
-            <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">Mentions
-                légales</a>
+            <a href="{{ showTemplate() }}" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">{{ 'private.life'|trans }}</a>
+            <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">{{ 'private.notice'|trans }}</a>
             <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright ©
-                2020<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville
-                de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br
-                        class="d-ls-md-none d-md-none">Tous droits réservés</small>
+                2021<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br
+                        class="d-ls-md-none d-md-none">{{ 'private.right'|trans }}</small>
         </div>
     </section>
 </footer>

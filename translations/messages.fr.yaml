@@ -12,7 +12,21 @@ events:
   notfound: 'Aucun évènements trouvés'
   all: 'Tous les évènements'
 discover_them: 'Découvrez-les'
+discover: 'Découvrez'
 different:
   festivities: 'Connaissez-vous nos différentes festivités ?'
 menu:
   home: 'Accueil'
+  title: 'Menu'
+  contact: 'Contact'
+town_hall: 'Hôtel de ville'
+hours:
+  week: 'Du lundi au jeudi'
+  week_time: 'de 8h à 12h et de 13h à 17h'
+  friday: 'Vendredi'
+  friday_time: 'de 8h à 12h et de 13h à 15h'
+  unite: 'h'
+private:
+  life: 'Vie privé'
+  notice: 'Mention légale'
+  right: 'Tous droits réservés'
