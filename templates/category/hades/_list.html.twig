@@ -1,15 +1,21 @@
-{% set offre = offres[0] %}
-<li class="object-card oc-new col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'category/hades/_line.html.twig' %}
-</li>
-{% set offre = offres[1] %}
-<li class="object-card oc-new pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'category/hades/_line.html.twig' %}
-</li>
-{% set offre = offres[2] %}
-<li class="object-card oc-new pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
-    {% include 'category/hades/_line.html.twig' %}
-</li>
+{% if offres|length > 0 %}
+    {% set offre = offres[0] %}
+    <li class="object-card oc-new col-md-6 px-md-4px col-lg-4 px-lg-8px">
+        {% include 'category/hades/_line.html.twig' %}
+    </li>
+{% endif %}
+{% if offres[1] is defined %}
+    {% set offre = offres[1] %}
+    <li class="object-card oc-new pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+        {% include 'category/hades/_line.html.twig' %}
+    </li>
+{% endif %}
+{% if offres[2] is defined %}
+    {% set offre = offres[2] %}
+    <li class="object-card oc-new pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px">
+        {% include 'category/hades/_line.html.twig' %}
+    </li>
+{% endif %}
 {% for offre in offres %}
     {% if loop.index > 3 %}
         <li class="object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px">
