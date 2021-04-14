@@ -8,7 +8,8 @@
             <!--back | TODO JF: lien dynamique vers la page précédente-->
             <a href="{{ urlBack }}"
                class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2">
-                <i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour à {{ currentCategory.name }}</a>
+                <i class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
+                {{ 'url.back'|trans }} {{ currentCategory.name }}</a>
 
             <!--title-->
             <h2 class="text-white lh-100">{{ currentCategory.name }}</h2>
@@ -45,8 +46,8 @@
                 <div class="object-text-dyn col-md-8 col-ls-md-12 px-0 px-md-15px col-lg-12 px-lg-0">
                     <input type="checkbox" id="text-dyn"/>
                     <div for="text-dyn">
-                        <span class="more">Lire plus</span>
-                        <span class="less">Réduire</span>
+                        <span class="more">{{ 'article.readmore'|trans }}</span>
+                        <span class="less">{{ 'article.readless'|trans }}</span>
                     </div>
 
                     <!--title-->
@@ -75,7 +76,7 @@
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 col-ls-md-12 px-0 px-md-15px d-lg-none">
-                    <h3 class="text-default ff-semibold fs-big-1">Recommandation</h3>
+                    <h3 class="text-default ff-semibold fs-big-1">{{ 'article.recommandation'|trans }}</h3>
                     <div class="pt-12px object-recom">
                         {% for relation in relations %}
                             <a href="#" class="bg-img rounded-xs mh-104px">
@@ -96,7 +97,7 @@
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
-                    <h3 class="text-default ff-semibold fs-big-1">Recommandation</h3>
+                    <h3 class="text-default ff-semibold fs-big-1">{{ 'article.recommandation'|trans }}</h3>
                     <div class="pt-22px object-recom">
                         {% for relation in relations %}
                             <a href="#" class="bg-img rounded-xs mh-104px">

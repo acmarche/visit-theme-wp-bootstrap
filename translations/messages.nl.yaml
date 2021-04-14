@@ -36,3 +36,18 @@ filter:
   all: 'Alle'
 url:
   back_home: 'Terug naar huis'
+  back: 'Terug naar'
+article:
+  share: 'Deel het artikel'
+  recommandation: 'Aanbeveling'
+  readmore: 'Lees verder'
+  readless: 'Verminderen'
+  website: 'Website'
+  email: 'E-mail adres'
+  phone: 'Telefoon'
+  where: 'Waar'
+  notfound: 'Geen artikelen'
+  sample: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident veritatis eius, nostrum eos, explicabo repudiandae laborum rerum magni, nesciunt nemo quod tenetur omnis dolorum facilis illum. Obcaecati, nobis, a...'
+  address: 'Adres'
+offre:
+  information: 'Informatie'

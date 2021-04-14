@@ -8,8 +8,9 @@
         <!--back | TODO JF: lien dynamique vers la page précédente-->
         <a href="{{ urlBack }}"
            class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>Retour
-            à {{ currentCategory.name }}</a>
+                    class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
+            {{ 'url.back'|trans }} {{ currentCategory.name }}
+        </a>
         <!--title-->
         <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale) }}</h2>
 
@@ -29,14 +30,14 @@
 
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
-                            <h4 class="ff-semibold fs-short-1">Où</h4>
+                            <h4 class="ff-semibold fs-short-1">{{ 'article.where'|trans }}</h4>
                             <span class="fs-short-2 pt-8px d-block">{{ offre.localisation.postal }} {{ offre.localisation.localite }}</span>
                         </div>
 
                         <!--phone-->
                         {% if offre.telPrincipal %}
                             <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                                <h4 class="ff-semibold fs-short-1">Téléphone</h4>
+                                <h4 class="ff-semibold fs-short-1">{{ 'article.phone'|trans }}</h4>
                                 <a href="tel:{{ offre.telPrincipal }}"
                                    class="fs-short-2 pt-8px d-block text-default">{{ offre.telPrincipal }}</a>
                             </div>
@@ -45,7 +46,7 @@
                         <!--mail-->
                         {% if offre.emailPrincipal %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                                <h4 class="ff-semibold fs-short-1">Adresse e-mail</h4>
+                                <h4 class="ff-semibold fs-short-1">{{ 'article.email'|trans }}</h4>
                                 <a href="mailto:{{ offre.emailPrincipal }}"
                                    class="fs-short-2 pt-8px d-block text-default">{{ offre.emailPrincipal }}</a>
                             </div>
@@ -54,7 +55,7 @@
                         <!--website-->
                         {% if offre.sitePrincipal %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                                <h4 class="ff-semibold fs-short-1">Site web</h4>
+                                <h4 class="ff-semibold fs-short-1">{{ 'article.website'|trans }}</h4>
                                 <a href="{{ offre.sitePrincipal }}" target="_blank"
                                    class="fs-short-2 pt-8px d-block text-default">{{ offre.sitePrincipal }}</a>
                             </div>
@@ -84,8 +85,8 @@
                 <div class="object-text-dyn col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
                     <input type="checkbox" id="text-dyn"/>
                     <div for="text-dyn">
-                        <span class="more">Lire plus</span>
-                        <span class="less">Réduire</span>
+                        <span class="more">{{ 'article.readmore'|trans }}</span>
+                        <span class="less">{{ 'article.readless'|trans }}</span>
                     </div>
                     <div for="text-dyn">
                         {% for description in offre.descriptions %}
@@ -100,7 +101,7 @@
 
                 <!--OBJECT | SHARE-->
                 <div class="pt-24px w-100 col-md-4 px-0 px-md-15px d-lg-none">
-                    <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                    <h4 class="text-default fs-basic text-right text-lg-left">{{ 'article.share'|trans }}</h4>
                     <div class="pt-12px pt-md-16px object-share">
                         <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}">
                             <i class="fab fa-facebook-f"></i>
@@ -134,7 +135,7 @@
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
-                    <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
+                    <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
                     {% if relations | length > 0 %}
                         {% set relation = random(relations) %}
                         <div class="pt-12px object-recom">
@@ -160,7 +161,7 @@
 
                 <!--OBJECT | SHARE-->
                 <div class="w-100">
-                    <h4 class="text-default fs-basic text-right text-lg-left">Partagez l'article via</h4>
+                    <h4 class="text-default fs-basic text-right text-lg-left">{{ 'article.share'|trans }}</h4>
                     <div class="pt-12px pt-md-16px object-share">
                         <a href="http://www.facebook.com/sharer.php?u={{ currentUrl() }}">
                             <i class="fab fa-facebook-f"></i>

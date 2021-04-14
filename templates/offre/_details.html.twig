@@ -1,9 +1,9 @@
 {% for horaire in offre.horaires %}
-    <h4 class="ff-semibold fs-short-1">{{ horaire.lib }}</h4>
-    <span class="fs-short-2 pt-8px d-block">{{ horaire.texte }}</span>
+    <h4 class="ff-semibold fs-short-1">{{ horaire.lib.get(locale) }}</h4>
+    <span class="fs-short-2 pt-8px d-block">{{ horaire.texte.get(locale) }}</span>
 {% endfor %}
 
-<h4 class="mb-2 mt-2"><strong>Renseignements</strong></h4>
+<h4 class="mb-2 mt-2"><strong>{{ 'offre.information'|trans }}</strong></h4>
 {% for contact in offre.contacts %}
     {% if contact.lib.get(locale) %}
         <p><strong>{{ contact.lib.get(locale) }}</strong></p>
