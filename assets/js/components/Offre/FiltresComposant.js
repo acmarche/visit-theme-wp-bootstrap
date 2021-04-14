@@ -29,7 +29,10 @@ function FiltresComposant( propos ) {
         }
     }, [ categoryId ]);
 
-    if ( 2 > filtres.length ) {
+    /**
+     * Si filtres = tout + un filtre
+     */
+    if ( 3 > filtres.length ) {
         return ( <></> );
     }
 

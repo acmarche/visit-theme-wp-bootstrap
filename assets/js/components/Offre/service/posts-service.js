@@ -6,15 +6,13 @@ import axios from '../../Axios';
  * @returns {Promise}
  */
 export function fetchOffres( categoryId, filtre ) {
-    const params = {};
+    let url = `wp-json/hades/offres/${categoryId}`;
 
-    if ( filtre ) {
-        params.filtre = filtre;
+    if ( null !== filtre && '0' !== filtre ) {
+        url = url.concat( `/${filtre}` );
     }
 
-    const url = `wp-json/hades/offres/${categoryId}`;
-
     return axios.get( url, {
-        params
+
     });
 }

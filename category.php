@@ -20,13 +20,13 @@ $permalink = get_category_link($cat_ID);
 
 $categoryUtils = new CategoryUtils();
 $filtres = $categoryUtils->getFiltresCategory($cat_ID);
-
 $language = LocaleHelper::getSelectedLanguage();
 
 if (count($filtres) > 0) {
 
     $hadesRepository = new HadesRepository();
-    $offres = $hadesRepository->getOffres($filtres);
+    $filtres2 = array_keys($filtres);dump($filtres2);
+    $offres = $hadesRepository->getOffres($filtres2);
     array_map(
         function ($offre) use ($cat_ID) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);

@@ -47,6 +47,7 @@ class ApiData
         if (!$filtreString) {
             $categoryUtils = new CategoryUtils();
             $filtres = $categoryUtils->getFiltresCategory($categoryId);
+            $filtres = array_keys($filtres);
         }
         else {
             $filtres =[$filtreString];
