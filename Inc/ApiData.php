@@ -4,10 +4,8 @@
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Common\Mailer;
-use AcMarche\Pivot\Hades;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcMarche\Pivot\Utils\CategoryUtils;
-use VisitMarche\Theme\Lib\HadesUtils;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Error;
 use WP_REST_Request;
@@ -48,9 +46,8 @@ class ApiData
             $categoryUtils = new CategoryUtils();
             $filtres = $categoryUtils->getFiltresCategory($categoryId);
             $filtres = array_keys($filtres);
-        }
-        else {
-            $filtres =[$filtreString];
+        } else {
+            $filtres = [$filtreString];
         }
 
         $language = LocaleHelper::getSelectedLanguage();

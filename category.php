@@ -25,7 +25,7 @@ $language = LocaleHelper::getSelectedLanguage();
 if (count($filtres) > 0) {
 
     $hadesRepository = new HadesRepository();
-    $filtres2 = array_keys($filtres);dump($filtres2);
+    $filtres2 = array_keys($filtres);
     $offres = $hadesRepository->getOffres($filtres2);
     array_map(
         function ($offre) use ($cat_ID) {
