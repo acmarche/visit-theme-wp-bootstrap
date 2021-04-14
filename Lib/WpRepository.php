@@ -161,6 +161,7 @@ class WpRepository
     {
         $intro = '<p>Intro vide</p>';
         $pageIntro = get_page_by_path('intro');
+        dump($pageIntro);
         if ($pageIntro) {
             $intro = get_the_content(null, null, $pageIntro);
             $intro = apply_filters('the_content', $intro);
