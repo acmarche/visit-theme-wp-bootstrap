@@ -42,9 +42,9 @@
         <div class="pt-24px px-0 col-ls-12 col-ls-md-4 pt-ls-md-0 col-md-12 col-lg-4 pt-lg-0 border-xl-left border-white-25 pl-xl-14px">
             <h6>{{ 'menu.contact'|trans }}</h6>
             <ul>
-                <li>{{ 'town_hall'|trans}} : <a href="tel:+3284327000">+3284 32 70 00</a></li>
-                <li>{{ 'hours.week'|trans}} : {{ 'hours.week_time'|trans }}</li>
-                <li>{{ 'hours.friday'|trans}} : {{ 'hours.friday_time'|trans }}</li>
+                <li>{{ 'town_hall'|trans }} : <a href="tel:+3284327000">+3284 32 70 00</a></li>
+                <li>{{ 'hours.week'|trans }} : {{ 'hours.week_time'|trans }}</li>
+                <li>{{ 'hours.friday'|trans }} : {{ 'hours.friday_time'|trans }}</li>
                 <li class="d-flex">
                     <a href="https://www.facebook.com/VisitMarcheenfamenne" class="text-white border-0 pb-0">
                         <i class="fab fa-facebook-f"></i>
@@ -64,21 +64,24 @@
     </section>
     <section class="d-flex mt-24px w-100 px-0 col-xl-3 border-xl-0 mt-xl-0 position-xl-initial">
         <div class="col-6 col-xl-12 pt-24px pl-0 pt-xl-12px d-flex flex-wrap flex-column flex-ls-row flex-xl-row">
-            <a href="#" class="d-block">
-                <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo"
+            <a href="/{{ locale }}" class="d-block">
+                <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo visit"
                      class="w-66px w-xl-88px">
             </a>
-            <a href="#" class="d-block ml-ls-24px ml-ls-xl-40px ml-xl-40px mt-8px mt-ls-0">
-                <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo_marche.png" alt="logo"
+            <a href="https://www.marche.be" class="d-block ml-ls-24px ml-ls-xl-40px ml-xl-40px mt-8px mt-ls-0" title="{{ showTemplate() }}">
+                <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo_marche.png" alt="logo ville"
                      class="w-66px w-xl-88px">
             </a>
         </div>
         <div class="col-6 pt-24px pr-0 pl-md-0 position-xl-absolute xl-top-auto xl-bottom-0 xl-left-auto xl-right-70px pt-xl-16px pb-xl-16px pl-xl-0 d-xl-flex flex-xl-row w-xl-100 align-items-xl-center justify-content-xl-end">
-            <a href="{{ showTemplate() }}" class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">{{ 'private.life'|trans }}</a>
-            <a href="#" class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">{{ 'private.notice'|trans }}</a>
+            <a href="/{{ locale }}/politique-de-confidentialite"
+               class="d-block pt-xl-4px pb-xl-3px mr-xl-8px border-xl-bottom border-white-25">{{ 'private.life'|trans }}</a>
+            <a href="/{{ locale }}/politique-de-confidentialite"
+               class="d-block pt-8px pt-xl-4px pb-xl-3px ml-xl-8px border-xl-bottom border-white-25">{{ 'private.notice'|trans }}</a>
             <small class="pt-xl-0"><span class="d-none d-xl-inline pl-xl-8px pr-xl-4px fs-short-3"> - </span>Copyright ©
-                2021<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span><br
-                        class="d-ls-md-none d-md-none">{{ 'private.right'|trans }}</small>
+                2021<span class="d-none d-ls-md-inline d-md-inline"> - </span><br class="d-ls-md-none d-md-none">Ville
+                de Marche-en-Famenne<span class="d-none d-ls-md-inline d-md-inline">. </span>
+                <br class="d-ls-md-none d-md-none">{{ 'private.right'|trans }}</small>
         </div>
     </section>
 </footer>
