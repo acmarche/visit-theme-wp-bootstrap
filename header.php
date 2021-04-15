@@ -18,6 +18,7 @@ $locale = LocaleHelper::getSelectedLanguage();
         <?php
         Twig::rendPage('header/_favicons.html.twig');
         wp_head();
+        require_once '_analytics.php';
         ?>
     </head>
     <body class="bg-white">
