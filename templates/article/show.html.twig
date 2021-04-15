@@ -78,13 +78,13 @@
                 <div class="pt-24px w-100 col-md-8 col-ls-md-12 px-0 px-md-15px d-lg-none">
                     <h3 class="text-default ff-semibold fs-big-1">{{ 'article.recommandation'|trans }}</h3>
                     <div class="pt-12px object-recom">
-                        {% for relation in relations %}
-                            <a href="#" class="bg-img rounded-xs mh-104px">
+                        {% for relation in relations|slice(0,3) %}
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <span class="pt-0 text-default fs-short-2">{{ relation.tags.0.name }}</span>
+                                    <span class="pt-0 text-default fs-short-2">{{ relation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ relation.title }}
+                                        {{ relation.tags.0.name }}
                                     </h5>
                                 </div>
                             </a>
@@ -99,13 +99,13 @@
                 <div class="pt-24px w-100">
                     <h3 class="text-default ff-semibold fs-big-1">{{ 'article.recommandation'|trans }}</h3>
                     <div class="pt-22px object-recom">
-                        {% for relation in relations %}
-                            <a href="#" class="bg-img rounded-xs mh-104px">
+                         {% for relation in relations|slice(0,3) %}
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <span class="pt-0 text-default fs-short-2">{{ relation.tags.0.name }}</span>
+                                    <span class="pt-0 text-default fs-short-2">{{ relation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ relation.title }}
+                                        {{ relation.tags.0.name }}
                                     </h5>
                                 </div>
                             </a>
