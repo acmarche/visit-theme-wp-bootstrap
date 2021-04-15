@@ -18,11 +18,11 @@ $hadesRepository = new HadesRepository();
 $filtres = explode(',', $filtresString);
 $filtres = array_combine($filtres, $filtres);
 
+$offres = $hadesRepository->getOffres($filtres);
+
 $language = LocaleHelper::getSelectedLanguage();
 $categoryUtils = new CategoryUtils();
 $filtres = $categoryUtils->translateFiltres($filtres, $language);
-
-$offres = $hadesRepository->getOffres($filtres);
 $cat_ID = $category->cat_ID;
 
 array_map(

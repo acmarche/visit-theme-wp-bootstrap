@@ -47,14 +47,16 @@ if (!$offre) {
 
 $language = LocaleHelper::getSelectedLanguage();
 $tags = [];
+$categoryOffres = get_category_by_slug('offres');
+$urlCat = get_category_link($categoryOffres);
 foreach ($offre->categories as $category) {
     $tags[] = [
         'name' => $category->getLib($language),
-        'url' => '/category/offres/?cgt='.$category->id,
+        'url' => $urlCat.'?cgt='.$category->id,
     ];
 }
 
-$relations = $hadesRepository->getOffresSameCategories($offre);
+$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
