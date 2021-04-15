@@ -139,10 +139,8 @@
                     {% if relations | length > 0 %}
                         {% set relation = random(relations) %}
                         <div class="pt-12px object-recom">
-                            <a href="#" class="bg-img rounded-xs">
-                                <i {% if relation.image is defined %}style="background-image: url('{{ relation.image }}');"{% endif %} {% if relation.image is not defined %}class="bg-img-enjoy-2"{% endif %}>
-                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
-                                </i>
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
+                                {% include 'offre/_image_relation.html.twig' %}
                                 <div class="col">
                                     <h5 class="text-hover-primary">{{ relation.title }}</h5>
                                     <span class="text-primary">
@@ -187,9 +185,7 @@
                         {% set relation = random(relations) %}
                         <div class="pt-22px object-recom">
                             <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                <i {% if relation.image is defined %}style="background-image: url('{{ relation.image }}');"{% endif %} {% if relation.image is not defined %}class="bg-img-enjoy-2"{% endif %}>
-                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
-                                </i>
+                                {% include 'offre/_image_relation.html.twig' %}
                                 <div class="col">
                                     <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
                                     <span class="text-primary">

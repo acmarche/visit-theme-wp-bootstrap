@@ -25,7 +25,7 @@
                 <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs overflow-hidden">
 
                     <!--img-->
-                    <i class="bg-img-enjoy-1 position-absolute top-0 bottom-0 left-0 right-0 md-left-15px md-right-15px lg-left-0 lg-right-0 col-7 d-none d-md-block"></i>
+                    {% include 'offre/_image.html.twig' %}
 
                     <!--datas-->
                     <div class="col-12 col-md-5 d-flex flex-column flex-ls-row flex-ls-wrap py-24px px-48px px-ls-12px align-self-stretch align-items-ls-start ml-auto bg-pastel">
@@ -141,9 +141,7 @@
                         {% set relation = relations|first %}
                         <div class="pt-12px object-recom">
                             <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                <i class="bg-img-enjoy-2">
-                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
-                                </i>
+                                {% include 'offre/_image_relation.html.twig' %}
                                 <div class="col">
                                     <h5 class="text-hover-primary">{{ relation.title }}</h5>
                                     <span class="text-primary">
