@@ -37,7 +37,6 @@ try {
         $urlAgenda = get_category_link($categoryAgenda);
         array_map(
             function ($event) use ($categoryAgenda) {
-
                 $event->url = RouterHades::getUrlEvent($event, $categoryAgenda->cat_ID);
             },
             $events
