@@ -12,7 +12,7 @@ use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
 
-$cat_ID = get_queried_object_id();
+$cat_ID = get_queried_object_id();dump($cat_ID);
 $category = get_category($cat_ID);
 $description = category_description($cat_ID);
 $title = single_cat_title('', false);
@@ -33,7 +33,7 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$children = $wpRepository->getChildrenOfCategory($cat_ID);
+$children = $wpRepository->getChildrenOfCategory($cat_ID);dump($children);
 if (count($children) > 0) {
 
     Twig::rendPage(
@@ -53,6 +53,7 @@ if (count($children) > 0) {
 }
 
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
+dump($filtres);
 if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getOffres(array_keys($filtres));
