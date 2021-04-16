@@ -53,7 +53,7 @@ if (count($children) > 0) {
 }
 
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
-dump($filtres);
+
 if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getOffres(array_keys($filtres));
