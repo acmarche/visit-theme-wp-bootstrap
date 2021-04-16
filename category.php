@@ -16,7 +16,6 @@ $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
 $description = category_description($cat_ID);
 $title = single_cat_title('', false);
-$permalink = get_category_link($cat_ID);
 
 $wpRepository = new WpRepository();
 $categoryUtils = new HadesFiltres();
@@ -48,6 +47,7 @@ if (count($children) > 0) {
     );
 
     get_footer();
+
     return;
 }
 
@@ -73,11 +73,12 @@ if (count($filtres) > 0) {
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
+            'urlBack' => $urlBack,
+            'nameBack' => $nameBack,
             'category' => $category,
             'filtres' => $filtres,
             'offres' => $offres,
             'title' => $title,
-            'permalink' => $permalink,
         ]
     );
 
@@ -96,7 +97,6 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
         'posts' => $posts,
-        'url2' => '',
         'children' => $children,
     ]
 );
