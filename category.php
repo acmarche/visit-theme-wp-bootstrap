@@ -12,7 +12,7 @@ use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
 
-$cat_ID = get_queried_object_id();dump($cat_ID);
+$cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
 $description = category_description($cat_ID);
 $title = single_cat_title('', false);
@@ -33,7 +33,7 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$children = $wpRepository->getChildrenOfCategory($cat_ID);dump($children);
+$children = $wpRepository->getChildrenOfCategory($cat_ID);
 if (count($children) > 0) {
 
     Twig::rendPage(
