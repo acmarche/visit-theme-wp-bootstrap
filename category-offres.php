@@ -3,8 +3,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -16,12 +16,10 @@ $category = get_category_by_slug('show');
 $hadesRepository = new HadesRepository();
 
 $filtres = explode(',', $filtresString);
-$filtres = array_combine($filtres, $filtres);
-
 $offres = $hadesRepository->getOffres($filtres);
 
 $language = LocaleHelper::getSelectedLanguage();
-$categoryUtils = new CategoryUtils();
+$categoryUtils = new HadesFiltres();
 $filtres = $categoryUtils->translateFiltres($filtres, $language);
 $cat_ID = $category->cat_ID;
 

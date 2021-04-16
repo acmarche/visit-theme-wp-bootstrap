@@ -18,53 +18,22 @@ $description = category_description($cat_ID);
 $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 
-$categoryUtils = new HadesFiltres();
-$filtres = $categoryUtils->getCategoryFilters($cat_ID);
-$language = LocaleHelper::getSelectedLanguage();
-
-if (count($filtres) > 0) {
-    $hadesRepository = new HadesRepository();
-    dump($filtres);
-    $offres = $hadesRepository->getOffres(array_keys($filtres));
-    array_map(
-        function ($offre) use ($cat_ID) {
-            $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
-        },
-        $offres
-    );
-
-    wp_enqueue_script(
-        'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
-        array('wp-element'),
-        wp_get_theme()->get('Version'),
-        true
-    );
-
-    Twig::rendPage(
-        'category/index_hades.html.twig',
-        [
-            'category' => $category,
-            'filtres' => $filtres,
-            'offres' => $offres,
-            'title' => $title,
-            'permalink' => $permalink,
-        ]
-    );
-
-    get_footer();
-
-    return;
-}
-
 $wpRepository = new WpRepository();
+$categoryUtils = new HadesFiltres();
 
 $children = $wpRepository->getChildrenOfCategory($cat_ID);
+if(count($children) > 0) {
+
+}
+
+
+
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $parent = $wpRepository->getParentCategory($cat_ID);
 
 $translator = LocaleHelper::iniTranslator();
 
+$language = LocaleHelper::getSelectedLanguage();
 $urlBack = '/'.$language;
 $nameBack = $translator->trans('menu.home');
 if ($parent) {

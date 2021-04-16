@@ -77,7 +77,7 @@ class WpRepository
         $children = get_categories($args);
         array_map(
             function ($category) {
-                $category->permalink = get_category_link($category->term_id);
+                $category->url = get_category_link($category->term_id);
                 $category->id = $category->term_id;
             },
             $children
