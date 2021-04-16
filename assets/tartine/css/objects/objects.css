@@ -2846,16 +2846,16 @@ input.withPasswordQuality {
   transition: all 0.25s ease-in-out;
   /*
   &:hover {
-  	background-color: $lightCTA;
-  	//@include buttonInsetHover();
-  	@include allTransition($basicDuration);
+      background-color: $lightCTA;
+      //@include buttonInsetHover();
+      @include allTransition($basicDuration);
 
-  	i {
-  		color: $white;
-  		@include colorTransition($basicDuration);
-  	}
+      i {
+          color: $white;
+          @include colorTransition($basicDuration);
+      }
   }
-              */
+  */
 }
 .sideCol .sideHeader .sideHeaderButtons .sideHeaderButton i {
   width: 16px;
@@ -3276,6 +3276,16 @@ input.withPasswordQuality {
   color: #636061;
 }
 .cat-filters input[type=radio]:checked + label {
+  color: #636061;
+}
+
+.cat-filters a {
+  color: #fd8383;
+}
+.cat-filters a:hover {
+  color: #636061;
+}
+.cat-filters a:checked {
   color: #636061;
 }
 
