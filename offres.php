@@ -6,14 +6,14 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Router;
-use AcMarche\Pivot\Utils\CategoryUtils;
+use AcMarche\Pivot\Filtre\HadesFiltres;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$categoryUtils = new CategoryUtils();
+$categoryUtils = new HadesFiltres();
 $categoryUtils->setCounts();
-$categories = isset($_GET['notempty']) ? $categoryUtils->getCategoriesNotEmpty() : $categoryUtils->categories;
+$categories = isset($_GET['notempty']) ? $categoryUtils->getFiltresNotEmpty() : $categoryUtils->filtres;
 
 $currentUrl = Router::getCurrentUrl();
 $category = get_category_by_slug('offres');
