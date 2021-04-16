@@ -1,0 +1,25 @@
+<!--CONTENT-->
+<section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
+
+    <!--ENJOY_BG-->
+    <div class="bg-img-enjoy">
+        <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
+
+            <!--back | TODO JF: lien dynamique vers la page précédente-->
+            <a href="{{ urlBack }}"
+               class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
+                        class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
+                {{ 'url.back'|trans }} {{ nameBack }}
+            </a>
+
+            <!--title-->
+            <h2 class="text-white lh-100">{{ title }}</h2>
+        </div>
+    </div>
+
+    <!--ENJOY-->
+    <div style="min-height: 300px"
+         class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-ce2nter flex-column align-items-center">
+        {% include 'category/_children.html.twig' %}
+    </div>
+</section>
