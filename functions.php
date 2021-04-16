@@ -2,9 +2,9 @@
 
 namespace VisitMarche\Theme;
 
+use AcMarche\Pivot\Filtre\FiltreMetaBox;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
-use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Filter;
 use VisitMarche\Theme\Inc\QueryAlter;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -40,7 +40,7 @@ new RouterHades();
 /**
  * Pour hades
  */
-new CategoryMetaBox();
+new FiltreMetaBox();
 /**
  * Balises pour le référencement
  */

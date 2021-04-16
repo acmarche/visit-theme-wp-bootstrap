@@ -4,8 +4,8 @@
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Common\Mailer;
+use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Error;
 use WP_REST_Request;
@@ -25,8 +25,8 @@ class ApiData
 
             return new WP_Error(500, 'missing param keyword');
         }
-        $categoryUtils = new CategoryUtils();
-        $filtres = $categoryUtils->getFiltresCategory($categoryId);
+        $categoryUtils = new HadesFiltres();
+        $filtres = $categoryUtils->getCategoryFilters($categoryId);
         $translator = LocaleHelper::iniTranslator();
         $filtres[0] = $translator->trans('filter.all');
 
@@ -43,8 +43,8 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
         if (!$filtreString) {
-            $categoryUtils = new CategoryUtils();
-            $filtres = $categoryUtils->getFiltresCategory($categoryId);
+            $categoryUtils = new HadesFiltres();
+            $filtres = $categoryUtils->getCategoryFilters($categoryId);
             $filtres = array_keys($filtres);
         } else {
             $filtres = [$filtreString];

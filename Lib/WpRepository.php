@@ -122,18 +122,6 @@ class WpRepository
         return $recommandations;
     }
 
-    public function getPageAlert(): ?WP_Post
-    {
-        switch_to_blog(1);
-        $query = new WP_Query(array("page_id" => Theme::PAGE_ALERT, "post_status" => 'publish', 'post_type' => 'page'));
-        $post = $query->get_posts();
-        if (count($post) > 0) {
-            return $post[0];
-        }
-
-        return null;
-    }
-
     public function getPostThumbnail(int $id): string
     {
         if (has_post_thumbnail($id)) {
@@ -145,16 +133,6 @@ class WpRepository
         }
 
         return $post_thumbnail_url;
-    }
-
-    public function getCategoriesHades()
-    {
-        /**
-         * @var wpdb $wpdb
-         */
-        global $wpdb;
-
-        return $wpdb->get_results("SELECT * FROM hades");
     }
 
     public function getIntro(): string

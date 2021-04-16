@@ -2,12 +2,24 @@
 
 namespace AcMarche\Theme;
 
-
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 global $post;
-global $post;
+
+if(!$post) {
+
+    Twig::rendPage(
+        'errors/404.html.twig',
+        [
+            'url' => '',
+        ]
+    );
+
+    get_footer();
+
+    return;
+}
 
 $image = null;
 if (has_post_thumbnail()) {
@@ -17,10 +29,7 @@ if (has_post_thumbnail()) {
     }
 }
 
-$urlBack = '/';
-
 $tags = [];
-$relations = [];
 $next = null;
 
 $content = get_the_content(null, null, $post);

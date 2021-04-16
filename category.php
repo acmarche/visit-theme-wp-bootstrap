@@ -3,8 +3,8 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcMarche\Pivot\Utils\CategoryUtils;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -18,14 +18,14 @@ $description = category_description($cat_ID);
 $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 
-$categoryUtils = new CategoryUtils();
-$filtres = $categoryUtils->getFiltresCategory($cat_ID);
+$categoryUtils = new HadesFiltres();
+$filtres = $categoryUtils->getCategoryFilters($cat_ID);
 $language = LocaleHelper::getSelectedLanguage();
 
 if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
-    $filtres2 = array_keys($filtres);
-    $offres = $hadesRepository->getOffres($filtres2);
+    dump($filtres);
+    $offres = $hadesRepository->getOffres(array_keys($filtres));
     array_map(
         function ($offre) use ($cat_ID) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
