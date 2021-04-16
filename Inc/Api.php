@@ -26,7 +26,7 @@ class Api
             function () {
                 register_rest_route(
                     'hades',
-                    'filtres/(?P<keyword>.*+)',
+                    'filtres/(?P<categoryId>.*+)',
                     [
                         'methods' => 'GET',
                         'callback' => function ($args) {
@@ -42,7 +42,7 @@ class Api
             function () {
                 register_rest_route(
                     'hades',
-                    'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w]*)',
+                    'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w-]*)',
                     [
                         'methods' => 'GET',
                         'callback' => function ($args) {
@@ -53,26 +53,6 @@ class Api
             }
         );
     }
-
-    public function registerCateogry()
-    {
-        add_action(
-            'rest_api_init',
-            function () {
-                register_rest_route(
-                    'jfs/v1',
-                    'all/(?P<catParent>.*+)',
-                    [
-                        'methods' => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::findPosts($args);
-                        },
-                    ]
-                );
-            }
-        );
-    }
-
 
     /**
      * Todo pour list/users !!

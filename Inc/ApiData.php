@@ -19,7 +19,7 @@ class ApiData
 {
     public static function hadesFiltres(WP_REST_Request $request)
     {
-        $categoryId = $request->get_param('keyword');
+        $categoryId = $request->get_param('categoryId');
         if (!$categoryId) {
             Mailer::sendError("error cat id filtres", "missing param keyword");
 
