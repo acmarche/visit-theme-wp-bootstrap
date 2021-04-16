@@ -6,9 +6,10 @@
         <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
 
             <!--back | TODO JF: lien dynamique vers la page précédente-->
-            <a href="/{{ locale }}"
+            <a href="{{ urlBack }}"
                class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2"><i
-                        class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>{{ 'url.back_home'|trans }}</a>
+                        class="fas fa-angle-left pr-8px d-ls-md-inline pr-md-12px fs-short-2 d-md-inline"></i>
+                {{ 'url.back'|trans }} {{ nameBack }}</a>
 
             <!--title-->
             <h2 class="text-white lh-100">{{ title }}</h2>
@@ -22,9 +23,11 @@
         <noscript>
             {% include 'category/hades/_filtres.html.twig' %}
             <!--list-->
-            <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
-                {% include 'category/hades/_list.html.twig' %}
-            </ul>
+            <noscript>
+                <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
+                    {% include 'category/hades/_list.html.twig' %}
+                </ul>
+            </noscript>
         </noscript>
 
     </div>
