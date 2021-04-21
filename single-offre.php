@@ -56,7 +56,20 @@ foreach ($offre->categories as $category) {
     ];
 }
 
-$relations = $hadesRepository->getOffresSameCategories($offre, $currentCategory->cat_ID);
+$recommandations = [];
+$offres = $hadesRepository->getOffresSameCategories($offre);
+foreach ($offres as $item) {
+    if ($offre->id == $item->id) {
+        continue;
+    }
+    $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
+    $recommandations[] = [
+        'title' => $item->getTitre($language),
+        'url' => $url,
+        'image' => $item->firstImage(),
+        'categories' => $item->categories,
+    ];
+}
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
