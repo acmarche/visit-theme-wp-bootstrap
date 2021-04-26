@@ -5,6 +5,8 @@ namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcSort;
+use SortLink;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -91,6 +93,11 @@ if (count($filtres) > 0) {
 }
 
 $posts = $wpRepository->getPostsByCatId($cat_ID);
+$sortLink = SortLink::linkSortArticles($cat_ID);
+$category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
+if ($category_order == 'manual') {
+    $posts = AcSort::getSortedItems($cat_ID, $posts);
+}
 
 Twig::rendPage(
     'category/index.html.twig',
@@ -101,6 +108,7 @@ Twig::rendPage(
         'nameBack' => $nameBack,
         'posts' => $posts,
         'children' => $children,
+        'sortLink' => $sortLink,
     ]
 );
 

@@ -13,6 +13,9 @@
 
             <!--title-->
             <h2 class="text-white lh-100">{{ title }}</h2>
+            {% if sortLink %}
+                {{ sortLink|raw }}
+            {% endif %}
         </div>
     </div>
 
