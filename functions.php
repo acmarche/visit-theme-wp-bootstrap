@@ -11,6 +11,7 @@ use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Inc\SecurityConfig;
 use VisitMarche\Theme\Inc\Seo;
 use VisitMarche\Theme\Inc\SetupTheme;
+use VisitMarche\Theme\Inc\ShortCodes;
 use VisitMarche\Theme\Inc\WidgetLoad;
 
 /**
@@ -54,6 +55,6 @@ new Filter();
  */
 new Api();
 /**
- * Activer ou pas react
+ * Gpx viewer
  */
-//new SettingsPage();
+new ShortCodes();

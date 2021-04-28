@@ -1,0 +1,37 @@
+<div id="openmap" class="mt-3" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+    const latitude = '{{ latitude }}';
+    const longitude = '{{ longitude }}';
+    const center = [latitude, longitude];
+    const map = L.map('openmap')
+        .setView(center, 15);
+    const nom = '{{ title }}';
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        // Il est toujours bien de laisser le lien vers la source des données
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);
+
+    var el = L.control.elevation();
+    el.addTo(map);
+
+    var g = new L.GPX("{{ file }}", {
+        async: true,
+        marker_options: {
+            startIconUrl: '{{ template_directory }}/assets/elevation/pin-icon-start.png',
+            endIconUrl: '{{ template_directory }}/assets/elevation/pin-icon-end.png',
+            shadowUrl: '{{ template_directory }}/assets/elevation/pin-shadow.png'
+        }
+    });
+    g.on('loaded', function (e) {
+        map.fitBounds(e.target.getBounds());
+    });
+    g.on("addline", function (e) {
+        el.addData(e.line);
+    });
+    g.addTo(map);
+
+</script>
