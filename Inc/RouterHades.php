@@ -43,6 +43,16 @@ class RouterHades extends Router
         return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
     }
 
+    public static function getUrlFiltre(string $filtre): string
+    {
+        $category = get_category_by_slug('offres');
+        if (!$category) {
+            return '/?cgt='.$filtre;
+        }
+
+        return get_category_link($category).'/?cgt='.$filtre;
+    }
+
     public function addRouteEvent()
     {
         add_action(
@@ -57,9 +67,9 @@ class RouterHades extends Router
                 //https://regex101.com/r/guhLuX/1
                 //https://regex101.com/r/H8lm1w/1
                 //^[a-z][a-z]/(?:(\w+)/)([\w-]+)/manifestation/(\d+)/?$
-               // Mailer::sendError("regex",'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$' );
+                // Mailer::sendError("regex",'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$' );
                 add_rewrite_rule(
-                    //'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
+                //'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
                     '^'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_EVENT.'=$matches[2]',
                     'top'
