@@ -74,6 +74,7 @@ if (count($filtres) > 0) {
         true
     );
 
+    $urlfiltre = RouterHades::getUrlFiltre();
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
@@ -84,6 +85,7 @@ if (count($filtres) > 0) {
             'offres' => $offres,
             'title' => $title,
             'permalink' => $permalink,
+            'urlfiltre' => $urlfiltre,
         ]
     );
 
