@@ -151,58 +151,30 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
 
-        wp_enqueue_script(
-            'visitmarche-d3-js',
-            'https://d3js.org/d3.v6.min.js',
+        /* elevation */
+
+        wp_enqueue_style(
+            'visitmarche-leaflet-elevation-css',
+            'https://unpkg.com/@raruto/leaflet-elevation@1.6.7/dist/leaflet-elevation.min.css',
             array(),
             wp_get_theme()->get('Version')
         );
 
         wp_enqueue_script(
-            'visitmarche-gpx-js',
-            get_template_directory_uri().'/assets/elevation/gpx.js',
-            array(),
-            wp_get_theme()->get('Version')
-        );
-
-        wp_enqueue_script(
-            'visitmarche-gpx-ele-js',
-            get_template_directory_uri().'/assets/elevation/leaflet.elevation-0.0.4-d3v4.min.js',
-            array(),
-            wp_get_theme()->get('Version')
-        );
-
-    }
-
-    public function visitmarcheGpx()
-    {
-        wp_register_style(
-            'visitmarche-gpx-css',
-            'https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css',
-            array(),
-            wp_get_theme()->get('Version')
-        );
-
-        wp_register_script(
-            'visitmarche-leaflet1-js',
-            'https://unpkg.com/leaflet@1.3.2/dist/leaflet.js',
-            array(),
-            wp_get_theme()->get('Version')
-        );
-
-        wp_register_script(
             'visitmarche-leaflet-ui-js',
             'https://unpkg.com/leaflet-ui@0.2.0/dist/leaflet-ui.js',
             array(),
             wp_get_theme()->get('Version')
         );
 
-        wp_register_script(
+        wp_enqueue_script(
             'visitmarche-leaflet-elevation-js',
             'https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.js',
             array(),
             wp_get_theme()->get('Version')
         );
+
     }
+
 
 }
