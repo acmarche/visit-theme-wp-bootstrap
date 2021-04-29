@@ -20,13 +20,8 @@
         </li>
         {% for key, nom in filtres %}
             <li class="px-0 position-relative">
-                <a href="{{ permalink }}?key={{ key }}">
-                    <input name="cat" id="cat-res" class="position-absolute top-0 bottom-0 left-0 right-0 w-100 h-100"
-                           type="radio"
-                           value="res">
-                    <label for="cat-res" class="py-4px px-8px fs-short-2 ff-semibold transition-color">
-                        {{ nom }}
-                    </label>
+                <a href="{{ urlfiltre }}{{ key }}" class="py-4px px-8px fs-short-2 ff-semibold transition-color">
+                    {{ nom }}
                 </a>
             </li>
         {% endfor %}

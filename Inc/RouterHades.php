@@ -43,14 +43,14 @@ class RouterHades extends Router
         return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
     }
 
-    public static function getUrlFiltre(string $filtre): string
+    public static function getUrlFiltre(): string
     {
         $category = get_category_by_slug('offres');
         if (!$category) {
-            return '/?cgt='.$filtre;
+            return '/offres/?cgt=';
         }
 
-        return get_category_link($category).'/?cgt='.$filtre;
+        return get_category_link($category).'?cgt=';
     }
 
     public function addRouteEvent()
