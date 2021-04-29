@@ -78,7 +78,7 @@ Twig::rendPage(
         'offre' => $offre,
         'contact' => $contact,
         'communication' => $communication,
-        'relations' => $relations,
+        'relations' => $recommandations,
         'tags' => $tags,
         'images' => $offre->medias,
         'latitude' => $offre->geocode->latitude() ?? null,

@@ -85,7 +85,7 @@ Twig::rendPage(
         'images' => $offre->medias,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
-        'relations' => $relations,
+        'relations' => $recommandations,
         'latitude' => $offre->geocode->latitude() ?? null,
         'longitude' => $offre->geocode->longitude() ?? null,
     ]
