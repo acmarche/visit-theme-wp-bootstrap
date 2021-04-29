@@ -4,6 +4,7 @@ namespace VisitMarche\Theme\Inc;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Lib\Twig;
+use WP_Query;
 
 class ShortCodes
 {
@@ -28,6 +29,21 @@ class ShortCodes
         if (!$file) {
             return '<p>Nom de fichier manquant</p>';
         }
+        //https://visit.marche.be/wp-content/uploads/2021/04/VTTBleu.gpx
+        $args = array(
+            // 'posts_per_page' => 1,
+            'post_type' => 'attachment',
+            'name' => trim($file),
+        );
+
+        $attachments = get_posts($args);
+        dump($attachments);
+        if (!$attachments || !isset($attachments->posts, $attachments->posts[0])) {
+            return false;
+        }
+
+        dump($attachments[0]);
+
         $twig = Twig::LoadTwig();
         $post = get_post();
         $title = $post ? $post->post_title : '';
