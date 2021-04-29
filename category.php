@@ -7,6 +7,7 @@ use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
 use SortLink;
+use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -73,7 +74,10 @@ if (count($filtres) > 0) {
         wp_get_theme()->get('Version'),
         true
     );
-
+    $header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME, true);
+    if ($header) {
+        $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
+    }
     $urlfiltre = RouterHades::getUrlFiltre();
     Twig::rendPage(
         'category/index_hades.html.twig',
@@ -86,6 +90,7 @@ if (count($filtres) > 0) {
             'title' => $title,
             'permalink' => $permalink,
             'urlfiltre' => $urlfiltre,
+            'header' => $header,
         ]
     );
 
