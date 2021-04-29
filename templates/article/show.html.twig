@@ -2,7 +2,7 @@
 <section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
 
     <!--CATEGORY_SLIDE | TODO JF : tranformer en slideshow-->
-    <div class="bg-img-party">
+    <div class="bg-img-party" {% if image %}style="background-repeat: no-repeat; background-image: url('{{ image }}');"{% endif %}>
         <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
             <!--back | TODO JF: lien dynamique vers la page précédente-->
             <a href="{{ urlBack }}"
