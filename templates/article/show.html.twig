@@ -2,9 +2,8 @@
 <section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
 
     <!--CATEGORY_SLIDE | TODO JF : tranformer en slideshow-->
-    <div {% if image %}style="background-size: cover; background-repeat: no-repeat; background-image: url('{{ image }}');" {% else %}class="bg-img-party"{% endif %}>
+    <div {% if image %}style="background-size: cover; background-repeat: no-repeat; background-image: url('{{ image }}');"{% else %}class="bg-img-party"{% endif %}>
         <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
-
             <!--back | TODO JF: lien dynamique vers la page précédente-->
             <a href="{{ urlBack }}"
                class="button lvl3 align-self-ls-md-start align-self-md-start position-relative right-0 right-hover-12px fs-short-2">
@@ -99,7 +98,7 @@
                 <div class="pt-24px w-100">
                     <h3 class="text-default ff-semibold fs-big-1">{{ 'article.recommandation'|trans }}</h3>
                     <div class="pt-22px object-recom">
-                         {% for relation in relations|slice(0,3) %}
+                        {% for relation in relations|slice(0,3) %}
                             <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
