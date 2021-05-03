@@ -2,16 +2,10 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Lib\Twig;
 
 class ShortCodes
 {
-    /**
-     * @var HttpClientInterface
-     */
-    private $httpClient;
-
     public function __construct()
     {
         add_action('init', [$this, 'registerShortcodes']);
@@ -24,23 +18,29 @@ class ShortCodes
 
     public function gpxViewer($args): string
     {
-        $file = $args['file'] ?? null;
-        if (!$file) {
+        $fileName = $args['file'] ?? null;
+        $fileName2 = $args['file2'] ?? null;
+
+        if (!$fileName) {
             return '<p>Nom de fichier manquant syntax  = [gpx_viewer file=VTTBleu]</p>';
         }
 
-        $args = array(
-            'post_type' => 'attachment',
-            'name' => trim($file),
-        );
-
-        $attachments = get_posts($args);
-        if (!$attachments || count($attachments) === 0) {
-            return '<p>Gpx  non trouvé : '.$file.'</p>';
+        try {
+            $attachment = $this->getFile($fileName);
+            $file = $attachment->guid;
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
 
-        $attachment = $attachments[0];
-        $link = $attachment->guid;
+        $file2 = null;
+        if ($fileName2) {
+            try {
+                $attachment2 = $this->getFile($fileName2);
+                $file2 = $attachment2->guid;
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+        }
 
         $twig = Twig::LoadTwig();
         $post = get_post();
@@ -52,8 +52,29 @@ class ShortCodes
                 'title' => $title,
                 'latitude' => 50.2268,
                 'longitude' => 5.3442,
-                'file' => $link,
+                'file' => $file,
+                'file2' => $file2,
             ]
         );
+    }
+
+    /**
+     * @param string $fileName
+     * @return \WP_Post
+     * @throws \Exception
+     */
+    private function getFile(string $fileName): \WP_Post
+    {
+        $args = array(
+            'post_type' => 'attachment',
+            'name' => trim($fileName),
+        );
+
+        $attachments = get_posts($args);
+        if (!$attachments || count($attachments) === 0) {
+            throw new \Exception('<p>Gpx  non trouvé : '.$fileName.'</p>');
+        }
+
+        return $attachments[0];
     }
 }

@@ -56,6 +56,9 @@
     });
 
     controlElevation.load(opts.elevationControl.url);
+    {% if file2 %}
+        controlElevation.load({{ file2 }});
+    {% endif %}
 </script>
 
 <!-- i18n -->
