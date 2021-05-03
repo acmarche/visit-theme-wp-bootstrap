@@ -7,6 +7,8 @@ use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\PostUtils;
+use VisitMarche\Theme\Lib\WpRepository;
 use WP_Error;
 use WP_REST_Request;
 
@@ -50,28 +52,25 @@ class ApiData
             $filtres = [$filtreString];
         }
 
-        $language = LocaleHelper::getSelectedLanguage();
         $hadesRepository = new HadesRepository();
         $offres = $hadesRepository->getOffres($filtres);
-        array_map(
-            function ($offre) use ($categoryId, $language) {
-                $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
-                $offre->titre = $offre->getTitre($language);
-                $description = null;
-                if (count($offre->descriptions) > 0) {
-                    $description = $offre->descriptions[0]->getTexte($language);
-                }
-                $offre->description = $description;
-                array_map(
-                    function ($category) use ($language) {
-                        $category->titre = $category->getLib($language);
-                    },
-                    $offre->categories
-                );
-                $offre->image = $offre->firstImage();
-            },
-            $offres
-        );
+
+        $language = LocaleHelper::getSelectedLanguage();
+        $postUtils = new PostUtils();
+        $offres = $postUtils->convertOffres($offres, $categoryId, $language);
+
+        $wpRepository = new WpRepository();
+        $posts = $wpRepository->getPostsByCatId($categoryId);
+        $category_order = get_term_meta($categoryId, 'acmarche_category_sort', true);
+        if ($category_order == 'manual') {
+            $posts = AcSort::getSortedItems($categoryId, $posts);
+        }
+
+        //fusion offres et articles
+        $postUtils = new PostUtils();
+        $posts = $postUtils->convert($posts);
+        $offres = $postUtils->convertOffres($offres, $categoryId, $language);
+        $offres = array_merge($posts, $offres);
 
         return rest_ensure_response($offres);
     }

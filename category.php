@@ -10,6 +10,7 @@ use SortLink;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 
@@ -56,6 +57,11 @@ if (count($children) > 0) {
 }
 
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
+$posts = $wpRepository->getPostsByCatId($cat_ID);
+$category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
+if ($category_order == 'manual') {
+    $posts = AcSort::getSortedItems($cat_ID, $posts);
+}
 
 if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
@@ -66,6 +72,11 @@ if (count($filtres) > 0) {
         },
         $offres
     );
+    //fusion offres et articles
+    $postUtils = new PostUtils();
+    $posts = $postUtils->convert($posts);
+    $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
+    $offres = array_merge($posts, $offres);
 
     wp_enqueue_script(
         'react-app',
@@ -99,13 +110,8 @@ if (count($filtres) > 0) {
     return;
 }
 
-$posts = $wpRepository->getPostsByCatId($cat_ID);
-$sortLink = SortLink::linkSortArticles($cat_ID);
-$category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
-if ($category_order == 'manual') {
-    $posts = AcSort::getSortedItems($cat_ID, $posts);
-}
 
+$sortLink = SortLink::linkSortArticles($cat_ID);
 Twig::rendPage(
     'category/index.html.twig',
     [

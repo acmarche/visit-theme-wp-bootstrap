@@ -8,11 +8,6 @@ function OffreItem( propos ) {
         'object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px'
     ];
 
-    const categories = [];
-    Object.entries( offre.categories ).forEach( ([ id, values ]) => {
-        categories.push( values.titre );
-    });
-
     let style = {};
     let classBg = 'bg-img-enjoy-1';
 
@@ -45,7 +40,7 @@ function OffreItem( propos ) {
                         </p>
 
                         <span className="text-primary">
-                            {categories.join( ',' )}
+                            {offre.tags.join( ',' )}
                         </span>
                     </div>
                 </a>

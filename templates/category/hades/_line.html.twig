@@ -6,13 +6,13 @@
         <h3 maxlenght="0">{{ offre.titre }}</h3>
 
         <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-        {% if offre.descriptions | length > 0 %}
-            <p maxlenght="170">{{ offre.descriptions[0].texte | u.truncate(170, '...') }}</p>
+        {% if offre.description %}
+            <p maxlenght="170">{{ offre.description | u.truncate(170, '...') }}</p>
         {% endif %}
 
         <span class="text-primary">
-                {% for category in offre.categories %}
-                    {{ category.lib }}
+                {% for tag in offre.tags %}
+                    {{ tag }}
                 {% endfor %}
             </span>
     </div>
