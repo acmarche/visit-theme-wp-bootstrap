@@ -1,6 +1,7 @@
 import FiltresComposant from './FiltresComposant';
 import OffreResults from './OffreResults';
 import { fetchOffres } from './service/posts-service';
+import CategoryTitle from './CategoryTitle';
 
 const {
     useState,
@@ -18,7 +19,6 @@ function Category() {
         setIsLoading( true );
         let response;
         try {
-            console.log( categoryId, filtreSelected );
             response = await fetchOffres( categoryId, filtreSelected );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
@@ -35,12 +35,12 @@ function Category() {
     }, [ ]);
 
     useEffect( () => {
-        console.log( filtreSelected );
         if ( 0 < categoryId ) { loadOffres( ); }
     }, [ categoryId, filtreSelected ]);
 
     return (
         <>
+            <CategoryTitle categoryId={categoryId}/>
             <FiltresComposant
                 categoryId={categoryId}
                 setFiltreSelected={setFiltreSelected}

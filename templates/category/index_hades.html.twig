@@ -2,7 +2,8 @@
 <section id="content" class="pl-ls-42px overflow-ls-hidden overflow-md-hidden pl-ls-lg-0">
 
     <!--ENJOY_BG-->
-    <div class="bg-img-enjoy" {% if header %}style="background-position:center; background-image: url('{{ header }}');"{% endif %}>
+    <div class="bg-img-enjoy"
+         {% if header %}style="background-position:center; background-image: url('{{ header }}');"{% endif %}>
         <div class="bg-gradient-img d-flex flex-column justify-content-end align-items-start h-100 px-24px px-xl-48px pb-24px position-relative">
 
             <!--back | TODO JF: lien dynamique vers la page précédente-->
@@ -20,12 +21,16 @@
     <div id="app-offres" data-category-id="{{ category.cat_ID }}"
          class="bg-white pt-40px pb-36px px-24px position-relative d-md-flex px-xl-48px mx-xl-n30px justify-content-md-center flex-column align-items-center">
 
+        {% if category.description %}
+            <p>{{ category.description }}</p>
+        {% endif %}
+
         <noscript>
             {% include 'category/hades/_filtres.html.twig' %}
             <!--list-->
-                <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
-                    {% include 'category/hades/_list.html.twig' %}
-                </ul>
+            <ul class="pt-24px pt-md-32px d-md-flex flex-md-wrap mx-md-n4px mx-lg-n8px object-cardsList mw-1440px">
+                {% include 'category/hades/_list.html.twig' %}
+            </ul>
         </noscript>
 
     </div>

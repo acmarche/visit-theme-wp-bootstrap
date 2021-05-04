@@ -110,7 +110,6 @@ if (count($filtres) > 0) {
     return;
 }
 
-
 $sortLink = SortLink::linkSortArticles($cat_ID);
 Twig::rendPage(
     'category/index.html.twig',

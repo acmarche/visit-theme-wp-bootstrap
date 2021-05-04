@@ -6,6 +6,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
+use AcSort;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;

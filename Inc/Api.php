@@ -13,13 +13,11 @@ class Api
     public function __construct()
     {
         if (!is_admin()) {
-            //  $this->registerCateogry();
-            $this->registerEvent();
-
+            $this->registerHades();
         }
     }
 
-    public function registerEvent()
+    public function registerHades()
     {
         add_action(
             'rest_api_init',
