@@ -28,7 +28,7 @@ function CategoryTitle( propos ) {
     }, [ categoryId ]);
 
     if ( category && 0 < category.description.length ) {
-        return <p>{category.description}</p>;
+        return <p className={'mb-3'}>{category.description}</p>;
     }
     return <></>;
 }
