@@ -120,7 +120,7 @@ class RouterHades extends Router
                 //https://stackoverflow.com/questions/67060063/im-trying-to-capture-data-in-a-web-url-with-regex
                 //^category/(?:(\w+)/){1,3}offre/(\d+)/?$
                 add_rewrite_rule(
-                    '^'.$categoryBase.'/(?:(\w+)/){1,3}offre/(\d+)/?$',
+                    '^'.$categoryBase.'/(?:([a-zA-Z0-9_-]+)/){1,3}offre/(\d+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_OFFRE.'=$matches[2]',
                     'top'
                 );
