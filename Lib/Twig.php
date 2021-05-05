@@ -54,6 +54,7 @@ class Twig
         $environment->addGlobal('locale', LocaleHelper::getSelectedLanguage());
         $environment->addFilter(self::categoryLink());
         $environment->addFilter(self::translation());
+        $environment->addFilter(self::autoLink());
         $environment->addFunction(self::showTemplate());
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::isExternalUrl());
@@ -151,6 +152,25 @@ class Twig
                 }
 
                 return false;
+            }
+        );
+    }
+
+    private static function autoLink()
+    {
+        return new TwigFilter(
+            'auto_link',
+            function (string $text, string $type): string {
+                switch ($type) {
+                    case 'url':
+                        return '<a href="'.$text.'">'.$text.'</a>';
+                    case 'mail':
+                        return '<a href="mailto:'.$text.'">'.$text.'</a>';
+                    case 'tel':
+                        return '<a href="tel:'.$text.'">'.$text.'</a>';
+                    default:
+                        return $text;
+                }
             }
         );
     }
