@@ -12,9 +12,7 @@
         {% if contact.noms %}
             <p> {{ contact.noms }} {{ contact.prenoms }} </p>
         {% endif %}
-        <br/>
         <p> {{ contact.adresse }} {{ contact.numero }}</p>
-        <br/>
         <span>{{ contact.postal }} {{ contact.l_nom }}</span><br/><p>
         {% for communication in contact.communications %}
             <strong>{{ communication.lib.get(locale) }}</strong>
