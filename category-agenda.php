@@ -2,6 +2,7 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Psr\Cache\InvalidArgumentException;
@@ -12,12 +13,14 @@ get_header();
 $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
 
+$language = LocaleHelper::getSelectedLanguage();
 $hadesRepository = new HadesRepository();
 try {
     $events = $hadesRepository->getEvents();
     array_map(
-        function ($event) use ($cat_ID) {
+        function ($event) use ($cat_ID, $language) {
             $event->url = RouterHades::getUrlOffre($event, $cat_ID);
+            $event->titre = $event->getTitre($language);
         },
         $events
     );

@@ -24,8 +24,9 @@ $filtres = $categoryUtils->translateFiltres($filtres, $language);
 $cat_ID = $category->cat_ID;
 
 array_map(
-    function ($offre) use ($cat_ID) {
+    function ($offre) use ($cat_ID, $language) {
         $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
+        $offre->titre = $offre->getTitre($language);
     },
     $offres
 );

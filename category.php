@@ -67,8 +67,9 @@ if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getOffres(array_keys($filtres));
     array_map(
-        function ($offre) use ($cat_ID) {
+        function ($offre) use ($cat_ID, $language) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
+            $offre->titre = $offre->getTitre($language);
         },
         $offres
     );
@@ -80,7 +81,7 @@ if (count($filtres) > 0) {
 
     wp_enqueue_script(
         'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
+        get_template_directory_uri().'/assets/js/build/offre2.js',
         array('wp-element'),
         wp_get_theme()->get('Version'),
         true
