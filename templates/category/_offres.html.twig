@@ -17,7 +17,7 @@
                         <b class="bg-img-bgcolor-hover-primary-55"></b>
                     </i>
                     <div class="col">
-                        <span class="pt-0 text-default fs-short-2 ellipsis">{{ offre.titre }}</span>
+                        <span class="pt-0 text-default fs-short-2 ellipsis">{{ offre.titre(locale) }}</span>
                         <h5 class="text-default text-hover-primary ff-light pt-4px pt-xl-8px fs-short-3 overflow-hidden mh-52px mh-xl-80px">
                             {{ offre.descriptions|length > 0 ? offre.descriptions.0.texte.get(locale)|u.truncate(90,'...') }}
                             {% if offre.contactPrincipal %}

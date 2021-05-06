@@ -19,7 +19,7 @@ $nameBack = $currentCategory->name;
 
 $hadesRepository = new HadesRepository();
 try {
-    $offre = $hadesRepository->getOffreWithChildsAndParents($codeCgt);
+    $offre = $hadesRepository->getOffreWithChildrenAndParents($codeCgt);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',

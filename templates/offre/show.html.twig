@@ -13,7 +13,7 @@
             {{ 'url.back'|trans }} {{ nameBack }}</a>
 
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre }}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale) }}</h2>
 
         <!--category-->
         <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
@@ -101,6 +101,7 @@
                             <p>{{ description.texte.get(locale)|nl2br }} </p>
                         {% endfor %}
                         {% include 'offre/_details.html.twig' %}
+                        {% include 'offre/_enfants.html.twig' %}
                         {% include 'offre/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>
@@ -119,26 +120,34 @@
                 </div>
 
                 <!--previous/next-->
+                {% if relations | length > 0 %}
+                    {% set previous = random(relations) %}
+                    {% set next = random(relations) %}
+                {% endif %}
                 <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    <div class="col-6 p-0 d-flex">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
-                                    class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>Fiche
-                            précédente</a>
-                    </div>
-                    <div class="col-6 p-0 d-flex justify-content-end">
-                        <a href="#"
-                           class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">Fiche
-                            suivante<i
-                                    class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
-                    </div>
+                    {% if previous %}
+                        <div class="col-6 p-0 d-flex">
+                            <a href="{{ previous.url }}"
+                               class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
+                                        class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>
+                                {{ previous.title }}</a>
+                        </div>
+                    {% endif %}
+                    {% if next %}
+                        <div class="col-6 p-0 d-flex justify-content-end">
+                            <a href="{{ next.url }}"
+                               class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">
+                                {{ next.title }}<i
+                                        class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
+                        </div>
+                    {% endif %}
                 </div>
 
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
                     {% if relations | length > 0 %}
-                        {% set relation = relations|first %}
+                        {% set relation = random(relations) %}
                         <div class="pt-12px object-recom">
                             <a href="{{ relation.url }}" class="bg-img rounded-xs">
                                 {% include 'offre/_image_relation.html.twig' %}
@@ -183,7 +192,7 @@
                 <div class="pt-24px w-100">
                     <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
                     {% if relations | length > 0 %}
-                        {% set relation = relations|first %}
+                        {% set relation = random(relations) %}
                         <div class="pt-22px object-recom">
                             <a href="{{ relation.url }}" class="bg-img rounded-xs">
                                 <i class="bg-img-enjoy-2">
