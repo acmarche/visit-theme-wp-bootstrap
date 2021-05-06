@@ -19,7 +19,7 @@ $urlBack = get_category_link($currentCategory);
 $nameBack = $currentCategory->name;
 
 try {
-    $offre = $hadesRepository->getOffre($codeCgt);
+    $offre = $hadesRepository->getOffreWithChildsAndParents($codeCgt);
 } catch (Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
