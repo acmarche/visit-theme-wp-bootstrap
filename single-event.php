@@ -68,6 +68,20 @@ foreach ($offres as $item) {
 $contact = $offre->contactPrincipal();
 $communication = $offre->communcationPrincipal();
 
+array_map(
+    function ($parent) use ($currentCategory) {
+        $parent->url = RouterHades::getUrlOffre($parent, $currentCategory->cat_ID);
+    },
+    $offre->parents
+);
+
+array_map(
+    function ($enfant) use ($currentCategory) {
+        $enfant->url = RouterHades::getUrlOffre($enfant, $currentCategory->cat_ID);
+    },
+    $offre->enfants
+);
+
 Twig::rendPage(
     'agenda/show.html.twig',
     [
