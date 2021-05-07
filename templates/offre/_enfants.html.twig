@@ -1,5 +1,5 @@
 {% if offre.enfants|length > 0 %}
-    <h3 class="mb-2 mt-2 text-success">Enfants</h3>
+    <h3 class="mb-2 mt-2 text-success">Offres liées (enfants)</h3>
     <ul class="list-group">
         {% for enfant in offre.enfants %}
             <li class="list-group-item"><a href="{{ enfant.url }}">{{ enfant.titre(locale) }}</a></li>
@@ -8,7 +8,7 @@
 {% endif %}
 
 {% if offre.parents|length > 0 %}
-    <h3 class="mb-2 mt-2 text-success">Parents</h3>
+    <h3 class="mb-2 mt-2 text-success">Offres liées (parents)</h3>
     <ul class="list-group">
         {% for parent in offre.parents %}
             <li class="list-group-item"><a href="{{ parent.url }}">{{ parent.titre(locale) }}</a></li>
