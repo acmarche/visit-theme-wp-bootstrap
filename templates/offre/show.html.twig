@@ -125,7 +125,7 @@
                     {% set next = random(relations) %}
                 {% endif %}
                 <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
-                    {% if previous %}
+                    {% if previous is defined %}
                         <div class="col-6 p-0 d-flex">
                             <a href="{{ previous.url }}"
                                class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
@@ -133,7 +133,7 @@
                                 {{ previous.title }}</a>
                         </div>
                     {% endif %}
-                    {% if next %}
+                    {% if next is defined %}
                         <div class="col-6 p-0 d-flex justify-content-end">
                             <a href="{{ next.url }}"
                                class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">
