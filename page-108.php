@@ -7,9 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use VisitMarche\Theme\Lib\Twig;
 
 try {
-    new RedirectResponse('/fr');
-
-    return;
+    return  new RedirectResponse('/fr');
 } catch (\InvalidArgumentException $exception) {
     Mailer::sendError('redirect fr', 'visit marche');
     get_header();
