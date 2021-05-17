@@ -3,8 +3,6 @@
 
 namespace VisitMarche\Theme\Lib;
 
-
-use AcMarche\Bottin\Repository\WpBottinRepository;
 use VisitMarche\Theme\Inc\RouterHades;
 
 class PostUtils
