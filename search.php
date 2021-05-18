@@ -11,6 +11,7 @@ get_header();
 $searcher = new Searcher();
 $keyword = get_search_query();
 $results = $searcher->searchFromWww($keyword);
+dump($results);
 $hits = json_decode($results);
 
 if (isset($hits['error'])) {
