@@ -41,7 +41,6 @@ class Menu
     public function getIcones(): array
     {
         $language = LocaleHelper::getSelectedLanguage();
-$this->cache->delete('icones_home_'.$language);
         return $this->cache->get(
             'icones_home_'.$language,
             function () {
