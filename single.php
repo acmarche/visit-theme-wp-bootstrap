@@ -10,14 +10,6 @@ use VisitMarche\Theme\Lib\WpRepository;
 get_header();
 global $post;
 
-if ($post->ID == 828) {
-    wp_enqueue_style(
-        'visitmarche-home-style',
-        get_template_directory_uri().'/assets/tartine/css/home.css',
-        array()
-    );
-}
-
 $slugs = explode('/', get_query_var('category_name'));
 $image = null;
 if (has_post_thumbnail()) {
