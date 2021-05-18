@@ -3,6 +3,7 @@
 namespace VisitMarche\Theme\Lib\Elasticsearch;
 
 use AcMarche\Common\AcSerializer;
+use AcMarche\Common\Mailer;
 use Elastica\Document;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -35,32 +36,67 @@ class ElasticIndexer
         $this->outPut = $outPut;
     }
 
-    public function indexAllPosts()
+    public function getAll()
     {
-        $documentElastics = $this->elasticData->getPosts();
-        foreach ($documentElastics as $documentElastic) {
+        return $this->elasticData->getAllData();
+    }
+
+    public function treatment()
+    {
+        $data = $this->getAll();
+        if (isset($data['error'])) {
+            Mailer::sendError('Erreur sync tourisme', $data['error']);
+
+            return ['error' => $data['error']];
+        }
+
+        foreach ($data['posts'] as $data) {
+            $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
             }
-           // $this->addPost($documentElastic);
+            $this->addPost($documentElastic);
         }
-    }
 
-    public function indexPost(WP_Post $post)
-    {
-        $documentElactic = $this->elasticData->postToDocumentElastic($post);
-        if ($documentElactic) {
+        foreach ($data['categories'] as $data) {
+            $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
             if ($this->outPut) {
-                $this->outPut->writeln($post->name);
+                $this->outPut->writeln($documentElastic->name);
             }
-            $this->addPost($documentElactic);
+            $this->addCategory($documentElastic);
         }
+
+        foreach ($data['offres'] as $data) {
+            $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
+            if ($this->outPut) {
+                $this->outPut->writeln($documentElastic->name);
+            }
+            $this->addOffre($documentElastic);
+        }
+
+        return [];
     }
 
     public function addPost(DocumentElastic $documentElastic)
     {
         $content = $this->serializer->serialize($documentElastic, 'json');
         $id = $this->createIdPost($documentElastic->id);
+        $doc = new Document($id, $content);
+        $this->index->addDocument($doc);
+    }
+
+    private function addCategory(DocumentElastic $documentElastic)
+    {
+        $content = $this->serializer->serialize($documentElastic, 'json');
+        $id = 'category_'.$documentElastic->id;
+        $doc = new Document($id, $content);
+        $this->index->addDocument($doc);
+    }
+
+    private function addOffre(DocumentElastic $documentElastic)
+    {
+        $content = $this->serializer->serialize($documentElastic, 'json');
+        $id = 'offre_'.$documentElastic->id;
         $doc = new Document($id, $content);
         $this->index->addDocument($doc);
     }
@@ -74,6 +110,28 @@ class ElasticIndexer
     protected function createIdPost(int $postId): string
     {
         return 'post_'.$postId;
+    }
+
+    public function indexAllPosts()
+    {
+        $documentElastics = $this->elasticData->getPosts();
+        foreach ($documentElastics as $documentElastic) {
+            if ($this->outPut) {
+                $this->outPut->writeln($documentElastic->name);
+            }
+            // $this->addPost($documentElastic);
+        }
+    }
+
+    public function indexPost(WP_Post $post)
+    {
+        $documentElactic = $this->elasticData->postToDocumentElastic($post);
+        if ($documentElactic) {
+            if ($this->outPut) {
+                $this->outPut->writeln($post->name);
+            }
+            $this->addPost($documentElactic);
+        }
     }
 
     public function indexAllCategories()
@@ -97,21 +155,4 @@ class ElasticIndexer
             }
         }
     }
-
-    private function addCategory(DocumentElastic $documentElastic)
-    {
-        $content = $this->serializer->serialize($documentElastic, 'json');
-        $id = 'category_'.$documentElastic->id;
-        $doc = new Document($id, $content);
-        $this->index->addDocument($doc);
-    }
-
-    private function addOffre(DocumentElastic $documentElastic)
-    {
-        $content = $this->serializer->serialize($documentElastic, 'json');
-        $id = 'offre_'.$documentElastic->id;
-        $doc = new Document($id, $content);
-        $this->index->addDocument($doc);
-    }
-
 }

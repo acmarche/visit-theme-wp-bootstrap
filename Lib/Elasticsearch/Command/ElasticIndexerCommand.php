@@ -3,6 +3,7 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch\Command;
 
+use AcMarche\Common\Mailer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,28 +32,12 @@ class ElasticIndexerCommand extends Command
         $action = $input->getArgument('action');
         $this->io = new SymfonyStyle($input, $output);
         $elastic = new ElasticIndexer($this->io);
+        $result = $elastic->treatment();
 
-        switch ($action) {
-            case 'posts':
-                $this->io->section("POSTS");
-                $elastic->indexAllPosts();
-                break;
-            case 'categories':
-                $this->io->section("CATEGORIES");
-                $elastic->indexAllCategories();
-                break;
-            case 'offres':
-                $this->io->section("OFFRES");
-                $elastic->indexAllOffres();
-                break;
-            case 'all':
-                $this->io->section("POSTS");
-                $elastic->indexAllPosts();
-                $this->io->section("CATEGORIES");
-                $elastic->indexAllCategories();
-                $this->io->section("OFFRES");
-                $elastic->indexAllOffres();
-                break;
+        if (isset($result['error'])) {
+            $this->io->error($result['error']);
+
+            return Command::FAILURE;
         }
 
         return Command::SUCCESS;
