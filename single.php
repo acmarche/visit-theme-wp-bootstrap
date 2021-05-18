@@ -3,7 +3,7 @@
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Inc\AssetsLoad;
+use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 
@@ -27,6 +27,12 @@ $relations = $wpRepository->getRelations($post->ID);
 $next = null;
 if (count($relations) > 0) {
     $next = $relations[0];
+} else {
+    $searcher = new Searcher();
+    $results = $searcher->searchFromWww($post->post_title);
+    $hits = json_decode($results);
+
+    $relations = $hits;
 }
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
