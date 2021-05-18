@@ -50,6 +50,7 @@ class Menu
                     'balades' => get_category_by_slug('balades'),
                     'fetes' => get_category_by_slug('fetes'),
                     'gourmandises' => get_category_by_slug('gourmandises'),
+                    'decouvrir' => get_category_by_slug('decouvrir'),
                     'patrimoine' => get_category_by_slug('patrimoine'),
                 ];
                 $icones = array_map(
