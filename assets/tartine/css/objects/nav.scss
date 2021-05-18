@@ -13,7 +13,7 @@ nav {
     bottom: 0;
     background-color: $darkGrey;
     @include lowestBoxShadow-reverse();
-    
+
     @media screen {
         @media (orientation: landscape) {
             width: 42px;
@@ -22,7 +22,7 @@ nav {
             left: 0;
             right: auto;
         }
-        
+
         @media (min-width: $md) {
             width: 42px;
             flex-direction: column;
@@ -33,7 +33,7 @@ nav {
             border-radius: $smallestRadius;
             overflow: hidden;
             @include lowBoxShadow();
-            
+
             @media (orientation: landscape) {
                 top: 0;
                 bottom: 0;
@@ -52,7 +52,7 @@ nav {
                 border-radius: $smallestRadius;
                 overflow: hidden;
             }
-        }        
+        }
         @media (min-width: $xl) {
             position: relative;
             width: initial;
@@ -70,7 +70,7 @@ nav {
             @include noneBoxShadow();
         }
     }
-    
+
     &.version_b {
         > div {
             > a {
@@ -84,16 +84,16 @@ nav {
             }
         }
     }
-    
+
     > div {
         flex: auto;
         position: relative;
-        
+
         @media screen {
             @media (orientation: landscape) {
                 height: 20%;
             }
-            
+
             @media (min-width: $lg) {
                 height: 42px;
             }
@@ -110,20 +110,20 @@ nav {
                     order: 6;
                 }
             }
-            
+
             > a {
                 @media screen {
                     @media (min-width: $xl) {
                         width: 42px;
                     }
                 }
-                
+
                 > i {
                     &.icon_nav {
                         @media (min-width: $xl) {
                             display: block;
                             @include transition(opacity, $basicDuration);
-                            
+
                             &:last-child {
                                 opacity: 0;
                             }
@@ -131,7 +131,7 @@ nav {
                     }
                 }
             }
-            
+
             .searchScreen {
                 display: flex;
                 flex-direction: column;
@@ -143,7 +143,7 @@ nav {
                 padding: 0;
                 background-color: $white;
                 @include transition(top, $basicDuration);
-                
+
                 @media screen {
                     @media (min-width: $xl) {
                         width: auto;
@@ -159,19 +159,19 @@ nav {
                         @include transition(margin-left, $longDuration);
                     }
                 }
-                
+
                 .graphicElement {
                     display: none;
                     position: absolute;
                     margin: 0 auto;
                     background-color: $white;
-                    
+
                     @media screen {
                         @media (min-width: $xl) {
                             display: block;
                         }
                     }
-                    
+
                     &:first-child {
                         width: 20px;
                         height: 20px;
@@ -195,66 +195,66 @@ nav {
                         z-index: 20;
                     }
                 }
-                
+
                 > ul {
                     display: flex;
                     flex-direction: column;
                     //background-color: $white;
                     //height: 100%;
-                    
+
                     @media screen {
                         @media (orientation: landscape) {
                             flex-wrap: wrap;
                             flex-direction: row;
                             align-items: flex-start;
                         }
-                        
+
                         @media (min-width: $xl) {
                             flex-direction: column;
                         }
                     }
-                    
+
                     > li {
                         &:first-child {
                             padding: 24px 24px 12px;
                             flex-direction: row;
-                            
+
                             > form {
                                 flex-grow: 1;
                                 position: relative;
-                                
+
                                 @media screen {
                                     @media (min-width: $xl) {
                                         min-width: 200px;
                                     }
                                 }
-                                
+
                                 input {
                                     background-color: $lighterGrey;
                                 }
                             }
-                            
+
                             > a {
                                 padding: 0;
                                 margin-left: 12px;
-                                
+
                                 @media screen {
                                     @media (min-width: $xl) {
                                         display: none;
                                     }
                                 }
-                                
+
                                 i {
                                     margin-right: 0;
                                 }
                             }
                         }
-                        
+
                         padding: 0;
                         display: flex;
                         flex-direction: column;
                         align-items: stretch;
-                        
+
                         > a {
                             font-family: 'montserratsemibold';
                             font-size: $shortFontSize-3;
@@ -264,13 +264,13 @@ nav {
                             white-space: nowrap;
                             display: flex;
                             align-items: center;
-                            
+
                             @media screen {
                                 @media (min-width: $xl) {
                                     &:hover {
                                         color: $white;
                                         background-color: $CTA;
-                                        
+
                                         i {
                                             &.i-patrimony {
                                                 background-image: url(../../rsc/svg/icon_patrimony_white.svg);
@@ -291,7 +291,7 @@ nav {
                                     }
                                 }
                             }
-                            
+
                             i {
                                 width: 20px;
                                 height: 20px;
@@ -302,18 +302,18 @@ nav {
                     }
                 }
             }
-            
+
             &:hover {
                 > a {
                     @media screen {
                         @media (min-width: $xl) {
                             @include boxShadow(0 -42px 0 $CTA inset);
-                            
+
                             > i {
                                 &.icon_nav {
                                     @media (min-width: $xl) {
                                         @include transition(opacity, $basicDuration);
-                                        
+
                                         &:first-child {
                                             opacity: 0;
                                         }
@@ -326,7 +326,7 @@ nav {
                         }
                     }
                 }
-                
+
                 .searchScreen {
                     top: 0;
                     @include transition(top, $basicDuration);
@@ -337,7 +337,7 @@ nav {
                             //right: 24px;
                             margin-left: -58px;
                             @include transition(margin-left, $longDuration);
-                            
+
                             .graphicElement {
                                 &:first-child {
                                     top: -10px;
@@ -351,7 +351,7 @@ nav {
             }
         }
         /*&.all {
-            
+
             @media screen {
                 @media (min-width: $xl) {
                     padding: 0;
@@ -359,7 +359,7 @@ nav {
                     order: 1;
                 }
             }
-            
+
             .subnav {
                 display: flex;
                 flex-direction: column;
@@ -371,7 +371,7 @@ nav {
                 padding: 0;
                 background-color: $darkCTA;
                 @include transition(top, $basicDuration);
-                
+
                 @media screen {
                     @media (min-width: $xl) {
                         display: none;
@@ -385,48 +385,48 @@ nav {
                         @include lowestBoxShadow();
                     }
                 }
-                
+
                 > ul {
                     display: flex;
                     flex-direction: column;
-                    
+
                     @media screen and (orientation: landscape) {
                         flex-wrap: wrap;
                         flex-direction: row;
                         align-items: flex-start;
                     }
-                    
+
                     @media screen {
                         @media (min-width: $xl) {
                             height: auto;
                             flex-direction: column;
                         }
                     }
-                    
+
                     > li {
                         padding: 0;
                         display: flex;
                         flex-direction: column;
                         align-items: stretch;
                         position: initial;
-                        
+
                         @media screen {
                             @media (min-width: $xl) {
                                 align-items: flex-end;
                             }
                         }
-                        
+
                         &:hover {
                             > a {
                                 background-color: $white;
                                 color: $CTA;
                                 @include allTransition($basicDuration);
                             }
-                            
+
                             > div {
                                 left: 0;
                                 @include transition(left, $basicDuration);
-                                
+
                                 @media screen {
                                     @media (min-width: $xl) {
                                         display: flex;
@@ -435,7 +435,7 @@ nav {
                                 }
                             }
                         }
-                        
+
                         > a {
                             font-family: 'montserratsemibold';
                             font-size: $shortFontSize-3;
@@ -447,7 +447,7 @@ nav {
                             align-items: center;
                             justify-content: space-between;
                             @include allTransition($basicDuration);
-                            
+
                             @media screen {
                                 @media (min-width: $xl) {
                                     padding: 0 36px 0 999px;
@@ -455,7 +455,7 @@ nav {
                                 }
                             }
                         }
-                        
+
                         > div {
                             display: flex;
                             position: absolute;
@@ -468,14 +468,14 @@ nav {
                             background-color: $white;
                             flex-direction: column;
                             @include transition(left, $basicDuration);
-                            
+
                             @media screen {
                                 @media (orientation: landscape) {
                                     flex-wrap: wrap;
                                     flex-direction: row;
                                     justify-content: flex-start;
                                 }
-                                
+
                                 @media (min-width: $xl) {
                                     display: none;
                                     left: auto;
@@ -484,32 +484,32 @@ nav {
                                     overflow: initial;
                                 }
                             }
-                            
+
                             > ul {
                                 text-align: left;
-                                
+
                                 @media screen {
                                     @media (orientation: landscape) {
                                         display: flex;
                                         flex-direction: column;
                                         padding: 0;
                                     }
-                                    
+
                                     @media (min-width: $xl) {
                                         font-family: 'montserratlight';
                                         padding: 12px 0;
                                     }
                                 }
-                                
+
                                 > li {
                                     display: flex;
-                                    
+
                                     @media screen {
                                         @media (min-width: $xl) {
                                             height: 22px;
                                         }
                                     }
-                                    
+
                                     > a {
                                         width: 100%;
                                         font-family: 'montserratsemibold';
@@ -517,20 +517,20 @@ nav {
                                         font-size: $shortFontSize-3;
                                         color: $darkCTA;
                                         @include transition(color, $basicDuration);
-                                        
+
                                         @media screen {
                                             @media (min-width: $xl) {
                                                 font-family: 'montserratlight';
                                                 padding: 0 0 0 36px;
                                             }
                                         }
-                                        
+
                                         &:hover {
                                             text-decoration: none;
                                             color: $CTA;
                                             @include transition(color, $basicDuration);
                                         }
-                                        
+
                                         > i {
                                             font-size: $shortFontSize-3;
                                             padding-left: 8px;
@@ -539,14 +539,14 @@ nav {
                                 }
                             }
                         }
-                        
+
                         &.c-adm {
                             &:hover {
                                 > a {
                                     color: $c-adm;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -558,7 +558,7 @@ nav {
                                     }
                                 }
                             }
-                            
+
                             h3 {
                                 color: $c-adm;
                             }
@@ -569,7 +569,7 @@ nav {
                                     color: $c-cit;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -581,7 +581,7 @@ nav {
                                     }
                                 }
                             }
-                            
+
                             h3 {
                                 color: $c-cit;
                             }
@@ -592,7 +592,7 @@ nav {
                                     color: $c-cul;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -614,7 +614,7 @@ nav {
                                     color: $c-eco;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -636,7 +636,7 @@ nav {
                                     color: $c-enf;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -658,7 +658,7 @@ nav {
                                     color: $c-san;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -680,7 +680,7 @@ nav {
                                     color: $c-soc;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -702,7 +702,7 @@ nav {
                                     color: $c-spo;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -724,7 +724,7 @@ nav {
                                     color: $c-tou;
                                 }
                             }
-                            
+
                             > div {
                                 > ul {
                                     > li {
@@ -743,14 +743,14 @@ nav {
                     }
                 }
             }
-            
+
             &:hover {
-                
+
                 .subnav {
                     top: 0;
                     z-index: 10;
                     @include transition(top, $basicDuration);
-                    
+
                     @media screen {
                         @media (min-width: $xl) {
                             display: block;
@@ -768,47 +768,47 @@ nav {
                     cursor: pointer;
                 }
             }
-            
+
             &:hover {
                 @media screen {
                     @media (min-width: $xl) {
                         input[type="checkbox"] {
                             + a {
                                 + .bubble {
-                                    height: 84px;
+                                    height: 112px;
                                     top: calc(100% + 5px);
                                     bottom: auto;
-                                    
+
                                     div {
-                                        height: 84px;
+                                        height: 112px;
                                         @include transition(height, $basicDuration);
                                     }
                                 }
                             }
                         }
-                        
+
                         > a {
                             @include boxShadow(0 -4px 0 $CTA inset);
                         }
                     }
                 }
             }
-            
+
             input[type="checkbox"] {
                 width: 65px;
                 height: 42px;
                 left: 0;
-                
+
                 @media screen {
                     @media (orientation: landscape) {
                         width: 42px;
                         height: 100%;
                     }
-                    
+
                     @media (min-width: $md) {
                         width: 42px;
                     }
-                    
+
                     @media (min-width: $xl) {
                         width: 75.3px;
                         height: 100%;
@@ -816,58 +816,58 @@ nav {
                         right: 15px;
                     }
                 }
-                
+
                 &:checked {
                     + a {
                         @include boxShadow(0 -42px 0 $CTA inset);
-                        
+
                         @media screen {
                             @media (orientation: landscape) {
                                 @include boxShadow(42px 0 0 $CTA inset);
-                                
+
                                 @media (min-width: $md) {
                                     @include boxShadow(42px 0 0 $CTA inset);
                                 }
-                                
+
                                 @media (min-width: $md) {
                                     @include boxShadow(0 -42px 0 $CTA inset);
                                 }
                             }
-                            
+
                             @media (min-width: $xl) {
                                 @include boxShadow(0 -4px 0 $CTA inset);
                             }
                         }
-                        
+
                         + .bubble {
-                            height: 84px;
+                            height: 112px;
                             top: auto;
                             bottom: calc(100% + 5px);
-                            
+
                             @media screen {
                                 @media (orientation: landscape) {
                                     top: -11px;
                                     bottom: auto;
                                     left: calc(100% + 5px);
-                                    
+
                                     @media (min-width: $sm) {
                                         top: -5px;
                                     }
                                 }
-                                
+
                                 @media (min-width: $md) {
                                     top: auto;
                                     bottom: 107px;
                                     left: auto;
                                 }
-                                
+
                                 @media (min-width: $xl) {
                                     top: calc(100% + 5px);
                                     bottom: auto;
                                     opacity: 1;
-                                    
+
                                     div {
-                                        height: 84px;
+                                        height: 112px;
                                         @include transition(height, $basicDuration);
                                     }
                                 }
@@ -875,40 +875,40 @@ nav {
                         }
                     }
                 }
-                
+
                 + a {
                     @media screen {
                         @media (min-width: $xl) {
                             margin: auto 15px;
-                            
+
                             &:hover {
                                 @include boxShadow(0 0 0 $CTA inset);
                             }
                         }
                     }
-                    
+
                     + .bubble {
                         left: 0;
-                        
+
                         @media screen {
                             @media (orientation: landscape) {
                                 top: -11px;
                                 bottom: auto;
                                 left: -80px;
-                                
+
                                 @media (min-width: $sm) {
                                     top: -5px;
                                 }
                             }
-                            
+
                             @media (min-width: $md) {
                                 position: fixed;
                                 top: auto;
-                                bottom: -84px;
+                                bottom: -112px;
                                 left: auto;
                                 right: 75px;
                             }
-                            
+
                             @media (min-width: $xl) {
                                 position: absolute;
                                 height: 4px;
@@ -918,10 +918,10 @@ nav {
                                 padding: 0 15px;
                             }
                         }
-                        
+
                         .graphicElement {
                             top : calc(100% - 5px);
-                            
+
                             @media screen {
                                 @media (orientation: landscape) {
                                     top: 38px;
@@ -929,12 +929,12 @@ nav {
                                     left: auto;
                                     right: calc(100% - 5px);
                                 }
-                                
+
                                 @media (min-width: $md) {
                                     top: calc(100% - 27px);
                                     left: calc(100% - 5px);
                                 }
-                                
+
                                 @media (min-width: $xl) {
                                     top: -5px;
                                     left: 0;
@@ -942,18 +942,18 @@ nav {
                                 }
                             }
                         }
-                        
+
                         div {
                             width: 75.3px;
                             overflow: hidden;
                             @include transition(height, $basicDuration);
-                            
+
                             @media screen {
                                 @media (min-width: $xl) {
                                     height: 4px;
                                 }
                             }
-                            
+
                             a {
                                 display: block;
                                 background-color: $white;
@@ -964,7 +964,7 @@ nav {
                                 font-size: $shortFontSize-3;
                                 line-height: 150%;
                                 @include colorTransition($basicDuration);
-                                
+
                                 &:hover {
                                     color: $CTA;
                                     @include colorTransition($basicDuration);
@@ -991,23 +991,23 @@ nav {
         }
         &.more {
             position: relative;
-            
+
             @media screen {
                 @media (min-width: $xl) {
                     display: none;
                 }
             }
-            
+
             > input[type="checkbox"] {
                 width: 100%;
                 height: 100%;
                 left: 0;
                 z-index: 20;
-                
+
                 + a {
                     @include boxShadow(0 0 0 $CTA inset);
                     @include transition(box-shadow, $basicDuration);
-                    
+
                     + .bubble {
                         width: max-content;
                         top: auto;
@@ -1018,14 +1018,14 @@ nav {
                         border-radius: $smallestRadius;
                         @include lowBoxShadow();
                         @include allTransition($basicDuration);
-                        
+
                         @media screen {
                             @media (orientation: landscape) {
                                 bottom: 8px;
                                 left: -100%;
                                 right: auto;
                             }
-                            
+
                             @media (min-width: $md) {
                                 position: fixed;
                                 bottom: -88px;
@@ -1040,18 +1040,18 @@ nav {
                                 }
                             }
                         }
-                        
+
                         .graphicElement {
                             top: auto;
                             left: auto;
-                            
+
                             &:first-child {
                                 width: 20px;
                                 height: 20px;
                                 bottom: -10px;
                                 right: 14px;
                                 @include lowBoxShadow-reverse();
-                                
+
                                 @media screen  {
                                     @media (orientation: landscape) {
                                         bottom: 10px;
@@ -1059,7 +1059,7 @@ nav {
                                         right: auto;
                                         @include lowBoxShadow-90();
                                     }
-                                    
+
                                     @media (min-width: $md) {
                                         bottom: 11px;
                                         right: -10px;
@@ -1082,7 +1082,7 @@ nav {
                                 right: 5px;
                                 border-radius: $smallestRadius;
                                 @include transform(none);
-                                
+
                                 @media screen {
                                     @media (orientation: landscape) {
                                         width: 20px;
@@ -1091,7 +1091,7 @@ nav {
                                         left: 0;
                                         right: auto;
                                     }
-                                    
+
                                     @media (min-width: $md) {
                                         width: 20px;
                                         height: 45px;
@@ -1110,13 +1110,13 @@ nav {
                                 }
                             }
                         }
-                        
+
                         div {
                             display: flex;
                             flex-direction: column;
                             padding: 8px 0;
                             text-align: left;
-                            
+
                             a {
                                 font-family: 'montserratsemibold';
                                 font-size: $shortFontSize-3;
@@ -1125,7 +1125,7 @@ nav {
                                 position: relative;
                                 z-index: 30;
                                 @include colorTransition($basicDuration);
-                                
+
                                 &:hover {
                                     color: $CTA;
                                     @include colorTransition($basicDuration);
@@ -1134,35 +1134,35 @@ nav {
                         }
                     }
                 }
-                
+
                 &:checked {
                     + a {
                         @include boxShadow(0 -42px 0 $CTA inset);
                         @include transition(box-shadow, $basicDuration);
-                        
+
                         @media screen {
                             @media (orientation: landscape) {
                                 @include boxShadow(42px 0 0 $CTA inset);
                             }
-                            
+
                             @media (min-width: $lg) {
                                 @media (orientation: landscape) {
                                     @include boxShadow(0 -42px 0 $CTA inset);
                                 }
                             }
                         }
-                        
+
                         + .bubble {
                             bottom: 50px;
                             opacity: 1;
                             @include allTransition($basicDuration);
-                            
+
                             @media screen {
                                 @media (orientation: landscape) {
                                     bottom: 8px;
                                     left: 50px;
                                 }
-                                
+
                                 @media (min-width: $md) {
                                     bottom: 24px;
                                     right: 74px;
@@ -1202,8 +1202,8 @@ nav {
                 }
             }
         }
-        
-        &.active {            
+
+        &.active {
             > a {
                 background-color: $CTA;
 
@@ -1215,7 +1215,7 @@ nav {
                 }
             }
         }
-        
+
         > a {
             display: flex;
             height: 42px;
@@ -1225,7 +1225,7 @@ nav {
             font-size: $bigFontSize-1;
             @include boxShadow(0 0 0 $CTA inset);
             @include transition(box-shadow, $basicDuration);
-            
+
             @media screen {
                 @media (orientation: landscape) {
                     height: 100%;
@@ -1235,7 +1235,7 @@ nav {
                     left: 0;
                     right: 0;
                 }
-                
+
                 @media (min-width: $lg) {
                     @media (orientation: landscape) {
                         height: 42px;
@@ -1245,24 +1245,24 @@ nav {
                     position: initial;
                 }
             }
-            
+
             &:hover {
                 @include boxShadow(0 -42px 0 $CTA inset);
                 @include transition(box-shadow, $basicDuration);
-                
+
                 @media screen {
                     @media (orientation: landscape) {
                         @include boxShadow(42px 0 0 $CTA inset);
                     }
-                    
+
                     @media (min-width: $lg) {
                         @media (orientation: landscape) {
                             @include boxShadow(0 -42px 0 $CTA inset);
                         }
-                    }                    
+                    }
                     @media (min-width: $xl) {
                         @include boxShadow(0 -4px 0 $CTA inset);
-                        
+
                         /*@media (orientation: landscape) {
                             @include boxShadow(0 -42px 0 $CTA inset);
                         }*/
@@ -1277,7 +1277,7 @@ nav {
                     @media screen {
                         @media (min-width: $xl) {
                             display: none;
-                            
+
                             /*@media (orientation: landscape) {
                                 display: flex;
                             }*/
@@ -1303,7 +1303,7 @@ nav {
                     }
                 }
             }
-            
+
             span {
                 display: none;
                 color: $white;
