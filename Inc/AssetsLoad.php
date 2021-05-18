@@ -13,6 +13,10 @@ class AssetsLoad
             //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
+        if (get_queried_object_id() == 828) {
+            add_action('wp_enqueue_scripts', [$this, 'visitmarcheHome']);
+        }
+
         if (!is_category() && !is_search() && !is_front_page()) {
             add_action('wp_enqueue_scripts', [$this, 'visitmarcheLeaft']);
             add_action('wp_enqueue_scripts', [$this, 'visitmarcheLightGallery']);
