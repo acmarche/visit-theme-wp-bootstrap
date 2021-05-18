@@ -41,6 +41,7 @@ class Menu
     public function getIcones(): array
     {
         $language = LocaleHelper::getSelectedLanguage();
+
         return $this->cache->get(
             'icones_home2_'.$language,
             function () {
@@ -73,12 +74,13 @@ class Menu
         $language = LocaleHelper::getSelectedLanguage();
 
         return $this->cache->get(
-            'menu_top_'.$language,
+            'menu_top_2'.$language,
             function () {
                 $menu = [
                     'sorganiser' => get_category_by_slug('sorganiser'),
                     'sejourner' => get_category_by_slug('sejourner'),
                     'savourer' => get_category_by_slug('savourer'),
+                    'decouvrir' => get_category_by_slug('decouvrir'),
                     'bouger' => get_category_by_slug('bouger'),
                     'inspirations' => get_category_by_slug('inspirations'),
                     'pratique' => get_category_by_slug('pratique'),
