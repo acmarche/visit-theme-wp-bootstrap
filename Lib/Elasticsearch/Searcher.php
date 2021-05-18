@@ -24,7 +24,7 @@ class Searcher
 
     public function searchFromWww(string $keyword)
     {
-        $content = file_get_contents('https://www.marche.be/visit-elasticsearch/search.php');
+        $content = file_get_contents('https://www.marche.be/visit-elasticsearch/search.php?keyword='.urlencode($keyword));
 
         return $content;
     }
