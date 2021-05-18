@@ -57,7 +57,7 @@ function FiltresComposant( propos ) {
                     {listOptions}
                 </select>
             </div>
-            <ul className="cat-filters d-md-flex mw-448px flex-wrap justify-content-center align-items-center d-none">
+            <ul className="cat-filters d-md-flex mw-648px flex-wrap justify-content-center align-items-center d-none">
                 {listItems}
             </ul>
         </>
