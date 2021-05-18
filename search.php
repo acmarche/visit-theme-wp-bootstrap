@@ -3,7 +3,6 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
-use Exception;
 use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
 use VisitMarche\Theme\Lib\Twig;
 
@@ -11,22 +10,15 @@ get_header();
 
 $searcher = new Searcher();
 $keyword = get_search_query();
-$hits = [];
-try {
-    $searching = $searcher->searchFromWww($keyword);
-    dump($searching);
-    $results = $searching->getResults();
-    $count = $searching->count();
-    foreach ($results as $result) {
-        $hit = $result->getHit();
-        $hits[] = $hit['_source'];
-    }
-} catch (Exception $e) {
-    Mailer::sendError("wp error search", $e->getMessage());
+$results = $searcher->searchFromWww($keyword);
+$hits = json_decode($results);
+
+if (isset($hits['error'])) {
+    Mailer::sendError("wp error search", $hits['error']);
     Twig::rendPage(
         'errors/500.html.twig',
         [
-            'message' => $e->getMessage(),
+            'message' => $hits['error'],
             'title' => 'Erreur lors de la recherche',
             'tags' => [],
             'relations' => [],
@@ -42,7 +34,7 @@ Twig::rendPage(
     [
         'keyword' => $keyword,
         'hits' => $hits,
-        'count' => $count,
+        'count' => count($hits),
     ]
 );
 
