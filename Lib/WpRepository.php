@@ -152,4 +152,26 @@ class WpRepository
         return $intro;
     }
 
+    /**
+     * @return array|\WP_Term[]
+     */
+    public function getCategories():array
+    {
+        $args = array(
+            'type' => 'post',
+            'child_of' => 0,
+            'parent' => '',
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'hide_empty' => 1,
+            'hierarchical' => 1,
+            'exclude' => '',
+            'include' => '',
+            'number' => '',
+            'taxonomy' => 'category',
+            'pad_counts' => true,
+        );
+
+        return get_categories($args);
+    }
 }
