@@ -2,14 +2,16 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\Theme;
+
 $locale = LocaleHelper::getSelectedLanguage();
 ?>
     <!DOCTYPE html>
-    <html lang="<?php echo $locale ?>">
+<html lang="<?php echo $locale ?>">
     <head>
         <meta charset="<?php bloginfo('charset'); ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +33,14 @@ $icones = $menu->getIcones();
 if (Theme::isHomePage()) {
     Twig::rendPage(
         'header/_header_home.html.twig',
+        [
+            'items' => $items,
+            'icones' => $icones,
+        ]
+    );
+} elseif (get_query_var(RouterHades::PARAM_OFFRE)) {
+    Twig::rendPage(
+        'header/_header_offre.html.twig',
         [
             'items' => $items,
             'icones' => $icones,
