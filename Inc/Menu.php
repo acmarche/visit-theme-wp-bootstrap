@@ -43,14 +43,13 @@ class Menu
         $language = LocaleHelper::getSelectedLanguage();
 
         return $this->cache->get(
-            'icones_home2_'.$language,
+            'icones_home_'.$language,
             function () {
                 $icones = [
                     'arts' => get_category_by_slug('arts'),
                     'balades' => get_category_by_slug('balades'),
                     'fetes' => get_category_by_slug('fetes'),
                     'gourmandises' => get_category_by_slug('gourmandises'),
-                    'decouvrir' => get_category_by_slug('decouvrir'),
                     'patrimoine' => get_category_by_slug('patrimoine'),
                 ];
                 $icones = array_map(
@@ -74,13 +73,12 @@ class Menu
         $language = LocaleHelper::getSelectedLanguage();
 
         return $this->cache->get(
-            'menu_top_2'.$language,
+            'menu_top_3'.$language,
             function () {
                 $menu = [
                     'sorganiser' => get_category_by_slug('sorganiser'),
                     'sejourner' => get_category_by_slug('sejourner'),
                     'savourer' => get_category_by_slug('savourer'),
-                    'decouvrir' => get_category_by_slug('decouvrir'),
                     'bouger' => get_category_by_slug('bouger'),
                     'inspirations' => get_category_by_slug('inspirations'),
                     'pratique' => get_category_by_slug('pratique'),
@@ -94,6 +92,11 @@ class Menu
                     },
                     $menu
                 );
+
+                $decouvrir = get_post(828);
+                $decouvrir->name = $decouvrir->post_title;
+                $decouvrir->url = get_permalink($decouvrir);
+                $menu['decouvrir'] = $decouvrir;
 
                 return $menu;
             }
