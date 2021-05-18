@@ -5,9 +5,9 @@ decouvrez:
   marche: 'Ontdek'
 suggestions: 'Suggestions'
 inspiration:
-  home: 'Vakantie-ideeën en inspiraties'
+  home: 'Inspiraties'
 all:
-  experiences: 'Alle ervaringen'
+  experiences: 'Alle inspiraties'
 events:
   notfound: 'Gebeurtenissen niet gevonden'
   all: 'Alle evenementen'

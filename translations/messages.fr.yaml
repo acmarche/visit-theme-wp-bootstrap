@@ -5,9 +5,9 @@ decouvrez:
   marche: 'Découvrez'
 suggestions: 'Suggestions'
 inspiration:
-  home: 'Idées de séjour et inspirations'
+  home: 'Inspirations'
 all:
-  experiences: 'Toutes les expériences'
+  experiences: 'Toutes les inspirations'
 events:
   notfound: 'Aucun évènements trouvés'
   all: 'Tous les évènements'
