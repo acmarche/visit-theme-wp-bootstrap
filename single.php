@@ -11,7 +11,11 @@ get_header();
 global $post;
 
 if ($post->ID == 828) {
-    add_action('wp_enqueue_scripts', [AssetsLoad::class, 'visitmarcheHome']);
+    wp_enqueue_style(
+        'visitmarche-home-style',
+        get_template_directory_uri().'/assets/tartine/css/home.css',
+        array()
+    );
 }
 
 $slugs = explode('/', get_query_var('category_name'));
