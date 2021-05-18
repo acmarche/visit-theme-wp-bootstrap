@@ -44,9 +44,7 @@ class Searcher
         $query->addShould($matchContentStemmed);
         $query->addShould($matchCatName);
 
-        $result = $this->index->search($query);
-
-        return $result;
+        return $this->index->search($query);
     }
 
     /**

@@ -23,7 +23,7 @@
         <div class="mw-550px position-relative m-auto w-100">
             <form method="get" action="/">
                 <input name="s" type="search" placeholder="Que cherchez-vous ?"
-                       class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3 bg-lighter">
+                       class="border-0 rounded-pill h-42px pl-16px pr-58px fs-short-3 bg-lighter" autocomplete="off">
                 <button type="submit"
                         class="position-absolute top-0 bottom-0 right-0 w-42px d-flex justify-content-center align-items-center p-0 border-0 rounded-right-pill bg-transparent icon_custom">
                     <!--<i class="fa fa-search text-dark-primary"></i>-->
@@ -33,7 +33,7 @@
         </div>
 
         <!--searched-->
-        <span class="pt-24px d-block text-center ff-semibold text-default fs-short-2">{{ count }} RÉSULTATS POUR "{{ query }}"</span>
+        <span class="pt-24px d-block text-center ff-semibold text-default fs-short-2">{{ count }} RÉSULTATS POUR "{{ keyword }}"</span>
 
         <!--results-->
         {% include 'search/_results.html.twig' %}

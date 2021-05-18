@@ -2,29 +2,45 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Common\Mailer;
+use Exception;
+use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-global $wp_query;
-
+$searcher = new Searcher();
 $keyword = get_search_query();
+$hits = [];
+try {
+    $searching = $searcher->search2($keyword);
+    $results = $searching->getResults();
+    $count = $searching->count();
+    foreach ($results as $result) {
+        $hit = $result->getHit();
+        $hits[] = $hit['_source'];
+    }
+} catch (Exception $e) {
+    Mailer::sendError("wp error search", $e->getMessage());
+    Twig::rendPage(
+        'errors/500.html.twig',
+        [
+            'message' => $e->getMessage(),
+            'title' => 'Erreur lors de la recherche',
+            'tags' => [],
+            'relations' => [],
+        ]
+    );
+    get_footer();
 
-$count = (int)$wp_query->found_posts;
-$query = esc_html(get_search_query());
-$posts = $wp_query->posts;
-array_map(
-    function ($post) {
-        $post->url = get_permalink($post);
-    },
-    $posts
-);
+    return;
+}
 
 Twig::rendPage(
     'search/index.html.twig',
     [
-        'query' => $keyword,
-        'posts' => $posts,
+        'keyword' => $keyword,
+        'hits' => $hits,
         'count' => $count,
     ]
 );

@@ -31,14 +31,13 @@ class ElasticSearcherCommand extends Command
         $this->io = new SymfonyStyle($input, $output);
 
         $query = $input->getArgument('query');
-        if ( ! $query) {
+        if (!$query) {
             $this->io->error('Entrez un mot clef');
 
             return Command::FAILURE;
         }
 
-           $this->search($query);
-        //$this->suggest($query);
+        $this->search($query);
 
         return Command::SUCCESS;
     }
@@ -47,20 +46,20 @@ class ElasticSearcherCommand extends Command
     {
         $this->io->section("Search2");
         $searcher = new Searcher();
-        $result   = $searcher->search2($query);
+        $result = $searcher->search2($query);
         $this->io->writeln("Found: ".$result->count());
         $this->io->writeln('-------------------');
         foreach ($result->getResults() as $result) {
-            $hit    = $result->getHit();
+            $hit = $result->getHit();
             $source = $hit['_source'];
             $this->io->writeln($source['name']);
         }
         $this->io->section("Search");
-        $result   = $searcher->search($query);
+        $result = $searcher->search($query);
         $this->io->writeln("Found: ".$result->count());
         $this->io->writeln('-------------------');
         foreach ($result->getResults() as $result) {
-            $hit    = $result->getHit();
+            $hit = $result->getHit();
             $source = $hit['_source'];
             $this->io->writeln($source['name']);
         }
