@@ -1,11 +1,11 @@
-<!--OBJECT | HEADER-->
-<header>
+<header class="version_b">
     <div>
         <a href="/{{ locale }}">
             <img src="{{ template_directory }}/assets/tartine/rsc/img/img_logo.png" alt="logo">
         </a>
+
         <!--OBJECT | NAV-->
-        <nav>
+        <nav class="version_b">
 
             <!--home-->
             <div class="home">
@@ -17,14 +17,16 @@
             <!--search | visible on mobile/tablet && !homepage-extralarge-->
             <div class="search">
                 <a href="#">
-                    <i class="icon_nav i-search i-white"></i>
+                    <i class="icon_nav i-search i-darkGrey"></i>
                     <i class="icon_nav i-search i-white position-absolute d-none d-xl-block"></i>
                 </a>
+
                 {% include 'header/_search_screen.html.twig' %}
             </div>
 
             <!--organize-->
             {% include 'header/_organize.html.twig' %}
+
             <!--practical-->
             <div class="practical">
                 <a href="{{ items.pratique.url }}">
@@ -32,6 +34,7 @@
                     <span>{{ items.pratique.name }}</span>
                 </a>
             </div>
+
             <!--more-->
             <div class="more">
                 <input type="checkbox" id="more" name="more"/>
@@ -71,4 +74,3 @@
         {% include 'header/_social.html.twig' %}
     </div>
 </header>
-
