@@ -13,7 +13,7 @@ class AssetsLoad
             //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
-        var_dump(get_queried_object_id());
+        var_dump("zeze".get_queried_object_id());
 
         if (get_queried_object_id() == 828) {
             add_action('wp_enqueue_scripts', [$this, 'visitmarcheHome']);
