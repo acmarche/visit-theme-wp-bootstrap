@@ -7,6 +7,7 @@ use AcMarche\Common\Mailer;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
+use VisitMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
@@ -74,5 +75,17 @@ class ApiData
         $offres = array_merge($posts, $offres);
 
         return rest_ensure_response($offres);
+    }
+
+    public static function getAll()
+    {
+        $data = [];
+        $elasticData = new ElasticData();
+        $data['posts'] = $elasticData->getPosts();
+        $data['categories'] = $elasticData->getCategories();
+        $data['offres'] = $elasticData->getOffres();
+
+        return rest_ensure_response($data);
+
     }
 }

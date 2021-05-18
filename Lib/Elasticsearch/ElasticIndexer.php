@@ -42,7 +42,7 @@ class ElasticIndexer
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
             }
-            $this->addPost($documentElastic);
+           // $this->addPost($documentElastic);
         }
     }
 

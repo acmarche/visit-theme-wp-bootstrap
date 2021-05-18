@@ -7,7 +7,6 @@ use AcMarche\Pivot\Entities\OffreInterface;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Inc\RouterHades;
-use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
 use WP_Post;
 
