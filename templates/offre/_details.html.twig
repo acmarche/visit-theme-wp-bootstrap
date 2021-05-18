@@ -7,12 +7,12 @@
 {% for contact in offre.contacts %}
     {% if contact.lib.get('default') == 'contact' %}
         {% if contact.lib.get(locale) %}
-            <p><strong>{{ contact.lib.get(locale) }}</strong></p>
+            <p><strong>Contact</strong></p>
         {% endif %}
         {% if contact.noms %}
             <p> {{ contact.noms }} {{ contact.prenoms }} </p>
         {% endif %}
-        <p> {{ contact.adresse }} {{ contact.numero }}</p>
+        <p>{{ contact.adresse }} {{ contact.numero }}</p>
         <span>{{ contact.postal }} {{ contact.l_nom }}</span><br/><p>
         {% for communication in contact.communications %}
             <strong>{{ communication.lib.get(locale) }}</strong>
