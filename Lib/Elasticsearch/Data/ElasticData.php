@@ -38,8 +38,15 @@ class ElasticData
         $this->url = 'https://www.visitmarche.be/wp-json/visit/all';
     }
 
-    public function getAllData(): array
+    public function getAllData(): \stdClass
     {
+        $t = json_decode(file_get_contents($this->url));//2 times error ssl
+        $t = json_decode(file_get_contents($this->url));//2 times error ssl
+        $t = json_decode(file_get_contents($this->url));
+        var_dump($t);
+
+        return $t;
+
         try {
             $response = $this->httpClient->request(
                 'GET',

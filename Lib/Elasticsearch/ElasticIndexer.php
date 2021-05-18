@@ -43,14 +43,14 @@ class ElasticIndexer
 
     public function treatment()
     {
-        $data = $this->getAll();
-        if (isset($data['error'])) {
-            Mailer::sendError('Erreur sync tourisme', $data['error']);
+        $allData = $this->getAll();
+        if (isset($allData->error)) {
+            Mailer::sendError('Erreur sync tourisme', $allData->error);
 
-            return ['error' => $data['error']];
+            return ['error' => $allData->error];
         }
 
-        foreach ($data['posts'] as $data) {
+        foreach ($allData->posts as $data) {
             $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
@@ -58,7 +58,7 @@ class ElasticIndexer
             $this->addPost($documentElastic);
         }
 
-        foreach ($data['categories'] as $data) {
+        foreach ($allData->categories as $data) {
             $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
@@ -66,7 +66,7 @@ class ElasticIndexer
             $this->addCategory($documentElastic);
         }
 
-        foreach ($data['offres'] as $data) {
+        foreach ($allData->offres as $data) {
             $documentElastic = $this->elasticData->createDocumentElasticFromX($data);
             if ($this->outPut) {
                 $this->outPut->writeln($documentElastic->name);
