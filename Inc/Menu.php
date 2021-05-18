@@ -42,7 +42,7 @@ class Menu
     {
         $language = LocaleHelper::getSelectedLanguage();
         return $this->cache->get(
-            'icones_home_'.$language,
+            'icones_home2_'.$language,
             function () {
                 $icones = [
                     'arts' => get_category_by_slug('arts'),
