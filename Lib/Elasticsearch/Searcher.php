@@ -22,6 +22,15 @@ class Searcher
         $this->connect();
     }
 
+    public function searchFromWww(string $keyword)
+    {
+
+        $content = file_get_contents('https://www.marche.be/visit-elasticsearch/search.php');
+        $data = json_decode($content);
+
+        return $data;
+    }
+
     /**
      * @param string $keywords
      *

@@ -13,7 +13,8 @@ $searcher = new Searcher();
 $keyword = get_search_query();
 $hits = [];
 try {
-    $searching = $searcher->search2($keyword);
+    $searching = $searcher->searchFromWww($keyword);
+    dump($searching);
     $results = $searching->getResults();
     $count = $searching->count();
     foreach ($results as $result) {
