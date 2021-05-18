@@ -3,13 +3,18 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 
 get_header();
 global $post;
 
-$slugs = explode('/',get_query_var('category_name'));
+if ($post->ID == 828) {
+    add_action('wp_enqueue_scripts', [AssetsLoad::class, 'visitmarcheHome']);
+}
+
+$slugs = explode('/', get_query_var('category_name'));
 $image = null;
 if (has_post_thumbnail()) {
     $images = wp_get_attachment_image_src(get_post_thumbnail_id(), 'original');
