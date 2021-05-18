@@ -45,7 +45,6 @@ class ElasticData
                 'GET',
                 $this->url
             );
-            var_dump($httpLogs = $response->getInfo('debug'));
         } catch (TransportExceptionInterface $exception) {
             Mailer::sendError('Erreur get data tourisme1', $exception->getMessage());
 
