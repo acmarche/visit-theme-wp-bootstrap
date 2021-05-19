@@ -43,19 +43,20 @@ class ApiData
 
     public static function hadesOffres(WP_REST_Request $request)
     {
-        $filtreString = $request->get_param('filtre');
-        $categoryId = (int)$request->get_param('category');
-        if (!$categoryId) {
+        $filtreSelected = $request->get_param('filtre');//element selected
+        $currentCategoryId = (int)$request->get_param('category');//current category
+        if (!$currentCategoryId) {
             Mailer::sendError("error hades offre", "missing param keyword");
 
             return new WP_Error(500, 'missing param keyword');
         }
-        if (!$filtreString) {
+
+        if (!$filtreSelected) {
             $categoryUtils = new HadesFiltres();
-            $filtres = $categoryUtils->getCategoryFilters($categoryId);
+            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
             $filtres = array_keys($filtres);
         } else {
-            $filtres = [$filtreString];
+            $filtres = [$filtreSelected];
         }
 
         $hadesRepository = new HadesRepository();
@@ -63,19 +64,19 @@ class ApiData
 
         $language = LocaleHelper::getSelectedLanguage();
         $postUtils = new PostUtils();
-        $offres = $postUtils->convertOffres($offres, $categoryId, $language);
+        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
 
         $wpRepository = new WpRepository();
-        $posts = $wpRepository->getPostsByCatId($categoryId);
-        $category_order = get_term_meta($categoryId, 'acmarche_category_sort', true);
+        $posts = $wpRepository->getPostsByCatId($currentCategoryId);
+        $category_order = get_term_meta($currentCategoryId, 'acmarche_category_sort', true);
         if ($category_order == 'manual') {
-            $posts = AcSort::getSortedItems($categoryId, $posts);
+            $posts = AcSort::getSortedItems($currentCategoryId, $posts);
         }
 
         //fusion offres et articles
         $postUtils = new PostUtils();
         $posts = $postUtils->convert($posts);
-        $offres = $postUtils->convertOffres($offres, $categoryId, $language);
+        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
         $offres = array_merge($posts, $offres);
 
         return rest_ensure_response($offres);
