@@ -61,7 +61,6 @@ class ApiData
          */
         if (!$filtreSelected) {
             $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
-            $filtres = array_keys($filtres);
             $offres = self::getOffres($filtres, $currentCategoryId, $language);
             $posts = $wpRepository->getPostsByCatId($currentCategoryId);
             //fusion offres et articles
