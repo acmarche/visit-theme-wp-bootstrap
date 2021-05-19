@@ -74,11 +74,11 @@ class ApiData
          * si filtre selectionne est int donc c'est une cat wp
          * je vais chercher les filtres hades sur celui ci
          */
-        $t = (int)$filtreSelected;
-        if (is_int($t)) {
-            $filtres = $categoryUtils->getCategoryFilters($filtreSelected);
+        $filtreSelectedToInt = (int)$filtreSelected;
+        if (is_int($filtreSelectedToInt)) {
+            $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt);
             $offres = self::getOffres($filtres, $currentCategoryId, $language);
-            $posts = $wpRepository->getPostsByCatId($t);
+            $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
             //fusion offres et articles
             $posts = $postUtils->convert($posts);
             $offres = array_merge($posts, $offres);
