@@ -37,27 +37,8 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$children = $wpRepository->getChildrenOfCategory($cat_ID);
-if (count($children) > 1000) {
-
-    Twig::rendPage(
-        'category/select_child.html.twig',
-        [
-            'title' => $category->name,
-            'category' => $category,
-            'urlBack' => $urlBack,
-            'nameBack' => $nameBack,
-            'children' => $children,
-        ]
-    );
-
-    get_footer();
-
-    return;
-}
-
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
-
+dump($filtres);
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
 if ($category_order == 'manual') {
@@ -113,6 +94,7 @@ if (count($filtres) > 0) {
     return;
 }
 
+$children = $wpRepository->getChildrenOfCategory($cat_ID);
 $sortLink = SortLink::linkSortArticles($cat_ID);
 Twig::rendPage(
     'category/index.html.twig',

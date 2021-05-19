@@ -51,35 +51,56 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
 
-        if (!$filtreSelected) {
-            $categoryUtils = new HadesFiltres();
-            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
-            $filtres = array_keys($filtres);
-        } else {
-            $filtres = [$filtreSelected];
-        }
-
-        $hadesRepository = new HadesRepository();
-        $offres = $hadesRepository->getOffres($filtres);
-
+        $categoryUtils = new HadesFiltres();
+        $wpRepository = new WpRepository();
         $language = LocaleHelper::getSelectedLanguage();
         $postUtils = new PostUtils();
-        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
 
-        $wpRepository = new WpRepository();
-        $posts = $wpRepository->getPostsByCatId($currentCategoryId);
-        $category_order = get_term_meta($currentCategoryId, 'acmarche_category_sort', true);
-        if ($category_order == 'manual') {
-            $posts = AcSort::getSortedItems($currentCategoryId, $posts);
+        /**
+         * Si pas de filtre selectionne, on affiche tout
+         */
+        if (!$filtreSelected) {
+            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
+            $filtres = array_keys($filtres);
+            $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            $posts = $wpRepository->getPostsByCatId($currentCategoryId);
+            //fusion offres et articles
+            $posts = $postUtils->convert($posts);
+            $offres = array_merge($posts, $offres);
+
+            return rest_ensure_response($offres);
         }
 
-        //fusion offres et articles
-        $postUtils = new PostUtils();
-        $posts = $postUtils->convert($posts);
-        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
-        $offres = array_merge($posts, $offres);
+        /**
+         * si filtre selectionne est int donc c'est une cat wp
+         * je vais chercher les filtres hades sur celui ci
+         */
+        $t = (int)$filtreSelected;
+        if (is_int($t)) {
+            $filtres = $categoryUtils->getCategoryFilters($filtreSelected);
+            $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            $posts = $wpRepository->getPostsByCatId($t);
+            //fusion offres et articles
+            $posts = $postUtils->convert($posts);
+            $offres = array_merge($posts, $offres);
+
+            return rest_ensure_response($offres);
+        }
+
+        $offres = self::getOffres([$filtreSelected], $currentCategoryId, $language);
 
         return rest_ensure_response($offres);
+    }
+
+    private static function getOffres(array $filtres, int $currentCategoryId, string $language)
+    {
+        $hadesRepository = new HadesRepository();
+        $postUtils = new PostUtils();
+        $filtres = array_keys($filtres);
+        $offres = $hadesRepository->getOffres($filtres);
+        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
+
+        return $offres;
     }
 
     public static function getAll()
