@@ -43,7 +43,6 @@ class ElasticData
         $t = json_decode(file_get_contents($this->url));//2 times error ssl
         $t = json_decode(file_get_contents($this->url));//2 times error ssl
         $t = json_decode(file_get_contents($this->url));
-        var_dump($t);
 
         return $t;
 

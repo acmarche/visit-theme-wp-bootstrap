@@ -38,7 +38,7 @@ if ($parent) {
 }
 
 $children = $wpRepository->getChildrenOfCategory($cat_ID);
-if (count($children) > 0) {
+if (count($children) > 1000) {
 
     Twig::rendPage(
         'category/select_child.html.twig',
@@ -57,6 +57,7 @@ if (count($children) > 0) {
 }
 
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
+
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
 if ($category_order == 'manual') {
@@ -79,6 +80,8 @@ if (count($filtres) > 0) {
     $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
     $offres = array_merge($posts, $offres);
 
+    $filtres = RouterHades::setRoutesToFilters($filtres);
+
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/offre.js',
@@ -86,11 +89,11 @@ if (count($filtres) > 0) {
         wp_get_theme()->get('Version'),
         true
     );
+
     $header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME, true);
     if ($header) {
         $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
     }
-    $urlfiltre = RouterHades::getUrlFiltre();
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
@@ -101,7 +104,6 @@ if (count($filtres) > 0) {
             'offres' => $offres,
             'title' => $title,
             'permalink' => $permalink,
-            'urlfiltre' => $urlfiltre,
             'header' => $header,
         ]
     );

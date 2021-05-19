@@ -7,6 +7,7 @@ use AcMarche\Common\Mailer;
 use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\Categorie;
 use AcMarche\Pivot\Entities\OffreInterface;
+use VisitMarche\Theme\Lib\WpRepository;
 
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
@@ -51,6 +52,21 @@ class RouterHades extends Router
         }
 
         return get_category_link($category).'?cgt=';
+    }
+
+    public static function setRoutesToFilters(array $filtres): array
+    {
+        $urlfiltre = self::getUrlFiltre();
+        $filtres2 = [];
+        foreach ($filtres as $key => $nom) {
+            $url = $urlfiltre.$key;
+            if (is_int($key)) {
+                $url = get_category_link($key);
+            }
+            $filtres2[] = ['key' => $key, 'nom' => $nom, 'url' => $url];
+        }
+
+        return $filtres2;
     }
 
     public function addRouteEvent()

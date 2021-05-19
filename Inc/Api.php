@@ -17,22 +17,6 @@ class Api
         if (!is_admin()) {
             $this->registerHades();
         }
-        $this->registerFields();
-    }
-
-    public function registerFields()
-    {
-        $categoryUtils = new HadesFiltres();
-
-        register_rest_field(
-            'category',
-            'metadata',
-            array(
-                'get_callback' => function ($data) use ($categoryUtils) {
-                    return $categoryUtils->getCategoryFilters($data['id']);
-                },
-            )
-        );
     }
 
     public function registerHades()

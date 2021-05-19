@@ -4,8 +4,8 @@
         <i class="fas fa-angle-down position-absolute top-0 bottom-0 right-0 mr-16px fs-big-1 text-primary py-5px"></i>
         <select name="categories" id="cat-select" class="fs-short-3 ff-semibold rounded-xs">
             <option value="all" selected>{{ 'filter.all'|trans }}</option>
-            {% for key, nom in filtres %}
-                <option value="{{ key }}">{{ nom }}</option>
+            {% for filtre in filtres %}
+                <option value="{{ filtre.key }}">{{ filtre.nom }}</option>
             {% endfor %}
         </select>
     </div>
@@ -18,10 +18,10 @@
             <label for="cat-all"
                    class="py-4px px-8px fs-short-2 ff-semibold transition-color">{{ 'filter.all'|trans }}</label>
         </li>
-        {% for key, nom in filtres %}
+        {% for filtre in filtres %}
             <li class="px-0 position-relative">
-                <a href="{{ urlfiltre }}{{ key }}" class="py-4px px-8px fs-short-2 ff-semibold transition-color">
-                    {{ nom }}
+                <a href="{{ filtre.url }}" class="py-4px px-8px fs-short-2 ff-semibold transition-color">
+                    {{ filtre.nom }}
                 </a>
             </li>
         {% endfor %}

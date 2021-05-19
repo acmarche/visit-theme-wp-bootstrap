@@ -31,6 +31,10 @@ class ApiData
         }
         $categoryUtils = new HadesFiltres();
         $filtres = $categoryUtils->getCategoryFilters($categoryId);
+
+        /**
+         * Ajout de "Tout"
+         */
         $translator = LocaleHelper::iniTranslator();
         $filtres[0] = $translator->trans('filter.all');
 
