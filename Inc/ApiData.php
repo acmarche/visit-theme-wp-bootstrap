@@ -75,7 +75,8 @@ class ApiData
          * je vais chercher les filtres hades sur celui ci
          */
         $filtreSelectedToInt = (int)$filtreSelected;
-        if (is_int($filtreSelectedToInt)) {
+
+        if ($filtreSelectedToInt) {
             $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt);
             $offres = self::getOffres($filtres, $currentCategoryId, $language);
             $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
@@ -86,7 +87,7 @@ class ApiData
             return rest_ensure_response($offres);
         }
 
-        $offres = self::getOffres([$filtreSelected], $currentCategoryId, $language);
+        $offres = self::getOffres([$filtreSelected=>$filtreSelected], $currentCategoryId, $language);
 
         return rest_ensure_response($offres);
     }
