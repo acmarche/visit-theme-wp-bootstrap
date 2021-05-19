@@ -61,7 +61,10 @@ class ApiData
          */
         if (!$filtreSelected) {
             $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
-            $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            $offres = [];
+            if (count($filtres) > 0) {
+                $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            }
             $posts = $wpRepository->getPostsByCatId($currentCategoryId);
             //fusion offres et articles
             $posts = $postUtils->convert($posts);
@@ -78,16 +81,18 @@ class ApiData
 
         if ($filtreSelectedToInt) {
             $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt);
-            $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            $offres = [];
+            if (count($filtres) > 0) {
+                $offres = self::getOffres($filtres, $currentCategoryId, $language);
+            }
             $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
-            //fusion offres et articles
             $posts = $postUtils->convert($posts);
             $offres = array_merge($posts, $offres);
 
             return rest_ensure_response($offres);
         }
 
-        $offres = self::getOffres([$filtreSelected=>$filtreSelected], $currentCategoryId, $language);
+        $offres = self::getOffres([$filtreSelected => $filtreSelected], $currentCategoryId, $language);
 
         return rest_ensure_response($offres);
     }
