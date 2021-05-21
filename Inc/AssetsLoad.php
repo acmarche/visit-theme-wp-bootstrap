@@ -60,13 +60,13 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
 
-        /*    wp_enqueue_script(
-                'visitmarche-close-js',
-                get_template_directory_uri().'/assets/js/utils/navigation.js',
-                array(),
-                wp_get_theme()->get('Version'),
-                true
-            );*/
+        wp_enqueue_script(
+            'visitmarche-close-js',
+            get_template_directory_uri().'/assets/js/utils/navigation.js',
+            array(),
+            wp_get_theme()->get('Version'),
+            true
+        );
     }
 
     function visitmarcheHome()
