@@ -85,7 +85,7 @@
                     </h3>
                     <div class="pt-12px object-recom">
                         {% for relation in relations|slice(0,3) %}
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px">
+                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px mb-3">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
                                     <span class="pt-0 text-default fs-short-2">{{ relation.title }}</span>
