@@ -21,18 +21,22 @@ class Seo
         if (Theme::isHomePage()) {
             self::metaHomePage();
         }
-
         $cat_id = get_query_var('cat');
         if ($cat_id) {
             self::metaCategory($cat_id);
         }
 
-        $postId = get_query_var('p');
-        if ($postId) {
-            self::metaPost($postId);
+        global $post;
+        if ($post) {
+            self::metaPost($post);
         }
 
         $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
+        if ($codeCgt) {
+            self::metaHadesOffre($codeCgt);
+        }
+
+        $codeCgt = get_query_var(RouterHades::PARAM_OFFRE);
         if ($codeCgt) {
             self::metaHadesOffre($codeCgt);
         }
@@ -54,7 +58,8 @@ class Seo
         $hadesRepository = new HadesRepository();
         $offre = $hadesRepository->getOffre($codeCgt);
         if ($offre) {
-            self::$metas['title'] = $offre->getTitre($language).' | Agenda des manifestations ';
+            $base = self::baseTitle("");
+            self::$metas['title'] = $offre->getTitre($language).$base;
             self::$metas['description'] = join(
                 ',',
                 array_map(
@@ -65,7 +70,7 @@ class Seo
                 )
             );
             $keywords = array_map(
-                function ($category)use ($language) {
+                function ($category) use ($language) {
                     return $category->getLib($language);
                 },
                 $offre->categories
@@ -98,9 +103,8 @@ class Seo
         self::$metas['keywords'] = '';
     }
 
-    private static function metaPost(int $postId)
+    private static function metaPost(\WP_Post $post)
     {
-        $post = get_post($postId);
         self::$metas['title'] = self::baseTitle("");
         self::$metas['description'] = $post->post_excerpt;
         $tags = get_the_category($post->ID);
@@ -131,12 +135,8 @@ class Seo
         $base = wp_title('|', false, 'right');
 
         $nameSousSite = get_bloginfo('name', 'display');
-        if ($nameSousSite != 'Citoyen') {
-            $base .= $nameSousSite.' | ';
-        }
-        $base .= ' Ville de Marche-en-Famenne';
 
-        return $begin.' '.$base;
+        return $begin.' '.$base.' '.$nameSousSite;
     }
 
     private static function cleanString(string $description): string
