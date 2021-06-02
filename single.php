@@ -25,18 +25,18 @@ $urlBack = get_category_link($currentCategory);
 $tags = $wpRepository->getTags($post->ID);
 $recommandations = $wpRepository->getRelations($post->ID);
 $next = null;
+if (count($recommandations) == 0) {
+    $searcher = new Searcher();
+    global $wp_query;
+    $recommandations = $searcher->searchRecommandations($wp_query);
+}
 if (count($recommandations) > 0) {
     $next = $recommandations[0];
-} else {
-
 }
+
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
-
-$imagesCat = ['baiser.png', 'eglise.png', 'sacdos.png', 'statue.png', 'tambour.png',];
-$rand_keys = array_rand($imagesCat, 1);
-$imgcat = $imagesCat[$rand_keys];
 
 Twig::rendPage(
     'article/show.html.twig',
@@ -50,7 +50,6 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'content' => $content,
         'next' => $next,
-        'imgcat' => $imgcat,
     ]
 );
 get_footer();

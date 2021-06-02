@@ -13,14 +13,14 @@
 
             <!--title-->
             <h2 class="text-white lh-100">{{ currentCategory.name }}</h2>
-<!--
-            <ul class="position-absolute bottom-28px right-20px xl-right-44px d-flex">
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-white shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-            </ul>-->
+            <!--
+                        <ul class="position-absolute bottom-28px right-20px xl-right-44px d-flex">
+                            <li class="px-4px"><i class="d-block w-8px h-8px bg-white shadow-sm-2 rounded-circle"></i></li>
+                            <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
+                            <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
+                            <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
+                            <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
+                        </ul>-->
         </div>
     </div>
 
@@ -31,9 +31,6 @@
                style="font-weight: 600;letter-spacing: 0.1rem; color:#808080FF !important;">
                 {{ post.post_excerpt }}
             </p>
-            <!--     <img src="{{ template_directory }}/assets/images/{{ imgcat }}" alt="image categorie 1"
-                 class="position-absolute xl-top-0 bottom-n56px xl-bottom-auto right-0 col-8 col-xl-3 mw-214px mh-xl-260">
-            -->
         </div>
     </div>
 
@@ -90,7 +87,10 @@
                                 <div class="col">
                                     <span class="pt-0 text-default fs-short-2">{{ recommandation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ recommandation.tags.0.name }}
+                                        {% set tag = recommandation.tags|first %}
+                                        {% if tag %}
+                                            {{ tag.name }}
+                                        {% endif %}
                                     </h5>
                                 </div>
                             </a>
@@ -114,7 +114,10 @@
                                 <div class="col">
                                     <span class="pt-0 text-default fs-short-2">{{ recommandation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ recommandation.tags.0.name }}
+                                        {% set tag = recommandation.tags|first %}
+                                        {% if tag %}
+                                            {{ tag.name }}
+                                        {% endif %}
                                     </h5>
                                 </div>
                             </a>
