@@ -76,7 +76,7 @@ class CategoryMetaBox
                 </td>
             </tr>
             <tr class="form-field">
-                <th scope="row" valign="top"><label for="bottin_refrubrique">Icone pour les 5 thèmes</label></th>
+                <th scope="row" valign="top"><label for="bottin_refrubrique">Couleur pour les 5 thèmes</label></th>
                 <td>
                     <label>
                         <input type="text" name="<?php echo self::KEY_NAME_COLOR ?>" style="width: 100%;"
