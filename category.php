@@ -72,14 +72,13 @@ if (count($filtres) > 0) {
 
     $filtres = RouterHades::setRoutesToFilters($filtres);
 
-    /*  wp_enqueue_script(
-          'react-app',
-          get_template_directory_uri().'/assets/js/build/offre.js',
-          array('wp-element'),
-          wp_get_theme()->get('Version'),
-          true
-      );*/
-
+    wp_enqueue_script(
+        'react-app',
+        get_template_directory_uri().'/assets/js/build/offre.js',
+        array('wp-element'),
+        wp_get_theme()->get('Version'),
+        true
+    );
 
     Twig::rendPage(
         'category/index_hades.html.twig',
