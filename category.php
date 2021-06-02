@@ -44,6 +44,10 @@ $category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
 if ($category_order == 'manual') {
     $posts = AcSort::getSortedItems($cat_ID, $posts);
 }
+$header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME, true);
+if ($header) {
+    $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
+}
 
 if (count($filtres) > 0) {
     $hadesRepository = new HadesRepository();
@@ -71,10 +75,7 @@ if (count($filtres) > 0) {
         true
     );
 
-    $header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME, true);
-    if ($header) {
-        $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
-    }
+
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
@@ -94,7 +95,6 @@ if (count($filtres) > 0) {
     return;
 }
 
-$children = $wpRepository->getChildrenOfCategory($cat_ID);
 $sortLink = SortLink::linkSortArticles($cat_ID);
 Twig::rendPage(
     'category/index.html.twig',
@@ -104,8 +104,8 @@ Twig::rendPage(
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
         'posts' => $posts,
-        'children' => $children,
         'sortLink' => $sortLink,
+        'header' => $header,
     ]
 );
 
