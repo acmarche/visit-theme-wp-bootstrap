@@ -10,11 +10,8 @@ function CategoryTitle( propos ) {
     const [ category, setCategory ] = useState( null );
 
     async function loadCategory( ) {
-        console.log( 'loading cat', categoryId );
-
         let response;
         try {
-            console.log( categoryId );
             response = await fetchCategory( categoryId );
             setCategory( response.data );
         } catch ( e ) {
@@ -27,7 +24,7 @@ function CategoryTitle( propos ) {
         if ( 0 < categoryId ) { loadCategory( ); }
     }, [ categoryId ]);
 
-    if ( category && 0 < category.description.length ) {
+    if ( category && 0 < category.description.length && null != category.icone ) {
         return <p className={'mb-3'}>{category.description}</p>;
     }
     return <></>;
