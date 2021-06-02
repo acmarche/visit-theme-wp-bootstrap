@@ -18,7 +18,6 @@ get_header();
 
 $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
-$description = category_description($cat_ID);
 $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 
@@ -44,9 +43,13 @@ $category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
 if ($category_order == 'manual') {
     $posts = AcSort::getSortedItems($cat_ID, $posts);
 }
-$header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME, true);
+$header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HEADER, true);
 if ($header) {
     $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
+}
+$icone = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ICONE, true);
+if ($icone) {
+    $icone = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$icone;
 }
 
 if (count($filtres) > 0) {
@@ -67,13 +70,13 @@ if (count($filtres) > 0) {
 
     $filtres = RouterHades::setRoutesToFilters($filtres);
 
-    wp_enqueue_script(
-        'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
-        array('wp-element'),
-        wp_get_theme()->get('Version'),
-        true
-    );
+    /*  wp_enqueue_script(
+          'react-app',
+          get_template_directory_uri().'/assets/js/build/offre.js',
+          array('wp-element'),
+          wp_get_theme()->get('Version'),
+          true
+      );*/
 
 
     Twig::rendPage(
@@ -87,6 +90,7 @@ if (count($filtres) > 0) {
             'title' => $title,
             'permalink' => $permalink,
             'header' => $header,
+            'icone' => $icone,
         ]
     );
 
@@ -106,6 +110,7 @@ Twig::rendPage(
         'posts' => $posts,
         'sortLink' => $sortLink,
         'header' => $header,
+        'icone' => $icone,
     ]
 );
 
