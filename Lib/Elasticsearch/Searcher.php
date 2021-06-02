@@ -2,9 +2,7 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch;
 
-use AcMarche\Common\Mailer;
 use Elastica\Exception\InvalidException;
-use Elastica\Query\MultiMatch;
 use Elastica\ResultSet;
 
 /**
@@ -14,13 +12,6 @@ use Elastica\ResultSet;
  */
 class Searcher
 {
-    use ElasticClientTrait;
-
-    public function __construct()
-    {
-        $this->connect();
-    }
-
     public function searchFromWww(string $keyword)
     {
         $content = file_get_contents(
@@ -38,24 +29,19 @@ class Searcher
      */
     public function searchRecommandations(\WP_Query $wp_query): array
     {
-        $resultat = [];
+        $hits = [];
+
         $queries = $wp_query->query;
         $queryString = join(' ', $queries);
         $queryString = preg_replace("#-#", " ", $queryString);
         $queryString = preg_replace("#/#", " ", $queryString);
         $queryString = strip_tags($queryString);
         if ($queryString != '') {
-            try {
-                $searching = $this->search($queryString);
-                $results = $searching->getResults();
-                foreach ($results as $result) {
-                    $hit = $result->getHit();
-                    $resultat[] = $hit['_source'];
-                }
-            } catch (\Exception $e) {
-                Mailer::sendError("wp error search query 404", $e->getMessage());
-            }
+            $results = $this->searchFromWww($queryString);
+            $hits = json_decode($results);
         }
+
+        dump($hits);
         $recommandations = array_map(
             function ($recommandation) {
                 $recommandation['title'] = $recommandation['name'];
@@ -63,37 +49,9 @@ class Searcher
 
                 return $recommandation;
             },
-            $resultat
+            $hits
         );
 
         return $recommandations;
-    }
-
-    /**
-     * @param string $keywords
-     * @param int $limit
-     *
-     * @return ResultSet
-     */
-    public function search(string $keywords, int $limit = 50): ResultSet
-    {
-        $options = ['limit' => $limit];
-        $query = new MultiMatch();
-        $query->setFields(
-            [
-                'name^1.2',
-                'name.stemmed',
-                'content',
-                'content.stemmed',
-                'excerpt',
-                'tags',
-            ]
-        );
-        $query->setQuery($keywords);
-        $query->setType(MultiMatch::TYPE_MOST_FIELDS);
-
-        $result = $this->index->search($query, $options);
-
-        return $result;
     }
 }
