@@ -41,11 +41,11 @@ class Seo
             self::metaHadesOffre($codeCgt);
         }
 
-        self::$metas['title'] = preg_replace('#"#', '', self::$metas['title']);
+        self::$metas['title'] = self::cleanString(self::$metas['title']);
         echo '<title>'.self::$metas['title'].'</title>';
 
         if (self::$metas['description'] != '') {
-            self::$metas['description'] = preg_replace('#"#', '', self::$metas['description']);
+            self::$metas['description'] = self::cleanString(self::$metas['description']);
             echo '<meta name="description" content="'.self::$metas['description'].'" />';
         }
 
