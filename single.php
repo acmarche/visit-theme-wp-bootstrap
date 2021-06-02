@@ -4,6 +4,7 @@
 namespace AcMarche\Theme;
 
 use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
+use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 
@@ -11,13 +12,8 @@ get_header();
 global $post;
 
 $slugs = explode('/', get_query_var('category_name'));
-$image = null;
-if (has_post_thumbnail()) {
-    $images = wp_get_attachment_image_src(get_post_thumbnail_id(), 'original');
-    if ($images) {
-        $image = $images[0];
-    }
-}
+$image = PostUtils::getImage($post);
+
 $wpRepository = new WpRepository();
 $currentCategory = get_category_by_slug($slugs[array_key_last($slugs)]);
 $urlBack = get_category_link($currentCategory);

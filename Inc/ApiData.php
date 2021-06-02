@@ -108,6 +108,10 @@ class ApiData
         return $offres;
     }
 
+    /**
+     * Pour alimenter le moteur de recherche depuis l'exterieur
+     * @return \WP_Error|\WP_HTTP_Response|\WP_REST_Response
+     */
     public static function getAll()
     {
         $data = [];

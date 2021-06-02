@@ -13,6 +13,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
 use WP_Post;
 
@@ -45,29 +46,6 @@ class ElasticData
         $t = json_decode(file_get_contents($this->url));
 
         return $t;
-
-        try {
-            $response = $this->httpClient->request(
-                'GET',
-                $this->url
-            );
-        } catch (TransportExceptionInterface $exception) {
-            Mailer::sendError('Erreur get data tourisme1', $exception->getMessage());
-
-            return ['error' => $exception->getMessage()];
-        }
-
-        try {
-            $content = $response->getContent();
-        } catch (ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | TransportExceptionInterface $exception) {
-            Mailer::sendError('Erreur get data tourisme2', $exception->getMessage());
-
-            return ['error' => $exception->getMessage()];
-        }
-
-        $data = json_decode($content);
-
-        return $data;
     }
 
     /**
@@ -77,7 +55,6 @@ class ElasticData
      */
     public function getCategories(string $language = 'fr'): array
     {
-
         $datas = [];
         $today = new \DateTime();
 
@@ -117,6 +94,7 @@ class ElasticData
             $document->tags = $tags;
             $document->date = $date;
             $document->url = get_category_link($category->cat_ID);
+            $document->image = null;
 
             $datas[] = $document;
         }
@@ -198,7 +176,7 @@ class ElasticData
     public function postToDocumentElastic(WP_Post $post): ?DocumentElastic
     {
         try {
-            return $this->createDocumentElastic($post);
+            return $this->createDocumentElasticFromWpPost($post);
         } catch (\Exception $exception) {
             Mailer::sendError("update elastic", "create document ".$post->post_title.' => '.$exception->getMessage());
         }
@@ -220,7 +198,7 @@ class ElasticData
         return $document;
     }
 
-    private function createDocumentElastic(WP_Post $post): DocumentElastic
+    private function createDocumentElasticFromWpPost(WP_Post $post): DocumentElastic
     {
         list($date, $time) = explode(" ", $post->post_date);
         $categories = array();
@@ -239,6 +217,7 @@ class ElasticData
         $document->tags = $categories;
         $document->date = $date;
         $document->url = get_permalink($post->ID);
+        $document->image = PostUtils::getImage($post);
 
         return $document;
     }
@@ -268,6 +247,7 @@ class ElasticData
         $document->tags = $categories;
         $document->date = $today->format('Y-m-d');
         $document->url = $offre->url;
+        $document->image = $offre->firstImage();
 
         return $document;
     }

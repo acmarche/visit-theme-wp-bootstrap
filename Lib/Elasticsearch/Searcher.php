@@ -59,7 +59,6 @@ class Searcher
         $recommandations = array_map(
             function ($recommandation) {
                 $recommandation['title'] = $recommandation['name'];
-                $recommandation['image'] = null;
                 $recommandation['tags'] = [];
 
                 return $recommandation;

@@ -25,14 +25,14 @@ class PostUtils
     {
         return array_map(
             function ($post) {
-                return $this->postTo($post);
+                return $this->postToArray($post);
             },
             $posts
         );
 
     }
 
-    public function postTo(\WP_Post $post): array
+    public function postToArray(\WP_Post $post): array
     {
         $tags = $this->wpRepository->getTags($post->ID);
         $tags = array_map(
@@ -51,7 +51,7 @@ class PostUtils
         ];
     }
 
-    public function getImage(\WP_Post $post)
+    public static function getImage(\WP_Post $post): ?string
     {
         if (has_post_thumbnail($post)) {
             $images = wp_get_attachment_image_src(get_post_thumbnail_id($post), 'original');
@@ -63,9 +63,9 @@ class PostUtils
         return null;
     }
 
-    public  function convertOffres(array $offres, int $categoryId, string $language): array
+    public function convertOffres(array $offres, int $categoryId, string $language): array
     {
-         array_map(
+        array_map(
             function ($offre) use ($categoryId, $language) {
                 $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
                 $offre->titre = $offre->getTitre($language);
@@ -75,7 +75,7 @@ class PostUtils
                 }
                 $offre->description = $description;
                 $tags = [];
-                foreach ($offre->categories  as $category) {
+                foreach ($offre->categories as $category) {
                     $tags[] = $category->getLib($language);
                 }
                 $offre->tags = $tags;
@@ -89,7 +89,8 @@ class PostUtils
             },
             $offres
         );
-         return $offres;
+
+        return $offres;
     }
 
 }
