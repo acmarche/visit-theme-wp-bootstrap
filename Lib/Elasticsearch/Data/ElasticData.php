@@ -7,10 +7,6 @@ use AcMarche\Pivot\Entities\OffreInterface;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\PostUtils;
@@ -283,5 +279,4 @@ class ElasticData
 
         return $content;
     }
-
 }
