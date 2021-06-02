@@ -48,6 +48,8 @@ if ($header) {
     $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
 }
 $icone = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ICONE, true);
+$bgcat = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_COLOR, true);
+
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
@@ -91,6 +93,7 @@ if (count($filtres) > 0) {
             'permalink' => $permalink,
             'header' => $header,
             'icone' => $icone,
+            'bgcat' => $bgcat,
         ]
     );
 
@@ -111,6 +114,7 @@ Twig::rendPage(
         'sortLink' => $sortLink,
         'header' => $header,
         'icone' => $icone,
+        'bgcat' => $bgcat,
     ]
 );
 
