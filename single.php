@@ -23,10 +23,10 @@ $currentCategory = get_category_by_slug($slugs[array_key_last($slugs)]);
 $urlBack = get_category_link($currentCategory);
 
 $tags = $wpRepository->getTags($post->ID);
-$relations = $wpRepository->getRelations($post->ID);
+$recommandations = $wpRepository->getRelations($post->ID);
 $next = null;
-if (count($relations) > 0) {
-    $next = $relations[0];
+if (count($recommandations) > 0) {
+    $next = $recommandations[0];
 } else {
 
 }
@@ -46,7 +46,7 @@ Twig::rendPage(
         'tags' => $tags,
         'image' => $image,
         'title' => $post->post_title,
-        'relations' => $relations,
+        'recommandations' => $recommandations,
         'urlBack' => $urlBack,
         'content' => $content,
         'next' => $next,

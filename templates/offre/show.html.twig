@@ -119,9 +119,9 @@
                 </div>
 
                 <!--previous/next-->
-                {% if relations | length > 0 %}
-                    {% set previous = random(relations) %}
-                    {% set next = random(relations) %}
+                {% if recommandations | length > 0 %}
+                    {% set previous = random(recommandations) %}
+                    {% set next = random(recommandations) %}
                 {% endif %}
                 <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
                     {% if previous is defined %}
@@ -145,15 +145,15 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
-                    {% if relations | length > 0 %}
-                        {% set relation = random(relations) %}
+                    {% if recommandations | length > 0 %}
+                        {% set recommandation = random(recommandations) %}
                         <div class="pt-12px object-recom">
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                {% include 'offre/_image_relation.html.twig' %}
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs">
+                                {% include 'offre/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <h5 class="text-hover-primary">{{ relation.title }}</h5>
+                                    <h5 class="text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
-                                        {% for categorie in relation.categories %}
+                                        {% for categorie in recommandation.categories %}
                                             {{ categorie.lib.get(locale) }}
                                         {% endfor %}
                                     </span>
@@ -190,17 +190,15 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
                     <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
-                    {% if relations | length > 0 %}
-                        {% set relation = random(relations) %}
+                    {% if recommandations | length > 0 %}
+                        {% set recommandation = random(recommandations) %}
                         <div class="pt-22px object-recom">
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                <i class="bg-img-enjoy-2">
-                                    <b class="bg-img-bgcolor-hover-primary-55"></b>
-                                </i>
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs">
+                                {% include 'offre/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
+                                    <h5 class="text-default text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
-                                        {% for categorie in relation.categories %}
+                                        {% for categorie in recommandation.categories %}
                                             {{ categorie.lib.get(locale) }}
                                         {% endfor %}
                                     </span>

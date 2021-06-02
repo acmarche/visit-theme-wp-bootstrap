@@ -99,7 +99,7 @@ Twig::rendPage(
         'images' => $offre->medias,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
-        'relations' => $recommandations,
+        'recommandations' => $recommandations,
         'latitude' => $offre->geocode->latitude() ?? null,
         'longitude' => $offre->geocode->longitude() ?? null,
     ]

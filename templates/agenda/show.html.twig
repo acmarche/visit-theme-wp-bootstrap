@@ -113,21 +113,21 @@
                 </div>
 
                 <!--previous/next-->
-                {% if relations | length > 0 %}
-                    {% set relation = relations|first %}
+                {% if recommandations | length > 0 %}
+                    {% set recommandation = recommandations|first %}
                     <div class="pt-24px d-flex w-100 col-md-8 px-0 px-md-15px col-lg-12 px-lg-0">
                         <div class="col-6 p-0 d-flex">
-                            <a href="{{ relation.url }}"
+                            <a href="{{ recommandation.url }}"
                                class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-n12px d-flex justify-content-center fs-short-2"><i
                                         class="fas fa-angle-left d-ls-md-inline pr-8px pr-md-12px fs-short-1 d-md-inline"></i>
-                                {{ relation.title }}
+                                {{ recommandation.title }}
                             </a>
                         </div>
-                        {% set relation = relations|last %}
+                        {% set recommandation = recommandations|last %}
                         <div class="col-6 p-0 d-flex justify-content-end">
-                            <a href="{{ relation.url }}"
+                            <a href="{{ recommandation.url }}"
                                class="button lvl3 align-self-ls-md-center align-self-md-center position-relative left-0 left-hover-12px d-flex justify-content-center fs-short-2">
-                                {{ relation.title }}<i
+                                {{ recommandation.title }}<i
                                         class="fas fa-angle-right d-ls-md-inline pl-8px pl-md-12px fs-short-1 d-md-inline"></i></a>
                         </div>
                     </div>
@@ -136,15 +136,15 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 px-0 px-md-15px d-lg-none">
                     <h4 class="text-default ff-semibold fs-basic">{{ 'article.recommandation'|trans }}</h4>
-                    {% if relations | length > 0 %}
-                        {% set relation = random(relations) %}
+                    {% if recommandations | length > 0 %}
+                        {% set recommandation = random(recommandations) %}
                         <div class="pt-12px object-recom">
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                {% include 'offre/_image_relation.html.twig' %}
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs">
+                                {% include 'offre/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <h5 class="text-hover-primary">{{ relation.title }}</h5>
+                                    <h5 class="text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
-                                        {% for categorie in relation.categories %}
+                                        {% for categorie in recommandation.categories %}
                                             {{ categorie.lib.get(locale) }}
                                         {% endfor %}
                                     </span>
@@ -181,15 +181,15 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
                     <h4 class="text-default ff-semibold fs-basic">Recommandation</h4>
-                    {% if relations | length > 0 %}
-                        {% set relation = random(relations) %}
+                    {% if recommandations | length > 0 %}
+                        {% set recommandation = random(recommandations) %}
                         <div class="pt-22px object-recom">
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs">
-                                {% include 'offre/_image_relation.html.twig' %}
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs">
+                                {% include 'offre/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <h5 class="text-default text-hover-primary">{{ relation.title }}</h5>
+                                    <h5 class="text-default text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
-                                        {% for categorie in relation.categories %}
+                                        {% for categorie in recommandation.categories %}
                                             {{ categorie.lib.get(locale) }}
                                         {% endfor %}
                                     </span>

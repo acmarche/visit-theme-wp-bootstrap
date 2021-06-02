@@ -79,18 +79,18 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100 col-md-8 col-ls-md-12 px-0 px-md-15px d-lg-none">
                     <h3 class="text-default ff-semibold fs-big-1">
-                        {% if relations|length > 0 %}
+                        {% if recommandations|length > 0 %}
                             {{ 'article.recommandation'|trans }}
                         {% endif %}
                     </h3>
                     <div class="pt-12px object-recom">
-                        {% for relation in relations|slice(0,3) %}
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px mb-3">
+                        {% for recommandation in recommandations|slice(0,3) %}
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs mh-104px mb-3">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <span class="pt-0 text-default fs-short-2">{{ relation.title }}</span>
+                                    <span class="pt-0 text-default fs-short-2">{{ recommandation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ relation.tags.0.name }}
+                                        {{ recommandation.tags.0.name }}
                                     </h5>
                                 </div>
                             </a>
@@ -104,17 +104,17 @@
                 <!--OBJECT | RECOM-->
                 <div class="pt-24px w-100">
                     <h3 class="text-default ff-semibold fs-big-1">
-                        {% if relations|length > 0 %}
+                        {% if recommandations|length > 0 %}
                         {{ 'article.recommandation'|trans }}</h3>
                     {% endif %}
                     <div class="pt-22px object-recom">
-                        {% for relation in relations|slice(0,3) %}
-                            <a href="{{ relation.url }}" class="bg-img rounded-xs mh-104px mb-3">
+                        {% for recommandation in recommandations|slice(0,3) %}
+                            <a href="{{ recommandation.url }}" class="bg-img rounded-xs mh-104px mb-3">
                                 {% include 'article/_image_recommandation.html.twig' %}
                                 <div class="col">
-                                    <span class="pt-0 text-default fs-short-2">{{ relation.title }}</span>
+                                    <span class="pt-0 text-default fs-short-2">{{ recommandation.title }}</span>
                                     <h5 class="text-default text-hover-primary ff-light pt-4px fs-short-3 mh-52px overflow-hidden">
-                                        {{ relation.tags.0.name }}
+                                        {{ recommandation.tags.0.name }}
                                     </h5>
                                 </div>
                             </a>

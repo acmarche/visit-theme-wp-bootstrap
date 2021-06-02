@@ -35,7 +35,7 @@ $next = null;
 $content = get_the_content(null, null, $post);
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
-$relations = [];
+$recommandations = [];
 
 Twig::rendPage(
     'article/page.html.twig',
@@ -44,7 +44,7 @@ Twig::rendPage(
         'tags' => $tags,
         'image' => $image,
         'title' => $post->post_title,
-        'relations' => $relations,
+        'recommandations' => $recommandations,
         'content' => $content,
         'next' => $next,
     ]
