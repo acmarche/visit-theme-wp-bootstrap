@@ -80,6 +80,7 @@ class Menu
                     'sejourner' => get_category_by_slug('sejourner'),
                     'savourer' => get_category_by_slug('savourer'),
                     'bouger' => get_category_by_slug('bouger'),
+                    'mice' => get_category_by_slug('mice'),
                     'inspirations' => get_category_by_slug('inspirations'),
                     'pratique' => get_category_by_slug('pratique'),
                     'agenda' => get_category_by_slug('agenda'),
