@@ -13,7 +13,6 @@ function CategoryTitle( propos ) {
         let response;
         try {
             response = await fetchCategory( categoryId );
-            console.log( response.data );
             setCategory( response.data );
         } catch ( e ) {
             console.log( e );
@@ -26,7 +25,6 @@ function CategoryTitle( propos ) {
     }, [ categoryId ]);
 
     if ( category && 0 < category.description.length && 0 === category.icone.length ) {
-        console.log( category.icone );
         return <p className={'mb-3'}>{category.description}</p>;
     }
     return <></>;
