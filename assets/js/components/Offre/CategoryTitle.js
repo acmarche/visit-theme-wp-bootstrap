@@ -25,7 +25,7 @@ function CategoryTitle( propos ) {
         if ( 0 < categoryId ) { loadCategory( ); }
     }, [ categoryId ]);
 
-    if ( category && 0 < category.description.length && null != category.icone ) {
+    if ( category && 0 < category.description.length && 0 === category.icone.length ) {
         console.log( category.icone );
         return <p className={'mb-3'}>{category.description}</p>;
     }
