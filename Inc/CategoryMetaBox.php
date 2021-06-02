@@ -28,7 +28,7 @@ class CategoryMetaBox
         $single = true;
         $term_id = $tag->term_id;
         $hades_name_header = get_term_meta($term_id, self::KEY_NAME_HEADER, $single);
-        $hades_name_icone = get_term_meta($term_id, self::KEY_NAME_HEADER, $single);
+        $hades_name_icone = get_term_meta($term_id, self::KEY_NAME_ICONE, $single);
         ?>
         <table class="form-table">
             <tr class="form-field">
