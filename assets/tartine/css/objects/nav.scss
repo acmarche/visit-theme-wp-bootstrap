@@ -775,12 +775,12 @@ nav {
                         input[type="checkbox"] {
                             + a {
                                 + .bubble {
-                                    height: 112px;
+                                    height: 142px;
                                     top: calc(100% + 5px);
                                     bottom: auto;
 
                                     div {
-                                        height: 112px;
+                                        height: 142px;
                                         @include transition(height, $basicDuration);
                                     }
                                 }
@@ -840,7 +840,7 @@ nav {
                         }
 
                         + .bubble {
-                            height: 112px;
+                            height: 142px;
                             top: auto;
                             bottom: calc(100% + 5px);
 
@@ -867,7 +867,7 @@ nav {
                                     opacity: 1;
 
                                     div {
-                                        height: 112px;
+                                        height: 142px;
                                         @include transition(height, $basicDuration);
                                     }
                                 }
@@ -904,7 +904,7 @@ nav {
                             @media (min-width: $md) {
                                 position: fixed;
                                 top: auto;
-                                bottom: -112px;
+                                bottom: -142px;
                                 left: auto;
                                 right: 75px;
                             }
