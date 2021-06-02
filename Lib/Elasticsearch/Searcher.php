@@ -2,9 +2,8 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch;
 
+use AcMarche\Common\Mailer;
 use Elastica\Exception\InvalidException;
-use Elastica\Query\BoolQuery;
-use Elastica\Query\MatchQuery;
 use Elastica\Query\MultiMatch;
 use Elastica\ResultSet;
 
@@ -24,7 +23,9 @@ class Searcher
 
     public function searchFromWww(string $keyword)
     {
-        $content = file_get_contents('https://www.marche.be/visit-elasticsearch/search.php?keyword='.urlencode($keyword));
+        $content = file_get_contents(
+            'https://www.marche.be/visit-elasticsearch/search.php?keyword='.urlencode($keyword)
+        );
 
         return $content;
     }
@@ -35,23 +36,38 @@ class Searcher
      * @return ResultSet
      * @throws  InvalidException
      */
-    public function search2(string $keywords): ResultSet
+    public function searchRecommandations(\WP_Query $wp_query): array
     {
-        $query = new BoolQuery();
-        $matchName = new MatchQuery('name', $keywords);
-        $matchNameStemmed = new MatchQuery('name.stemmed', $keywords);
-        $matchContent = new MatchQuery('content', $keywords);
-        $matchContentStemmed = new MatchQuery('content.stemmed', $keywords);
-        $matchExcerpt = new MatchQuery('excerpt', $keywords);
-        $matchCatName = new MatchQuery('tags', $keywords);
-        $query->addShould($matchName);
-        $query->addShould($matchNameStemmed);
-        $query->addShould($matchExcerpt);
-        $query->addShould($matchContent);
-        $query->addShould($matchContentStemmed);
-        $query->addShould($matchCatName);
+        $resultat = [];
+        $queries = $wp_query->query;
+        $queryString = join(' ', $queries);
+        $queryString = preg_replace("#-#", " ", $queryString);
+        $queryString = preg_replace("#/#", " ", $queryString);
+        $queryString = strip_tags($queryString);
+        if ($queryString != '') {
+            try {
+                $searching = $this->search($queryString);
+                $results = $searching->getResults();
+                foreach ($results as $result) {
+                    $hit = $result->getHit();
+                    $resultat[] = $hit['_source'];
+                }
+            } catch (\Exception $e) {
+                Mailer::sendError("wp error search query 404", $e->getMessage());
+            }
+        }
+        $recommandations = array_map(
+            function ($recommandation) {
+                $recommandation['title'] = $recommandation['name'];
+                $recommandation['image'] = null;
+                $recommandation['tags'] = [];
 
-        return $this->index->search($query);
+                return $recommandation;
+            },
+            $resultat
+        );
+
+        return $recommandations;
     }
 
     /**
