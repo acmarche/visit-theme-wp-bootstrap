@@ -40,13 +40,14 @@ class Searcher
             $results = $this->searchFromWww($queryString);
             $hits = json_decode($results);
         }
+        dump($hits);
 
         $recommandations = array_map(
-            function ($recommandation) {
-                $recommandation['title'] = $recommandation['name'];
-                $recommandation['tags'] = [];
+            function ($hit) {
+                $hit->title = $hit->name;
+                $hit->tags = [];
 
-                return $recommandation;
+                return $hit;
             },
             $hits
         );
