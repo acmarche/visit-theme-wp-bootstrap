@@ -49,7 +49,7 @@ if ($header) {
 }
 $icone = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ICONE, true);
 if ($icone) {
-    $icone = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$icone;
+    $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
 
 if (count($filtres) > 0) {
