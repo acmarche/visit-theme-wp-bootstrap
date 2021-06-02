@@ -22,6 +22,26 @@ class CategoryMetaBox
             10,
             1
         );
+        register_term_meta('category', self::KEY_NAME_COLOR, ['show_in_rest' => true]);
+        register_term_meta('category', self::KEY_NAME_ICONE, ['show_in_rest' => true]);
+        register_term_meta('category', self::KEY_NAME_HEADER, ['show_in_rest' => true]);
+        add_filter(
+            'rest_prepare_category',
+            function ($response, $item, $request) {
+
+                $header = get_term_meta($item->term_id, CategoryMetaBox::KEY_NAME_HEADER, true);
+                $icone = get_term_meta($item->term_id, CategoryMetaBox::KEY_NAME_ICONE, true);
+                $bgcat = get_term_meta($item->term_id, CategoryMetaBox::KEY_NAME_COLOR, true);
+
+                $response->data['bgcat'] = $bgcat ?: null;
+                $response->data['icone'] = $icone ?: null;
+                $response->data['header'] = $header ?: null;
+
+                return $response;
+            },
+            10,
+            3
+        );
     }
 
     public static function visit_metabox_cat($tag)
@@ -96,5 +116,6 @@ class CategoryMetaBox
             delete_term_meta($term_id, $meta_key_color);
         }
     }
+
 
 }

@@ -44,11 +44,11 @@ if ($category_order == 'manual') {
     $posts = AcSort::getSortedItems($cat_ID, $posts);
 }
 $header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HEADER, true);
+$icone = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ICONE, true);
+$bgcat = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_COLOR, true);
 if ($header) {
     $header = '/wp-content/themes/visitmarche/assets/tartine/rsc/img/'.$header;
 }
-$icone = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ICONE, true);
-$bgcat = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_COLOR, true);
 
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
