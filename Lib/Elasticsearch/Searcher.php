@@ -40,7 +40,6 @@ class Searcher
             $results = $this->searchFromWww($queryString);
             $hits = json_decode($results);
         }
-        dump($hits);
 
         $recommandations = array_map(
             function ($hit) {
