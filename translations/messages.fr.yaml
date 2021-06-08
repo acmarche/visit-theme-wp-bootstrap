@@ -27,8 +27,8 @@ hours:
   friday_time: 'de 8h à 12h et de 13h à 15h'
   unite: 'h'
 private:
-  life: 'Vie privé'
-  notice: 'Mention légale'
+  life: 'Vie privée'
+  notice: 'Mentions légales'
   right: 'Tous droits réservés'
 search:
   placeholder: 'Que cherchez-vous ?'
