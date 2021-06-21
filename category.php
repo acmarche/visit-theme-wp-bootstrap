@@ -39,7 +39,7 @@ if ($parent) {
 $filtres = $categoryUtils->getCategoryFilters($cat_ID);
 
 $posts = $wpRepository->getPostsByCatId($cat_ID);
-$category_order = get_term_meta($cat_ID, 'acmarche_category_sort', true);
+$category_order = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);
 if ($category_order == 'manual') {
     $posts = AcSort::getSortedItems($cat_ID, $posts);
 }

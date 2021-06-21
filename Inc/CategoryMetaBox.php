@@ -6,6 +6,7 @@ class CategoryMetaBox
 {
     const KEY_NAME_HEADER = 'visit_category_header';
     const KEY_NAME_ICONE = 'visit_category_icone';
+    const KEY_NAME_ORDER = 'acmarche_category_sort';
     const KEY_NAME_COLOR = 'visit_category_color';
 
     public function __construct()
