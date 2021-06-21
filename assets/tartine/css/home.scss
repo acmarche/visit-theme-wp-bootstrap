@@ -3,10 +3,10 @@
 /* HOME */
 
 .bg-img-home {
-    background-image: url(../rsc/img/bg_home.png);
+    background-image: url(../rsc/img/bg_home.jpg);
     background-size: 375%;
     background-position: 30% 55%;
-    
+
     @media screen {
         @media (orientation: landscape) {
             background-size: 325%;
@@ -18,7 +18,7 @@
                 background-size: 200%;
             }
         }
-        
+
         @media (min-width: $md) {
             background-size: 150%;
             background-position: 30% 75%;
@@ -31,7 +31,7 @@
             background-position: center;
         }
     }
-    
+
     // searchHome
     .searchHome {
         > input[type="search"] {
@@ -90,7 +90,7 @@
                         flex-direction: column;
                         padding: 0 0 12px;
                         text-align: left;
-                        
+
                         @media screen {
                             @media (orientation: landscape) {
                                 flex-wrap: wrap;
@@ -109,7 +109,7 @@
                                 font-size: $shortFontSize-3;
                                 padding: 8px 24px;
                                 color: $darkCTA;
-                                
+
                                 i {
                                     width: 20px;
                                     height: 20px;
@@ -128,12 +128,12 @@
                         top: 50px;
                         opacity: 1;
                         @include transition(opacity, $basicDuration);
-                        
+
                         .graphicElement {
                             opacity: 1;
                             @include allTransition($basicDuration);
                             @include delay($basicDuration);
-                            
+
                             &:first-child {
                                 top: -10px;
                             }
