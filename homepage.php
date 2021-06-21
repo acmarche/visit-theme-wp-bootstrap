@@ -6,6 +6,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Common\Mailer;
+use AcSort;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use Exception;
@@ -26,6 +27,7 @@ $urlInspiration = '';
 if ($inspirationCat) {
     $urlInspiration = get_category_link($inspirationCat);
     $inspirations = $wpRepository->getPostsByCatId($inspirationCat->cat_ID);
+    $inspirations = AcSort::getSortedItems($inspirationCat->cat_ID, $inspirations);
 }
 
 $categoryAgenda = get_category_by_slug('agenda');
