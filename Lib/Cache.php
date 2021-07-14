@@ -11,7 +11,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class Cache
 {
-    public static $instanceObject = null;
+    public static ?CacheInterface $instanceObject = null;
 
     public static function instance(): CacheInterface
     {
@@ -23,7 +23,7 @@ class Cache
             self::$instanceObject =
                 new ApcuAdapter(
                 // a string prefixed to the keys of the items stored in this cache
-                    $namespace = 'newmarche',
+                    $namespace = 'visitmarche',
 
                     // the default lifetime (in seconds) for cache items that do not define their
                     // own lifetime, with a value 0 causing items to be stored indefinitely (i.e.
