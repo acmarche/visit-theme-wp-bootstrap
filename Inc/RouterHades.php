@@ -3,8 +3,8 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Common\Router;
+use VisitMarche\Theme\Lib\Mailer;
+use VisitMarche\Theme\Lib\Router;
 use AcMarche\Pivot\Entities\Categorie;
 use AcMarche\Pivot\Entities\OffreInterface;
 use VisitMarche\Theme\Lib\WpRepository;

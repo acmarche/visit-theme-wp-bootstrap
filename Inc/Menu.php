@@ -2,7 +2,7 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Common\Cache;
+use VisitMarche\Theme\Lib\Cache;
 use Symfony\Contracts\Cache\CacheInterface;
 use VisitMarche\Theme\Lib\LocaleHelper;
 

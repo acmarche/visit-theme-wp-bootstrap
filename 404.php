@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Router;
+use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();

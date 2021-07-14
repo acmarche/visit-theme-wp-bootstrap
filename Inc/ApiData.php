@@ -3,7 +3,7 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Common\Mailer;
+use VisitMarche\Theme\Lib\Mailer;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;

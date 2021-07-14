@@ -5,7 +5,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Router;
+use VisitMarche\Theme\Lib\Router;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use VisitMarche\Theme\Lib\Twig;
 

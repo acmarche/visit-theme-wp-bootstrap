@@ -5,7 +5,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
+use VisitMarche\Theme\Lib\Mailer;
 use AcSort;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Lib\LocaleHelper;

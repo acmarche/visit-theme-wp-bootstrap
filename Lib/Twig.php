@@ -3,14 +3,8 @@
 
 namespace VisitMarche\Theme\Lib;
 
-use AcMarche\Common\Mailer;
-use AcMarche\Common\Router;
 use AcMarche\Pivot\Entities\OffreInterface;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
-use Symfony\Component\Translation\Loader\YamlFileLoader;
-use Symfony\Component\Translation\Translator;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;

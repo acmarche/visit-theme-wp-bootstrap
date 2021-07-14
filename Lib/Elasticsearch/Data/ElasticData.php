@@ -2,7 +2,7 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch\Data;
 
-use AcMarche\Common\Mailer;
+use VisitMarche\Theme\Lib\Mailer;
 use AcMarche\Pivot\Entities\OffreInterface;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;

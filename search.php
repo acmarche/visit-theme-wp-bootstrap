@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Common\Mailer;
+use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
 use VisitMarche\Theme\Lib\Twig;
 
