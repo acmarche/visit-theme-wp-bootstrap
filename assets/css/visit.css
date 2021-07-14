@@ -6,3 +6,72 @@
 .w-500px {
     width: 500px;
 }
+
+
+nav > div > a{transition:none;}
+nav > div > a:hover{background: #fd8383!important;transition:none;}
+
+.cat-filters{max-width:94%!important;}
+.cat-filters li{max-width:150px!important;text-align: center;border-bottom:1px solid white;}
+.cat-filters li:hover{border-bottom:1px solid black;}
+
+.decouvrir-page{display:flex;flex-direction:column;padding-top:0px!important;}
+.decouvrir-page li{box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 13%) !important;padding:20px;margin-bottom:30px;background:#F7F3EF;}
+.decouvrir-page li:hover{background:#F5F0EA;}
+.decouvrir-page li a{display:flex;align-items:center;}
+.decouvrir-page li a figure{width:140px;height:140px;}
+.decouvrir-page li a figure img{width:140px;}
+.decouvrir-page li a span{padding-top:0px!important;font-size: 2em!important;width: 100%;text-align: center;color:#636061;text-shadow:none!important;}
+.decouvrir-page li:hover a span{background-image:url("../images/arrow-right.svg");background-repeat:no-repeat;background-size:30px 30px;background-position:right center;}
+
+
+@media screen and (min-width: 200px) and (max-width: 970px) {
+  .bg-img-home,.bg-gradient-home{
+      height:450px!important;
+    }
+    .bg-img-home ul{
+      display:flex!important;  
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 480px) {
+    .bg-img-home .py-150px{
+        padding-top: 80px !important;
+    }
+    .bg-img-home ul{
+        flex-wrap:wrap;
+    }
+    .bg-img-home ul li{
+        flex: 0 0 33.333333%;
+        margin-bottom:10px;
+    }
+    
+    .decouvrir-page li a span{font-size:1.15em!important;}
+    .decouvrir-page li a figure{width:70px;height:70px;}
+    .decouvrir-page li a figure img{width:70px;}
+    .decouvrir-page li:hover a span{background-size: 20px 20px;}
+}
+
+@media screen and (min-width: 660px) and (max-width: 990px) {
+    header{margin-top:60px;}
+    .pt-ls-md-99px{margin-top: 60px;}
+    nav{
+        flex-direction:row;
+        width:100%;
+        height:60px;
+    }
+    nav > div{
+        height:60px;
+    }
+    .pl-ls-42px{padding-left:0px!important;}
+}
+
+@media screen and (max-width: 660px) {
+    header{margin-top:42px;}
+    nav{
+        bottom:auto!important;
+        top:0px!important;
+    }
+    .decouvrir-page{width:100%!important;}
+    .decouvrir-page li{width: calc(100% - 10px) !important;}
+}

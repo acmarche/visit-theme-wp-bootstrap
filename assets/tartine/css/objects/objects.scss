@@ -579,16 +579,18 @@
 
         @media screen {
           @media (min-width: $lg) {
-            display: inline-block;
+            display: flex;
           }
           @media (min-width: $xl) {
-            height: 56px;
+            height: 60px;
+            min-height: 60px;
           }
         }
       }
 
       span {
         display: block;
+          min-height:30px;
         font-family: 'montserratsemibold';
       }
 
@@ -606,6 +608,7 @@
     a {
       > div {
         flex-direction: column;
+        min-height:160px;
 
         h3 {
           max-height: 45px;
@@ -614,6 +617,7 @@
           @media screen {
             @media (min-width: $lg) {
               height: 30px;
+            min-height:30px;
             }
           }
         }
@@ -763,7 +767,7 @@
 
   @media screen {
     @media (min-width: $xl) {
-      height: 400px;
+      height: 600px;
     }
   }
 }
@@ -776,7 +780,7 @@
 
   @media screen {
     @media (min-width: $xl) {
-      height: 400px;
+      height: 600px;
     }
   }
 }
@@ -789,7 +793,7 @@
 
   @media screen {
     @media (min-width: $xl) {
-      height: 400px;
+      height: 600px;
     }
   }
 }
