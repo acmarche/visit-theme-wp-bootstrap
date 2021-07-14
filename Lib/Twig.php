@@ -25,11 +25,14 @@ class Twig
         }
 
         $loader = new FilesystemLoader($path);
-
+        $dir = ABSPATH.'../var/cache';
+        if (WP_DEBUG) {
+            $dir = ABSPATH.'var/cache';
+        }
         $environment = new Environment(
             $loader,
             [
-                'cache' => ABSPATH.'../var/cache',
+                'cache' => ABSPATH.$dir,
                 'debug' => WP_DEBUG,
                 'strict_variables' => WP_DEBUG,
             ]
