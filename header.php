@@ -19,6 +19,7 @@ $locale = LocaleHelper::getSelectedLanguage();
         <meta name="author" content="Cst">
         <?php
         Twig::rendPage('header/_favicons.html.twig');
+        Twig::rendPage('header/_facebook_pub.html.twig');
         wp_head();
         require_once '_analytics.php';
         ?>
