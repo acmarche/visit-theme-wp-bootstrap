@@ -36,6 +36,7 @@ if (!$offre) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
+            'title' => 'Manifestation non trouvée',
             'url' => '',
         ]
     );
@@ -51,7 +52,7 @@ foreach ($offre->categories as $category) {
 }
 
 $offres = $hadesRepository->getOffresSameCategories($offre);
-$recommandations=[];
+$recommandations = [];
 foreach ($offres as $item) {
     if ($offre->id == $item->id) {
         continue;
