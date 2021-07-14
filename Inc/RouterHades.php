@@ -3,11 +3,9 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use VisitMarche\Theme\Lib\Mailer;
-use VisitMarche\Theme\Lib\Router;
 use AcMarche\Pivot\Entities\Categorie;
 use AcMarche\Pivot\Entities\OffreInterface;
-use VisitMarche\Theme\Lib\WpRepository;
+use VisitMarche\Theme\Lib\Router;
 
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
