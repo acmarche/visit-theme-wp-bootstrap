@@ -37,6 +37,7 @@ if (!$offre) {
         'errors/404.html.twig',
         [
             'url' => '',
+            'title'=>'Page non trouvée'
         ]
     );
 

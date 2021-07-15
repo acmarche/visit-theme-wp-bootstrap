@@ -13,6 +13,7 @@ if(!$post) {
         'errors/404.html.twig',
         [
             'url' => '',
+            'title'=>'Page non trouvée'
         ]
     );
 
