@@ -55,6 +55,7 @@ class Twig
         $environment->addFunction(self::showTemplate());
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::isExternalUrl());
+        $environment->addFilter(self::rawDynamic());
 
         return $environment;
     }
@@ -153,7 +154,7 @@ class Twig
         );
     }
 
-    private static function autoLink()
+    private static function autoLink(): TwigFilter
     {
         return new TwigFilter(
             'auto_link',
@@ -167,6 +168,23 @@ class Twig
                         return '<a href="tel:'.$text.'">'.$text.'</a>';
                     default:
                         return $text;
+                }
+            }
+        );
+    }
+
+    private static function rawDynamic(): TwigFilter
+    {
+        return new TwigFilter(
+            'raw_dynamic',
+            function (?string $text): ?string {
+                if (!$text) {
+                    return $text;
+                }
+                if (HtmlUtils::isHTML($text)) {
+                    return HtmlUtils::pureHtml($text);
+                } else {
+                    return nl2br($text);
                 }
             }
         );
