@@ -97,7 +97,7 @@
                     </div>
                     <div for="text-dyn">
                         {% for description in offre.descriptions %}
-                            <p>{{ description.texte.get(locale)|raw_dynamic }} </p>
+                            <p>{{ description.texte.get(locale)|raw }} </p>
                         {% endfor %}
                         {% include 'offre/_details.html.twig' %}
                         {% include 'offre/_enfants.html.twig' %}

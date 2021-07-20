@@ -182,11 +182,14 @@ class Twig
                     return $text;
                 }
                 if (HtmlUtils::isHTML($text)) {
-                    return HtmlUtils::pureHtml($text);
+                    return $text;
                 } else {
                     return nl2br($text);
                 }
             }
+            , [
+                'is_safe' => ['html'],
+            ]
         );
     }
 }
