@@ -20,6 +20,7 @@ $locale = LocaleHelper::getSelectedLanguage();
         <?php
         Twig::rendPage('header/_favicons.html.twig');
         Twig::rendPage('header/_facebook_pub.html.twig');
+        Twig::rendPage('header/_pinterest_pub.html.twig');
         wp_head();
         require_once '_analytics.php';
         ?>
