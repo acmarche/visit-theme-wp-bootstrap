@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home-Page-Principal
+ * Template Name: Signature
  */
 
 namespace AcMarche\Theme;
