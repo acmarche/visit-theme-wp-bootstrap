@@ -50,7 +50,7 @@ try {
     }
 } catch (Exception $exception) {
     $events = [];
-    Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
+  //  Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
 $intro = $wpRepository->getIntro();

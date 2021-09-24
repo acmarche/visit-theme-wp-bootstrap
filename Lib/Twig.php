@@ -84,6 +84,27 @@ class Twig
 
     }
 
+    public function contentPage(string $templatePath, array $variables = []):string
+    {
+        $twig = self::LoadTwig();
+        try {
+            return $twig->render(
+                $templatePath,
+                $variables,
+            );
+        } catch (LoaderError | RuntimeError | SyntaxError $e) {
+            return $twig->render(
+                'errors/500.html.twig',
+                [
+                    'message' => $e->getMessage(),
+                    'title' => "La page n'a pas pu être chargée",
+                    'tags' => [],
+                    'relations' => [],
+                ]
+            );
+        }
+    }
+
     protected static function categoryLink(): TwigFilter
     {
         return new TwigFilter(
