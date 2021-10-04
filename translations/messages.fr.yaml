@@ -51,3 +51,7 @@ article:
   address: 'Adresse'
 offre:
   information: 'Renseignements'
+homepage:
+  title: 'Page d''accueil'
+page:
+  tourisme: 'Tourisme'

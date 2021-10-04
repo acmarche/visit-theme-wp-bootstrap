@@ -20,20 +20,32 @@ class Seo
     {
         if (Theme::isHomePage()) {
             self::metaHomePage();
+            self::renderMetas();
+
+            return;
         }
         $cat_id = get_query_var('cat');
         if ($cat_id) {
             self::metaCategory($cat_id);
+            self::renderMetas();
+
+            return;
         }
 
         global $post;
         if ($post) {
             self::metaPost($post);
+            self::renderMetas();
+
+            return;
         }
 
         $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
         if ($codeCgt) {
             self::metaHadesOffre($codeCgt);
+            self::renderMetas();
+
+            return;
         }
 
         $codeCgt = get_query_var(RouterHades::PARAM_OFFRE);
@@ -41,6 +53,11 @@ class Seo
             self::metaHadesOffre($codeCgt);
         }
 
+        self::renderMetas();
+    }
+
+    private static function renderMetas()
+    {
         self::$metas['title'] = self::cleanString(self::$metas['title']);
         echo '<title>'.self::$metas['title'].'</title>';
 
@@ -92,7 +109,8 @@ class Seo
 
     private static function metaHomePage()
     {
-        self::$metas['title'] = self::baseTitle("Page d'accueil");
+        $home = self::translate('homepage.title');
+        self::$metas['title'] = self::baseTitle($home);
         self::$metas['description'] = get_bloginfo('description', 'display');
         self::$metas['keywords'] = 'Commune, Ville, Marche, Marche-en-Famenne, Famenne, Tourisme, Horeca';
     }
@@ -138,7 +156,9 @@ class Seo
 
         $nameSousSite = get_bloginfo('name', 'display');
 
-        return $begin.' '.$base.' '.$nameSousSite;
+        $tourisme = self::translate('page.tourisme');
+
+        return $begin.' '.$tourisme.' '.$base.' '.$nameSousSite;
     }
 
     private static function cleanString(string $description): string
@@ -147,6 +167,14 @@ class Seo
         $description = preg_replace("#\"#", "", $description);
 
         return $description;
+    }
+
+    private static function translate(string $text): string
+    {
+        $translator = LocaleHelper::iniTranslator();
+        $language = LocaleHelper::getSelectedLanguage();
+
+        return $translator->trans($text, [], null, $language);
     }
 
 }

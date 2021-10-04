@@ -51,4 +51,8 @@ article:
   address: 'Address'
 offre:
   information: 'Information'
+homepage:
+  title: 'Home page'
+page:
+  tourisme: 'Tourism'
 
