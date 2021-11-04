@@ -52,6 +52,7 @@ class Twig
         $environment->addFilter(self::categoryLink());
         $environment->addFilter(self::translation());
         $environment->addFilter(self::autoLink());
+        $environment->addFilter(self::makeClikable());
         $environment->addFunction(self::showTemplate());
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::isExternalUrl());
@@ -84,7 +85,7 @@ class Twig
 
     }
 
-    public function contentPage(string $templatePath, array $variables = []):string
+    public function contentPage(string $templatePath, array $variables = []): string
     {
         $twig = self::LoadTwig();
         try {
@@ -190,6 +191,16 @@ class Twig
                     default:
                         return $text;
                 }
+            }
+        );
+    }
+
+    private static function makeClikable()
+    {
+        return new TwigFilter(
+            'make_clikable',
+            function (string $text): string {
+                return make_clickable($text);
             }
         );
     }
