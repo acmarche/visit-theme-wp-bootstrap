@@ -27,7 +27,7 @@
             <div class="position-relative d-flex pt-24px px-24px pb-120px p-xl-48px flex-wrap z-10 justify-content-end justify-content-xl-start mw-1440px mx-auto">
                 <p class="fs-basic ff-semibold fs-xl-big-1 {{ text_color }} px-0 col-12 col-xl-9">
                     {% if category.description %}
-                        {{ category.description|make_clikable }}
+                        {{ category.description|make_clikable|raw }}
                     {% endif %}
                 </p>
                 <img src="{{ icone }}" alt="image categorie 1"
