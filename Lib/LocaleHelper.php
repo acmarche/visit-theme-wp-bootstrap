@@ -36,4 +36,15 @@ class LocaleHelper
         return $translator;
     }
 
+    public static function translate(string $text, ?string $language = null): string
+    {
+        $translator = LocaleHelper::iniTranslator();
+        $language = LocaleHelper::getSelectedLanguage();
+        if ($language === null) {
+            $language = self::getSelectedLanguage();
+        }
+
+        return $translator->trans($text, [], null, $language);
+    }
+
 }

@@ -171,10 +171,7 @@ class Seo
 
     private static function translate(string $text): string
     {
-        $translator = LocaleHelper::iniTranslator();
-        $language = LocaleHelper::getSelectedLanguage();
-
-        return $translator->trans($text, [], null, $language);
+        return LocaleHelper::translate($text);
     }
 
 }

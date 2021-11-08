@@ -20,24 +20,6 @@ class Menu
         $this->cache = Cache::instance();
     }
 
-    public function getItems(): array
-    {
-        $menu = wp_get_nav_menu_object(self::MENU_NAME);
-
-        $args = array(
-            'order' => 'ASC',
-            'orderby' => 'menu_order',
-            'post_type' => 'nav_menu_item',
-            'post_status' => 'publish',
-            'output' => ARRAY_A,
-            'output_key' => 'menu_order',
-            'nopaging' => true,
-            'update_post_term_cache' => false,
-        );
-
-        return wp_get_nav_menu_items($menu, $args);
-    }
-
     public function getIcones(): array
     {
         $language = LocaleHelper::getSelectedLanguage();
@@ -95,7 +77,7 @@ class Menu
                 );
 
                 $decouvrir = get_post(828);
-                $decouvrir->name = $decouvrir->post_title;
+                $decouvrir->name = LocaleHelper::translate($decouvrir->post_title);
                 $decouvrir->url = get_permalink($decouvrir);
                 $menu['decouvrir'] = $decouvrir;
 
