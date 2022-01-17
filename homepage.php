@@ -1,20 +1,20 @@
 <?php
 /**
- * Template Name: Home-Page-Principal
+ * Template Name: Home-Page-Principal.
  */
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\Mailer;
+use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
-use VisitMarche\Theme\Inc\CategoryMetaBox;
-use VisitMarche\Theme\Lib\LocaleHelper;
-use VisitMarche\Theme\Lib\Twig;
 use Exception;
+use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\Mailer;
+use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
-use AcMarche\Pivot\Repository\HadesRepository;
 
 get_header();
 
@@ -29,7 +29,7 @@ if ($inspirationCat) {
     $urlInspiration = get_category_link($inspirationCat);
     $inspirations = $wpRepository->getPostsByCatId($inspirationCat->cat_ID);
     $category_order = get_term_meta($inspirationCat->cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);
-    if ($category_order == 'manual') {
+    if ('manual' === $category_order) {
         $inspirations = AcSort::getSortedItems($inspirationCat->cat_ID, $inspirations);
     }
 }
@@ -48,9 +48,9 @@ try {
             $events
         );
     }
-} catch (Exception $exception) {
+} catch (Exception) {
     $events = [];
-  //  Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
+    //  Mailer::sendError("Erreur de chargement de l'agenda", $exception->getMessage());
 }
 
 $intro = $wpRepository->getIntro();

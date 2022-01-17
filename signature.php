@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Signature
+ * Template Name: Signature.
  */
 
 namespace AcMarche\Theme;
@@ -19,7 +19,6 @@ echo $cssToInlineStyles->convert(
     $html,
     $css
 );
-
 
 /*Twig::rendPage(
     'signatures/heidi.html.twig',

@@ -2,11 +2,11 @@
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\LocaleHelper;
-use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Psr\Cache\InvalidArgumentException;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 

@@ -1,13 +1,12 @@
 <?php
 
-
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\LocaleHelper;
-use VisitMarche\Theme\Lib\Twig;
 use AcMarche\Pivot\Repository\HadesRepository;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
@@ -32,7 +31,7 @@ try {
     return;
 }
 
-if (!$offre) {
+if (null === $offre) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
@@ -48,13 +47,16 @@ if (!$offre) {
 $language = LocaleHelper::getSelectedLanguage();
 $tags = [];
 foreach ($offre->categories as $category) {
-    $tags[] = ['name' => $category->getLib($language), 'url' => RouterHades::getUrlEventCategory($category)];
+    $tags[] = [
+        'name' => $category->getLib($language),
+        'url' => RouterHades::getUrlEventCategory($category),
+    ];
 }
 
 $offres = $hadesRepository->getOffresSameCategories($offre);
 $recommandations = [];
 foreach ($offres as $item) {
-    if ($offre->id == $item->id) {
+    if ($offre->id === $item->id) {
         continue;
     }
     $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);

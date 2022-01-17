@@ -1,12 +1,12 @@
 <?php
 /**
- * Template Name: Page-Offres
+ * Template Name: Page-Offres.
  */
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\Router;
 use AcMarche\Pivot\Filtre\HadesFiltres;
+use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();

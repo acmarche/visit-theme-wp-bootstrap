@@ -1,25 +1,23 @@
 <?php
 
-
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
+use WP_Error;
 
 /**
  * Enregistrement des routes pour les api pour les composants react
- * Class Api
- * @package VisitMarche\Theme\Inc
+ * Class Api.
  */
 class Api
 {
     public function __construct()
     {
-        if (!is_admin()) {
+        if (! is_admin()) {
             $this->registerHades();
         }
     }
 
-    public function registerHades()
+    public function registerHades(): void
     {
         add_action(
             'rest_api_init',
@@ -29,9 +27,7 @@ class Api
                     'filtres/(?P<categoryId>.*+)',
                     [
                         'methods' => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::hadesFiltres($args);
-                        },
+                        'callback' => fn ($args) => ApiData::hadesFiltres($args),
                     ]
                 );
             }
@@ -45,9 +41,7 @@ class Api
                     'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w-]*)',
                     [
                         'methods' => 'GET',
-                        'callback' => function ($args) {
-                            return ApiData::hadesOffres($args);
-                        },
+                        'callback' => fn ($args) => ApiData::hadesOffres($args),
                     ]
                 );
             }
@@ -61,9 +55,7 @@ class Api
                     'all',
                     [
                         'methods' => 'GET',
-                        'callback' => function () {
-                            return ApiData::getAll();
-                        },
+                        'callback' => fn () => ApiData::getAll(),
                     ]
                 );
             }
@@ -73,7 +65,7 @@ class Api
     /**
      * Todo pour list/users !!
      */
-    function secureApi()
+    public function secureApi(): void
     {
         add_filter(
             'rest_authentication_errors',
@@ -86,11 +78,13 @@ class Api
 
                 // No authentication has been performed yet.
                 // Return an error if user is not logged in.
-                if (!is_user_logged_in()) {
-                    return new \WP_Error(
+                if (! is_user_logged_in()) {
+                    return new WP_Error(
                         'rest_not_logged_in',
                         __('You are not currently logged in.'),
-                        array('status' => 401)
+                        [
+                            'status' => 401,
+                        ]
                     );
                 }
 

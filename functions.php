@@ -16,56 +16,55 @@ use VisitMarche\Theme\Inc\SetupTheme;
 use VisitMarche\Theme\Inc\ShortCodes;
 use VisitMarche\Theme\Inc\WidgetLoad;
 
-/**
+/*
  * Initialisation du thème
  */
 new SetupTheme();
-/**
+/*
  * Chargement css, js
  */
 new AssetsLoad();
-/**
+/*
  * Déclaration des zones a widgets
  */
 new WidgetLoad();
-/**
+/*
  * Altération de la requete principale
  */
 new QueryAlter();
-/**
+/*
  * Un peu de sécurité
  */
 new SecurityConfig();
-/**
+/*
  * Ajout de routage pour pivot et bottin
  */
 new RouterHades();
-/**
+/*
  * Pour hades
  */
 new FiltreMetaBox();
-/**
+/*
  * Balises pour le référencement
  */
 new Seo();
-/**
+/*
  * Actions sur les filtres de wp
  */
 new Filter();
-/**
+/*
  * Add routes for api
  */
 new Api();
-/**
+/*
  * Gpx viewer
  */
 new ShortCodes();
-/**
+/*
  * Image categories
  */
 new CategoryMetaBox();
-/**
+/*
  * Admin bar edit
  */
 new AdminBar();
-

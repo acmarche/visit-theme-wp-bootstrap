@@ -2,8 +2,8 @@
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
+use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
@@ -11,10 +11,10 @@ get_header();
 $searcher = new Searcher();
 $keyword = get_search_query();
 $results = $searcher->searchFromWww($keyword);
-$hits = json_decode($results);
+$hits = json_decode($results, null, 512, JSON_THROW_ON_ERROR);
 
 if (isset($hits['error'])) {
-    Mailer::sendError("wp error search", $hits['error']);
+    Mailer::sendError('wp error search', $hits['error']);
     Twig::rendPage(
         'errors/500.html.twig',
         [
@@ -34,7 +34,7 @@ Twig::rendPage(
     [
         'keyword' => $keyword,
         'hits' => $hits,
-        'count' => count($hits),
+        'count' => is_countable($hits) ? \count($hits) : 0,
     ]
 );
 

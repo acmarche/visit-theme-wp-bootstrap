@@ -2,16 +2,16 @@
 
 namespace AcMarche\Theme;
 
+use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Inc\Theme;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
-use VisitMarche\Theme\Inc\Menu;
-use VisitMarche\Theme\Inc\Theme;
 
 $locale = LocaleHelper::getSelectedLanguage();
 ?>
     <!DOCTYPE html>
-<html lang="<?php echo $locale ?>">
+<html lang="<?php echo $locale; ?>">
     <head>
         <meta charset="<?php bloginfo('charset'); ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@ $locale = LocaleHelper::getSelectedLanguage();
         Twig::rendPage('header/_facebook_pub.html.twig');
         Twig::rendPage('header/_pinterest_pub.html.twig');
         wp_head();
-        require_once '_analytics.php';
+        require_once __DIR__.'/_analytics.php';
         ?>
     </head>
     <body class="bg-white">

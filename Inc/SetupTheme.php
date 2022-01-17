@@ -2,12 +2,11 @@
 
 namespace VisitMarche\Theme\Inc;
 
-
 class SetupTheme
 {
     public function __construct()
     {
-        add_action('after_setup_theme', [$this, 'setup']);
+        add_action('after_setup_theme', fn () => $this->setup());
     }
 
     /**
@@ -17,7 +16,7 @@ class SetupTheme
      * runs before the init hook. The init hook is too late for some features, such
      * as indicating support for post thumbnails.
      */
-    function setup()
+    public function setup(): void
     {
         // Add default posts and comments RSS feed links to head.
         //add_theme_support( 'automatic-feed-links' );
@@ -28,7 +27,7 @@ class SetupTheme
          * hard-coded <title> tag in the document head, and expect WordPress to
          * provide it for us.
          */
-     //   add_theme_support('title-tag');
+        //   add_theme_support('title-tag');
 
         /*
          * Enable support for Post Thumbnails on posts and pages.
@@ -42,9 +41,9 @@ class SetupTheme
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(
-            array(
+            [
                 Menu::MENU_NAME => esc_html__('Menu top', 'marchebe'),
-            )
+            ]
         );
 
         /*
@@ -53,7 +52,7 @@ class SetupTheme
          */
         add_theme_support(
             'html5',
-            array(
+            [
                 'search-form',
                 'comment-form',
                 'comment-list',
@@ -62,7 +61,7 @@ class SetupTheme
                 'style',
                 'script',
                 'navigation-widgets',
-            )
+            ]
         );
 
         // Add theme support for selective refresh for widgets.
@@ -75,10 +74,9 @@ class SetupTheme
         add_theme_support('align-wide');
 
         // Add support for editor styles.
-		//add_theme_support( 'editor-styles' );
+        //add_theme_support( 'editor-styles' );
 
-		// Add support for responsive embedded content.
-		add_theme_support( 'responsive-embeds' );
-
+        // Add support for responsive embedded content.
+        add_theme_support('responsive-embeds');
     }
 }

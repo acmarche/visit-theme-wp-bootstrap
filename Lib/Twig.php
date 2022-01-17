@@ -1,6 +1,5 @@
 <?php
 
-
 namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\Entities\OffreInterface;
@@ -20,7 +19,7 @@ class Twig
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
-        if (!$path) {
+        if (! $path) {
             $path = get_template_directory().'/templates';
         }
 
@@ -61,7 +60,7 @@ class Twig
         return $environment;
     }
 
-    public static function rendPage(string $templatePath, array $variables = [])
+    public static function rendPage(string $templatePath, array $variables = []): void
     {
         $twig = self::LoadTwig();
         try {
@@ -80,9 +79,8 @@ class Twig
                 ]
             );
             $url = Router::getCurrentUrl();
-            Mailer::sendError("Error page: ".$templatePath, $url.' \n '.$e->getMessage());
+            Mailer::sendError('Error page: '.$templatePath, $url.' \n '.$e->getMessage());
         }
-
     }
 
     public function contentPage(string $templatePath, array $variables = []): string
@@ -106,13 +104,22 @@ class Twig
         }
     }
 
+    /**
+     * For sharing pages.
+     */
+    public static function currentUrl(): TwigFunction
+    {
+        return new TwigFunction(
+            'currentUrl',
+            fn (): string => Router::getCurrentUrl()
+        );
+    }
+
     protected static function categoryLink(): TwigFilter
     {
         return new TwigFilter(
             'category_link',
-            function (int $categoryId): ?string {
-                return get_category_link($categoryId);
-            }
+            fn (int $categoryId): ?string => get_category_link($categoryId)
         );
     }
 
@@ -123,7 +130,7 @@ class Twig
             function ($x, OffreInterface $offre, string $property): ?string {
                 $selectedLanguage = LocaleHelper::getSelectedLanguage();
 
-                return $offre->$property->languages[$selectedLanguage];
+                return $offre->{$property}->languages[$selectedLanguage];
             }
         );
     }
@@ -144,31 +151,13 @@ class Twig
         );
     }
 
-    /**
-     * For sharing pages
-     * @return TwigFunction
-     */
-    public static function currentUrl(): TwigFunction
-    {
-        return new TwigFunction(
-            'currentUrl',
-            function (): string {
-                return Router::getCurrentUrl();
-            }
-        );
-    }
-
     protected static function isExternalUrl(): TwigFunction
     {
         return new TwigFunction(
             'isExternalUrl',
             function (string $url): bool {
-                if (preg_match("#http#", $url)) {
-                    if (!preg_match("#https://visitmarche.be#", $url)) {
-                        return true;
-                    }
-
-                    return false;
+                if (preg_match('#http#', $url)) {
+                    return ! preg_match('#https://visitmarche.be#', $url);
                 }
 
                 return false;
@@ -180,28 +169,20 @@ class Twig
     {
         return new TwigFilter(
             'auto_link',
-            function (string $text, string $type): string {
-                switch ($type) {
-                    case 'url':
-                        return '<a href="'.$text.'">'.$text.'</a>';
-                    case 'mail':
-                        return '<a href="mailto:'.$text.'">'.$text.'</a>';
-                    case 'tel':
-                        return '<a href="tel:'.$text.'">'.$text.'</a>';
-                    default:
-                        return $text;
-                }
+            fn (string $text, string $type): string => match ($type) {
+                'url' => '<a href="'.$text.'">'.$text.'</a>',
+                'mail' => '<a href="mailto:'.$text.'">'.$text.'</a>',
+                'tel' => '<a href="tel:'.$text.'">'.$text.'</a>',
+                default => $text,
             }
         );
     }
 
-    private static function makeClikable()
+    private static function makeClikable(): TwigFilter
     {
         return new TwigFilter(
             'make_clikable',
-            function (string $text): string {
-                return make_clickable($text);
-            }
+            fn (string $text): string => make_clickable($text)
         );
     }
 
@@ -210,16 +191,16 @@ class Twig
         return new TwigFilter(
             'raw_dynamic',
             function (?string $text): ?string {
-                if (!$text) {
+                if (! $text) {
                     return $text;
                 }
                 if (HtmlUtils::isHTML($text)) {
                     return $text;
-                } else {
-                    return nl2br($text);
                 }
-            }
-            , [
+
+                return nl2br($text);
+            },
+            [
                 'is_safe' => ['html'],
             ]
         );

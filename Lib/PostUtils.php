@@ -1,16 +1,13 @@
 <?php
 
-
 namespace VisitMarche\Theme\Lib;
 
 use VisitMarche\Theme\Inc\RouterHades;
+use WP_Post;
 
 class PostUtils
 {
-    /**
-     * @var \VisitMarche\Theme\Lib\WpRepository
-     */
-    private $wpRepository;
+    private WpRepository $wpRepository;
 
     public function __construct()
     {
@@ -18,27 +15,21 @@ class PostUtils
     }
 
     /**
-     * @param array $posts
      * @return array|array[]
      */
-    public function convert(array $posts)
+    public function convert(array $posts): array
     {
         return array_map(
-            function ($post) {
-                return $this->postToArray($post);
-            },
+            fn ($post) => $this->postToArray($post),
             $posts
         );
-
     }
 
-    public function postToArray(\WP_Post $post): array
+    public function postToArray(WP_Post $post): array
     {
         $tags = $this->wpRepository->getTags($post->ID);
         $tags = array_map(
-            function ($category) {
-                return $category['name'];
-            },
+            fn ($category) => $category['name'],
             $tags
         );
 
@@ -47,11 +38,11 @@ class PostUtils
             'titre' => $post->post_title,
             'description' => $post->post_excerpt,
             'tags' => $tags,
-            'image' => $this->getImage($post),
+            'image' => static::getImage($post),
         ];
     }
 
-    public static function getImage(\WP_Post $post): ?string
+    public static function getImage(WP_Post $post): ?string
     {
         if (has_post_thumbnail($post)) {
             $images = wp_get_attachment_image_src(get_post_thumbnail_id($post), 'original');
@@ -70,7 +61,7 @@ class PostUtils
                 $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
                 $offre->titre = $offre->getTitre($language);
                 $description = null;
-                if (count($offre->descriptions) > 0) {
+                if ((is_countable($offre->descriptions) ? \count($offre->descriptions) : 0) > 0) {
                     $description = $offre->descriptions[0]->getTexte($language);
                 }
                 $offre->description = $description;
@@ -92,5 +83,4 @@ class PostUtils
 
         return $offres;
     }
-
 }

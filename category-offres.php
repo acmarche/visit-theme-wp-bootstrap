@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Filtre\HadesFiltres;

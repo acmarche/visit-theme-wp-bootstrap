@@ -4,44 +4,43 @@ namespace VisitMarche\Theme\Lib\Elasticsearch;
 
 use Elastica\Exception\InvalidException;
 use Elastica\ResultSet;
+use WP_Query;
 
 /**
  * https://github.com/ruflin/Elastica/tree/master/tests
- * Class Searcher
- *
+ * Class Searcher.
  */
 class Searcher
 {
-    public function searchFromWww(string $keyword)
+    public function searchFromWww(string $keyword): bool|string
     {
-        $content = file_get_contents(
+        return file_get_contents(
             'https://www.marche.be/visit-elasticsearch/search.php?keyword='.urlencode($keyword)
         );
-
-        return $content;
     }
 
     /**
-     * @param string $keywords
+     * @param string $wp_query
      *
      * @return ResultSet
-     * @throws  InvalidException
+     *
+     * @throws InvalidException
      */
-    public function searchRecommandations(\WP_Query $wp_query): array
+    public function searchRecommandations(WP_Query $wp_query): array
     {
         $hits = [];
 
         $queries = $wp_query->query;
-        $queryString = join(' ', $queries);
-        $queryString = preg_replace("#-#", " ", $queryString);
-        $queryString = preg_replace("#/#", " ", $queryString);
+        $queryString = implode(' ', $queries);
+        $queryString = preg_replace('#-#', ' ', $queryString);
+        $queryString = preg_replace('#/#', ' ', $queryString);
         $queryString = strip_tags($queryString);
-        if ($queryString != '') {
+        if ('' !== $queryString) {
             $results = $this->searchFromWww($queryString);
-            $hits = json_decode($results);
+            $hits = json_decode($results, null, 512, JSON_THROW_ON_ERROR);
         }
 
-        $recommandations = array_map(
+        return array_map(
             function ($hit) {
                 $hit->title = $hit->name;
                 $hit->tags = [];
@@ -50,7 +49,5 @@ class Searcher
             },
             $hits
         );
-
-        return $recommandations;
     }
 }

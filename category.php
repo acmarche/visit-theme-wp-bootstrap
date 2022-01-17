@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Filtre\HadesFiltres;
@@ -40,7 +39,7 @@ $filtres = $categoryUtils->getCategoryFilters($cat_ID);
 
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);
-if ($category_order == 'manual') {
+if ('manual' === $category_order) {
     $posts = AcSort::getSortedItems($cat_ID, $posts);
 }
 $header = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_HEADER, true);
@@ -54,7 +53,7 @@ if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
 
-if (count($filtres) > 0) {
+if ([] !== $filtres) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getOffres(array_keys($filtres));
     array_map(
@@ -75,7 +74,7 @@ if (count($filtres) > 0) {
     wp_enqueue_script(
         'react-app',
         get_template_directory_uri().'/assets/js/build/offre.js',
-        array('wp-element'),
+        ['wp-element'],
         wp_get_theme()->get('Version'),
         true
     );

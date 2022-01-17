@@ -2,7 +2,6 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch\Data;
 
-
 class DocumentElastic
 {
     /**

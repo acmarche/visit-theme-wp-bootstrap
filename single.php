@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AcMarche\Theme;
 
 use VisitMarche\Theme\Lib\Elasticsearch\Searcher;
@@ -21,12 +20,12 @@ $urlBack = get_category_link($currentCategory);
 $tags = $wpRepository->getTags($post->ID);
 $recommandations = $wpRepository->getRelations($post->ID);
 $next = null;
-if (count($recommandations) == 0) {
+if (0 === \count($recommandations)) {
     $searcher = new Searcher();
     global $wp_query;
     $recommandations = $searcher->searchRecommandations($wp_query);
 }
-if (count($recommandations) > 0) {
+if ([] !== $recommandations) {
     $next = $recommandations[0];
 }
 

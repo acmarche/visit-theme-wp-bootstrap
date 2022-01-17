@@ -7,13 +7,12 @@ use VisitMarche\Theme\Lib\Twig;
 get_header();
 global $post;
 
-if(!$post) {
-
+if (! $post) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
             'url' => '',
-            'title'=>'Page non trouvée'
+            'title' => 'Page non trouvée',
         ]
     );
 

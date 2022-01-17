@@ -3,9 +3,7 @@
 namespace VisitMarche\Theme\Lib;
 
 use VisitMarche\Theme\Inc\Theme;
-use WP_Post;
 use WP_Query;
-use wpdb;
 
 class WpRepository
 {
@@ -29,13 +27,13 @@ class WpRepository
 
     public function getPostsByCatId(int $catId): array
     {
-        $args = array(
+        $args = [
             'cat' => $catId,
             'numberposts' => 5000,
             'orderby' => 'post_title',
             'order' => 'ASC',
             'post_status' => 'publish',
-        );
+        ];
 
         $querynews = new WP_Query($args);
         $posts = [];
@@ -51,8 +49,6 @@ class WpRepository
     }
 
     /**
-     * @param int $cat_ID
-     *
      * @return array|object|\WP_Error|null
      */
     public function getParentCategory(int $cat_ID)
@@ -68,12 +64,14 @@ class WpRepository
         }
 
         return null;
-
     }
 
     public function getChildrenOfCategory(int $cat_ID): array
     {
-        $args = ['parent' => $cat_ID, 'hide_empty' => false];
+        $args = [
+            'parent' => $cat_ID,
+            'hide_empty' => false,
+        ];
         $children = get_categories($args);
         array_map(
             function ($category) {
@@ -89,17 +87,15 @@ class WpRepository
     public function getRelations(int $postId): array
     {
         $categories = get_the_category($postId);
-        $args = array(
+        $args = [
             'category__in' => array_map(
-                function ($category) {
-                    return $category->cat_ID;
-                },
+                fn ($category) => $category->cat_ID,
                 $categories
             ),
             'post__not_in' => [$postId],
             'orderby' => 'title',
             'order' => 'ASC',
-        );
+        ];
         $query = new \WP_Query($args);
         $recommandations = [];
         foreach ($query->posts as $post) {
@@ -116,7 +112,6 @@ class WpRepository
                 'image' => $image,
                 'tags' => self::getTags($post->ID),
             ];
-
         }
 
         return $recommandations;
@@ -135,7 +130,7 @@ class WpRepository
         return $post_thumbnail_url;
     }
 
-    public function getIntro(): string
+    public function getIntro(): array|string
     {
         $intro = '<p>Intro vide</p>';
         $introId = apply_filters('wpml_object_id', Theme::PAGE_INTRO, 'page', true);
@@ -155,9 +150,9 @@ class WpRepository
     /**
      * @return array|\WP_Term[]
      */
-    public function getCategories():array
+    public function getCategories(): array
     {
-        $args = array(
+        $args = [
             'type' => 'post',
             'child_of' => 0,
             'parent' => '',
@@ -170,7 +165,7 @@ class WpRepository
             'number' => '',
             'taxonomy' => 'category',
             'pad_counts' => true,
-        );
+        ];
 
         return get_categories($args);
     }

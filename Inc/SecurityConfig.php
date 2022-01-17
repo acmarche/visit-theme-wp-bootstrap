@@ -2,6 +2,8 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use WP_Error;
+
 class SecurityConfig
 {
     public function __construct()
@@ -30,10 +32,10 @@ class SecurityConfig
         // Disable REST API link in HTTP headers
         remove_action('template_redirect', 'rest_output_link_header', 11);
 
-       // $this->secureApi();//todo activate en prod!
+        // $this->secureApi();//todo activate en prod!
     }
 
-    function secureApi()
+    public function secureApi(): void
     {
         add_filter(
             'rest_authentication_errors',
@@ -46,11 +48,13 @@ class SecurityConfig
 
                 // No authentication has been performed yet.
                 // Return an error if user is not logged in.
-                if ( ! is_user_logged_in()) {
-                    return new \WP_Error(
+                if (! is_user_logged_in()) {
+                    return new WP_Error(
                         'rest_not_logged_in',
                         __('You are not currently logged in.'),
-                        array('status' => 401)
+                        [
+                            'status' => 401,
+                        ]
                     );
                 }
 

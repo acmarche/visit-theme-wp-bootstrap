@@ -2,31 +2,26 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch\Data;
 
-use VisitMarche\Theme\Lib\Mailer;
 use AcMarche\Pivot\Entities\OffreInterface;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
+use DateTime;
+use Exception;
+use stdClass;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
 use WP_Post;
+use WP_Term;
 
 class ElasticData
 {
-    /**
-     * @var WpRepository
-     */
-    private $wpRepository;
-    /**
-     * @var HttpClientInterface
-     */
-    private $httpClient;
-    /**
-     * @var string
-     */
-    private $url;
+    private WpRepository $wpRepository;
+    private HttpClientInterface $httpClient;
+    private string $url;
 
     public function __construct()
     {
@@ -35,27 +30,26 @@ class ElasticData
         $this->url = 'https://www.visitmarche.be/wp-json/visit/all';
     }
 
-    public function getAllData(): \stdClass
+    public function getAllData(): stdClass
     {
-        $t = json_decode(file_get_contents($this->url));//2 times error ssl
-        $t = json_decode(file_get_contents($this->url));//2 times error ssl
-        $t = json_decode(file_get_contents($this->url));
+        $t = json_decode(file_get_contents($this->url), null, 512, JSON_THROW_ON_ERROR); //2 times error ssl
+        $t = json_decode(file_get_contents($this->url), null, 512, JSON_THROW_ON_ERROR); //2 times error ssl
+        $t = json_decode(file_get_contents($this->url), null, 512, JSON_THROW_ON_ERROR);
 
         return $t;
     }
 
     /**
-     * @param int $siteId
+     * @param int $language
      *
      * @return DocumentElastic[]
      */
     public function getCategories(string $language = 'fr'): array
     {
         $datas = [];
-        $today = new \DateTime();
+        $today = new DateTime();
 
         foreach ($this->wpRepository->getCategories() as $category) {
-
             $description = '';
             if ($category->description) {
                 $description = Cleaner::cleandata($category->description);
@@ -99,33 +93,31 @@ class ElasticData
     }
 
     /**
-     * @param int|null $categoryId
-     *
      * @return DocumentElastic[]
      */
     public function getPosts(int $categoryId = null): array
     {
-        $args = array(
+        $args = [
             'numberposts' => 5000,
             'orderby' => 'post_title',
             'order' => 'ASC',
             'post_status' => 'publish',
-        );
+        ];
 
         if ($categoryId) {
-            $args ['category'] = $categoryId;
+            $args['category'] = $categoryId;
         }
 
         $posts = get_posts($args);
         $datas = [];
 
         foreach ($posts as $post) {
-            if ($document = $this->postToDocumentElastic($post)) {
+            if (($document = $this->postToDocumentElastic($post)) !== null) {
                 $datas[] = $document;
             } else {
                 Mailer::sendError(
-                    "update elastic error ",
-                    "create document ".$post->post_title
+                    'update elastic error ',
+                    'create document '.$post->post_title
                 );
                 //  var_dump($post);
             }
@@ -135,8 +127,6 @@ class ElasticData
     }
 
     /**
-     * @param int $siteId
-     *
      * @return DocumentElastic[]
      */
     public function getOffres(string $language = 'fr'): array
@@ -144,11 +134,10 @@ class ElasticData
         $datas = [];
 
         foreach ($this->wpRepository->getCategories() as $category) {
-
             $categoryUtils = new HadesFiltres();
             $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
 
-            if (count($filtres) > 0) {
+            if ([] !== $filtres) {
                 $hadesRepository = new HadesRepository();
                 $offres = $hadesRepository->getOffres(array_keys($filtres));
                 array_map(
@@ -163,7 +152,6 @@ class ElasticData
             foreach ($offres as $offre) {
                 $datas[] = $this->createDocumentElasticFromOffre($offre, $language);
             }
-
         }
 
         return $datas;
@@ -173,14 +161,14 @@ class ElasticData
     {
         try {
             return $this->createDocumentElasticFromWpPost($post);
-        } catch (\Exception $exception) {
-            Mailer::sendError("update elastic", "create document ".$post->post_title.' => '.$exception->getMessage());
+        } catch (Exception $exception) {
+            Mailer::sendError('update elastic', 'create document '.$post->post_title.' => '.$exception->getMessage());
         }
 
         return null;
     }
 
-    public function createDocumentElasticFromX(\stdClass $post): DocumentElastic
+    public function createDocumentElasticFromX(stdClass $post): DocumentElastic
     {
         $document = new DocumentElastic();
         $document->id = $post->id;
@@ -196,8 +184,8 @@ class ElasticData
 
     private function createDocumentElasticFromWpPost(WP_Post $post): DocumentElastic
     {
-        list($date, $time) = explode(" ", $post->post_date);
-        $categories = array();
+        [$date, $time] = explode(' ', $post->post_date);
+        $categories = [];
         foreach (get_the_category($post->ID) as $category) {
             $categories[] = $category->cat_name;
         }
@@ -220,21 +208,21 @@ class ElasticData
 
     private function createDocumentElasticFromOffre(OffreInterface $offre, string $language): DocumentElastic
     {
-        $categories = array();
+        $categories = [];
         foreach ($offre->categories as $category) {
             $categories[] .= ' '.$category->getLib($language);
         }
 
         $content = '';
         $offre->description = '';
-        if (count($offre->descriptions) > 0) {
+        if ([] !== $offre->descriptions) {
             $offre->description = $offre->descriptions[0]->getTexte($language);
             foreach ($offre->descriptions as $description) {
                 $content .= ' '.$description->getTexte($language);
             }
         }
 
-        $today = new \DateTime();
+        $today = new DateTime();
         $document = new DocumentElastic();
         $document->id = $offre->id;
         $document->name = Cleaner::cleandata($offre->titre);
@@ -248,13 +236,13 @@ class ElasticData
         return $document;
     }
 
-    private function getContentHades(\WP_Term $category, string $language): string
+    private function getContentHades(WP_Term $category, string $language): string
     {
         $content = '';
         $categoryUtils = new HadesFiltres();
         $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
 
-        if (count($filtres) > 0) {
+        if ([] !== $filtres) {
             $hadesRepository = new HadesRepository();
             $offres = $hadesRepository->getOffres(array_keys($filtres));
             array_map(
@@ -266,7 +254,7 @@ class ElasticData
             );
             foreach ($offres as $offre) {
                 $content .= $offre->getTitre($language);
-                if (count($offre->descriptions) > 0) {
+                if ([] !== $offre->descriptions) {
                     foreach ($offre->descriptions as $description) {
                         $content .= ' '.$description->getTexte($language);
                     }

@@ -9,7 +9,7 @@ class HtmlUtils
 {
     public static function cleanString(?string $description): ?string
     {
-        if (!$description) {
+        if (! $description) {
             return null;
         }
         $description = trim(strip_tags($description));
@@ -19,12 +19,12 @@ class HtmlUtils
 
     public static function isHTML($string): bool
     {
-        return $string != strip_tags($string);
+        return $string !== strip_tags($string);
     }
 
     public static function pureHtml(?string $html): ?string
     {
-        if (!$html) {
+        if (! $html) {
             return $html;
         }
         $config = HTMLPurifier_Config::createDefault();

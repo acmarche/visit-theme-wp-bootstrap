@@ -2,18 +2,15 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use VisitMarche\Theme\Lib\Cache;
 use Symfony\Contracts\Cache\CacheInterface;
+use VisitMarche\Theme\Lib\Cache;
 use VisitMarche\Theme\Lib\LocaleHelper;
 
 class Menu
 {
-    const MENU_NAME = 'menu-top';
+    public const MENU_NAME = 'menu-top';
 
-    /**
-     * @var CacheInterface
-     */
-    private $cache;
+    private CacheInterface $cache;
 
     public function __construct()
     {
@@ -34,7 +31,8 @@ class Menu
                     'gourmandises' => get_category_by_slug('gourmandises'),
                     'patrimoine' => get_category_by_slug('patrimoine'),
                 ];
-                $icones = array_map(
+
+                return array_map(
                     function ($icone) {
                         if ($icone) {
                             $icone->url = get_category_link($icone);
@@ -44,8 +42,6 @@ class Menu
                     },
                     $icones
                 );
-
-                return $icones;
             }
         );
     }

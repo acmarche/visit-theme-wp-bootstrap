@@ -2,8 +2,8 @@
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Inc\Menu;
+use VisitMarche\Theme\Lib\Twig;
 
 $menu = new Menu();
 $items = $menu->getMenuTop();

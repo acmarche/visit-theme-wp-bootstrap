@@ -1,23 +1,22 @@
 <?php
 
-
 namespace VisitMarche\Theme\Inc;
 
 class SettingsPage
 {
-    const NAME_OPTION = 'react_activate';
+    public const NAME_OPTION = 'react_activate';
 
     public function __construct()
     {
         add_action(
             'admin_menu',
             function () {
-                SettingsPage::createPage();
+                self::createPage();
             }
         );
     }
 
-    static function createPage()
+    public static function createPage(): void
     {
         add_options_page(
             'Active react or not',
@@ -25,27 +24,26 @@ class SettingsPage
             'administrator',
             __FILE__,
             function () {
-                SettingsPage::renderPage();
+                self::renderPage();
             },
         );
         add_action(
             'admin_init',
             function () {
-                SettingsPage::registerSetting();
+                self::registerSetting();
             }
         );
     }
 
-    static function registerSetting()
+    public static function registerSetting(): void
     {
         register_setting('my-cool-plugin-settings-group', self::NAME_OPTION);
     }
 
-    static function renderPage()
+    public static function renderPage(): void
     {
-        $value    = self::isReactActivate();
-        $selected = 'checked="checked"';
-        ?>
+        $value = self::isReactActivate();
+        $selected = 'checked="checked"'; ?>
         <div class="wrap">
             <h1>Activer ou pas react</h1>
 
@@ -57,7 +55,7 @@ class SettingsPage
                         <th scope="row">Activer</th>
                         <td>
                             <input type="checkbox"
-                                   name="<?php echo self::NAME_OPTION; ?>" <?php echo $value ? $selected : '' ?> >
+                                   name="<?php echo self::NAME_OPTION; ?>" <?php echo $value ? $selected : ''; ?> >
                         </td>
                     </tr>
                 </table>
@@ -71,6 +69,6 @@ class SettingsPage
 
     public static function isReactActivate(): bool
     {
-        return (bool)esc_attr(get_option(self::NAME_OPTION, true));
+        return (bool) esc_attr(get_option(self::NAME_OPTION, true));
     }
 }

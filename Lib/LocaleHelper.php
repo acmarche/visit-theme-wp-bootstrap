@@ -1,12 +1,9 @@
 <?php
 
-
 namespace VisitMarche\Theme\Lib;
 
-
 use Symfony\Component\Translation\Loader\YamlFileLoader;
-use Symfony\Component\Translation\Translator;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\TranslatorBagInterface;
 
 class LocaleHelper
 {
@@ -19,7 +16,7 @@ class LocaleHelper
         return 'fr';
     }
 
-    public static function iniTranslator(): TranslatorInterface
+    public static function iniTranslator(): TranslatorBagInterface
     {
         $yamlLoader = new YamlFileLoader();
 
@@ -38,13 +35,12 @@ class LocaleHelper
 
     public static function translate(string $text, ?string $language = null): string
     {
-        $translator = LocaleHelper::iniTranslator();
-        $language = LocaleHelper::getSelectedLanguage();
-        if ($language === null) {
+        $translator = self::iniTranslator();
+        $language = self::getSelectedLanguage();
+        if (null === $language) {
             $language = self::getSelectedLanguage();
         }
 
         return $translator->trans($text, [], null, $language);
     }
-
 }

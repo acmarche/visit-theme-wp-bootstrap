@@ -1,8 +1,6 @@
 <?php
 
-
 namespace VisitMarche\Theme\Lib;
-
 
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -15,11 +13,11 @@ class Cache
 
     public static function instance(): CacheInterface
     {
-        if (self::$instanceObject) {
+        if (null !== self::$instanceObject) {
             return self::$instanceObject;
         }
 
-        if (extension_loaded('apc') && ini_get('apc.enabled')) {
+        if (\extension_loaded('apc') && ini_get('apc.enabled')) {
             self::$instanceObject =
                 new ApcuAdapter(
                 // a string prefixed to the keys of the items stored in this cache
@@ -56,7 +54,7 @@ class Cache
         return self::$instanceObject;
     }
 
-    public static function refresh(string $code)
+    public static function refresh(string $code): void
     {
         $request = Request::createFromGlobals();
         $refresh = $request->get('refresh', null);

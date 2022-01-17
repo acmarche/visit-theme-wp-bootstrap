@@ -2,18 +2,20 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use Exception;
 use VisitMarche\Theme\Lib\Twig;
+use WP_Post;
 
 class ShortCodes
 {
     public function __construct()
     {
-        add_action('init', [$this, 'registerShortcodes']);
+        add_action('init', fn () => $this->registerShortcodes());
     }
 
-    function registerShortcodes()
+    public function registerShortcodes(): void
     {
-        add_shortcode('gpx_viewer', [new ShortCodes(), 'gpxViewer']);
+        add_shortcode('gpx_viewer', fn ($args): string => (new self())->gpxViewer($args));
     }
 
     public function gpxViewer($args): string
@@ -21,14 +23,14 @@ class ShortCodes
         $fileName = $args['file'] ?? null;
         $fileName2 = $args['file2'] ?? null;
 
-        if (!$fileName) {
+        if (! $fileName) {
             return '<p>Nom de fichier manquant syntax  = [gpx_viewer file=VTTBleu]</p>';
         }
 
         try {
             $attachment = $this->getFile($fileName);
             $file = $attachment->guid;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 
@@ -37,7 +39,7 @@ class ShortCodes
             try {
                 $attachment2 = $this->getFile($fileName2);
                 $file2 = $attachment2->guid;
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 return $e->getMessage();
             }
         }
@@ -59,20 +61,18 @@ class ShortCodes
     }
 
     /**
-     * @param string $fileName
-     * @return \WP_Post
-     * @throws \Exception
+     * @throws Exception
      */
-    private function getFile(string $fileName): \WP_Post
+    private function getFile(string $fileName): WP_Post
     {
-        $args = array(
+        $args = [
             'post_type' => 'attachment',
             'name' => trim($fileName),
-        );
+        ];
 
         $attachments = get_posts($args);
-        if (!$attachments || count($attachments) === 0) {
-            throw new \Exception('<p>Gpx  non trouvé : '.$fileName.'</p>');
+        if (! $attachments || (is_countable($attachments) ? \count($attachments) : 0) === 0) {
+            throw new Exception('<p>Gpx  non trouvé : '.$fileName.'</p>');
         }
 
         return $attachments[0];

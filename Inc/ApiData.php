@@ -1,31 +1,30 @@
 <?php
 
-
 namespace VisitMarche\Theme\Inc;
 
-use VisitMarche\Theme\Lib\Mailer;
 use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
-use AcSort;
 use VisitMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
 use WP_Error;
+use WP_HTTP_Response;
 use WP_REST_Request;
+use WP_REST_Response;
 
 /**
  * Enregistrement des routes pour les api pour les composants react
- * Class Api
- * @package VisitMarche\Theme\Inc
+ * Class Api.
  */
 class ApiData
 {
     public static function hadesFiltres(WP_REST_Request $request)
     {
         $categoryId = $request->get_param('categoryId');
-        if (!$categoryId) {
-            Mailer::sendError("error cat id filtres", "missing param keyword");
+        if (! $categoryId) {
+            Mailer::sendError('error cat id filtres', 'missing param keyword');
 
             return new WP_Error(500, 'missing param keyword');
         }
@@ -33,7 +32,7 @@ class ApiData
         $filtres = $categoryUtils->getCategoryFilters($categoryId);
 
         /**
-         * Ajout de "Tout"
+         * Ajout de "Tout".
          */
         $translator = LocaleHelper::iniTranslator();
         $filtres[0] = $translator->trans('filter.all');
@@ -43,10 +42,10 @@ class ApiData
 
     public static function hadesOffres(WP_REST_Request $request)
     {
-        $filtreSelected = $request->get_param('filtre');//element selected
-        $currentCategoryId = (int)$request->get_param('category');//current category
-        if (!$currentCategoryId) {
-            Mailer::sendError("error hades offre", "missing param keyword");
+        $filtreSelected = $request->get_param('filtre'); //element selected
+        $currentCategoryId = (int) $request->get_param('category'); //current category
+        if (0 === $currentCategoryId) {
+            Mailer::sendError('error hades offre', 'missing param keyword');
 
             return new WP_Error(500, 'missing param keyword');
         }
@@ -56,13 +55,13 @@ class ApiData
         $language = LocaleHelper::getSelectedLanguage();
         $postUtils = new PostUtils();
 
-        /**
+        /*
          * Si pas de filtre selectionne, on affiche tout
          */
-        if (!$filtreSelected) {
+        if (! $filtreSelected) {
             $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
             $offres = [];
-            if (count($filtres) > 0) {
+            if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
             }
             $posts = $wpRepository->getPostsByCatId($currentCategoryId);
@@ -75,14 +74,14 @@ class ApiData
 
         /**
          * si filtre selectionne est int donc c'est une cat wp
-         * je vais chercher les filtres hades sur celui ci
+         * je vais chercher les filtres hades sur celui ci.
          */
-        $filtreSelectedToInt = (int)$filtreSelected;
+        $filtreSelectedToInt = (int) $filtreSelected;
 
-        if ($filtreSelectedToInt) {
+        if (0 !== $filtreSelectedToInt) {
             $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt);
             $offres = [];
-            if (count($filtres) > 0) {
+            if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
             }
             $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
@@ -92,27 +91,17 @@ class ApiData
             return rest_ensure_response($offres);
         }
 
-        $offres = self::getOffres([$filtreSelected => $filtreSelected], $currentCategoryId, $language);
+        $offres = self::getOffres([
+            $filtreSelected => $filtreSelected,
+        ], $currentCategoryId, $language);
 
         return rest_ensure_response($offres);
     }
 
-    private static function getOffres(array $filtres, int $currentCategoryId, string $language)
-    {
-        $hadesRepository = new HadesRepository();
-        $postUtils = new PostUtils();
-        $filtres = array_keys($filtres);
-        $offres = $hadesRepository->getOffres($filtres);
-        $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
-
-        return $offres;
-    }
-
     /**
-     * Pour alimenter le moteur de recherche depuis l'exterieur
-     * @return \WP_Error|\WP_HTTP_Response|\WP_REST_Response
+     * Pour alimenter le moteur de recherche depuis l'exterieur.
      */
-    public static function getAll()
+    public static function getAll(): \WP_Error|WP_HTTP_Response|WP_REST_Response
     {
         $data = [];
         $elasticData = new ElasticData();
@@ -121,6 +110,15 @@ class ApiData
         $data['offres'] = $elasticData->getOffres();
 
         return rest_ensure_response($data);
+    }
 
+    private static function getOffres(array $filtres, int $currentCategoryId, string $language): array
+    {
+        $hadesRepository = new HadesRepository();
+        $postUtils = new PostUtils();
+        $filtres = array_keys($filtres);
+        $offres = $hadesRepository->getOffres($filtres);
+
+        return $postUtils->convertOffres($offres, $currentCategoryId, $language);
     }
 }

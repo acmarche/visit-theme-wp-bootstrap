@@ -1,6 +1,5 @@
 <?php
 
-
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Pivot\Entities\Categorie;
@@ -11,15 +10,14 @@ use VisitMarche\Theme\Lib\Router;
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
  * https://roots.io/routing-wp-requests/
  * https://developer.wordpress.org/reference/functions/add_rewrite_rule/#user-contributed-notes
- * Class Router
- * @package AcMarche\Theme\Inc
+ * Class Router.
  */
 class RouterHades extends Router
 {
-    const PARAM_EVENT = 'codecgt';
-    const EVENT_URL = 'manifestation';
-    const PARAM_OFFRE = 'codeoffre';
-    const OFFRE_URL = 'offre';
+    public const PARAM_EVENT = 'codecgt';
+    public const EVENT_URL = 'manifestation';
+    public const PARAM_OFFRE = 'codeoffre';
+    public const OFFRE_URL = 'offre';
 
     public function __construct()
     {
@@ -45,7 +43,7 @@ class RouterHades extends Router
     public static function getUrlFiltre(): string
     {
         $category = get_category_by_slug('offres');
-        if (!$category) {
+        if (! $category) {
             return '/offres/?cgt=';
         }
 
@@ -58,16 +56,20 @@ class RouterHades extends Router
         $filtres2 = [];
         foreach ($filtres as $key => $nom) {
             $url = $urlfiltre.$key;
-            if (is_int($key)) {
+            if (\is_int($key)) {
                 $url = get_category_link($key);
             }
-            $filtres2[] = ['key' => $key, 'nom' => $nom, 'url' => $url];
+            $filtres2[] = [
+                'key' => $key,
+                'nom' => $nom,
+                'url' => $url,
+            ];
         }
 
         return $filtres2;
     }
 
-    public function addRouteEvent()
+    public function addRouteEvent(): void
     {
         add_action(
             'init',
@@ -102,12 +104,12 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || !$wp_query->is_main_query()) {
+                if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
 
-                if (get_query_var(self::PARAM_EVENT) == false ||
-                    get_query_var(self::PARAM_EVENT) == '') {
+                if (false === get_query_var(self::PARAM_EVENT) ||
+                    '' === get_query_var(self::PARAM_EVENT)) {
                     return $template;
                 }
 
@@ -116,7 +118,7 @@ class RouterHades extends Router
         );
     }
 
-    public function addRouteOffre()
+    public function addRouteOffre(): void
     {
         //Setup a rule
         add_action(
@@ -154,11 +156,11 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || !$wp_query->is_main_query()) {
+                if (is_admin() || ! $wp_query->is_main_query()) {
                     return $template;
                 }
-                if (get_query_var(self::PARAM_OFFRE) == false ||
-                    get_query_var(self::PARAM_OFFRE) == '') {
+                if (false === get_query_var(self::PARAM_OFFRE) ||
+                    '' === get_query_var(self::PARAM_OFFRE)) {
                     return $template;
                 }
 
@@ -167,9 +169,8 @@ class RouterHades extends Router
         );
     }
 
-    public function custom_rewrite_tag()
+    public function custom_rewrite_tag(): void
     {
-        add_rewrite_tag('%offre%', '([^&]+)');//utilite?
+        add_rewrite_tag('%offre%', '([^&]+)'); //utilite?
     }
-
 }

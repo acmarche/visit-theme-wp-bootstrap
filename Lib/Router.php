@@ -1,17 +1,11 @@
 <?php
 
-
 namespace VisitMarche\Theme\Lib;
-
 
 class Router
 {
     /**
      * Retourne la base du blog (/economie/, /sante/, /culture/...
-     *
-     * @param int|null $blodId
-     *
-     * @return string
      */
     public static function getBaseUrlSite(?int $blodId = null): string
     {
@@ -22,7 +16,9 @@ class Router
     {
         if (is_multisite()) {
             $current = get_current_blog_id();
-            foreach (get_sites(['fields' => 'ids']) as $site) {
+            foreach (get_sites([
+                'fields' => 'ids',
+            ]) as $site) {
                 switch_to_blog($site);
                 flush_rewrite_rules();
             }

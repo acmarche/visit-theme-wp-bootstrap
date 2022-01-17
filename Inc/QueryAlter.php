@@ -9,13 +9,13 @@ class QueryAlter
     public function __construct()
     {
         //  add_action('pre_get_posts', [$this, 'alterMainQuery']);
-        add_action('pre_get_posts', [$this, 'modifyWhereCategory']);
+        add_action('pre_get_posts', fn (\WP_Query $query) => $this->modifyWhereCategory($query));
     }
 
-    function alterMainQuery($query)
+    public function alterMainQuery($query)
     {
-        if ( ! is_admin() && $query->is_main_query()) {
-            $query->set('post_type', array('post', 'page', 'bottin_fiche'));
+        if (! is_admin() && $query->is_main_query()) {
+            $query->set('post_type', ['post', 'page', 'bottin_fiche']);
         }
 
         return $query;
@@ -23,26 +23,19 @@ class QueryAlter
 
     /**
      * Oblige wp a afficher que les articles de la catégorie en cours
-     * et pas ceux des catégories enfants
-     *
-     * @param WP_Query $query
+     * et pas ceux des catégories enfants.
      */
-    function modifyWhereCategory(WP_Query $query)
+    public function modifyWhereCategory(WP_Query $query): void
     {
-        if ( ! is_admin() && $query->is_category()) :
+        if (! is_admin() && $query->is_category()) :
 
             $object = get_queried_object();
 
-            if ($object != null) {
-                if ($object->cat_ID) {
-                    if ($query->is_main_query()) {
-                        $ID_cat = $object->cat_ID;
-
-                        //sinon prend enfant
-                        $query->set('category__in', $ID_cat);
-                    }
-                }
-            }
+        if (null !== $object && $object->cat_ID && $query->is_main_query()) {
+            $ID_cat = $object->cat_ID;
+            //sinon prend enfant
+            $query->set('category__in', $ID_cat);
+        }
         endif;
     }
 }
