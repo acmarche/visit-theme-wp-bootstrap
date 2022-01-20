@@ -34,7 +34,6 @@ function Category() {
         const name = 'app-offres';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
         setLanguage( document.getElementById( 'body' ).getAttribute( 'data-current-language' ) );
-        console.log( `lng: ${language}` );
     }, [ ]);
 
     useEffect( () => {
