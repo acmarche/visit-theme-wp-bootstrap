@@ -35,7 +35,7 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$filtres = $categoryUtils->getCategoryFilters($cat_ID);
+$filtres = $categoryUtils->getCategoryFilters($cat_ID, $language);
 
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);
