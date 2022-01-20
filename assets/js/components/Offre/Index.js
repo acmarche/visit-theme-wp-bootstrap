@@ -33,7 +33,8 @@ function Category() {
     useEffect( () => {
         const name = 'app-offres';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
-        setLanguage( document.getElementsByName( 'body' ) );
+        setLanguage( document.getElementById( 'body' ).getAttribute( 'data-current-language' ) );
+        console.log( `lng: ${language}` );
     }, [ ]);
 
     useEffect( () => {
