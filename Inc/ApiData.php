@@ -29,7 +29,8 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
         $categoryUtils = new HadesFiltres();
-        $filtres = $categoryUtils->getCategoryFilters($categoryId);
+        $language = LocaleHelper::getSelectedLanguage();
+        $filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
 
         /**
          * Ajout de "Tout".
