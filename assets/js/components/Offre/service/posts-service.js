@@ -13,6 +13,7 @@ export function fetchOffres( language, categoryId, filtre ) {
         url = url.concat( `/${filtre}` );
     }
 
+    console.log( url );
     return axios.get( url, {
 
     });
