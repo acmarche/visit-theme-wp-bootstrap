@@ -65,7 +65,7 @@ if ([] !== $filtres) {
     );
     //fusion offres et articles
     $postUtils = new PostUtils();
-    $posts = $postUtils->convert($posts);
+    $posts = $postUtils->convertPostsToArray($posts);
     $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
     $offres = array_merge($posts, $offres);
 

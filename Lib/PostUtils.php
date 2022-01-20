@@ -15,9 +15,10 @@ class PostUtils
     }
 
     /**
-     * @return array|array[]
+     * @param WP_Post[] $posts
+     * @return array
      */
-    public function convert(array $posts): array
+    public function convertPostsToArray(array $posts): array
     {
         return array_map(
             fn ($post) => $this->postToArray($post),

@@ -66,7 +66,7 @@ class ApiData
             }
             $posts = $wpRepository->getPostsByCatId($currentCategoryId);
             //fusion offres et articles
-            $posts = $postUtils->convert($posts);
+            $posts = $postUtils->convertPostsToArray($posts);
             $offres = array_merge($posts, $offres);
 
             return rest_ensure_response($offres);
@@ -85,7 +85,7 @@ class ApiData
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
             }
             $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
-            $posts = $postUtils->convert($posts);
+            $posts = $postUtils->convertPostsToArray($posts);
             $offres = array_merge($posts, $offres);
 
             return rest_ensure_response($offres);
