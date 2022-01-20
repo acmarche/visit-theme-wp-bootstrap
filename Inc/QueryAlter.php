@@ -8,17 +8,7 @@ class QueryAlter
 {
     public function __construct()
     {
-        //  add_action('pre_get_posts', [$this, 'alterMainQuery']);
         add_action('pre_get_posts', fn (\WP_Query $query) => $this->modifyWhereCategory($query));
-    }
-
-    public function alterMainQuery($query)
-    {
-        if (! is_admin() && $query->is_main_query()) {
-            $query->set('post_type', ['post', 'page', 'bottin_fiche']);
-        }
-
-        return $query;
     }
 
     /**
