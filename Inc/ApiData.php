@@ -60,7 +60,7 @@ class ApiData
          * Si pas de filtre selectionne, on affiche tout
          */
         if (! $filtreSelected) {
-            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId);
+            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId, $language);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
@@ -80,7 +80,7 @@ class ApiData
         $filtreSelectedToInt = (int) $filtreSelected;
 
         if (0 !== $filtreSelectedToInt) {
-            $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt);
+            $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt, $language);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
