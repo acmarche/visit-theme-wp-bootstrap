@@ -25,7 +25,7 @@ $locale = LocaleHelper::getSelectedLanguage();
         require_once __DIR__.'/_analytics.php';
         ?>
     </head>
-    <body class="bg-white">
+    <body class="bg-white" data-current-language="<?php echo LocaleHelper::getSelectedLanguage() ?>">
     <?php
 wp_body_open();
 $menu = new Menu();

@@ -13,13 +13,14 @@ function Category() {
     const [ offres, setOffres ] = useState([]);
     const [ filtreSelected, setFiltreSelected ] = useState( null );
     const [ isLoading, setIsLoading ] = useState( true );
+    const [ language, setLanguage ] = useState( 'fr' );
 
     async function loadOffres( ) {
-        console.log( 'loading offres', categoryId, filtreSelected );
+        console.log( 'loading offres', language, categoryId, filtreSelected );
         setIsLoading( true );
         let response;
         try {
-            response = await fetchOffres( categoryId, filtreSelected );
+            response = await fetchOffres( language, categoryId, filtreSelected );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
         } catch ( e ) {
@@ -32,6 +33,7 @@ function Category() {
     useEffect( () => {
         const name = 'app-offres';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
+        setLanguage( document.getElementsByName( 'body' ) );
     }, [ ]);
 
     useEffect( () => {

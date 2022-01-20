@@ -2,8 +2,6 @@
 
 namespace AcMarche\Theme;
 
-use Symfony\Component\HttpFoundation\Request;
-use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
@@ -18,7 +16,4 @@ Twig::rendPage(
     ]
 );
 
-$request = Request::createFromGlobals();
-$url = $request->getUri();
-Mailer::sendError('Error page index.php', "url: ${url}");
 get_footer();

@@ -34,11 +34,11 @@ class PostUtils
         );
 
         return [
-            'url' => get_permalink($post),
+            'url' => $post->permalink,
             'titre' => $post->post_title,
             'description' => $post->post_excerpt,
             'tags' => $tags,
-            'image' => static::getImage($post),
+            'image' => $post->thumbnail_url,
         ];
     }
 
