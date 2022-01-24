@@ -2,7 +2,7 @@ agenda:
   title: 'Agenda'
   moreevents: 'More events'
 decouvrez:
-  marche: 'Discover'
+  marche: 'To discover'
 suggestions: 'Suggest'
 inspiration:
   home: 'Inspirations'
@@ -12,7 +12,7 @@ events:
   notfound: 'Events not found'
   all: 'All events'
 discover_them: 'Discover them'
-discover: 'Discover'
+discover: 'To discover'
 different:
   festivities: 'Do you know our different festivities ?'
 menu:

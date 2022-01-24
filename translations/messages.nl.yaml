@@ -12,11 +12,11 @@ events:
   notfound: 'Gebeurtenissen niet gevonden'
   all: 'Alle evenementen'
 discover_them: 'Ontdek ze'
-discover: 'Ontdek'
+discover: 'Ontdekken'
 different:
   festivities: 'Kent u onze verschillende festiviteiten ?'
 menu:
-  home: 'Ontvangst'
+  home: 'Start pagina'
   title: 'Menu'
   contact: 'Contact'
 town_hall: 'Office Communal du Tourisme'
