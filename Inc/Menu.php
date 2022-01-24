@@ -51,7 +51,7 @@ class Menu
         $language = LocaleHelper::getSelectedLanguage();
 
         return $this->cache->get(
-            'menu_top_7'.$language,
+            'menu_top_4'.$language,
             function () {
                 $menu = [
                     'sorganiser' => get_category_by_slug('sorganiser'),
