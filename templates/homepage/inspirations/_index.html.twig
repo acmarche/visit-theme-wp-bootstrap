@@ -6,19 +6,32 @@
             {% set inspiration = inspirations[0] %}
             <li class="px-0 w-md-100 col-12 col-ls-6 col-md-6 col-lg-8 col-ls-lg-8 px-ls-4px px-md-4px">
                 {% include 'homepage/inspirations/_line.html.twig' %}
-            </li> {% set inspiration = inspirations[1] %}
-            <li class="pt-8px pt-md-0 pt-ls-0 px-0 w-md-100 col-12 col-md-6 col-lg-4 col-ls-6 col-ls-lg-4 px-ls-4px px-md-4px">
-                {% include 'homepage/inspirations/_line.html.twig' %}
-            </li> {% set inspiration = inspirations[2] %}
-            <li class="pt-8px px-0 w-md-100 col-12 col-md-6 col-lg-4 col-ls-6 col-ls-lg-4 px-ls-4px px-md-4px">
-                {% include 'homepage/inspirations/_line.html.twig' %}
-            </li> {% set inspiration = inspirations[3] %}
-            <li class="pt-8px px-0 w-md-100 col-12 col-md-6 col-lg-8 col-ls-6 col-ls-lg-8 px-ls-4px px-md-4px">
-                {% include 'homepage/inspirations/_line.html.twig' %}
             </li>
+            {% if inspirations[1] is defined %}
+                {% set inspiration = inspirations[1] %}
+                <li class="pt-8px pt-md-0 pt-ls-0 px-0 w-md-100 col-12 col-md-6 col-lg-4 col-ls-6 col-ls-lg-4 px-ls-4px px-md-4px">
+                    {% include 'homepage/inspirations/_line.html.twig' %}
+                </li>
+            {% endif %}
+
+            {% if inspirations[2] is defined %}
+                {% set inspiration = inspirations[2] %}
+                <li class="pt-8px px-0 w-md-100 col-12 col-md-6 col-lg-4 col-ls-6 col-ls-lg-4 px-ls-4px px-md-4px">
+                    {% include 'homepage/inspirations/_line.html.twig' %}
+                </li>
+
+            {% endif %}
+
+            {% if inspirations[3] is defined %}
+                {% set inspiration = inspirations[3] %}
+                <li class="pt-8px px-0 w-md-100 col-12 col-md-6 col-lg-8 col-ls-6 col-ls-lg-8 px-ls-4px px-md-4px">
+                    {% include 'homepage/inspirations/_line.html.twig' %}
+                </li>
+            {% endif %}
+
         {% endif %}
     </ul>
     <a href="{{ urlInspiration }}"
        class="button lvl3 mt-12px align-self-ls-md-end align-self-md-end position-relative left-0 left-hover-12px">
-        {{'all.experiences'|trans}}<i class="fas fa-angle-right d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
+        {{ 'all.experiences'|trans }}<i class="fas fa-angle-right d-ls-md-inline pl-12px fs-basic d-md-inline"></i></a>
 </div>
