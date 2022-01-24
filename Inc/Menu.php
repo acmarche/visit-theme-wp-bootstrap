@@ -75,7 +75,7 @@ class Menu
                 $decouvrir = get_post(828);
                 $decouvrir->name = $decouvrir->post_title;
                 $decouvrir->url = get_permalink($decouvrir);
-                dump($decouvrir);
+                var_dump($decouvrir);
                 $menu['decouvrir'] = $decouvrir;
 
                 return $menu;
