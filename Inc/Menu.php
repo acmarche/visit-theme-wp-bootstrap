@@ -73,7 +73,7 @@ class Menu
                 );
 
                 $decouvrir = get_post(828);
-                $decouvrir->name = LocaleHelper::translate($decouvrir->post_title);
+                $decouvrir->name = $decouvrir->post_title;
                 $decouvrir->url = get_permalink($decouvrir);
                 $menu['decouvrir'] = $decouvrir;
 
