@@ -2,12 +2,12 @@
 
 namespace VisitMarche\Theme;
 
-use AcMarche\Pivot\Filtre\FiltreMetaBox;
 use VisitMarche\Theme\Inc\AdminBar;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Filter;
+use VisitMarche\Theme\Inc\FiltreMetaBox;
 use VisitMarche\Theme\Inc\QueryAlter;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Inc\SecurityConfig;
