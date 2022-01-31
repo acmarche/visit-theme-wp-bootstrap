@@ -10,7 +10,7 @@ const {
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
     const { categoryId, setFiltreSelected } = propos;
-    const [ language, setLanguage ] = propos;
+    const { language } = propos;
 
     async function loadFiltres() {
         let response;
