@@ -135,7 +135,7 @@ class ElasticData
 
         foreach ($this->wpRepository->getCategories() as $category) {
             $categoryUtils = new HadesFiltres();
-            $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
+            $filtres = $this->wpRepository->getCategoryFilters($category->cat_ID);
 
             if ([] !== $filtres) {
                 $hadesRepository = new HadesRepository();
@@ -239,7 +239,7 @@ class ElasticData
     private function getContentHades(WP_Term $category, string $language): string
     {
         $content = '';
-        $categoryUtils = new HadesFiltres();
+        $categoryUtils = new WpRepository();
         $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
 
         if ([] !== $filtres) {

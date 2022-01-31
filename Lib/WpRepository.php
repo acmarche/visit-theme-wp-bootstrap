@@ -169,4 +169,25 @@ class WpRepository
 
         return get_categories($args);
     }
+
+    public function getCategoryFilters(int $categoryId, string $language = 'fr'): array
+    {
+        $filtres = [];
+        $filtresString = get_term_meta($categoryId, 'hades_refrubrique', true);
+
+        if ($filtresString) {
+            $groupedFilters = HadesFiltres::groupedFilters();
+            $filtres = $groupedFilters[$filtresString] ?? explode(',', $filtresString);
+            $filtres = $this->translateFiltres($filtres, $language);
+        }
+        $wpRepository = new WpRepository();
+        $children = $wpRepository->getChildrenOfCategory($categoryId);
+        foreach ($children as $child) {
+            $filtres[$child->cat_ID] = $child->name;
+        }
+
+        asort($filtres);
+
+        return $filtres;
+    }
 }

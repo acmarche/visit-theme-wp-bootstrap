@@ -21,7 +21,6 @@ $title = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 
 $wpRepository = new WpRepository();
-$categoryUtils = new HadesFiltres();
 $translator = LocaleHelper::iniTranslator();
 $language = LocaleHelper::getSelectedLanguage();
 
@@ -35,7 +34,7 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$filtres = $categoryUtils->getCategoryFilters($cat_ID, $language);
+$filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
 
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);

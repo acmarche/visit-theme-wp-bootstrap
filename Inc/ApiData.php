@@ -2,7 +2,6 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
 use VisitMarche\Theme\Lib\LocaleHelper;
@@ -28,7 +27,7 @@ class ApiData
 
             return new WP_Error(500, 'missing param keyword');
         }
-        $categoryUtils = new HadesFiltres();
+        $categoryUtils = new WpRepository();
         $language = LocaleHelper::getSelectedLanguage();
         $filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
 
@@ -51,7 +50,6 @@ class ApiData
             return new WP_Error(500, 'missing param keyword');
         }
 
-        $categoryUtils = new HadesFiltres();
         $wpRepository = new WpRepository();
         $language = LocaleHelper::getSelectedLanguage();
         $postUtils = new PostUtils();
@@ -60,7 +58,7 @@ class ApiData
          * Si pas de filtre selectionne, on affiche tout
          */
         if (! $filtreSelected) {
-            $filtres = $categoryUtils->getCategoryFilters($currentCategoryId, $language);
+            $filtres = $wpRepository->getCategoryFilters($currentCategoryId, $language);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
@@ -80,7 +78,7 @@ class ApiData
         $filtreSelectedToInt = (int) $filtreSelected;
 
         if (0 !== $filtreSelectedToInt) {
-            $filtres = $categoryUtils->getCategoryFilters($filtreSelectedToInt, $language);
+            $filtres = $wpRepository->getCategoryFilters($filtreSelectedToInt, $language);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
