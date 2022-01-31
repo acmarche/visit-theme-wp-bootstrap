@@ -46,6 +46,7 @@ function Category() {
             <FiltresComposant
                 categoryId={categoryId}
                 setFiltreSelected={setFiltreSelected}
+                language={language}
             />
             <OffreResults
                 isLoading={isLoading}

@@ -10,7 +10,7 @@ const {
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
     const { categoryId, setFiltreSelected } = propos;
-    const [ language, setLanguage ] = useState( 'fr' );
+    const [ language, setLanguage ] = propos;
 
     async function loadFiltres() {
         let response;
@@ -26,7 +26,6 @@ function FiltresComposant( propos ) {
 
     useEffect( () => {
         if ( 0 < categoryId ) {
-            setLanguage( document.getElementById( 'body' ).getAttribute( 'data-current-language' ) );
             loadFiltres();
         }
     }, [ categoryId ]);
