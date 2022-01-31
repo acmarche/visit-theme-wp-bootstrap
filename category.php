@@ -33,8 +33,6 @@ if ($parent) {
     $nameBack = $parent->name;
 }
 
-$filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
-
 $posts = $wpRepository->getPostsByCatId($cat_ID);
 $category_order = get_term_meta($cat_ID, CategoryMetaBox::KEY_NAME_ORDER, true);
 if ('manual' === $category_order) {
@@ -51,6 +49,7 @@ if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
 
+$filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
 if ([] !== $filtres) {
     $hadesRepository = new HadesRepository();
     $offres = $hadesRepository->getOffres(array_keys($filtres));

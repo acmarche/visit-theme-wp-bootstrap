@@ -10,11 +10,12 @@ const {
 function FiltresComposant( propos ) {
     const [ filtres, setFiltres ] = useState([]);
     const { categoryId, setFiltreSelected } = propos;
+    const [ language, setLanguage ] = useState( 'fr' );
 
     async function loadFiltres() {
         let response;
         try {
-            response = await fetchFiltres( categoryId );
+            response = await fetchFiltres( language, categoryId );
             const filtres2 = Object.entries( response.data );
             setFiltres( filtres2 );
         } catch ( e ) {
@@ -25,6 +26,7 @@ function FiltresComposant( propos ) {
 
     useEffect( () => {
         if ( 0 < categoryId ) {
+            setLanguage( document.getElementById( 'body' ).getAttribute( 'data-current-language' ) );
             loadFiltres();
         }
     }, [ categoryId ]);

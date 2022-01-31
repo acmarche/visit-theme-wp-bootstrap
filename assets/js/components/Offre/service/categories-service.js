@@ -1,13 +1,13 @@
 import axios from '../../Axios';
 
 /**
+ * @param {string} language
  * @param {string} categoryId
  * @returns {Promise}
  */
-export function fetchFiltres( categoryId ) {
+export function fetchFiltres( language, categoryId ) {
     const params = {};
-
-    const url = `wp-json/hades/filtres/${categoryId}`;
+    const url = `${language}/wp-json/hades/filtres/${categoryId}`;
 
     return axios.get( url, {
         params
