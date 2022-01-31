@@ -2,6 +2,7 @@
 
 namespace VisitMarche\Theme\Lib;
 
+use AcMarche\Pivot\Filtre\HadesFiltres;
 use VisitMarche\Theme\Inc\Theme;
 use WP_Query;
 
@@ -176,9 +177,10 @@ class WpRepository
         $filtresString = get_term_meta($categoryId, 'hades_refrubrique', true);
 
         if ($filtresString) {
+            $hadesFilter = new HadesFiltres();
             $groupedFilters = HadesFiltres::groupedFilters();
             $filtres = $groupedFilters[$filtresString] ?? explode(',', $filtresString);
-            $filtres = $this->translateFiltres($filtres, $language);
+            $filtres = $hadesFilter->translateFiltres($filtres, $language);
         }
         $wpRepository = new WpRepository();
         $children = $wpRepository->getChildrenOfCategory($categoryId);

@@ -12,7 +12,6 @@ use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
-use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
 

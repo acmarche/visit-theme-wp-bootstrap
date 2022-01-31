@@ -2,7 +2,6 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
 use SortLink;

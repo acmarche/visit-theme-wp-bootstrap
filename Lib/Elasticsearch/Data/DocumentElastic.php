@@ -4,36 +4,19 @@ namespace VisitMarche\Theme\Lib\Elasticsearch\Data;
 
 class DocumentElastic
 {
-    /**
-     * @var string
-     */
-    public $id;
-    /**
-     * @var string
-     */
-    public $name;
-    /**
-     * @var string
-     */
-    public $excerpt;
-    /**
-     * @var string
-     */
-    public $content;
-    /**
-     * @var array
-     */
-    public $tags;
-    /**
-     * @var string
-     */
-    public $date;
-    /**
-     * @var string
-     */
-    public $url;
-    /**
-     * @var string
-     */
-    public $image;
+    public string $id;
+
+    public string $name;
+
+    public ?string $excerpt;
+
+    public string $content;
+
+    public array $tags;
+
+    public string $date;
+
+    public string $url;
+
+    public ?string  $image;
 }

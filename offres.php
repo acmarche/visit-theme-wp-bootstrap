@@ -5,13 +5,13 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
+use VisitMarche\Theme\Lib\HadesFiltresTheme;
 use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$categoryUtils = new HadesFiltres();
+$categoryUtils = new HadesFiltresTheme();
 $categoryUtils->setCounts();
 $categories = isset($_GET['notempty']) ? $categoryUtils->getFiltresNotEmpty() : $categoryUtils->filtres;
 

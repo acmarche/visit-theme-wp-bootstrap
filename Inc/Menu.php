@@ -72,7 +72,7 @@ class Menu
                     $menu
                 );
 
-                $decouvrir = get_post(828);
+                $decouvrir = get_post(Theme::PAGE_DECOUVRIR);
                 $decouvrir->name = $decouvrir->post_title;
                 $decouvrir->url = get_permalink($decouvrir);
                 $menu['decouvrir'] = $decouvrir;
