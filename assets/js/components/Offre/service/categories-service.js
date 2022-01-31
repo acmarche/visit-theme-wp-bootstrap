@@ -8,7 +8,7 @@ import axios from '../../Axios';
 export function fetchFiltres( language, categoryId ) {
     const params = {};
     const url = `${language}/wp-json/hades/filtres/${categoryId}`;
-    console.log( 'loading offres', url );
+    console.log( 'loading filters', url );
 
     return axios.get( url, {
         params
