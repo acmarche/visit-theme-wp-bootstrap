@@ -5,6 +5,7 @@
 
 namespace AcMarche\Theme;
 
+use AcMarche\Pivot\Repository\HadesRepository;
 use VisitMarche\Theme\Lib\HadesFiltresTheme;
 use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
@@ -12,8 +13,10 @@ use VisitMarche\Theme\Lib\Twig;
 get_header();
 
 $categoryUtils = new HadesFiltresTheme();
-$categoryUtils->setCounts();
-$categories = isset($_GET['notempty']) ? $categoryUtils->getFiltresNotEmpty() : $categoryUtils->filtres;
+$hadesRepository = new HadesRepository();
+//$tree = $hadesRepository->getTree();
+//$categoryUtils->setCounts($tree);
+$filters = isset($_GET['notempty']) ? $categoryUtils->getFiltresNotEmpty() : $hadesRepository->getTree();
 
 $currentUrl = Router::getCurrentUrl();
 $category = get_category_by_slug('offres');
@@ -24,7 +27,7 @@ Twig::rendPage(
     [
         'url' => '',
         'currentUrl' => $currentUrl,
-        'categories' => $categories,
+        'filters' => $filters,
         'categoryUrl' => $categoryUrl,
     ]
 );

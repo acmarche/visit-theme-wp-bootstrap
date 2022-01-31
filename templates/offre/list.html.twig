@@ -13,14 +13,7 @@
 
             <!--title-->
             <h2 class="text-white lh-100">Listing des offres</h2>
-<!--
-            <ul class="position-absolute bottom-28px right-20px xl-right-44px d-flex">
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-white shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-                <li class="px-4px"><i class="d-block w-8px h-8px bg-primary shadow-sm-2 rounded-circle"></i></li>
-            </ul>-->
+
         </div>
     </div>
 
@@ -56,35 +49,26 @@
 
                     <div for="text-dyn">
                         <a href="{{ currentUrl }}?notempty=true"><p>Ne pas afficher les catégories vides</p></a>
-                        <table class="table table-borderd">
+                        <table class="table table-bordered table-striped">
                             <tr>
-                                <th><span><strong>Nom </strong></span></th>
-                                <th><span><strong> </strong></span></th>
-                                <th><span><strong> </strong></span></th>
-                                <th><span><strong> </strong></span></th>
-                                <th><span><strong>Count </strong></span></th>
+                                <th><span><strong>Lvl1</strong></span></th>
+                                <th><span><strong>Lvl2</strong></span></th>
+                                <th><span><strong>Lvl3</strong></span></th>
+                                <th><span><strong>Lvl4</strong></span></th>
                                 <th><span><strong>Référence hades</strong></span></th>
+                                <th><span><strong>Count </strong></span></th>
                             </tr>
-                            {% for category in categories %}
-                                <tr>
-                                    <td><p>{{ category.lvl1 }}</p></td>
-                                    <td><p>{{ category.lvl2 }}</p></td>
-                                    <td><p>{{ category.lvl3 }}</p></td>
-                                    <td><p>{{ category.lvl4 }}</p></td>
-                                    <td>
-                                        {% if category.count is defined %}
-                                            <p>{{ category.count }}</p>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if category.category_id %}
-                                            <a href="{{ categoryUrl }}/?cgt={{ category.category_id }}" target="_blank">
-                                                {{ category.category_id }}
-                                            </a>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-
+                            {% for lvl1 in filters %}
+                                {% include 'offre/_line.html.twig' with {'filter':lvl1, 'level':1} %}
+                                {% for lvl2 in lvl1.children %}
+                                    {% include 'offre/_line.html.twig' with {'filter':lvl2, 'level':2} %}
+                                    {% for lvl3 in lvl2.children %}
+                                        {% include 'offre/_line.html.twig' with {'filter':lvl3, 'level':3} %}
+                                        {% for lvl4 in lvl3.children %}
+                                            {% include 'offre/_line.html.twig' with {'filter':lvl4, 'level':4} %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endfor %}
                             {% endfor %}
                         </table>
                     </div>
