@@ -72,7 +72,9 @@ class Menu
                     $menu
                 );
 
-                $decouvrir = get_post(Theme::PAGE_DECOUVRIR);
+                $idDecouvrir = apply_filters('wpml_object_id', Theme::PAGE_DECOUVRIR, 'post', true);
+
+                $decouvrir = get_post($idDecouvrir);
                 $decouvrir->name = $decouvrir->post_title;
                 $decouvrir->url = get_permalink($decouvrir);
                 $menu['decouvrir'] = $decouvrir;
