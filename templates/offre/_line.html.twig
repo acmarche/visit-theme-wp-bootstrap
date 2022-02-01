@@ -21,8 +21,15 @@
     </td>
     <td>
         {% if filter.keyword %}
+            <a href="{{ categoryUrl }}/?cgt={{ filter.keyword }}" target="_blank">
+            {{ filter.keyword }}
+            </a>
             <span>{{ filter.keyword }}</span>
         {% endif %}
     </td>
-    <td> </td>
+    <td>
+        {% if category.count is defined %}
+            <p>{{ category.count }}</p>
+        {% endif %}
+    </td>
 </tr>
