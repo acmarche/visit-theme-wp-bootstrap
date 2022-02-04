@@ -52,6 +52,14 @@ class WpRepository
     /**
      * @return array|object|\WP_Error|null
      */
+    public function getCategory(int $cat_ID)
+    {
+        return get_category($cat_ID);
+    }
+
+    /**
+     * @return array|object|\WP_Error|null
+     */
     public function getParentCategory(int $cat_ID)
     {
         $category = get_category($cat_ID);
@@ -90,7 +98,7 @@ class WpRepository
         $categories = get_the_category($postId);
         $args = [
             'category__in' => array_map(
-                fn ($category) => $category->cat_ID,
+                fn($category) => $category->cat_ID,
                 $categories
             ),
             'post__not_in' => [$postId],
@@ -174,6 +182,8 @@ class WpRepository
     public function getCategoryFilters(int $categoryId, string $language = 'fr'): array
     {
         $filtres = [];
+        $wpRepository = new WpRepository();
+        $category = $wpRepository->getCategory($categoryId);
         $filtresString = get_term_meta($categoryId, 'hades_refrubrique', true);
 
         if ($filtresString) {
@@ -182,7 +192,7 @@ class WpRepository
             $filtres = $groupedFilters[$filtresString] ?? explode(',', $filtresString);
             $filtres = $hadesFilter->translateFiltres($filtres, $language);
         }
-        $wpRepository = new WpRepository();
+        $filtres  [$category->cat_ID] = $category->name;
         $children = $wpRepository->getChildrenOfCategory($categoryId);
         foreach ($children as $child) {
             $filtres[$child->cat_ID] = $child->name;
