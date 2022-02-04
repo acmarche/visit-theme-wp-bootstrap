@@ -183,7 +183,6 @@ class WpRepository
     {
         $filtres = [];
         $wpRepository = new WpRepository();
-        $category = $wpRepository->getCategory($categoryId);
         $filtresString = get_term_meta($categoryId, 'hades_refrubrique', true);
 
         if ($filtresString) {
@@ -192,7 +191,7 @@ class WpRepository
             $filtres = $groupedFilters[$filtresString] ?? explode(',', $filtresString);
             $filtres = $hadesFilter->translateFiltres($filtres, $language);
         }
-        $filtres  [$category->cat_ID] = $category->name;
+
         $children = $wpRepository->getChildrenOfCategory($categoryId);
         foreach ($children as $child) {
             $filtres[$child->cat_ID] = $child->name;
