@@ -12,7 +12,7 @@ nav > div > a{transition:none;}
 nav > div > a:hover{background: #fd8383!important;transition:none;}
 
 .cat-filters{max-width:94%!important;}
-.cat-filters li{max-width:150px!important;text-align: center;border-bottom:1px solid white;}
+.cat-filters li{max-width:180px!important;text-align: center;border-bottom:1px solid white;}
 .cat-filters li:hover{border-bottom:1px solid black;}
 
 .decouvrir-page{display:flex;flex-direction:column;padding-top:0px!important;}
