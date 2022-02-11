@@ -21,7 +21,11 @@
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
                 {% for date in event.dates %}
-                    {{ date.date_deb }} {% if loop.last != true %} | {% endif %}
+                    {% if date.date_fin != date.date_deb %}
+                        {{ date.date_deb }} jusqu'au {{ date.date_fin }}
+                    {% else %}
+                        {{ date.date_deb }} {% if loop.last != true %} | {% endif %}
+                    {% endif %}
                 {% endfor %}
             </small>
         </div>
