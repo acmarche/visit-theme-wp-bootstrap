@@ -4,6 +4,7 @@ namespace AcMarche\Theme;
 
 use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
+use Psr\Cache\InvalidArgumentException;
 use SortLink;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -53,14 +54,19 @@ $filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
 if ([] !== $filtres) {
     $hadesRepository = new HadesRepository();
     $offres=[];
-   /* $offres = $hadesRepository->getOffres(array_keys($filtres));
-    array_map(
-        function ($offre) use ($cat_ID, $language) {
-            $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
-            $offre->titre = $offre->getTitre($language);
-        },
-        $offres
-    );*/
+    try {
+        $offres = $hadesRepository->getOffres(array_keys($filtres));
+        array_map(
+            function ($offre) use ($cat_ID, $language) {
+                $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
+                $offre->titre = $offre->getTitre($language);
+            },
+            $offres
+        );
+    } catch (InvalidArgumentException $e) {
+
+    }
+
     //fusion offres et articles
     $postUtils = new PostUtils();
     $posts = $postUtils->convertPostsToArray($posts);
