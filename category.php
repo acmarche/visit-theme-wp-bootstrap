@@ -52,14 +52,15 @@ if ($icone) {
 $filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
 if ([] !== $filtres) {
     $hadesRepository = new HadesRepository();
-    $offres = $hadesRepository->getOffres(array_keys($filtres));
+    $offres=[];
+   /* $offres = $hadesRepository->getOffres(array_keys($filtres));
     array_map(
         function ($offre) use ($cat_ID, $language) {
             $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
             $offre->titre = $offre->getTitre($language);
         },
         $offres
-    );
+    );*/
     //fusion offres et articles
     $postUtils = new PostUtils();
     $posts = $postUtils->convertPostsToArray($posts);
