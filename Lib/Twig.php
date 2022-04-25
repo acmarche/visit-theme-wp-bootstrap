@@ -2,7 +2,7 @@
 
 namespace VisitMarche\Theme\Lib;
 
-use AcMarche\Pivot\Entities\OffreInterface;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -31,7 +31,7 @@ class Twig
         $environment = new Environment(
             $loader,
             [
-                'cache' => ABSPATH.$dir,
+                'cache' => $dir,
                 'debug' => WP_DEBUG,
                 'strict_variables' => WP_DEBUG,
             ]
@@ -127,7 +127,7 @@ class Twig
     {
         return new TwigFilter(
             'translationjf',
-            function ($x, OffreInterface $offre, string $property): ?string {
+            function ($x, Offre $offre, string $property): ?string {
                 $selectedLanguage = LocaleHelper::getSelectedLanguage();
 
                 return $offre->{$property}->languages[$selectedLanguage];

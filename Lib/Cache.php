@@ -35,18 +35,9 @@ class Cache
         } else {
             self::$instanceObject =
                 new FilesystemAdapter(
-                // a string used as the subdirectory of the root cache directory, where cache
-                // items will be stored
-                    $namespace = 'newmarche2',
-
-                    // the default lifetime (in seconds) for cache items that do not define their
-                    // own lifetime, with a value 0 causing items to be stored indefinitely (i.e.
-                    // until the files are deleted)
-                    $defaultLifetime = 3600,
-
-                    // the main cache directory (the application needs read-write permissions on it)
-                    // if none is specified, a directory is created inside the system temporary directory
-                    $directory = null
+                    'newmarche2',
+                    3600,
+                    null
                 );
         }
 
