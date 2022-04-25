@@ -9,6 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
+use Twig\Extra\Intl\IntlExtension;
 use Twig\Extra\String\StringExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
@@ -45,6 +46,7 @@ class Twig
         $translator = LocaleHelper::iniTranslator();
         $environment->addExtension(new TranslationExtension($translator));
         $environment->addExtension(new StringExtension());
+        $environment->addExtension(new IntlExtension());
 
         $environment->addGlobal('template_directory', get_template_directory_uri());
         $environment->addGlobal('locale', LocaleHelper::getSelectedLanguage());
