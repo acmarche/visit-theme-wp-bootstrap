@@ -2,8 +2,9 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Entities\Categorie;
-use AcMarche\Pivot\Entities\OffreInterface;
+use AcMarche\Pivot\Entities\Category;
+use AcMarche\Pivot\Entities\Event\Event;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Lib\Router;
 
 /**
@@ -25,25 +26,35 @@ class RouterHades extends Router
         $this->addRouteOffre();
     }
 
-    public static function getUrlEventCategory(Categorie $categorie): string
+    public static function getUrlEventCategory(Category $categorie): string
     {
         return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
     }
 
-    public static function getUrlEvent(OffreInterface $offre, int $categoryId): string
+    public static function getUrlEvent(Event $offre, int $categoryId): string
     {
-        return get_category_link($categoryId).self::EVENT_URL.'/'.$offre->id;
+        return get_category_link($categoryId).self::EVENT_URL.'/'.$offre->codeCgt;
     }
 
-    public static function getUrlOffre(OffreInterface $offre, int $categoryId): string
+    public static function setRouteEvents(array $events, int $categoryId)
     {
-        return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->id;
+        array_map(
+            function ($event) use ($categoryId) {
+                $event->url = self::getUrlEvent($event, $categoryId);
+            },
+            $events
+        );
+    }
+
+    public static function getUrlOffre(Offre $offre, int $categoryId): string
+    {
+        return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->codeCgt;
     }
 
     public static function getUrlFiltre(): string
     {
         $category = get_category_by_slug('offres');
-        if (! $category) {
+        if (!$category) {
             return '/offres/?cgt=';
         }
 
@@ -82,11 +93,9 @@ class RouterHades extends Router
                 //attention si pas sous categorie
                 //https://regex101.com/r/guhLuX/1
                 //https://regex101.com/r/H8lm1w/1
-                //^[a-z][a-z]/(?:(\w+)/)([\w-]+)/manifestation/(\d+)/?$
-                // Mailer::sendError("regex",'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$' );
                 add_rewrite_rule(
                 //'^[a-z][a-z]/'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
-                    '^'.$categoryBase.'/([\w-]+)/manifestation/(\d+)/?$',
+                    '^'.$categoryBase.'/([\w-]+)/manifestation/([a-zA-Z0-9-]+)[/]?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_EVENT.'=$matches[2]',
                     'top'
                 );
@@ -104,7 +113,7 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || ! $wp_query->is_main_query()) {
+                if (is_admin() || !$wp_query->is_main_query()) {
                     return $template;
                 }
 
@@ -126,15 +135,10 @@ class RouterHades extends Router
             function () {
                 $taxonomy = get_taxonomy('category');
                 $categoryBase = $taxonomy->rewrite['slug'];
-
                 //^= depart, $ fin string, + one or more, * zero or more, ? zero or one, () capture
                 // [^/]* => veut dire tout sauf /
-                //category/sorganiser/bouger/escalade/offre/78934/
-                //category/sorganiser/savourer/offre/8040/
                 //https://regex101.com/r/pnR7x3/1
-                //moi: '^'.$categoryBase.'/((\w)+/?){1,4}(/offre/)(\d+)/?$',
                 //https://stackoverflow.com/questions/67060063/im-trying-to-capture-data-in-a-web-url-with-regex
-                //^category/(?:(\w+)/){1,3}offre/(\d+)/?$
                 add_rewrite_rule(
                     '^'.$categoryBase.'/(?:([a-zA-Z0-9_-]+)/){1,3}offre/(\d+)/?$',
                     'index.php?category_name=$matches[1]&'.self::PARAM_OFFRE.'=$matches[2]',
@@ -156,7 +160,7 @@ class RouterHades extends Router
             'template_include',
             function ($template) {
                 global $wp_query;
-                if (is_admin() || ! $wp_query->is_main_query()) {
+                if (is_admin() || !$wp_query->is_main_query()) {
                     return $template;
                 }
                 if (false === get_query_var(self::PARAM_OFFRE) ||
