@@ -5,9 +5,9 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
 use AcSort;
 use Exception;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Menu;
 use VisitMarche\Theme\Inc\RouterHades;
@@ -19,7 +19,8 @@ get_header();
 
 $language = LocaleHelper::getSelectedLanguage();
 $wpRepository = new WpRepository();
-$hadesRepository = new HadesRepository();
+
+$pivotRepository = PivotContainer::getRepository();
 
 $inspirationCat = $wpRepository->getCategoryBySlug('inspirations');
 $inspirations = [];
@@ -37,7 +38,7 @@ $categoryAgenda = get_category_by_slug('agenda');
 $urlAgenda = '/';
 
 try {
-    $events = $hadesRepository->getEvents();
+    $events = $pivotRepository->getEvents(true);
     if ($categoryAgenda) {
         $urlAgenda = get_category_link($categoryAgenda);
         array_map(
