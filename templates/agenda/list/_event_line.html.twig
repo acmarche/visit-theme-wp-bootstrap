@@ -4,28 +4,25 @@
 
         <!--date-->
         <div class="col-3">
-            {% set date = event.dates[0] %}
-            <span>{{ date.day }}</span>
-            <span>{{ date.month }}</span>
-            <span>{{ date.year }}</span>
+            {% set dateBeginEnd = event.firstDate %}
+            {% set dateBegin = dateBeginEnd.date_begin %}
+            <span>{{ dateBegin|date('d') }}</span>
+            <span>{{ dateBegin|date('m') }}</span>
+            <span>{{ dateBegin|date('Y') }}</span>
         </div>
 
         <!--other datas-->
         <div class="col-9">
 
             <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-            <h3 maxlenght="0">{{ event.titre(locale) }}</h3>
+            <h3 maxlenght="0">{{ event.adresse.localiteByLanguage }}</h3>
 
-            <small>{{ event.localisation.localite }}</small>
+            <small>{{ event.nomByLanguage(locale) }}</small>
 
             <!--TODO JF: condition si événement sur plusieurs jours/mois/années/décénnies/...-->
             <small>
                 {% for date in event.dates %}
-                    {% if date.date_fin != date.date_deb %}
-                        {{ date.date_deb }} jusqu'au {{ date.date_fin }}
-                    {% else %}
-                        {{ date.date_deb }} {% if loop.last != true %} | {% endif %}
-                    {% endif %}
+                    {{ date.date_begin|date('d-m-Y') }} {% if loop.last != true %} | {% endif %}
                 {% endfor %}
             </small>
         </div>

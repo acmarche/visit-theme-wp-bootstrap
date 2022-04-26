@@ -2,8 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
-use Psr\Cache\InvalidArgumentException;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -11,23 +10,23 @@ use VisitMarche\Theme\Lib\Twig;
 get_header();
 
 $cat_ID = get_queried_object_id();
-$category = get_category($cat_ID);
 
 $language = LocaleHelper::getSelectedLanguage();
-$hadesRepository = new HadesRepository();
+$pivotRepository = PivotContainer::getRepository();
+
 try {
-    $events = $hadesRepository->getEvents();
+    $events = $pivotRepository->getEvents(true);
     array_map(
         function ($event) use ($cat_ID, $language) {
             $event->url = RouterHades::getUrlOffre($event, $cat_ID);
-            $event->titre = $event->getTitre($language);
         },
         $events
     );
-} catch (InvalidArgumentException $e) {
+} catch (\Exception $e) {
     Twig::rendPage(
         'errors/500.html.twig',
         [
+            'title' => 'Page non chargée',
             'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
         ]
     );
