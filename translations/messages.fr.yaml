@@ -46,6 +46,7 @@ article:
   email: 'Adresse e-mail'
   phone: 'Téléphone'
   where: 'Où'
+  contact: 'Contact'
   notfound: 'Aucun article'
   sample: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident veritatis eius, nostrum eos, explicabo repudiandae laborum rerum magni, nesciunt nemo quod tenetur omnis dolorum facilis illum. Obcaecati, nobis, a...'
   address: 'Adresse'

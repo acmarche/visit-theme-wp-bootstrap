@@ -12,7 +12,7 @@
             {{ 'url.back'|trans }} {{ currentCategory.name }}
         </a>
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale) }}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.nomByLanguage(locale) }}</h2>
 
         <!--category-->
         <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
@@ -21,7 +21,7 @@
         <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
             <div class="d-flex flex-column align-items-center flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-md-0 flex-lg-nowrap px-md-0">
                 <!--img/datas-->
-                <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs overflow-hidden">
+                <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs 222overflow-hidden">
 
                     <!--img-->
                     {% include 'offre/_image.html.twig' %}
@@ -31,41 +31,47 @@
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
                             <h4 class="ff-semibold fs-short-1">{{ 'article.where'|trans }}</h4>
-                            <span class="fs-short-2 pt-8px d-block">{{ offre.localisation.postal }} {{ offre.localisation.localite }}</span>
+                            <span class="fs-short-2 pt-8px d-block">
+                                {% if offre.adresse_rue|length > 0 %}
+                                    {{ offre.adresse_rue[0].value }}<br/>
+                                {% endif %}
+                                {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage }}
+
+                            </span>
                         </div>
 
                         <!--phone-->
-                        {% if offre.telPrincipal %}
+                        {% if offre.tels|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.phone'|trans }}</h4>
-                                <a href="tel:{{ offre.telPrincipal }}"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.telPrincipal }}</a>
+                                <a href="tel:{{ offre.tels[0] }}"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.tels[0] }}</a>
                             </div>
                         {% endif %}
 
                         <!--mail-->
-                        {% if offre.emailPrincipal %}
+                        {% if offre.emails|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.email'|trans }}</h4>
-                                <a href="mailto:{{ offre.emailPrincipal }}"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.emailPrincipal }}</a>
+                                <a href="mailto:{{ offre.emails[0] }}"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.emails[0] }}</a>
                             </div>
                         {% endif %}
 
                         <!--website-->
-                        {% if offre.sitePrincipal %}
+                        {% if offre.webs|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.website'|trans }}</h4>
-                                <a href="{{ offre.sitePrincipal }}" target="_blank"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.sitePrincipal }}</a>
+                                <a href="{{ offre.webs[0] }}" target="_blank"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.webs[0] }}</a>
                             </div>
                         {% endif %}
 
                         <!--schedule-->
                         <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
-                            {% for horaire in offre.horaires %}
-                                <h4 class="ff-semibold fs-short-1">{{ horaire.lib(locale) }}</h4>
-                                <span class="fs-short-2 pt-8px d-block">{{ horaire.texte(locale) }}</span>
+                            {% for date in offre.dates %}
+                                <h4 class="ff-semibold fs-short-1">{{ date.date_begin|format_date('full') }}</h4>
+                                <span class="fs-short-2 pt-8px d-block">{{ date.date_begin|date('Y-m-d') }}</span>
                             {% endfor %}
                         </div>
 
@@ -90,8 +96,10 @@
                     </div>
                     <div for="text-dyn">
                         {% for description in offre.descriptions %}
-                            <p><strong>{{ description.lib(locale)|raw }}</strong></p>
-                            <p>{{ description.texte(locale)|raw }} </p>
+                            {% if description.urn == 'urn:fld:descmarket' %}
+                                <p>{{ description.value|raw }}</p>
+                                <br/>
+                            {% endif %}
                         {% endfor %}
                         {% include 'agenda/show/_details.html.twig' %}
                         {% include 'offre/_enfants.html.twig' %}
@@ -145,7 +153,7 @@
                                     <h5 class="text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.lib.get(locale) }}
+                                            {{ categorie.labelByLanguage(locale) }}
                                         {% endfor %}
                                     </span>
                                 </div>
@@ -190,7 +198,7 @@
                                     <h5 class="text-default text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.lib.get(locale) }}
+                                            {{ categorie.labelByLanguage(locale) }}
                                         {% endfor %}
                                     </span>
                                 </div>

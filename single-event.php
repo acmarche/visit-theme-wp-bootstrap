@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
@@ -11,27 +11,37 @@ use VisitMarche\Theme\Lib\Twig;
 get_header();
 
 $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
-$hadesRepository = new HadesRepository();
 
 $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
 $nameBack = $currentCategory->name;
 
-try {
-    $offre = $hadesRepository->getOffreWithChildrenAndParents($codeCgt);
-} catch (Exception $e) {
-    Twig::rendPage(
-        'errors/500.html.twig',
-        [
-            'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
-        ]
-    );
-    get_footer();
+$pivotRepository = PivotContainer::getRepository();
 
-    return;
+$event = null;
+
+if (!str_starts_with($codeCgt, "EVT")) {
+    $event = $pivotRepository->getEventByIdHades($codeCgt);
 }
 
-if (null === $offre) {
+if (!$event) {
+    try {
+        $event = $pivotRepository->getEvent($codeCgt);
+    } catch (Exception $e) {
+        Twig::rendPage(
+            'errors/500.html.twig',
+            [
+                'title' => $e->getMessage(),
+                'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+            ]
+        );
+        get_footer();
+
+        return;
+    }
+}
+
+if (null === $event) {
     Twig::rendPage(
         'errors/404.html.twig',
         [
@@ -46,60 +56,76 @@ if (null === $offre) {
 }
 $language = LocaleHelper::getSelectedLanguage();
 $tags = [];
-foreach ($offre->categories as $category) {
+
+$image = null;
+$images = $event->images;
+if (count($images) > 0) {
+    $image = $images[0];
+}
+$tags = [];
+foreach ($event->categories as $category) {
+    $urlCat = RouterHades::getUrlEventCategory($category);
     $tags[] = [
-        'name' => $category->getLib($language),
-        'url' => RouterHades::getUrlEventCategory($category),
+        'name' => $category->labelByLanguage($language),
+        'url' => $category->id,
     ];
 }
 
-$offres = $hadesRepository->getOffresSameCategories($offre);
+$categoryAgenda = get_category_by_slug('agenda');
+$urlAgenda = get_category_link($categoryAgenda);
+$event->url = RouterHades::getUrlEvent($event, $categoryAgenda->cat_ID);
+$offres = $pivotRepository->getSameEvents($event);
+
+RouterHades::setRouteEvents($offres, $categoryAgenda->cat_ID);
+
 $recommandations = [];
 foreach ($offres as $item) {
-    if ($offre->id === $item->id) {
+    if ($event->codeCgt === $item->codeCgt) {
         continue;
     }
     $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
     $recommandations[] = [
-        'title' => $item->getTitre($language),
+        'title' => $item->nom,
         'url' => $url,
         'image' => $item->firstImage(),
         'categories' => $item->categories,
     ];
 }
 
-$contact = $offre->contactPrincipal();
-$communication = $offre->communcationPrincipal();
-
+//$contact = $event->contactPrincipal();
+//$communication = $event->communcationPrincipal();
+$communication = $contact = '';
+/*
 array_map(
     function ($parent) use ($currentCategory) {
         $parent->url = RouterHades::getUrlOffre($parent, $currentCategory->cat_ID);
     },
-    $offre->parents
+    $event->parents
 );
 
 array_map(
     function ($enfant) use ($currentCategory) {
         $enfant->url = RouterHades::getUrlOffre($enfant, $currentCategory->cat_ID);
     },
-    $offre->enfants
+    $event->enfants
 );
-
+*/
+dump($event);
 Twig::rendPage(
     'agenda/show.html.twig',
     [
-        'title' => $offre->getTitre($language),
+        'title' => $event->nom,
         'currentCategory' => $currentCategory,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
-        'offre' => $offre,
+        'offre' => $event,
         'contact' => $contact,
         'communication' => $communication,
         'recommandations' => $recommandations,
         'tags' => $tags,
-        'images' => $offre->medias,
-        'latitude' => $offre->geocode->latitude() ?? null,
-        'longitude' => $offre->geocode->longitude() ?? null,
+        'images' => $event->images,
+        'latitude' => $event->getAdresse()->latitude ?? null,
+        'longitude' => $event->getAdresse()->longitude ?? null,
     ]
 );
 get_footer();

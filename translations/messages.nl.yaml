@@ -46,6 +46,7 @@ article:
   email: 'E-mail adres'
   phone: 'Telefoon'
   where: 'Waar'
+  contact: 'Contact'
   notfound: 'Geen artikelen'
   sample: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero provident veritatis eius, nostrum eos, explicabo repudiandae laborum rerum magni, nesciunt nemo quod tenetur omnis dolorum facilis illum. Obcaecati, nobis, a...'
   address: 'Adres'
