@@ -2,7 +2,7 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcSort;
 use Psr\Cache\InvalidArgumentException;
 use SortLink;
@@ -49,22 +49,21 @@ if ($header) {
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
-
 $filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
+
 if ([] !== $filtres) {
-    $hadesRepository = new HadesRepository();
-    $offres=[];
+    $pivotRepository = PivotContainer::getRepository();
+    $offres = [];
     try {
-        $offres = $hadesRepository->getOffres(array_keys($filtres));
+        $offres = $pivotRepository->getOffres(array_keys($filtres));
         array_map(
             function ($offre) use ($cat_ID, $language) {
                 $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
-                $offre->titre = $offre->getTitre($language);
             },
             $offres
         );
     } catch (InvalidArgumentException $e) {
-
+        dump($e->getMessage());
     }
 
     //fusion offres et articles
@@ -75,13 +74,14 @@ if ([] !== $filtres) {
 
     $filtres = RouterHades::setRoutesToFilters($filtres);
 
-    wp_enqueue_script(
-        'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
-        ['wp-element'],
-        wp_get_theme()->get('Version'),
-        true
-    );
+    //todo active react
+    /* wp_enqueue_script(
+         'react-app',
+         get_template_directory_uri().'/assets/js/build/offre.js',
+         ['wp-element'],
+         wp_get_theme()->get('Version'),
+         true
+     );*/
 
     Twig::rendPage(
         'category/index_hades.html.twig',
