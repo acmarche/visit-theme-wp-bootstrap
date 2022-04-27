@@ -3,11 +3,11 @@
     <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
 
         <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
-        <h3 maxlenght="0">{{ offre.titre }}</h3>
+        <h3 maxlenght="0">{{ offre.nom }}</h3>
 
         <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
         {% if offre.description %}
-            <p maxlenght="170">{{ offre.description | u.truncate(170, '...') }}</p>
+            <p maxlenght="170">{{ offre.description|u.truncate(170, '...')|raw }}</p>
         {% endif %}
 
         <span class="text-primary">
