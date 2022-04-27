@@ -2,7 +2,9 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Offre\Offre;
+use AcMarche\Pivot\Spec\UrnTypeList;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
@@ -16,19 +18,31 @@ $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
 $nameBack = $currentCategory->name;
 
-$hadesRepository = new HadesRepository();
-try {
-    $offre = $hadesRepository->getOffreWithChildrenAndParents($codeCgt);
-} catch (Exception $e) {
-    Twig::rendPage(
-        'errors/500.html.twig',
-        [
-            'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
-        ]
-    );
-    get_footer();
+$pivotRepository = PivotContainer::getRepository();
 
-    return;
+$offre = null;
+
+list($code, $rest) = explode("-", $codeCgt);
+
+if (!in_array($code, UrnTypeList::getAllCode())) {
+    $offre = $pivotRepository->getOffreByIdHades($codeCgt);
+}
+
+if (!$offre) {
+    try {
+        $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
+    } catch (Exception $e) {
+        Twig::rendPage(
+            'errors/500.html.twig',
+            [
+                'title' => 'Error',
+                'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+            ]
+        );
+        get_footer();
+
+        return;
+    }
 }
 
 if (null === $offre) {
@@ -51,28 +65,25 @@ $categoryOffres = get_category_by_slug('offres');
 $urlCat = get_category_link($categoryOffres);
 foreach ($offre->categories as $category) {
     $tags[] = [
-        'name' => $category->getLib($language),
+        'name' => $category->labelByLanguage($language),
         'url' => $urlCat.'?cgt='.$category->id,
     ];
 }
-
 $recommandations = [];
-$offres = $hadesRepository->getOffresSameCategories($offre);
+$offres          = $pivotRepository->getSameOffres($offre);
+
 foreach ($offres as $item) {
-    if ($offre->id === $item->id) {
-        continue;
-    }
     $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
     $recommandations[] = [
-        'title' => $item->getTitre($language),
+        'title' => $item->nomByLanguage($language),
         'url' => $url,
         'image' => $item->firstImage(),
         'categories' => $item->categories,
     ];
 }
-$contact = $offre->contactPrincipal();
-$communication = $offre->communcationPrincipal();
-
+//$contact = $offre->contactPrincipal();
+//$communication = $offre->communcationPrincipal();
+/*
 array_map(
     function ($parent) use ($currentCategory) {
         $parent->url = RouterHades::getUrlOffre($parent, $currentCategory->cat_ID);
@@ -86,22 +97,20 @@ array_map(
     },
     $offre->enfants
 );
-
+*/
 Twig::rendPage(
     'offre/show.html.twig',
     [
-        'title' => $offre->getTitre($language),
+        'title' => $offre->nomByLanguage($language),
         'offre' => $offre,
         'currentCategory' => $currentCategory,
-        'contact' => $contact,
-        'communication' => $communication,
         'tags' => $tags,
-        'images' => $offre->medias,
+        'images' => $offre->images,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
         'recommandations' => $recommandations,
-        'latitude' => $offre->geocode->latitude() ?? null,
-        'longitude' => $offre->geocode->longitude() ?? null,
+        'latitude' => $offre->getAdresse()->latitude ?? null,
+        'longitude' => $offre->getAdresse()->longitude ?? null,
     ]
 );
 get_footer();
