@@ -58,6 +58,7 @@ class Twig
         $environment->addFunction(self::currentUrl());
         $environment->addFunction(self::isExternalUrl());
         $environment->addFilter(self::rawDynamic());
+        $environment->addFilter(self::removeHtml());
 
         return $environment;
     }
@@ -202,6 +203,23 @@ class Twig
                 }
 
                 return nl2br($text);
+            },
+            [
+                'is_safe' => ['html'],
+            ]
+        );
+    }
+
+    private static function removeHtml(): TwigFilter
+    {
+        return new TwigFilter(
+            'remove_html',
+            function (?string $text): ?string {
+                if (!$text) {
+                    return $text;
+                }
+
+                return strip_tags($text);
             },
             [
                 'is_safe' => ['html'],

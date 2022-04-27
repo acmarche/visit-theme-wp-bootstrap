@@ -7,7 +7,9 @@
 
         <!--TODO JF: placer la limite de caractère pour l'ellipsis-->
         {% if offre.description %}
-            <p maxlenght="170">{{ offre.description|u.truncate(170, '...')|raw }}</p>
+            <p maxlenght="170">
+                {{ offre.description|remove_html|u.truncate(170, '...') }}
+            </p>
         {% endif %}
 
         <span class="text-primary">
