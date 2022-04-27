@@ -20,7 +20,7 @@ class Twig
     public static function LoadTwig(?string $path = null): Environment
     {
         //todo get instance
-        if (! $path) {
+        if (!$path) {
             $path = get_template_directory().'/templates';
         }
 
@@ -70,11 +70,12 @@ class Twig
                 $templatePath,
                 $variables,
             );
-        } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        } catch (LoaderError|RuntimeError|SyntaxError $e) {
             echo $twig->render(
                 'errors/500.html.twig',
                 [
-                    'message' => $e->getMessage(),
+                    'message' => $e->getMessage()." ligne ".$e->getLine()." file ".$e->getFile(),
+                    'error' => $e,
                     'title' => "La page n'a pas pu être chargée",
                     'tags' => [],
                     'relations' => [],
@@ -93,7 +94,7 @@ class Twig
                 $templatePath,
                 $variables,
             );
-        } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        } catch (LoaderError|RuntimeError|SyntaxError $e) {
             return $twig->render(
                 'errors/500.html.twig',
                 [
@@ -113,7 +114,7 @@ class Twig
     {
         return new TwigFunction(
             'currentUrl',
-            fn (): string => Router::getCurrentUrl()
+            fn(): string => Router::getCurrentUrl()
         );
     }
 
@@ -121,7 +122,7 @@ class Twig
     {
         return new TwigFilter(
             'category_link',
-            fn (int $categoryId): ?string => get_category_link($categoryId)
+            fn(int $categoryId): ?string => get_category_link($categoryId)
         );
     }
 
@@ -159,7 +160,7 @@ class Twig
             'isExternalUrl',
             function (string $url): bool {
                 if (preg_match('#http#', $url)) {
-                    return ! preg_match('#https://visitmarche.be#', $url);
+                    return !preg_match('#https://visitmarche.be#', $url);
                 }
 
                 return false;
@@ -171,7 +172,7 @@ class Twig
     {
         return new TwigFilter(
             'auto_link',
-            fn (string $text, string $type): string => match ($type) {
+            fn(string $text, string $type): string => match ($type) {
                 'url' => '<a href="'.$text.'">'.$text.'</a>',
                 'mail' => '<a href="mailto:'.$text.'">'.$text.'</a>',
                 'tel' => '<a href="tel:'.$text.'">'.$text.'</a>',
@@ -184,7 +185,7 @@ class Twig
     {
         return new TwigFilter(
             'make_clikable',
-            fn (string $text): string => make_clickable($text)
+            fn(string $text): string => make_clickable($text)
         );
     }
 
@@ -193,7 +194,7 @@ class Twig
         return new TwigFilter(
             'raw_dynamic',
             function (?string $text): ?string {
-                if (! $text) {
+                if (!$text) {
                     return $text;
                 }
                 if (HtmlUtils::isHTML($text)) {
