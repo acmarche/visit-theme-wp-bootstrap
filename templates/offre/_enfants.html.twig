@@ -1,4 +1,4 @@
-{% if offre.enfants|length > 0 or offre.parents|length > 0 %}
+{#% if offre.enfants|length > 0 or offre.parents|length > 0 %}
     <h3 class="mb-2 mt-2 text-success">En savoir plus</h3>
     <ul class="list-group">
         {% for enfant in offre.enfants %}
@@ -8,4 +8,4 @@
             <li class="list-group-item"><a href="{{ parent.url }}">{{ parent.titre(locale) }}</a></li>
         {% endfor %}
     </ul>
-{% endif %}
+{% endif %#}

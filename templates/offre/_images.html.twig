@@ -1,7 +1,7 @@
-{% for media in offre.medias %}
-    <a href="{{ media.url }}" rel="groupbottin" class="img-fluid img-thumbnail img-lightGallery">
-        <img style="max-width: 250px; max-height: 150px;margin-top: 10px;" src="{{ media.url }}"
-             alt="{{ media.titre }}"
+{% for media in offre.images %}
+    <a href="{{ media }}" rel="groupbottin" class="img-fluid img-thumbnail img-lightGallery">
+        <img style="max-width: 250px; max-height: 150px;margin-top: 10px;" src="{{ media }}"
+             alt="alt"
              class="alignLeft"/>
     </a>
 {% endfor %}

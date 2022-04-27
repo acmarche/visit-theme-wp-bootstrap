@@ -13,7 +13,7 @@
             {{ 'url.back'|trans }} {{ nameBack }}</a>
 
         <!--title-->
-        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.titre(locale) }}</h2>
+        <h2 class="text-ls-md-left pt-ls-md-8px text-md-left pt-md-8px">{{ offre.nomByLanguage(locale) }}</h2>
 
         <!--category-->
         <span class="text-primary ff-semibold pt-12px d-block fs-short-2">{{ currentCategory.name }}</span>
@@ -33,39 +33,42 @@
                         <!--address-->
                         <div class="text-default col-ls-6 px-ls-12px col-ls-md-12">
                             <h4 class="ff-semibold fs-short-1">{{ 'article.address'|trans }}</h4>
-                            {% if contact %}
+                            {% if offre.adresse_rue|length > 0 %}
                                 <span class="fs-short-2 pt-8px d-block">
-                                    {{ contact.adresse }} {{ contact.numero }} {{ contact.boite }}
-                            </span>
-                                <span class="fs-short-2 pt-8px d-block">{{ contact.postal }} {{ contact.l_nom }}</span>
+                                   {{ offre.adresse_rue[0].value }}
+                               </span>
                             {% endif %}
+                            <span class="fs-short-2 pt-8px d-block">
+                            {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage }}
+                            </span>
                         </div>
 
                         <!--phone-->
-                        {% if offre.telPrincipal %}
+                        {% if offre.tels|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 pt-ls-0 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.phone'|trans }}</h4>
-                                <a href="tel:{{ offre.telPrincipal }}"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.telPrincipal }}</a>
+                                <a href="tel:{{ offre.tels[0] }}"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.tels[0] }}</a>
                             </div>
                         {% endif %}
 
                         <!--mail-->
-                        {% if offre.emailPrincipal %}
+                        {% if offre.emails|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.email'|trans }}</h4>
-                                <a href="mailto:{{ offre.emailPrincipal }}"
+                                <a href="mailto:{{ offre.emails[0] }}"
                                    class="fs-short-2 pt-8px d-block text-default">
-                                    {{ offre.emailPrincipal }}</a>
+                                    {{ offre.emails[0] }}
+                                </a>
                             </div>
                         {% endif %}
 
                         <!--website-->
-                        {% if offre.sitePrincipal %}
+                        {% if offre.webs|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.website'|trans }}</h4>
-                                <a href="{{ offre.sitePrincipal }}" target="_blank"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.sitePrincipal }}</a>
+                                <a href="{{ offre.webs[0] }}" target="_blank"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.webs[0] }}</a>
                             </div>
                         {% endif %}
 
@@ -118,7 +121,7 @@
                     </div>
                 </div>
 
-                <!--previous/next-->
+                <!-- previous/next -->
                 {% if recommandations | length > 0 %}
                     {% set previous = random(recommandations) %}
                     {% set next = random(recommandations) %}

@@ -1,3 +1,4 @@
+{#
 {% for horaire in offre.horaires %}
     <h4 style="font-size: 1.3em;" class="ff-semibold fs-short-1">{{ horaire.lib.get(locale) }}</h4>
     <span class="fs-short-2 pt-8px d-block">{{ horaire.texte.get(locale) }}</span>
@@ -33,3 +34,4 @@
         {% endif %}
     {% endif %}
 {% endfor %}
+#}
