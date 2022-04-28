@@ -1,0 +1,15 @@
+{% for specInfo in offre.specsDetailed %}
+
+    <p><strong>{{ specInfo.specDefinition.labelByLanguage('fr') }}</strong></p>
+    <hr/>
+    <div class="text-success" style="font-size: 15px; line-height: 1rem;">
+        {{ specInfo.specData.type }} : {{ specInfo.specData.value }}
+    </div>
+    <span class="text-muted">
+    <p style="font-size: 15px; line-height: 1rem;"> {{ specInfo.specData.urn }} /</p>
+        {% if specInfo.specData.urnCat is defined %}
+            <p style="font-size: 15px; line-height: 1rem;">cat: {{ specInfo.specData.urnCat }}</p>
+        {% endif %}
+    </span>
+    <br/><br/>
+{% endfor %}

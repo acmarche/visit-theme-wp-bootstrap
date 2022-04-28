@@ -39,7 +39,7 @@
                                </span>
                             {% endif %}
                             <span class="fs-short-2 pt-8px d-block">
-                            {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage }}
+                            {{ offre.adresse.cp }} {{ offre.adresse.localiteByLanguage(locale) }}
                             </span>
                         </div>
 
@@ -67,8 +67,8 @@
                         {% if offre.webs|length > 0 %}
                             <div class="text-default pt-20px col-ls-6 px-ls-12px col-ls-md-12 pt-ls-md-20px">
                                 <h4 class="ff-semibold fs-short-1">{{ 'article.website'|trans }}</h4>
-                                <a href="{{ offre.webs[0] }}" target="_blank"
-                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.webs[0] }}</a>
+                                <a href="{{ offre.webs[0].value }}" target="_blank"
+                                   class="fs-short-2 pt-8px d-block text-default">{{ offre.webs[0].value }}</a>
                             </div>
                         {% endif %}
 
@@ -99,11 +99,15 @@
                         <span class="less">{{ 'article.readless'|trans }}</span>
                     </div>
                     <div for="text-dyn">
-                        {% for description in offre.descriptions %}
-                            <p>{{ description.texte.get(locale)|raw }} </p>
+                        {% for description in offre.descriptionsByLanguage(locale) %}
+                            <span>{{ description.value|raw }}</span>
                         {% endfor %}
-                        {% include 'offre/_details.html.twig' %}
-                        {% include 'offre/_enfants.html.twig' %}
+                        {% include 'offre/specifications/_communications.html.twig' %}
+                        <br/><br/>
+                        {% include 'offre/specifications/_equipements.html.twig' %}
+                        <br/><br/>
+                        {% include 'offre/specifications/_accueils.html.twig' %}
+                        <br/><br/>
                         {% include 'offre/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>
@@ -157,7 +161,7 @@
                                     <h5 class="text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.lib.get(locale) }}
+                                            {{ categorie.labelByLanguage(locale) }}
                                         {% endfor %}
                                     </span>
                                 </div>
@@ -202,7 +206,7 @@
                                     <h5 class="text-default text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.lib.get(locale) }}
+                                            {{ categorie.labelByLanguage(locale) }}
                                         {% endfor %}
                                     </span>
                                 </div>

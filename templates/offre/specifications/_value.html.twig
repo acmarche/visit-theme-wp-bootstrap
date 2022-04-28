@@ -1,0 +1,27 @@
+<div class="text-success" style="font-size: 15px; line-height: 1rem;">
+    {% if specInfo.specData.type in ['string','TextRawML'] %}
+        {{ specInfo.specData.value }}
+    {% endif %}
+    {% if specInfo.specData.type == 'Phone' %}
+        <a href="tel:{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
+    {% endif %}
+    {% if specInfo.specData.type in ['URL','URLBooking','URLTripadvisor'] %}
+        <a href="{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
+    {% endif %}
+    {% if specInfo.specData.type == 'EMail' %}
+        <a href="mailto:{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
+    {% endif %}
+    {% if specInfo.specData.type == 'Boolean' %}
+        {% if specInfo.specData.value == 'true' %}
+            Oui
+        {% else %}
+            Non
+        {% endif %}
+    {% endif %}
+    {% if specInfo.specData.type == 'TextML' %}
+        {{ specInfo.specData.value|raw }}
+    {% endif %}
+    {% if specInfo.specData.type == 'UInt' %}
+        {{ specInfo.specData.value }}
+    {% endif %}
+</div>

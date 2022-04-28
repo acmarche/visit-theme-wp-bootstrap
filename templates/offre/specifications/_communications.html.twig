@@ -1,0 +1,11 @@
+<h4 class="text-success" style="font-size: 1rem;">{{ 'Communications'|trans }}</h4>
+<hr>
+{% for specInfo in offre.specsDetailed %}
+    {% if specInfo.specData.urnCat is defined %}
+        {% if specInfo.specData.urnCat == "urn:cat:moycom" %}
+            <p><strong>{{ specInfo.specDefinition.labelByLanguage('fr') }}</strong></p>
+           {% include 'offre/specifications/_value.html.twig'%}
+            <br/><br/>
+        {% endif %}
+    {% endif %}
+{% endfor %}
