@@ -1,4 +1,4 @@
-<div class="text-success" style="font-size: 15px; line-height: 1rem;">
+<span class="text-success" style="font-size: 15px; line-height: 1rem;">
     {% if specInfo.specData.type in ['string','TextRawML'] %}
         {{ specInfo.specData.value }}
     {% endif %}
@@ -24,4 +24,4 @@
     {% if specInfo.specData.type == 'UInt' %}
         {{ specInfo.specData.value }}
     {% endif %}
-</div>
+</span>

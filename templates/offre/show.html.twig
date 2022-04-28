@@ -22,7 +22,7 @@
         <div class="pt-48px d-lg-flex mx-n15px ml-lg-0">
             <div class="d-flex flex-column align-items-center flex-md-wrap flex-md-row align-items-md-start flex-lg-column col-lg-8 mx-md-0 flex-lg-nowrap px-md-0">
                 <!--img/datas-->
-                <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs overflow-hidden">
+                <div class="bg-img w-100 h-auto position-relative h-lg-368px d-flex rounded-xs over44flow-hidden">
 
                     <!--img-->
                     {% include 'offre/_image.html.twig' %}
@@ -103,11 +103,11 @@
                             <span>{{ description.value|raw }}</span>
                         {% endfor %}
                         {% include 'offre/specifications/_communications.html.twig' %}
-                        <br/><br/>
+                        <p></p>
                         {% include 'offre/specifications/_equipements.html.twig' %}
-                        <br/><br/>
+                        <p></p>
                         {% include 'offre/specifications/_accueils.html.twig' %}
-                        <br/><br/>
+                        <p></p>
                         {% include 'offre/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>
@@ -161,7 +161,7 @@
                                     <h5 class="text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.labelByLanguage(locale) }}
+                                            {{ categorie }}
                                         {% endfor %}
                                     </span>
                                 </div>
@@ -206,7 +206,7 @@
                                     <h5 class="text-default text-hover-primary">{{ recommandation.title }}</h5>
                                     <span class="text-primary">
                                         {% for categorie in recommandation.categories %}
-                                            {{ categorie.labelByLanguage(locale) }}
+                                            {{ categorie }}
                                         {% endfor %}
                                     </span>
                                 </div>

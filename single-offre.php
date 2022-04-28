@@ -70,34 +70,19 @@ foreach ($offre->categories as $category) {
     ];
 }
 $recommandations = [];
-$offres          = $pivotRepository->getSameOffres($offre);
+$offres = $pivotRepository->getSameOffres($offre);
 
 foreach ($offres as $item) {
     $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
+    $tags2 = [$item->typeOffre->labelByLanguage($language)];
+
     $recommandations[] = [
         'title' => $item->nomByLanguage($language),
         'url' => $url,
         'image' => $item->firstImage(),
-        'categories' => $item->categories,
+        'categories' => $tags2,
     ];
 }
-//$contact = $offre->contactPrincipal();
-//$communication = $offre->communcationPrincipal();
-/*
-array_map(
-    function ($parent) use ($currentCategory) {
-        $parent->url = RouterHades::getUrlOffre($parent, $currentCategory->cat_ID);
-    },
-    $offre->parents
-);
-
-array_map(
-    function ($enfant) use ($currentCategory) {
-        $enfant->url = RouterHades::getUrlOffre($enfant, $currentCategory->cat_ID);
-    },
-    $offre->enfants
-);
-*/
 Twig::rendPage(
     'offre/show.html.twig',
     [
