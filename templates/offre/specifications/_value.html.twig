@@ -18,7 +18,7 @@
         {% set value = '<a href="tel:'~specInfo.specData.value~'">'~specInfo.specData.value~'</a>' %}
     {% endif %}
 
-    {% if specInfo.specData.type in ['URL','URLBooking','URLTripadvisor'] %}
+    {% if specInfo.specData.type in ['URL','URLBooking','URLTripadvisor','URLFacebook'] %}
         {% set value = '<a href="'~specInfo.specData.value~'">'~specInfo.specData.value~'</a>' %}
     {% endif %}
 
@@ -44,7 +44,7 @@
 
 {% if value != '' %}
     <span style="line-height: 1.5rem; font-weight: bold; margin-right: 0.8rem;">
-       {{ specInfo.specDefinition.labelByLanguage('fr') }}:
+       {{ specInfo.urnDefinition.labelByLanguage('fr') }}:
     <span class="text-success" style="font-size: 15px; line-height: 1rem;">
     {{ value|raw }}
 </span>

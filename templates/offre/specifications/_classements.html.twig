@@ -1,0 +1,8 @@
+<h4 class="text-success" style="font-size: 1rem;">{{ 'Classements'|trans }}</h4>
+<hr>
+{% for classementInfo in offre.classements %}
+    <p>
+        {{ classementInfo.urnDefinition.labelByLanguage('fr') }} :
+        {{ classementInfo.specData.value }}
+    </p>
+{% endfor %}

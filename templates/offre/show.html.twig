@@ -100,10 +100,16 @@
                     </div>
                     <div for="text-dyn" class="mt-2">
                         {% for description in offre.descriptionsByLanguage(locale) %}
-                            <span>{{ description.value|raw }}</span>
+                            <span style="line-height: 1.4rem;">
+                                {{ description.value|raw }}
+                            </span>
                         {% endfor %}
 
-                        {#% include 'offre/specifications/_specifications.html.twig' %#}
+                        {% if offre.homepage %}
+                            <p>{{ offre.homepage }}</p>
+                        {% endif %}
+                        {% include 'offre/specifications/_classements.html.twig' %}
+                        {% include 'offre/specifications/_specifications.html.twig' %}
                         {% include 'offre/specifications/_communications.html.twig' %}
                         <p></p>
                         {% include 'offre/specifications/_equipements.html.twig' %}
