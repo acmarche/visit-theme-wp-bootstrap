@@ -1,27 +1,54 @@
-<span class="text-success" style="font-size: 15px; line-height: 1rem;">
-    {% if specInfo.specData.type in ['string','TextRawML'] %}
-        {{ specInfo.specData.value }}
-    {% endif %}
-    {% if specInfo.specData.type == 'Phone' %}
-        <a href="tel:{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
-    {% endif %}
-    {% if specInfo.specData.type in ['URL','URLBooking','URLTripadvisor'] %}
-        <a href="{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
-    {% endif %}
-    {% if specInfo.specData.type == 'EMail' %}
-        <a href="mailto:{{ specInfo.specData.value }}">{{ specInfo.specData.value }}</a>
-    {% endif %}
-    {% if specInfo.specData.type == 'Boolean' %}
-        {% if specInfo.specData.value == 'true' %}
-            Oui
-        {% else %}
-            Non
+{% set value = '' %}
+
+{% if specInfo.specData.type in ['string'] %}
+    {% set value = specInfo.specData.value %}
+{% endif %}
+
+    {% if specInfo.specData.type in ['TextRawML','StringML'] %}
+        {% set keysearch = locale~':urn' %}
+        {% if locale == 'fr' %}
+            {% set keysearch = 'urn' %}
+        {% endif %}
+        {% if specInfo.specData.urn|u.startsWith(keysearch) %}
+            {% set value = specInfo.specData.value %}
         {% endif %}
     {% endif %}
+
+    {% if specInfo.specData.type == 'Phone' %}
+        {% set value = '<a href="tel:'~specInfo.specData.value~'">'~specInfo.specData.value~'</a>' %}
+    {% endif %}
+
+    {% if specInfo.specData.type in ['URL','URLBooking','URLTripadvisor'] %}
+        {% set value = '<a href="'~specInfo.specData.value~'">'~specInfo.specData.value~'</a>' %}
+    {% endif %}
+
+    {% if specInfo.specData.type == 'EMail' %}
+        {% set value = '<a href="mailto:'~specInfo.specData.value~'">'~specInfo.specData.value~'</a>' %}
+    {% endif %}
+
+    {% if specInfo.specData.type == 'Boolean' %}
+        {% if specInfo.specData.value == 'true' %}
+            {% set value = 'Oui' %}
+        {% else %}
+            {% set value = 'Non' %}
+        {% endif %}
+    {% endif %}
+
     {% if specInfo.specData.type == 'TextML' %}
-        {{ specInfo.specData.value|raw }}
+        {% set value = specInfo.specData.value|raw %}
     {% endif %}
+
     {% if specInfo.specData.type == 'UInt' %}
-        {{ specInfo.specData.value }}
+        {% set value = specInfo.specData.value %}
     {% endif %}
+
+{% if value != '' %}
+    <span style="line-height: 1.5rem; font-weight: bold; margin-right: 0.8rem;">
+       {{ specInfo.specDefinition.labelByLanguage('fr') }}:
+    <span class="text-success" style="font-size: 15px; line-height: 1rem;">
+    {{ value|raw }}
 </span>
+    </span>
+    <br/>
+    <span class="mb-2"></span>
+{% endif %}

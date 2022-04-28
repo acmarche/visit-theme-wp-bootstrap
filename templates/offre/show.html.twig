@@ -86,7 +86,7 @@
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
+                            <li><a href="{{ tag }}" class="rounded-xs">{{ tag }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -98,10 +98,12 @@
                         <span class="more">{{ 'article.readmore'|trans }}</span>
                         <span class="less">{{ 'article.readless'|trans }}</span>
                     </div>
-                    <div for="text-dyn">
+                    <div for="text-dyn" class="mt-2">
                         {% for description in offre.descriptionsByLanguage(locale) %}
                             <span>{{ description.value|raw }}</span>
                         {% endfor %}
+
+                        {#% include 'offre/specifications/_specifications.html.twig' %#}
                         {% include 'offre/specifications/_communications.html.twig' %}
                         <p></p>
                         {% include 'offre/specifications/_equipements.html.twig' %}
@@ -189,7 +191,7 @@
                 <div class="overflow-hidden w-100 pt-24px">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
+                            <li><a href="{{ tag }}" class="rounded-xs">{{ tag }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

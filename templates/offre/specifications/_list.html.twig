@@ -1,12 +1,9 @@
 {% for specInfo in offre.specsDetailed %}
     {% if specInfo.specData.urnCat is defined %}
         {% if specInfo.specData.urnCat == urnkeyword %}
-            <span style="line-height: 1.5rem; font-weight: bold; margin-right: 0.8rem;">
-                {{ specInfo.specDefinition.labelByLanguage('fr') }}:
-            </span>
-            {% include 'offre/specifications/_value.html.twig' %}
-            <br/>
-            <span class="mb-2"></span>
+            {% if specInfo.specData.value %}
+                {% include 'offre/specifications/_value.html.twig' %}
+            {% endif %}
         {% endif %}
     {% endif %}
 {% endfor %}
