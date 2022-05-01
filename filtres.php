@@ -10,7 +10,7 @@ use VisitMarche\Theme\Lib\HadesFiltresListing;
 use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
 
-get_header();
+get_header('tailwind');
 
 $pivotRepository = PivotContainer::getFiltreRepository();
 $filters = $pivotRepository->findWithChildren();
@@ -23,6 +23,7 @@ if (isset($_GET['notempty'])) {
 
 $currentUrl = Router::getCurrentUrl();
 $category = get_category_by_slug('offres');
+dump($category);
 $categoryUrl = get_category_link($category);
 
 Twig::rendPage(

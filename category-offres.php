@@ -2,30 +2,27 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$filtresString = $_GET['cgt'] ?? '';
+$filtres = $_GET['cgt'] ?? '';
 $category = get_category_by_slug('show');
-$hadesRepository = new HadesRepository();
 
-$filtres = explode(',', $filtresString);
-$offres = $hadesRepository->getOffres($filtres);
-
+$pivotRepository = PivotContainer::getRepository();
 $language = LocaleHelper::getSelectedLanguage();
-$categoryUtils = new HadesFiltres();
-$filtres = $categoryUtils->translateFiltres($filtres, $language);
+
+$offres = $pivotRepository->getOffres([$filtres]);
+//$categoryUtils = new HadesFiltres();
+//$filtres = $categoryUtils->translateFiltres($filtres, $language);
 $cat_ID = $category->cat_ID;
 
 array_map(
     function ($offre) use ($cat_ID, $language) {
         $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
-        $offre->titre = $offre->getTitre($language);
     },
     $offres
 );
