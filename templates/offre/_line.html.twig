@@ -1,37 +1,26 @@
-{% if filter.display is not defined %}
+<tr>
+    <td>
+        <span>{{ root.nom }}</span>
+    </td>
+    <td></td>
+    <td>
+        <a href="{{ categoryUrl }}/?cgt={{ root.reference }}" target="_pivot">
+            {{ root.reference }}
+        </a>
+    </td>
+    <td></td>
+</tr>
+{% for child in root.children %}
     <tr>
+        <td></td>
         <td>
-            {% if level == 1 %}
-                <span>{{ filter.name_original }}</span>
-            {% endif %}
+            <span>{{ child.nom }}</span>
         </td>
         <td>
-            {% if level == 2 %}
-                <span>{{ filter.name_original }}</span>
-            {% endif %}
+            <a href="{{ categoryUrl }}/?cgt={{ child.reference }}" target="_pivot">
+                {{ child.reference }}
+            </a>
         </td>
-        <td>
-            {% if level == 3 %}
-                <span>{{ filter.name_original }}</span>
-            {% endif %}
-        </td>
-        <td>
-            {% if level == 4 %}
-                <span>{{ filter.name_original }}</span>
-            {% endif %}
-        </td>
-        <td>
-            {% if filter.keyword %}
-                <a href="{{ categoryUrl }}/?cgt={{ filter.keyword }}" target="_blank">
-                    {{ filter.keyword }}
-                </a>
-                <span>{{ filter.keyword }}</span>
-            {% endif %}
-        </td>
-        <td>
-            {% if filter.count is defined %}
-                <p>{{ filter.count }}</p>
-            {% endif %}
-        </td>
+        <td></td>
     </tr>
-{% endif %}
+{% endfor %}

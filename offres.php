@@ -5,17 +5,18 @@
 
 namespace AcMarche\Theme;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Lib\HadesFiltresListing;
 use VisitMarche\Theme\Lib\Router;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
+$pivotRepository = PivotContainer::getFiltreRepository();
+$filters = $pivotRepository->findWithChildren();
+
 $categoryUtils = new HadesFiltresListing();
-$hadesRepository = new HadesRepository();
-$filters = $hadesRepository->getTree();
-$categoryUtils->setCounts($filters);
+//$categoryUtils->setCounts($filters);
 if (isset($_GET['notempty'])) {
     $categoryUtils->getFiltresNotEmpty($filters);
 }
