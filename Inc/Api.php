@@ -6,28 +6,27 @@ use WP_Error;
 
 /**
  * Enregistrement des routes pour les api pour les composants react
- * Class Api.
  */
 class Api
 {
     public function __construct()
     {
-        if (! is_admin()) {
-            $this->registerHades();
+        if (!is_admin()) {
+            $this->registerPivot();
         }
     }
 
-    public function registerHades(): void
+    public function registerPivot(): void
     {
         add_action(
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'hades',
+                    'pivot',
                     'filtres/(?P<categoryId>.*+)',
                     [
                         'methods' => 'GET',
-                        'callback' => fn ($args) => ApiData::hadesFiltres($args),
+                        'callback' => fn($args) => ApiData::pivotFiltres($args),
                     ]
                 );
             }
@@ -37,12 +36,27 @@ class Api
             'rest_api_init',
             function () {
                 register_rest_route(
-                    'hades',
+                    'pivot',
+                    'allfiltres/(?P<parent>[\w]+)',
+                    [
+                        'methods' => 'GET',
+                        'callback' => fn($args) => ApiData::pivotAllFiltres($args),
+                    ]
+                );
+            }
+        );
+
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'pivot',
                     'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w-]*)',
                     [
                         'methods' => 'GET',
-                        'callback' => fn ($args) => ApiData::hadesOffres($args),
-                    ]
+                        'callback' => fn($args) => ApiData::hadesOffres($args),
+                    ],
+                    true
                 );
             }
         );
@@ -55,8 +69,9 @@ class Api
                     'all',
                     [
                         'methods' => 'GET',
-                        'callback' => fn () => ApiData::getAll(),
-                    ]
+                        'callback' => fn() => ApiData::getAll(),
+                    ],
+                    true
                 );
             }
         );
@@ -78,7 +93,7 @@ class Api
 
                 // No authentication has been performed yet.
                 // Return an error if user is not logged in.
-                if (! is_user_logged_in()) {
+                if (!is_user_logged_in()) {
                     return new WP_Error(
                         'rest_not_logged_in',
                         __('You are not currently logged in.'),

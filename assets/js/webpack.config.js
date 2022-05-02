@@ -7,6 +7,9 @@ module.exports = {
     entry: {
         offre: [
             `${path.resolve( __dirname, 'src' )}/offre.js`
+        ],
+        filtre: [
+            `${path.resolve( __dirname, 'src' )}/filtre.js`
         ]
     },
     externals: {

@@ -27,28 +27,32 @@ class FiltreMetaBox
 
     public static function hades_metabox_edit($tag): void
     {
-        $pivotRepository = PivotContainer::getRepository();
+        wp_enqueue_script(
+            'react-app',
+            get_template_directory_uri().'/assets/js/build/filtre.js',
+            ['wp-element'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+        $pivotRepository = PivotContainer::getFiltreRepository();
         $term_id = $tag->term_id;
-        $types = $pivotRepository->getTypesOffre();
+        $types = $pivotRepository->findWithChildren();
         $hades_refrubrique = get_term_meta($term_id, self::PIVOT_REFRUBRIQUE, true);
+        if (!is_array($hades_refrubrique)) {
+            $hades_refrubrique = [];
+        }
         ?>
+
         <table class="form-table">
             <tr class="form-field">
                 <th scope="row" valign="top">
                     <label for="bottin_refrubrique">Référence pivot</label>
                 </th>
                 <td>
-                        <select name="<?php echo self::PIVOT_REFRUBRIQUE ?>[]" multiple style="height: 250px;" id="bottin_refrubrique">
-                            <option value="0">Choisissez une ou plusieurs</option>
-                            <?php foreach ($types as $key => $type) { ?>
-                                <option value="<?php echo $key ?>"
-                                    <?php if (in_array($key, $hades_refrubrique)) {
-                                        echo "selected";
-                                    } ?>>
-                                    <?php echo $type ?>
-                                </option>
-                            <?php } ?>
-                        </select>
+                    <div id="filtres-box" data-category-id="<?php echo $term_id ?>">
+
+                    </div>
                     <p class="description">Indiquer les références hades, séparées par une virgule</p>
                     <p class="description"><a href="/index-des-offres" target="_blank">Liste des références</a></p>
                 </td>

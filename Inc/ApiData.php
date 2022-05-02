@@ -2,7 +2,7 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Mailer;
@@ -19,10 +19,43 @@ use WP_REST_Response;
  */
 class ApiData
 {
+    public static function pivotAllFiltres(WP_REST_Request $request)
+    {
+        $parent = (int)$request->get_param('parent');
+        $pivotRepository = PivotContainer::getFiltreRepository();
+        $filtres = $pivotRepository->findByParent($parent);
+
+        return rest_ensure_response($filtres);
+    }
+
+    public static function pivotFiltres(WP_REST_Request $request)
+    {
+        $categoryId = $request->get_param('categoryId');
+        if (!$categoryId) {
+            Mailer::sendError('error cat id filtres', 'missing param keyword');
+
+            return new WP_Error(500, 'missing param keyword');
+        }
+        $categoryUtils = new WpRepository();
+        $language = LocaleHelper::getSelectedLanguage();
+        //$filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
+
+        $pivotRepository = PivotContainer::getFiltreRepository();
+        $types = $pivotRepository->findWithChildren();
+
+        /**
+         * Ajout de "Tout".
+         */
+        $translator = LocaleHelper::iniTranslator();
+        $filtres[0] = $translator->trans('filter.all');
+
+        return rest_ensure_response($filtres);
+    }
+
     public static function hadesFiltres(WP_REST_Request $request)
     {
         $categoryId = $request->get_param('categoryId');
-        if (! $categoryId) {
+        if (!$categoryId) {
             Mailer::sendError('error cat id filtres', 'missing param keyword');
 
             return new WP_Error(500, 'missing param keyword');
@@ -42,8 +75,9 @@ class ApiData
 
     public static function hadesOffres(WP_REST_Request $request)
     {
+        $data = [];
         $filtreSelected = $request->get_param('filtre'); //element selected
-        $currentCategoryId = (int) $request->get_param('category'); //current category
+        $currentCategoryId = (int)$request->get_param('category'); //current category
         if (0 === $currentCategoryId) {
             Mailer::sendError('error hades offre', 'missing param keyword');
 
@@ -57,7 +91,7 @@ class ApiData
         /*
          * Si pas de filtre selectionne, on affiche tout
          */
-        if (! $filtreSelected) {
+        if (!$filtreSelected) {
             $filtres = $wpRepository->getCategoryFilters($currentCategoryId, $language);
             $offres = [];
             if ([] !== $filtres) {
@@ -75,7 +109,7 @@ class ApiData
          * si filtre selectionne est int donc c'est une cat wp
          * je vais chercher les filtres hades sur celui ci.
          */
-        $filtreSelectedToInt = (int) $filtreSelected;
+        $filtreSelectedToInt = (int)$filtreSelected;
 
         if (0 !== $filtreSelectedToInt) {
             $filtres = $wpRepository->getCategoryFilters($filtreSelectedToInt, $language);
@@ -113,7 +147,7 @@ class ApiData
 
     private static function getOffres(array $filtres, int $currentCategoryId, string $language): array
     {
-        $hadesRepository = new HadesRepository();
+        $hadesRepository = PivotContainer::getRepository();
         $postUtils = new PostUtils();
         $filtres = array_keys($filtres);
         $offres = $hadesRepository->getOffres($filtres);
