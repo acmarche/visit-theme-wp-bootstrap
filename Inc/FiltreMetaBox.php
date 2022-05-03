@@ -47,14 +47,16 @@ class FiltreMetaBox
         <table class="form-table">
             <tr class="form-field">
                 <th scope="row" valign="top">
-                    <label for="bottin_refrubrique">Référence pivot</label>
+                    <label for="bottin_refrubrique">Références pivot</label>
                 </th>
                 <td>
                     <div id="filtres-box" data-category-id="<?php echo $term_id ?>">
 
                     </div>
-                    <p class="description">Indiquer les références hades, séparées par une virgule</p>
-                    <p class="description"><a href="/index-des-offres" target="_blank">Liste des références</a></p>
+                    <br/>
+                    <p class="description">
+                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">Liste des offres</a>
+                    </p>
                 </td>
             </tr>
         </table>
