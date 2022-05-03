@@ -19,7 +19,7 @@ use WP_REST_Response;
  */
 class ApiData
 {
-    public static function pivotAllFiltres(WP_REST_Request $request)
+    public static function pivotFiltresByParent(WP_REST_Request $request)
     {
         $parent = (int)$request->get_param('parent');
         $pivotRepository = PivotContainer::getFiltreRepository();
@@ -28,26 +28,33 @@ class ApiData
         return rest_ensure_response($filtres);
     }
 
-    public static function pivotFiltres(WP_REST_Request $request)
+    public static function pivotFiltresByCategory(WP_REST_Request $request)
     {
-        $categoryId = $request->get_param('categoryId');
-        if (!$categoryId) {
-            Mailer::sendError('error cat id filtres', 'missing param keyword');
+        $categoryId = (int)$request->get_param('categoryId');
+        if ($categoryId < 1) {
+            Mailer::sendError('error cat id filtres', 'missing param categoryId');
 
-            return new WP_Error(500, 'missing param keyword');
+            return new WP_Error(500, 'missing param categoryId');
         }
-        $categoryUtils = new WpRepository();
-        $language = LocaleHelper::getSelectedLanguage();
-        //$filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
+
+        $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        if (!is_array($categoryFiltres)) {
+            return rest_ensure_response([]);
+        }
 
         $pivotRepository = PivotContainer::getFiltreRepository();
-        $types = $pivotRepository->findWithChildren();
+        $filtres = $pivotRepository->findByReferences($categoryFiltres);
 
-        /**
-         * Ajout de "Tout".
-         */
-        $translator = LocaleHelper::iniTranslator();
-        $filtres[0] = $translator->trans('filter.all');
+        /*  $categoryUtils = new WpRepository();
+          $language = LocaleHelper::getSelectedLanguage();
+          //$filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
+          $pivotRepository = PivotContainer::getFiltreRepository();
+          $types = $pivotRepository->findWithChildren();
+          /**
+           * Ajout de "Tout".
+           *
+          $translator = LocaleHelper::iniTranslator();
+          $filtres[0] = $translator->trans('filter.all');*/
 
         return rest_ensure_response($filtres);
     }

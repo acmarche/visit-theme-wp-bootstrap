@@ -1,6 +1,4 @@
-import { fetchFiltresByCategory } from './service/filtre-service';
-import { RootSelect } from './RootSelect';
-import { ChildSelect } from './ChildSelect';
+import { fetchFiltresByCategory, deleteFiltreRequest } from './service/filtre-service';
 
 const {
     useState,
@@ -8,7 +6,44 @@ const {
 } = wp.element;
 
 export function List( propos ) {
-    const { filtres, setFiltres } = propos;
+    const { categoryId } = propos;
+    const [ filtres, setFiltres ] = useState([]);
+
+    async function fetchFiltresCategory( category ) {
+        let response;
+        try {
+            response = await fetchFiltresByCategory( '', category );
+            setFiltres( response.data );
+        } catch ( e ) {
+            console.log( e );
+        }
+        return null;
+    }
+
+    async function deleteFiltresCategory( category, reference ) {
+        let response;
+        try {
+            response = await deleteFiltreRequest( category, reference );
+            console.log( response );
+            response = await fetchFiltresByCategory( '', category );
+            setFiltres( response.data );
+        } catch ( e ) {
+            console.log( e );
+        }
+        return null;
+    }
+
+    useEffect( () => {
+        if ( 0 < categoryId ) {
+            fetchFiltresCategory( categoryId );
+        }
+    }, [ categoryId ]);
+
+    const handleClick = ( reference, e ) => {
+        e.preventDefault();
+        deleteFiltresCategory( categoryId, reference );
+    };
+
     return (
         <>
             <table className="wp-list-table widefat fixed striped table-view-list toplevel_page_pivot_list">
@@ -19,10 +54,20 @@ export function List( propos ) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className={'booktitle column-booktitle has-row-actions column-primary'}>Xxx</td>
-                        <td>Delete icon</td>
-                    </tr>
+                    {filtres.map( ( filtre ) => (
+                        <>
+                            <tr>
+                                <td className={'booktitle column-booktitle has-row-actions column-primary'}>{filtre.nom}</td>
+                                <td>
+                                    <button
+                                        type={'button'}
+                                        onClick={( e ) => handleClick( filtre.reference, e )}>
+                                        {filtre.reference}
+                                    </button>
+                                </td>
+                            </tr>
+                        </>
+                    ) )}
                 </tbody>
             </table>
         </>

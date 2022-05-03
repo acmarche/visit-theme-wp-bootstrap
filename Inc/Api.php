@@ -23,10 +23,10 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'filtres/(?P<categoryId>.*+)',
+                    'filtres_category/(?P<categoryId>[\w]+)',
                     [
                         'methods' => 'GET',
-                        'callback' => fn($args) => ApiData::pivotFiltres($args),
+                        'callback' => fn($args) => ApiData::pivotFiltresByCategory($args),
                     ]
                 );
             }
@@ -37,10 +37,10 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'allfiltres/(?P<parent>[\w]+)',
+                    'filtres_parent/(?P<parent>[\w]+)',
                     [
                         'methods' => 'GET',
-                        'callback' => fn($args) => ApiData::pivotAllFiltres($args),
+                        'callback' => fn($args) => ApiData::pivotFiltresByParent($args),
                     ]
                 );
             }

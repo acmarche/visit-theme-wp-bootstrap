@@ -7,7 +7,7 @@ import axios from '../../Axios';
  */
 export function fetchFiltresByCategory( language, categoryId ) {
     const params = {};
-    const url = `${language}/wp-json/pivot/filtres/${categoryId}`;
+    const url = `${language}/wp-json/pivot/filtres_category/${categoryId}`;
     return axios.get( url, {
         params
     });
@@ -19,8 +19,22 @@ export function fetchFiltresByCategory( language, categoryId ) {
  */
 export function fetchFiltresByParent( parentId ) {
     const params = {};
-    const url = `wp-json/pivot/allfiltres/${parentId}`;
+    const url = `wp-json/pivot/filtres_parent/${parentId}`;
     return axios.get( url, {
         params
     });
+}
+
+/**
+ * @param {int} categoryId
+ * @param {int} reference
+ * @returns {Promise}
+ */
+export function deleteFiltreRequest( categoryId, reference ) {
+    const url = 'wp-admin/admin-ajax.php';
+    const formData = new FormData();
+    formData.append( 'action', 'my_action' );
+    formData.append( 'categoryId', categoryId );
+    formData.append( 'reference', reference );
+    return axios.post( url, formData );
 }

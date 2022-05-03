@@ -1,4 +1,3 @@
-import { fetchFiltresByCategory } from './service/filtre-service';
 import { RootSelect } from './RootSelect';
 import { ChildSelect } from './ChildSelect';
 import { List } from './List';
@@ -12,30 +11,11 @@ function Category() {
     const [ language, setLanguage ] = useState( '' );
     const [ categoryId, setCategoryId ] = useState( 0 );
     const [ parentId, setParentId ] = useState( 0 );
-    const [ filtres, setFiltres ] = useState([]);
-
-    async function loadFiltresCategory() {
-        let response;
-        try {
-            response = await fetchFiltresByCategory( language, categoryId );
-            console.log( response.data );
-            setFiltres( response.data );
-        } catch ( e ) {
-            console.log( e );
-        }
-        return null;
-    }
 
     useEffect( () => {
         const name = 'filtres-box';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
     }, []);
-
-    useEffect( () => {
-        if ( 0 < categoryId ) {
-            loadFiltresCategory();
-        }
-    }, [ categoryId ]);
 
     useEffect( () => {
     }, [ parentId ]);
@@ -48,7 +28,11 @@ function Category() {
 
     return (
         <>
-            <List filtres={filtres}/>
+            <List
+                categoryId={categoryId}
+            />
+            <h3>Ajouter</h3>
+            <hr/>
             <div style={divStyle}>
                 <div>
                     <RootSelect

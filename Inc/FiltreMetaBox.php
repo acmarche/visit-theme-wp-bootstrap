@@ -36,26 +36,27 @@ class FiltreMetaBox
         );
 
         $pivotRepository = PivotContainer::getFiltreRepository();
-        $term_id = $tag->term_id;
-        $types = $pivotRepository->findWithChildren();
-        $hades_refrubrique = get_term_meta($term_id, self::PIVOT_REFRUBRIQUE, true);
-        if (!is_array($hades_refrubrique)) {
-            $hades_refrubrique = [];
+        $categoryId = $tag->term_id;
+        $categoryFiltres = get_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, true);
+        if (!is_array($categoryFiltres)) {
+            $categoryFiltres = [];
         }
+     //   update_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, [1, 3, 9]);
+        $filtres = $pivotRepository->findByReferences($categoryFiltres);
         ?>
-
         <table class="form-table">
             <tr class="form-field">
                 <th scope="row" valign="top">
                     <label for="bottin_refrubrique">Références pivot</label>
                 </th>
                 <td>
-                    <div id="filtres-box" data-category-id="<?php echo $term_id ?>">
+                    <div id="filtres-box" data-category-id="<?php echo $categoryId ?>">
 
                     </div>
                     <br/>
                     <p class="description">
-                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">Liste des offres</a>
+                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">Liste des
+                            offres</a>
                     </p>
                 </td>
             </tr>
@@ -65,12 +66,12 @@ class FiltreMetaBox
 
     public static function save_hades_metadata($categoryId): void
     {
-        $meta_key = self::PIVOT_REFRUBRIQUE;
-        if (isset($_POST[$meta_key]) && [] !== $_POST[$meta_key]) {
-            $filtres = $_POST[$meta_key];
-            update_term_meta($categoryId, $meta_key, $filtres);
-        } else {
-            delete_term_meta($categoryId, $meta_key);
-        }
+        /*  $meta_key = self::PIVOT_REFRUBRIQUE;
+          if (isset($_POST[$meta_key]) && [] !== $_POST[$meta_key]) {
+              $filtres = $_POST[$meta_key];
+              update_term_meta($categoryId, $meta_key, $filtres);
+          } else {
+              delete_term_meta($categoryId, $meta_key);
+          }*/
     }
 }

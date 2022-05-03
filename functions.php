@@ -4,6 +4,7 @@ namespace VisitMarche\Theme;
 
 use VisitMarche\Theme\Inc\AdminBar;
 use VisitMarche\Theme\Inc\AdminPage;
+use VisitMarche\Theme\Inc\Ajax;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
@@ -73,3 +74,7 @@ new AdminBar();
  * Admin pages
  */
 new AdminPage();
+/*
+ * Ajax for admin
+ */
+new Ajax();
