@@ -11,43 +11,45 @@ class CategoryMetaBox
 
     public function __construct()
     {
-        add_action(
-            'category_edit_form_fields',
-            fn ($tag) => $this::visit_metabox_cat($tag),
-            10,
-            1
-        );
-        add_action(
-            'edited_category',
-            fn ($term_id) => $this::save_metadata($term_id),
-            10,
-            1
-        );
-        register_term_meta('category', self::KEY_NAME_COLOR, [
-            'show_in_rest' => true,
-        ]);
-        register_term_meta('category', self::KEY_NAME_ICONE, [
-            'show_in_rest' => true,
-        ]);
-        register_term_meta('category', self::KEY_NAME_HEADER, [
-            'show_in_rest' => true,
-        ]);
-        add_filter(
-            'rest_prepare_category',
-            function ($response, $item, $request) {
-                $header = get_term_meta($item->term_id, self::KEY_NAME_HEADER, true);
-                $icone = get_term_meta($item->term_id, self::KEY_NAME_ICONE, true);
-                $bgcat = get_term_meta($item->term_id, self::KEY_NAME_COLOR, true);
+        if (get_current_user_id() == 11111) {
+            add_action(
+                'category_edit_form_fields',
+                fn($tag) => $this::visit_metabox_cat($tag),
+                10,
+                1
+            );
+            add_action(
+                'edited_category',
+                fn($term_id) => $this::save_metadata($term_id),
+                10,
+                1
+            );
+            register_term_meta('category', self::KEY_NAME_COLOR, [
+                'show_in_rest' => true,
+            ]);
+            register_term_meta('category', self::KEY_NAME_ICONE, [
+                'show_in_rest' => true,
+            ]);
+            register_term_meta('category', self::KEY_NAME_HEADER, [
+                'show_in_rest' => true,
+            ]);
+            add_filter(
+                'rest_prepare_category',
+                function ($response, $item, $request) {
+                    $header = get_term_meta($item->term_id, self::KEY_NAME_HEADER, true);
+                    $icone = get_term_meta($item->term_id, self::KEY_NAME_ICONE, true);
+                    $bgcat = get_term_meta($item->term_id, self::KEY_NAME_COLOR, true);
 
-                $response->data['bgcat'] = $bgcat ?: null;
-                $response->data['icone'] = $icone ?: null;
-                $response->data['header'] = $header ?: null;
+                    $response->data['bgcat'] = $bgcat ?: null;
+                    $response->data['icone'] = $icone ?: null;
+                    $response->data['header'] = $header ?: null;
 
-                return $response;
-            },
-            10,
-            3
-        );
+                    return $response;
+                },
+                10,
+                3
+            );
+        }
     }
 
     public static function visit_metabox_cat($tag): void
