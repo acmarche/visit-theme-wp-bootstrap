@@ -1,0 +1,7 @@
+<div class="wrap">
+    <h2>Les offres pour {{ filtre.nom }}</h2>
+
+    {% for offre in offres %}
+        {{ offre.nom }}<br/>
+    {% endfor %}
+</div>

@@ -50,7 +50,7 @@ export function List( propos ) {
                 <thead>
                     <tr>
                         <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Nom</th>
-                        <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Action</th>
+                        <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>

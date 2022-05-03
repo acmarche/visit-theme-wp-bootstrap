@@ -4,7 +4,7 @@
     </td>
     <td></td>
     <td>
-        <a href="{{ categoryUrl }}/?cgt={{ root.reference }}" target="_pivot">
+        <a href="{{ urlAdmin }}{{ root.reference }}" target="_pivot">
             {{ root.reference }}
         </a>
     </td>
@@ -17,7 +17,7 @@
             <span>{{ child.nom }}</span>
         </td>
         <td>
-            <a href="{{ categoryUrl }}?cgt={{ child.reference }}" target="_pivot">
+            <a href="{{ urlAdmin }}{{ child.reference }}" target="_pivot">
                 {{ child.reference }}
             </a>
         </td>

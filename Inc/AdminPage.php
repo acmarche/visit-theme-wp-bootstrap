@@ -4,8 +4,8 @@ namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Lib\HadesFiltresListing;
-use VisitMarche\Theme\Lib\Pivot_List_Table;
-use VisitMarche\Theme\Lib\Router;
+use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\PivotOffresTable;
 use VisitMarche\Theme\Lib\Twig;
 
 class AdminPage
@@ -33,16 +33,25 @@ class AdminPage
             'pivot_filtre_menu',
             fn($args) => $this::filtresRender(),
         );
+        add_submenu_page(
+            'pivot_menu',
+            'pivot_offres',
+            'Offres',
+            'manage_options',
+            'pivot_offre_menu',
+            fn($args) => $this::offresRender(),
+        );
     }
 
     function homepageRender()
     {
-        $myListTable = new Pivot_List_Table();
-        echo '<div class="wrap">
-<h2>My List Table Test</h2>';
-        $myListTable->prepare_items();
-        $myListTable->display();
-        echo '</div>';
+        Twig::rendPage(
+            'admin/home.html.twig',
+            [
+
+            ]
+        );
+
     }
 
     function filtresRender()
@@ -55,19 +64,59 @@ class AdminPage
             $categoryUtils->getFiltresNotEmpty($filters);
         }
 
-        $currentUrl = Router::getCurrentUrl();
         $category = get_category_by_slug('offres');
         $categoryUrl = get_category_link($category);
+        $urlAdmin = admin_url('admin.php?page=pivot_offre_menu&filtreId=');
 
         Twig::rendPage(
-            'offre/list.html.twig',
+            'admin/filtres_list.html.twig',
             [
-                'url' => '',
-                'currentUrl' => $currentUrl,
                 'filters' => $filters,
+                'urlAdmin' => $urlAdmin,
                 'categoryUrl' => $categoryUrl,
             ]
         );
+    }
+
+    function offresRender()
+    {
+        $filtreId = (int)$_GET['filtreId'] ?? 0;
+        if ($filtreId < 1) {
+            Twig::rendPage(
+                'admin/error.html.twig',
+                [
+                    'message' => 'Choisissez un filtre dans le menu',
+                ]
+            );
+
+            return;
+        }
+        $language = LocaleHelper::getSelectedLanguage();
+        $filtreRepository = PivotContainer::getFiltreRepository();
+        $filtres = $filtreRepository->findByReferences([$filtreId]);
+        if (count($filtres) == 0) {
+            Twig::rendPage(
+                'admin/error.html.twig',
+                [
+                    'message' => 'Le filtre n\'a pas été trouvé dans la base de donnée',
+                ]
+            );
+
+            return;
+        }
+        $pivotRepository = PivotContainer::getRepository();
+        $offres = $pivotRepository->getOffres([$filtreId]);
+        $pivotOffresTable = new PivotOffresTable();
+        $pivotOffresTable->data = $offres;
+        $pivotOffresTable->categoryId = 14;
+        ?>
+        <div class="wrap">
+            <h2>Les offres pour <?php echo $filtres[0]->nom; ?></h2>
+            <?php $pivotOffresTable->prepare_items();
+            $pivotOffresTable->display();
+            ?>
+        </div>
+        <?php
     }
 
     /**
@@ -76,7 +125,7 @@ class AdminPage
      */
     function testTable()
     {
-        $myListTable = new Pivot_List_Table();
+        $myListTable = new PivotOffresTable();
         echo '<div class="wrap"><h2>My List Table Test</h2>';
         $myListTable->prepare_items();
         $myListTable->display();

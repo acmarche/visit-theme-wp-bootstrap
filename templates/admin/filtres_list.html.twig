@@ -1,6 +1,6 @@
 <!--CONTENT-->
-<div class="wrap"><h2>Les filtres</h2>
-    <a href="{{ currentUrl }}?notempty=true"><p>Ne pas afficher les catégories vides</p></a>
+<div class="wrap">
+    <h2>Les filtres</h2>
     <table class="wp-list-table widefat fixed striped table-view-list toplevel_page_pivot_list">
         <tr>
             <th scope="col" id="booktitle" class="manage-column column-booktitle column-primary">
@@ -17,7 +17,7 @@
             </th>
         </tr>
         {% for root in filters %}
-            {% include 'offre/_line.html.twig' %}
+            {% include 'admin/_offre_line.html.twig' %}
         {% endfor %}
     </table>
 </div>
