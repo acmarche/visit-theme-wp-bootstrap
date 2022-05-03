@@ -1,4 +1,7 @@
-import { fetchFiltresByCategory, fetchFiltresByParent } from './service/filtre-service';
+import { fetchFiltresByCategory } from './service/filtre-service';
+import { RootSelect } from './RootSelect';
+import { ChildSelect } from './ChildSelect';
+import { List } from './List';
 
 const {
     useState,
@@ -8,29 +11,15 @@ const {
 function Category() {
     const [ language, setLanguage ] = useState( '' );
     const [ categoryId, setCategoryId ] = useState( 0 );
-    const [ rootSelectedId, setRootSelectedId ] = useState( 0 );
-    const [ roots, setRoots ] = useState([]);
+    const [ parentId, setParentId ] = useState( 0 );
+    const [ filtres, setFiltres ] = useState([]);
 
-    async function loadFiltres() {
+    async function loadFiltresCategory() {
         let response;
         try {
             response = await fetchFiltresByCategory( language, categoryId );
-            const filtres2 = Object.entries( response.data );
-
-            //  console.log( filtres2 );
-        } catch ( e ) {
-            console.log( e );
-        }
-        return null;
-    }
-
-    async function loadRootFiltres( parent ) {
-        let response;
-        try {
-            response = await fetchFiltresByParent( parent );
-            setRoots( response.data );
-
-            //console.log( filtres2 );
+            console.log( response.data );
+            setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
         }
@@ -40,32 +29,38 @@ function Category() {
     useEffect( () => {
         const name = 'filtres-box';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
-        loadRootFiltres( 0 );
     }, []);
 
     useEffect( () => {
-        loadRootFiltres( rootSelectedId );
-    }, [ rootSelectedId ]);
-
-    useEffect( () => {
         if ( 0 < categoryId ) {
-            loadFiltres();
+            loadFiltresCategory();
         }
     }, [ categoryId ]);
 
-    const handleChange = ( e ) => {
-        setRootSelectedId({ selectedValue: e.target.value });
+    useEffect( () => {
+    }, [ parentId ]);
+
+    const divStyle = {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridGap: '10px'
     };
 
     return (
         <>
-            <select onChange={handleChange}>
-                <option value={0}>Sélectionnez une catégorie</option>
-                {roots.map( ( option ) => (
-                    <option value={option.reference}>{option.nom}</option>
-                ) )}
-            </select>
-            <h1>You chose </h1>
+            <List filtres={filtres}/>
+            <div style={divStyle}>
+                <div>
+                    <RootSelect
+                        parentId={parentId}
+                        setParentId={setParentId}/>
+                </div>
+                <div>
+                    <ChildSelect
+                        parentId={parentId}
+                    />
+                </div>
+            </div>
         </>
     );
 }
