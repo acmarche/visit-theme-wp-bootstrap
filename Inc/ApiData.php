@@ -37,13 +37,7 @@ class ApiData
             return new WP_Error(500, 'missing param categoryId');
         }
 
-        $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
-        if (!is_array($categoryFiltres)) {
-            return rest_ensure_response([]);
-        }
-
-        $pivotRepository = PivotContainer::getFiltreRepository();
-        $filtres = $pivotRepository->findByReferences($categoryFiltres);
+        $filtres = WpRepository::getCategoryFilters($categoryId);
 
         /*  $categoryUtils = new WpRepository();
           $language = LocaleHelper::getSelectedLanguage();
