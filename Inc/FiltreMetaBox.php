@@ -2,8 +2,6 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\DependencyInjection\PivotContainer;
-
 class FiltreMetaBox
 {
     public const PIVOT_REFRUBRIQUE = 'pivot_refrubrique';
@@ -24,7 +22,7 @@ class FiltreMetaBox
         );
     }
 
-    public static function hades_metabox_edit($tag): void
+    public static function hades_metabox_edit(\WP_Term $term): void
     {
         wp_enqueue_script(
             'react-app',
@@ -33,13 +31,6 @@ class FiltreMetaBox
             wp_get_theme()->get('Version'),
             true
         );
-
-        $categoryId = $tag->term_id;
-        $categoryFiltres = get_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, true);
-        if (!is_array($categoryFiltres)) {
-            $categoryFiltres = [];
-        }
-        //  update_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, [1, 3, 9]);
         ?>
         <table class="form-table">
             <tr class="form-field">
@@ -48,11 +39,11 @@ class FiltreMetaBox
                 </th>
                 <td>
                     <p class="description">
-                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">Liste des
-                            offres</a>
+                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">
+                            Liste des filtres</a>
                     </p>
                     <br/>
-                    <div id="filtres-box" data-category-id="<?php echo $categoryId ?>">
+                    <div id="filtres-box" data-category-id="<?php echo $term->term_id ?>">
 
                     </div>
                 </td>
