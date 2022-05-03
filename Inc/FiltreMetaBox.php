@@ -22,7 +22,6 @@ class FiltreMetaBox
             10,
             1
         );
-
     }
 
     public static function hades_metabox_edit($tag): void
@@ -35,14 +34,12 @@ class FiltreMetaBox
             true
         );
 
-        $pivotRepository = PivotContainer::getFiltreRepository();
         $categoryId = $tag->term_id;
         $categoryFiltres = get_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, true);
         if (!is_array($categoryFiltres)) {
             $categoryFiltres = [];
         }
-     //   update_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, [1, 3, 9]);
-        $filtres = $pivotRepository->findByReferences($categoryFiltres);
+        //  update_term_meta($categoryId, self::PIVOT_REFRUBRIQUE, [1, 3, 9]);
         ?>
         <table class="form-table">
             <tr class="form-field">
@@ -50,14 +47,14 @@ class FiltreMetaBox
                     <label for="bottin_refrubrique">Références pivot</label>
                 </th>
                 <td>
-                    <div id="filtres-box" data-category-id="<?php echo $categoryId ?>">
-
-                    </div>
-                    <br/>
                     <p class="description">
                         <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">Liste des
                             offres</a>
                     </p>
+                    <br/>
+                    <div id="filtres-box" data-category-id="<?php echo $categoryId ?>">
+
+                    </div>
                 </td>
             </tr>
         </table>

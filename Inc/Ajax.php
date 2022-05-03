@@ -6,13 +6,15 @@ class Ajax
 {
     public function __construct()
     {
-        add_action('wp_ajax_my_action', fn() => $this::actionDeleteFiltre());
+        add_action('wp_ajax_action_delete_filtre', fn() => $this::actionDeleteFiltre());
+        add_action('wp_ajax_action_add_filtre', fn() => $this::actionAddFiltre());
     }
 
     function actionDeleteFiltre()
     {
-        $categoryId = intval($_POST['categoryId']);
-        $reference = intval($_POST['reference']);
+        $categoryId = (int)$_POST['categoryId'];
+        $reference = (int)$_POST['reference'];
+        $categoryFiltres = [];
         if ($categoryId && $reference) {
             $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
             if (is_array($categoryFiltres)) {
@@ -20,44 +22,32 @@ class Ajax
                 if ($key) {
                     unset($categoryFiltres[$key]);
                     update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
-                    echo json_encode($categoryFiltres);
                 }
             }
         }
+        echo json_encode($categoryFiltres);
         wp_die();
     }
 
-    function my_action_javascript()
-    { ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                var data = {
-                    'action': 'my_action',
-                    'whatever': 1234
-                };
-                // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
-                jQuery.post(ajaxurl, data, function (response) {
-                    console.log(response);
-                    alert('Got this from the server: ' + response);
-                });
-            });
-        </script> <?php
-    }
-
-    function capitaine_load_comments()
+    function actionAddFiltre()
     {
-        $post_id = $_POST['post_id'];
-
-        $comments = get_comments(array(
-            'post_id' => $post_id,
-            'status' => 'approve',
-        ));
-
-        wp_list_comments(array(
-            'per_page' => -1,
-            'avatar_size' => 76,
-        ), $comments);
-
+        $categoryFiltres = [];
+        $categoryId = (int)$_POST['categoryId'];
+        $parentId = (int)$_POST['parentId'];
+        $childId = (int)$_POST['childId'];
+        if ($categoryId && ($parentId || $childId)) {
+            $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+            if (!is_array($categoryFiltres)) {
+                $categoryFiltres = [];
+            }
+            if ($childId) {
+                $categoryFiltres[] = $childId;
+            } else {
+                $categoryFiltres[] = $parentId;
+            }
+            update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+        }
+        echo json_encode($categoryFiltres);
         wp_die();
     }
 }

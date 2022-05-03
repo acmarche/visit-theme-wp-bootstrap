@@ -1,4 +1,4 @@
-import { fetchFiltresByParent } from './service/filtre-service';
+import { fetchFiltresByParentRequest } from './service/filtre-service';
 
 const {
     useState,
@@ -7,12 +7,13 @@ const {
 
 export function ChildSelect( propos ) {
     const { parentId } = propos;
+    const { setChildId } = propos;
     const [ childs, setChilds ] = useState([]);
 
     async function loadRootFiltres( parent ) {
         let response;
         try {
-            response = await fetchFiltresByParent( parent );
+            response = await fetchFiltresByParentRequest( parent );
             setChilds( response.data );
         } catch ( e ) {
             console.log( e );
@@ -25,7 +26,8 @@ export function ChildSelect( propos ) {
     }, [ parentId ]);
 
     const handleChange = ( e ) => {
-
+        e.preventDefault();
+        setChildId( e.target.value );
     };
 
     return (

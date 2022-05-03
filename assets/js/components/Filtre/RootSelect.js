@@ -1,4 +1,4 @@
-import { fetchFiltresByParent } from './service/filtre-service';
+import { fetchFiltresByParentRequest } from './service/filtre-service';
 
 const {
     useState,
@@ -13,7 +13,7 @@ export function RootSelect( propos ) {
     async function loadRootFiltres( parent ) {
         let response;
         try {
-            response = await fetchFiltresByParent( parent );
+            response = await fetchFiltresByParentRequest( parent );
             setRoots( response.data );
         } catch ( e ) {
             console.log( e );
@@ -26,7 +26,7 @@ export function RootSelect( propos ) {
     }, [ ]);
 
     const handleChange = ( e ) => {
-        console.log( e.target.value );
+        e.preventDefault();
         setParentId( e.target.value );
     };
 

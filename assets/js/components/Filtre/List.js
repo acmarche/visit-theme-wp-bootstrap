@@ -1,4 +1,4 @@
-import { fetchFiltresByCategory, deleteFiltreRequest } from './service/filtre-service';
+import { fetchFiltresByCategoryRequest, deleteFiltreRequest } from './service/filtre-service';
 
 const {
     useState,
@@ -7,12 +7,12 @@ const {
 
 export function List( propos ) {
     const { categoryId } = propos;
-    const [ filtres, setFiltres ] = useState([]);
+    const { filtres, setFiltres } = propos;
 
-    async function fetchFiltresCategory( category ) {
+    async function fetchFiltresByCategory( category ) {
         let response;
         try {
-            response = await fetchFiltresByCategory( '', category );
+            response = await fetchFiltresByCategoryRequest( '', category );
             setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
@@ -25,7 +25,7 @@ export function List( propos ) {
         try {
             response = await deleteFiltreRequest( category, reference );
             console.log( response );
-            response = await fetchFiltresByCategory( '', category );
+            response = await fetchFiltresByCategoryRequest( '', category );
             setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
@@ -35,7 +35,7 @@ export function List( propos ) {
 
     useEffect( () => {
         if ( 0 < categoryId ) {
-            fetchFiltresCategory( categoryId );
+            fetchFiltresByCategory( categoryId );
         }
     }, [ categoryId ]);
 
@@ -60,9 +60,10 @@ export function List( propos ) {
                                 <td className={'booktitle column-booktitle has-row-actions column-primary'}>{filtre.nom}</td>
                                 <td>
                                     <button
+                                        className={'button button-danger'}
                                         type={'button'}
                                         onClick={( e ) => handleClick( filtre.reference, e )}>
-                                        {filtre.reference}
+                                        <span className="dashicons dashicons-trash"></span>
                                     </button>
                                 </td>
                             </tr>
