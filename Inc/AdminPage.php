@@ -118,18 +118,4 @@ class AdminPage
         </div>
         <?php
     }
-
-    /**
-     * Pour aller chercher le css
-     * @return void
-     */
-    function testTable()
-    {
-        $myListTable = new PivotOffresTable();
-        echo '<div class="wrap"><h2>My List Table Test</h2>';
-        $myListTable->prepare_items();
-        $myListTable->display();
-        echo '</div>';
-    }
-
 }
