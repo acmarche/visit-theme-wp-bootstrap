@@ -3,6 +3,7 @@
 namespace VisitMarche\Theme;
 
 use VisitMarche\Theme\Inc\AdminBar;
+use VisitMarche\Theme\Inc\AdminPage;
 use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
@@ -68,3 +69,7 @@ new CategoryMetaBox();
  * Admin bar edit
  */
 new AdminBar();
+/*
+ * Admin pages
+ */
+new AdminPage();
