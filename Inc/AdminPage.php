@@ -83,8 +83,8 @@ class AdminPage
 
     function offresRender()
     {
-        $filtreId = (int)$_GET['filtreId'] ?? 0;
-        if ($filtreId < 1) {
+        $filtre = $_GET['filtreId'] ?? null;
+        if (!$filtre) {
             Twig::rendPage(
                 'admin/error.html.twig',
                 [
@@ -96,7 +96,7 @@ class AdminPage
         }
         $language = LocaleHelper::getSelectedLanguage();
         $filtreRepository = PivotContainer::getFiltreRepository();
-        $filtres = $filtreRepository->findByReferences([$filtreId]);
+        $filtres = $filtreRepository->findByReferencesOrUrns([$filtre]);
         if (count($filtres) == 0) {
             Twig::rendPage(
                 'admin/error.html.twig',
@@ -108,7 +108,7 @@ class AdminPage
             return;
         }
         $pivotRepository = PivotContainer::getRepository();
-        $offres = $pivotRepository->getOffres([$filtreId]);
+        $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
         $pivotOffresTable->categoryId = 14;

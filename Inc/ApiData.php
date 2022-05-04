@@ -146,12 +146,14 @@ class ApiData
         return rest_ensure_response($data);
     }
 
-    private static function getOffres(array $filtres, int $currentCategoryId, string $language): array
+    private static function getOffres(array $filtresParams, int $currentCategoryId, string $language): array
     {
-        $hadesRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getRepository();
+        $filtreRepository = PivotContainer::getFiltreRepository();
         $postUtils = new PostUtils();
-        $filtres = array_keys($filtres);
-        $offres = $hadesRepository->getOffres($filtres);
+
+        $filtres = $filtreRepository->findByReferencesOrUrns($filtresParams);
+        $offres = $pivotRepository->getOffres($filtres);
 
         return $postUtils->convertOffres($offres, $currentCategoryId, $language);
     }
