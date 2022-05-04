@@ -5,8 +5,10 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\PivotCategoriesTable;
 use VisitMarche\Theme\Lib\PivotOffresTable;
 use VisitMarche\Theme\Lib\Twig;
+use VisitMarche\Theme\Lib\WpRepository;
 
 class AdminPage
 {
@@ -22,7 +24,7 @@ class AdminPage
             'Pivot',
             'activate_plugins',
             'pivot_home',
-            fn($args) => $this::homepageRender(),
+            fn() => $this::homepageRender(),
             '/AcMarche/Pivot/public/Icone_Pivot_Small.png'
         );
         add_submenu_page(
@@ -31,7 +33,7 @@ class AdminPage
             'Filtres',
             'manage_options',
             'pivot_filtres',
-            fn($args) => $this::filtresRender(),
+            fn() => $this::filtresRender(),
         );
         add_submenu_page(
             'pivot_home',
@@ -39,7 +41,7 @@ class AdminPage
             'Liste des offres',
             'manage_options',
             'pivot_offres',
-            fn($args) => $this::offresRender(),
+            fn() => $this::offresRender(),
         );
         add_submenu_page(
             'pivot_home',
@@ -47,11 +49,19 @@ class AdminPage
             'Détail d\'une Offre',
             'manage_options',
             'pivot_offre',
-            fn($args) => $this::offreRender(),
+            fn() => $this::offreRender(),
+        );
+        add_submenu_page(
+            'pivot_home',
+            'Catégories avec filtres',
+            'Catégories avec filtres',
+            'manage_options',
+            'pivot_categories_filtre',
+            fn() => $this::categoriesFiltresRender(),
         );
     }
 
-    function homepageRender()
+    private static function homepageRender()
     {
         Twig::rendPage(
             'admin/home.html.twig',
@@ -62,7 +72,7 @@ class AdminPage
 
     }
 
-    function filtresRender()
+    private static function filtresRender()
     {
         $pivotRepository = PivotContainer::getFiltreRepository();
         $filters = $pivotRepository->findWithChildren();
@@ -81,7 +91,7 @@ class AdminPage
         );
     }
 
-    function offresRender()
+    private static function offresRender()
     {
         $filtre = $_GET['filtreId'] ?? null;
         if (!$filtre) {
@@ -122,7 +132,7 @@ class AdminPage
         <?php
     }
 
-    function offreRender()
+    private static function offreRender()
     {
         $codeCgt = $_GET['codeCgt'] ?? null;
         if (!$codeCgt) {
@@ -153,5 +163,32 @@ class AdminPage
                 'offre' => $offre,
             ]
         );
+    }
+
+    private static function categoriesFiltresRender()
+    {
+        $categories = [];
+        $wpRepository = new WpRepository();
+        foreach ($wpRepository->getCategoriesFromWp() as $category) {
+            $filtres = $wpRepository->getCategoryFilters($category->term_id);
+            if (count($filtres) > 0) {
+                $categories[] = $category;
+            } else {
+                $categoryFiltres = get_term_meta($category->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);
+                if ($categoryFiltres != '') {
+                    $categories[] = $category;
+                }
+            }
+        }
+        $pivotOffresTable = new PivotCategoriesTable();
+        $pivotOffresTable->data = $categories;
+        ?>
+        <div class="wrap">
+            <h2>Les catégories avec des filtres</h2>
+            <?php $pivotOffresTable->prepare_items();
+            $pivotOffresTable->display();
+            ?>
+        </div>
+        <?php
     }
 }

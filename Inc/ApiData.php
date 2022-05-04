@@ -78,7 +78,7 @@ class ApiData
          * Si pas de filtre selectionne, on affiche tout
          */
         if (!$filtreSelected) {
-            $filtres = $wpRepository->getCategoryFilters($currentCategoryId, $language);
+            $filtres = $wpRepository->getCategoryFilters($currentCategoryId);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);
@@ -98,7 +98,7 @@ class ApiData
         $filtreSelectedToInt = (int)$filtreSelected;
 
         if (0 !== $filtreSelectedToInt) {
-            $filtres = $wpRepository->getCategoryFilters($filtreSelectedToInt, $language);
+            $filtres = $wpRepository->getCategoryFilters($filtreSelectedToInt);
             $offres = [];
             if ([] !== $filtres) {
                 $offres = self::getOffres($filtres, $currentCategoryId, $language);

@@ -188,7 +188,7 @@ class WpRepository
      * @param string $language
      * @return Filtre[]
      */
-    public static function getCategoryFilters(int $categoryId, string $language = 'fr'): array
+    public static function getCategoryFilters(int $categoryId): array
     {
         $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
         if (!is_array($categoryFiltres)) {
