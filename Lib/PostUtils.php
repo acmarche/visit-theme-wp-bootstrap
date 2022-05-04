@@ -2,6 +2,7 @@
 
 namespace VisitMarche\Theme\Lib;
 
+use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Inc\RouterHades;
 use WP_Post;
 
@@ -21,7 +22,7 @@ class PostUtils
     public function convertPostsToArray(array $posts): array
     {
         return array_map(
-            fn ($post) => $this->postToArray($post),
+            fn($post) => $this->postToArray($post),
             $posts
         );
     }
@@ -30,7 +31,7 @@ class PostUtils
     {
         $tags = $this->wpRepository->getTags($post->ID);
         $tags = array_map(
-            fn ($category) => $category['name'],
+            fn($category) => $category['name'],
             $tags
         );
 
@@ -55,25 +56,32 @@ class PostUtils
         return null;
     }
 
+    /**
+     * @param Offre[] $offres
+     * @param int $categoryId
+     * @param string $language
+     * @return array
+     */
     public function convertOffres(array $offres, int $categoryId, string $language): array
     {
         array_map(
             function ($offre) use ($categoryId, $language) {
                 $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
-                $offre->titre = $offre->getTitre($language);
+                $offre->nom = $offre->nomByLanguage($language);
                 $description = null;
                 if ((is_countable($offre->descriptions) ? \count($offre->descriptions) : 0) > 0) {
-                    $description = $offre->descriptions[0]->getTexte($language);
+                    $tmp = $offre->descriptionsByLanguage($language);
+                    if (count($tmp) == 0) {
+                        $tmp = $offre->descriptions;
+                    }
+                    $description = $tmp[0]->value;
                 }
                 $offre->description = $description;
-                $tags = [];
-                foreach ($offre->categories as $category) {
-                    $tags[] = $category->getLib($language);
-                }
+                $tags = [$offre->typeOffre->labelByLanguage($language)];
                 $offre->tags = $tags;
                 array_map(
                     function ($category) use ($language) {
-                        $category->titre = $category->getLib($language);
+                        $category->nom = $category->labelByLanguage($language);
                     },
                     $offre->categories
                 );
