@@ -2,7 +2,8 @@
 
 namespace VisitMarche\Theme\Inc;
 
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use WP_Post;
 
@@ -95,27 +96,27 @@ class Seo
     private static function metaHadesOffre(string $codeCgt): void
     {
         $language = LocaleHelper::getSelectedLanguage();
-        $hadesRepository = new HadesRepository();
-        $offre = $hadesRepository->getOffre($codeCgt);
+        $pivotRepository = PivotContainer::getRepository();
+        $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
         if (null !== $offre) {
             $base = self::baseTitle('');
-            self::$metas['title'] = $offre->getTitre($language).$base;
+            self::$metas['title'] = $offre->nomByLanguage($language).$base;
             self::$metas['description'] = implode(
                 ',',
                 array_map(
-                    fn ($description) => $description->getTexte($language),
-                    $offre->descriptions
+                    fn($description) => $description->value,
+                    $offre->descriptionsByLanguage($language)
                 )
             );
             $keywords = array_map(
-                fn ($category) => $category->getLib($language),
+                fn($category) => $category->labelByLanguage($language),
                 $offre->categories
             );
             $keywords = array_merge(
                 $keywords,
                 array_map(
-                    fn ($selection) => $selection->lib,
-                    $offre->selections
+                    fn($tag) => $tag,
+                    $offre->tags
                 )
             );
             self::$metas['keywords'] = implode(',', $keywords);
@@ -146,7 +147,7 @@ class Seo
         self::$metas['keywords'] = implode(
             ',',
             array_map(
-                fn ($tag) => $tag->name,
+                fn($tag) => $tag->name,
                 $tags
             )
         );
