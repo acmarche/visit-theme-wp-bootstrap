@@ -194,7 +194,8 @@ class WpRepository
         if (!is_array($categoryFiltres)) {
             return [];
         }
-        $pivotRepository = PivotContainer::getFiltreRepository();
-        return $pivotRepository->findByReferencesOrUrns($categoryFiltres);
+        $filtreRepository = PivotContainer::getFiltreRepository();
+
+        return $filtreRepository->findByReferencesOrUrns($categoryFiltres);
     }
 }
