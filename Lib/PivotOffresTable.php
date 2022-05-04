@@ -19,6 +19,7 @@ class PivotOffresTable extends WP_List_Table
         $columns = array(
             'nom' => 'Nom',
             'codeCgt' => 'Code cgt',
+            'debug' => 'Debug',
             'dateModification' => 'Modifié le',
         );
 
@@ -46,6 +47,8 @@ class PivotOffresTable extends WP_List_Table
                 $url = RouterHades::getUrlOffre($item, $this->categoryId);
 
                 return '<a href="'.$url.'">'.$item->nom.'</a>';
+            case 'debug':
+                return '<a href="'.$this->url($item->codeCgt).'">Debug</a>';
             case 'codeCgt':
                 return $item->codeCgt;
             case 'dateModification':
@@ -53,5 +56,10 @@ class PivotOffresTable extends WP_List_Table
             default:
                 return '';
         }
+    }
+
+    function url(string $codeCgt): string
+    {
+        return admin_url('admin.php?page=pivot_offre&codeCgt='.$codeCgt);
     }
 }

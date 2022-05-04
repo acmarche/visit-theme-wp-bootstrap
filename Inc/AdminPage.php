@@ -3,6 +3,7 @@
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Lib\HadesFiltresListing;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\PivotOffresTable;
@@ -21,25 +22,33 @@ class AdminPage
             'pivot_home',
             'Pivot',
             'activate_plugins',
-            'pivot_menu',
+            'pivot_home',
             fn($args) => $this::homepageRender(),
             '/AcMarche/Pivot/public/Icone_Pivot_Small.png'
         );
         add_submenu_page(
-            'pivot_menu',
+            'pivot_home',
             'pivot_filtres',
             'Filtres',
             'manage_options',
-            'pivot_filtre_menu',
+            'pivot_filtres',
             fn($args) => $this::filtresRender(),
         );
         add_submenu_page(
-            'pivot_menu',
+            'pivot_home',
             'pivot_offres',
-            'Offres',
+            'Liste des offres',
             'manage_options',
-            'pivot_offre_menu',
+            'pivot_offres',
             fn($args) => $this::offresRender(),
+        );
+        add_submenu_page(
+            'pivot_home',
+            'pivot_offre',
+            'Détail d\'une Offre',
+            'manage_options',
+            'pivot_offre',
+            fn($args) => $this::offreRender(),
         );
     }
 
@@ -66,7 +75,7 @@ class AdminPage
 
         $category = get_category_by_slug('offres');
         $categoryUrl = get_category_link($category);
-        $urlAdmin = admin_url('admin.php?page=pivot_offre_menu&filtreId=');
+        $urlAdmin = admin_url('admin.php?page=pivot_offres&filtreId=');
 
         Twig::rendPage(
             'admin/filtres_list.html.twig',
@@ -117,5 +126,38 @@ class AdminPage
             ?>
         </div>
         <?php
+    }
+
+    function offreRender()
+    {
+        $codeCgt = $_GET['codeCgt'] ?? null;
+        if (!$codeCgt) {
+            Twig::rendPage(
+                'admin/error.html.twig',
+                [
+                    'message' => 'Choisissez une offre dans la liste par filtre',
+                ]
+            );
+
+            return;
+        }
+        $pivotRepository = PivotContainer::getRepository();
+        $offre = $pivotRepository->getOffreByCgt($codeCgt, Offre::class);
+        if (!$offre) {
+            Twig::rendPage(
+                'admin/error.html.twig',
+                [
+                    'message' => 'Offre non trouvée',
+                ]
+            );
+
+            return;
+        }
+        Twig::rendPage(
+            'admin/offre.html.twig',
+            [
+                'offre' => $offre,
+            ]
+        );
     }
 }
