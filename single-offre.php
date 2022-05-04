@@ -4,7 +4,6 @@ namespace AcMarche\Theme;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
-use AcMarche\Pivot\Spec\UrnTypeList;
 use Exception;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\LocaleHelper;
@@ -22,9 +21,7 @@ $pivotRepository = PivotContainer::getRepository();
 
 $offre = null;
 
-list($code, $rest) = explode("-", $codeCgt);
-
-if (!in_array($code, UrnTypeList::getAllCode())) {
+if (!str_contains($codeCgt, "-")) {
     $offre = $pivotRepository->getOffreByIdHades($codeCgt);
 }
 
@@ -36,7 +33,7 @@ if (!$offre) {
             'errors/500.html.twig',
             [
                 'title' => 'Error',
-                'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+                'message' => 'Impossible de charger l\'offre: '.$e->getMessage(),
             ]
         );
         get_footer();
@@ -60,18 +57,22 @@ if (null === $offre) {
 }
 
 $language = LocaleHelper::getSelectedLanguage();
-$tags = [];
 $categoryOffres = get_category_by_slug('offres');
 $urlCat = get_category_link($categoryOffres);
+$tags = [];
 foreach ($offre->categories as $category) {
     $tags[] = [
         'name' => $category->labelByLanguage($language),
         'url' => $urlCat.'?cgt='.$category->id,
     ];
 }
+$tags = [$offre->typeOffre->labelByLanguage($language)];
 $recommandations = [];
-$offres = $pivotRepository->getSameOffres($offre);
-
+if (count($offre->voir_aussis)) {
+    $offres = $offre->voir_aussis;
+} else {
+    $offres = $pivotRepository->getSameOffres($offre);
+}
 foreach ($offres as $item) {
     $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
     $tags2 = [$item->typeOffre->labelByLanguage($language)];
@@ -83,6 +84,10 @@ foreach ($offres as $item) {
         'categories' => $tags2,
     ];
 }
+foreach ($offre->classements as $classement) {
+    dump($classement->specData);
+}
+
 Twig::rendPage(
     'offre/show.html.twig',
     [
