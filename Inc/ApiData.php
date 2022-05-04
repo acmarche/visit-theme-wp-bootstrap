@@ -21,9 +21,15 @@ class ApiData
 {
     public static function pivotFiltresByParent(WP_REST_Request $request)
     {
-        $parentId = (int)$request->get_param('parent');
+        $parentId = (int)$request->get_param('parentId');
+        //return rest_ensure_response([$parentId]);
+
         $pivotRepository = PivotContainer::getFiltreRepository();
-        $filtres = $pivotRepository->findByParent($parentId);
+        if ($parentId == 0) {
+            $filtres = $pivotRepository->findRoots();
+        } else {
+            $filtres = $pivotRepository->findByParent($parentId);
+        }
 
         return rest_ensure_response($filtres);
     }
@@ -53,28 +59,7 @@ class ApiData
         return rest_ensure_response($filtres);
     }
 
-    public static function hadesFiltres(WP_REST_Request $request)
-    {
-        $categoryId = $request->get_param('categoryId');
-        if (!$categoryId) {
-            Mailer::sendError('error cat id filtres', 'missing param keyword');
-
-            return new WP_Error(500, 'missing param keyword');
-        }
-        $categoryUtils = new WpRepository();
-        $language = LocaleHelper::getSelectedLanguage();
-        $filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
-
-        /**
-         * Ajout de "Tout".
-         */
-        $translator = LocaleHelper::iniTranslator();
-        $filtres[0] = $translator->trans('filter.all');
-
-        return rest_ensure_response($filtres);
-    }
-
-    public static function hadesOffres(WP_REST_Request $request)
+    public static function pivotOffres(WP_REST_Request $request)
     {
         $data = [];
         $filtreSelected = $request->get_param('filtre'); //element selected

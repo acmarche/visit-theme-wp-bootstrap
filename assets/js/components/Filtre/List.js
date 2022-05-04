@@ -1,7 +1,6 @@
-import { fetchFiltresByCategoryRequest, deleteFiltreRequest } from './service/filtre-service';
+import { deleteFiltreRequest, fetchFiltresByCategoryRequest } from './service/filtre-service';
 
 const {
-    useState,
     useEffect
 } = wp.element;
 
@@ -9,10 +8,10 @@ export function List( propos ) {
     const { categoryId } = propos;
     const { filtres, setFiltres } = propos;
 
-    async function fetchFiltresByCategory( category ) {
+    async function fetchFiltresByCategory() {
         let response;
         try {
-            response = await fetchFiltresByCategoryRequest( '', category );
+            response = await fetchFiltresByCategoryRequest( '', categoryId );
             setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
@@ -20,12 +19,11 @@ export function List( propos ) {
         return null;
     }
 
-    async function deleteFiltresCategory( category, reference ) {
+    async function deleteFiltresCategory( id ) {
         let response;
         try {
-            response = await deleteFiltreRequest( category, reference );
-            console.log( response );
-            response = await fetchFiltresByCategoryRequest( '', category );
+            response = await deleteFiltreRequest( categoryId, id );
+            response = await fetchFiltresByCategoryRequest( '', categoryId );
             setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
@@ -35,13 +33,13 @@ export function List( propos ) {
 
     useEffect( () => {
         if ( 0 < categoryId ) {
-            fetchFiltresByCategory( categoryId );
+            fetchFiltresByCategory();
         }
     }, [ categoryId ]);
 
-    const handleClick = ( reference, e ) => {
+    const handleClick = ( id, e ) => {
         e.preventDefault();
-        deleteFiltresCategory( categoryId, reference );
+        deleteFiltresCategory( id );
     };
 
     return (
@@ -50,7 +48,8 @@ export function List( propos ) {
                 <thead>
                     <tr>
                         <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Nom</th>
-                        <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Supprimer</th>
+                        <th scope="col" id="booktitle" className="manage-column column-booktitle column-primary">Supprimer
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +61,7 @@ export function List( propos ) {
                                     <button
                                         className={'button button-danger'}
                                         type={'button'}
-                                        onClick={( e ) => handleClick( filtre.reference, e )}>
+                                        onClick={( e ) => handleClick( filtre.id, e )}>
                                         <span className="dashicons dashicons-trash"></span>
                                     </button>
                                 </td>

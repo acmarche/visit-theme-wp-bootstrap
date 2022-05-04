@@ -2,6 +2,9 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Repository\PivotRepository;
+
 class Ajax
 {
     public function __construct()
@@ -13,15 +16,23 @@ class Ajax
     function actionDeleteFiltre()
     {
         $categoryId = (int)$_POST['categoryId'];
-        $reference = (int)$_POST['reference'];
+        $id = $_POST['id'];
         $categoryFiltres = [];
-        if ($categoryId && $reference) {
-            $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
-            if (is_array($categoryFiltres)) {
-                $key = array_search($reference, $categoryFiltres);
-                if ($key) {
-                    unset($categoryFiltres[$key]);
-                    update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+        if ($categoryId && $id) {
+            $filtreRepository = PivotContainer::getFiltreRepository();
+            if ($filtre = $filtreRepository->find($id)) {
+                if ($filtre->urn) {
+                    $reference = $filtre->urn;
+                } else {
+                    $reference = $filtre->reference;
+                }
+                $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+                if (is_array($categoryFiltres)) {
+                    $key = array_search($reference, $categoryFiltres);
+                    if ($key) {
+                        unset($categoryFiltres[$key]);
+                        update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+                    }
                 }
             }
         }
@@ -35,15 +46,24 @@ class Ajax
         $categoryId = (int)$_POST['categoryId'];
         $parentId = (int)$_POST['parentId'];
         $childId = (int)$_POST['childId'];
+        $filtreRepository = PivotContainer::getFiltreRepository();
         if ($categoryId && ($parentId || $childId)) {
             $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
             if (!is_array($categoryFiltres)) {
                 $categoryFiltres = [];
             }
             if ($childId) {
-                $categoryFiltres[] = $childId;
+                if ($filtre = $filtreRepository->find($childId)) {
+                    if ($filtre->urn) {
+                        $categoryFiltres[] = $filtre->urn;
+                    }
+                }
             } else {
-                $categoryFiltres[] = $parentId;
+                if ($filtre = $filtreRepository->find($parentId)) {
+                    if ($filtre->reference) {
+                        $categoryFiltres[] = $filtre->reference;
+                    }
+                }
             }
             update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
         }

@@ -5,6 +5,7 @@ namespace VisitMarche\Theme\Inc;
 class FiltreMetaBox
 {
     public const PIVOT_REFRUBRIQUE = 'pivot_refrubrique';
+    public const HADES_REFRUBRIQUE = 'hades_refrubrique';
 
     public function __construct()
     {
@@ -31,6 +32,10 @@ class FiltreMetaBox
             wp_get_theme()->get('Version'),
             true
         );
+        $oldFiltres = get_term_meta($term->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);
+        //  delete_term_meta($term->term_id, self::PIVOT_REFRUBRIQUE);
+        //  $filtres = get_term_meta($term->term_id, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        //  dump($filtres);
         ?>
         <table class="form-table">
             <tr class="form-field">
@@ -42,6 +47,8 @@ class FiltreMetaBox
                         <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">
                             Liste des filtres</a>
                     </p>
+                    <br/>
+                    <p>Anciens filtres hades: <?php echo $oldFiltres ?></p>
                     <br/>
                     <div id="filtres-box" data-category-id="<?php echo $term->term_id ?>">
 

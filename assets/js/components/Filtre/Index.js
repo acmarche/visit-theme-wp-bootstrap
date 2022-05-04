@@ -20,7 +20,7 @@ function Category() {
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
     }, []);
 
-    async function fetchFiltresByCategory( ) {
+    async function fetchFiltresByCategory() {
         let response;
         try {
             response = await fetchFiltresByCategoryRequest( '', categoryId );
@@ -34,8 +34,7 @@ function Category() {
     async function addFilter() {
         let response;
         try {
-            response = await addFiltreRequest( categoryId, parentId, childId );
-            console.log( response.data );
+            await addFiltreRequest( categoryId, parentId, childId );
             response = await fetchFiltresByCategory( '', categoryId );
             setFiltres( response.data );
         } catch ( e ) {
@@ -66,7 +65,6 @@ function Category() {
             <div style={divStyle}>
                 <div>
                     <RootSelect
-                        parentId={parentId}
                         setParentId={setParentId}/>
                 </div>
                 <div>

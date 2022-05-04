@@ -27,15 +27,15 @@ export function fetchFiltresByParentRequest( parentId ) {
 
 /**
  * @param {int} categoryId
- * @param {int} reference
+ * @param {int} id
  * @returns {Promise}
  */
-export function deleteFiltreRequest( categoryId, reference ) {
+export function deleteFiltreRequest( categoryId, id ) {
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
     formData.append( 'action', 'action_delete_filtre' );
     formData.append( 'categoryId', categoryId );
-    formData.append( 'reference', reference );
+    formData.append( 'id', id );
     return axios.post( url, formData );
 }
 

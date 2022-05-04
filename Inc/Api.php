@@ -37,7 +37,7 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'filtres_parent/(?P<parent>[\w]+)',
+                    'filtres_parent/(?P<parentId>[\w]+)',
                     [
                         'methods' => 'GET',
                         'callback' => fn($args) => ApiData::pivotFiltresByParent($args),
@@ -54,7 +54,7 @@ class Api
                     'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w-]*)',
                     [
                         'methods' => 'GET',
-                        'callback' => fn($args) => ApiData::hadesOffres($args),
+                        'callback' => fn($args) => ApiData::pivotOffres($args),
                     ],
                     true
                 );
