@@ -2,14 +2,11 @@
 
 namespace VisitMarche\Theme\Lib\Elasticsearch\Data;
 
-use AcMarche\Pivot\Entities\OffreInterface;
-use AcMarche\Pivot\Filtre\HadesFiltres;
-use AcMarche\Pivot\Repository\HadesRepository;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entities\Offre\Offre;
 use DateTime;
 use Exception;
 use stdClass;
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\PostUtils;
@@ -20,13 +17,11 @@ use WP_Term;
 class ElasticData
 {
     private WpRepository $wpRepository;
-    private HttpClientInterface $httpClient;
     private string $url;
 
     public function __construct()
     {
         $this->wpRepository = new WpRepository();
-        $this->httpClient = HttpClient::create();
         $this->url = 'https://www.visitmarche.be/wp-json/visit/all';
     }
 
@@ -49,7 +44,7 @@ class ElasticData
         $datas = [];
         $today = new DateTime();
 
-        foreach ($this->wpRepository->getCategories() as $category) {
+        foreach ($this->wpRepository->getCategoriesFromWp() as $category) {
             $description = '';
             if ($category->description) {
                 $description = Cleaner::cleandata($category->description);
@@ -133,17 +128,16 @@ class ElasticData
     {
         $datas = [];
 
-        foreach ($this->wpRepository->getCategories() as $category) {
-            $categoryUtils = new HadesFiltres();
+        foreach ($this->wpRepository->getCategoriesFromWp() as $category) {
             $filtres = $this->wpRepository->getCategoryFilters($category->cat_ID);
 
             if ([] !== $filtres) {
-                $hadesRepository = new HadesRepository();
-                $offres = $hadesRepository->getOffres(array_keys($filtres));
+                $pivotRepository = PivotContainer::getRepository();
+                $offres = $pivotRepository->getOffres($filtres);
                 array_map(
                     function ($offre) use ($category, $language) {
                         $offre->url = RouterHades::getUrlOffre($offre, $category->cat_ID);
-                        $offre->titre = $offre->getTitre($language);
+                        $offre->titre = $offre->nomByLanguage($language);
                     },
                     $offres
                 );
@@ -206,26 +200,27 @@ class ElasticData
         return $document;
     }
 
-    private function createDocumentElasticFromOffre(OffreInterface $offre, string $language): DocumentElastic
+    private function createDocumentElasticFromOffre(Offre $offre, string $language): DocumentElastic
     {
         $categories = [];
         foreach ($offre->categories as $category) {
-            $categories[] .= ' '.$category->getLib($language);
+            $categories[] .= ' '.$category->labelByLanguage($language);
         }
 
         $content = '';
         $offre->description = '';
-        if ([] !== $offre->descriptions) {
-            $offre->description = $offre->descriptions[0]->getTexte($language);
-            foreach ($offre->descriptions as $description) {
-                $content .= ' '.$description->getTexte($language);
+        $descriptions = $offre->descriptionsByLanguage($language);
+        if ([] !== $descriptions) {
+            $offre->description = $offre->descriptions[0]->value;
+            foreach ($descriptions as $description) {
+                $content .= ' '.$description->value;
             }
         }
 
         $today = new DateTime();
         $document = new DocumentElastic();
-        $document->id = $offre->id;
-        $document->name = Cleaner::cleandata($offre->titre);
+        $document->id = $offre->codeCgt;
+        $document->name = Cleaner::cleandata($offre->nomByLanguage($language));
         $document->excerpt = Cleaner::cleandata($offre->description);
         $document->content = Cleaner::cleandata($content);
         $document->tags = $categories;
@@ -243,24 +238,25 @@ class ElasticData
         $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
 
         if ([] !== $filtres) {
-            $hadesRepository = new HadesRepository();
-            $offres = $hadesRepository->getOffres(array_keys($filtres));
+            $pivotRepository = PivotContainer::getRepository();
+            $offres = $pivotRepository->getOffres($filtres);
             array_map(
                 function ($offre) use ($category, $language) {
                     $offre->url = RouterHades::getUrlOffre($offre, $category->cat_ID);
-                    $offre->titre = $offre->getTitre($language);
+                    $offre->titre = $offre->nomByLanguage($language);
                 },
                 $offres
             );
             foreach ($offres as $offre) {
-                $content .= $offre->getTitre($language);
-                if ([] !== $offre->descriptions) {
-                    foreach ($offre->descriptions as $description) {
-                        $content .= ' '.$description->getTexte($language);
+                $content .= $offre->nomByLanguage($language);
+                $descriptions = $offre->descriptionsByLanguage($language);
+                if ([] !== $descriptions) {
+                    foreach ($descriptions as $description) {
+                        $content .= ' '.$description->value;
                     }
                 }
                 foreach ($offre->categories as $category) {
-                    $content .= ' '.$category->getLib($language);
+                    $content .= ' '.$category->labelByLanguage($language);
                 }
             }
         }
