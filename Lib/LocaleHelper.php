@@ -8,7 +8,18 @@ use Symfony\Component\Translation\TranslatorBagInterface;
 
 class LocaleHelper
 {
+    //todo remove
+    const ICL_LANGUAGE_CODE = null;
     public static function getSelectedLanguage(): string
+    {
+        if (self::ICL_LANGUAGE_CODE !== null) {
+            return self::ICL_LANGUAGE_CODE;
+        }
+
+        return 'fr';
+    }
+
+    public static function getSelectedLanguage22(): string
     {
         if (ICL_LANGUAGE_CODE) {
             return ICL_LANGUAGE_CODE;
@@ -27,20 +38,13 @@ class LocaleHelper
         $translator->addResource('yaml', get_template_directory().'/translations/messages.en.yaml', 'en');
         $translator->addResource('yaml', get_template_directory().'/translations/messages.nl.yaml', 'nl');
 
-        //$xmlLoader = new XliffFileLoader();
-        //$translator->addLoader('xml', $xmlLoader);
-        //$translator->addResource('xml', get_template_directory().'/translations/messages.fr.xml', 'fr');
-
         return $translator;
     }
 
-    public static function translate(string $text, ?string $language = null): string
+    public static function translate(string $text): string
     {
         $translator = self::iniTranslator();
         $language = self::getSelectedLanguage();
-        if (null === $language) {
-            $language = self::getSelectedLanguage();
-        }
 
         return $translator->trans($text, [], null, $language);
     }
