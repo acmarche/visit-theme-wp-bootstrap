@@ -7,13 +7,13 @@ const {
 
 export function RootSelect( propos ) {
     const [ language, setLanguage ] = useState( '' );
-    const { parentId, setParentId } = propos;
+    const { setParentId } = propos;
     const [ roots, setRoots ] = useState([]);
 
-    async function loadRootFiltres( parent ) {
+    async function loadRootFiltres( ) {
         let response;
         try {
-            response = await fetchFiltresByParentRequest( parent );
+            response = await fetchFiltresByParentRequest( 0 );
             setRoots( response.data );
         } catch ( e ) {
             console.log( e );
@@ -22,7 +22,7 @@ export function RootSelect( propos ) {
     }
 
     useEffect( () => {
-        loadRootFiltres( parentId );
+        loadRootFiltres( );
     }, [ ]);
 
     const handleChange = ( e ) => {
@@ -35,7 +35,7 @@ export function RootSelect( propos ) {
             <select onChange={handleChange}>
                 <option value={0}>Sélectionnez une catégorie</option>
                 {roots.map( ( option ) => (
-                    <option value={option.reference} key={option.id}>{option.nom}</option>
+                    <option value={option.id} key={option.id}>{option.nom}</option>
                 ) )}
             </select>
         </>

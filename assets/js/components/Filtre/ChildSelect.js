@@ -10,10 +10,10 @@ export function ChildSelect( propos ) {
     const { setChildId } = propos;
     const [ childs, setChilds ] = useState([]);
 
-    async function loadRootFiltres( parent ) {
+    async function loadFiltres( ) {
         let response;
         try {
-            response = await fetchFiltresByParentRequest( parent );
+            response = await fetchFiltresByParentRequest( parentId );
             setChilds( response.data );
         } catch ( e ) {
             console.log( e );
@@ -22,7 +22,7 @@ export function ChildSelect( propos ) {
     }
 
     useEffect( () => {
-        if ( 0 < parentId ) { loadRootFiltres( parentId ); }
+        if ( 0 < parentId ) { loadFiltres( ); }
     }, [ parentId ]);
 
     const handleChange = ( e ) => {
@@ -35,7 +35,7 @@ export function ChildSelect( propos ) {
             <select onChange={handleChange}>
                 <option value={0}>Sélectionnez une catégorie</option>
                 {childs.map( ( option ) => (
-                    <option value={option.reference} key={option.id}>{option.nom}</option>
+                    <option value={option.id} key={option.id}>{option.nom}</option>
                 ) )}
             </select>
         </>
