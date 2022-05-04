@@ -2,9 +2,13 @@
 
 namespace VisitMarche\Theme\Lib;
 
-use AcMarche\Pivot\Filtre\HadesFiltres;
+use AcMarche\Pivot\DependencyInjection\PivotContainer;
+use AcMarche\Pivot\Entity\Filtre;
+use VisitMarche\Theme\Inc\FiltreMetaBox;
 use VisitMarche\Theme\Inc\Theme;
+use WP_Post;
 use WP_Query;
+use WP_Term;
 
 class WpRepository
 {
@@ -26,6 +30,10 @@ class WpRepository
         return $tags;
     }
 
+    /**
+     * @param int $catId
+     * @return WP_Post[]
+     */
     public function getPostsByCatId(int $catId): array
     {
         $args = [
@@ -50,15 +58,7 @@ class WpRepository
     }
 
     /**
-     * @return array|object|\WP_Error|null
-     */
-    public function getCategory(int $cat_ID)
-    {
-        return get_category($cat_ID);
-    }
-
-    /**
-     * @return array|object|\WP_Error|null
+     * @return array|WP_Term|object|\WP_Error|null
      */
     public function getParentCategory(int $cat_ID)
     {
@@ -75,6 +75,10 @@ class WpRepository
         return null;
     }
 
+    /**
+     * @param int $cat_ID
+     * @return WP_Term[]
+     */
     public function getChildrenOfCategory(int $cat_ID): array
     {
         $args = [
@@ -93,7 +97,7 @@ class WpRepository
         return $children;
     }
 
-    public function getRelations(int $postId): array
+    public function getSamePosts(int $postId): array
     {
         $categories = get_the_category($postId);
         $args = [
@@ -159,7 +163,7 @@ class WpRepository
     /**
      * @return array|\WP_Term[]
      */
-    public function getCategories(): array
+    public function getCategoriesFromWp(): array
     {
         $args = [
             'type' => 'post',
@@ -179,26 +183,18 @@ class WpRepository
         return get_categories($args);
     }
 
-    public function getCategoryFilters(int $categoryId, string $language = 'fr'): array
+    /**
+     * @param int $categoryId
+     * @param string $language
+     * @return Filtre[]
+     */
+    public static function getCategoryFilters(int $categoryId, string $language = 'fr'): array
     {
-        $filtres = [];
-        $wpRepository = new WpRepository();
-        $filtresString = get_term_meta($categoryId, 'hades_refrubrique', true);
-
-        if ($filtresString) {
-            $hadesFilter = new HadesFiltres();
-            $groupedFilters = HadesFiltres::groupedFilters();
-            $filtres = $groupedFilters[$filtresString] ?? explode(',', $filtresString);
-            $filtres = $hadesFilter->translateFiltres($filtres, $language);
+        $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        if (!is_array($categoryFiltres)) {
+            return [];
         }
-
-        $children = $wpRepository->getChildrenOfCategory($categoryId);
-        foreach ($children as $child) {
-            $filtres[$child->cat_ID] = $child->name;
-        }
-
-        asort($filtres);
-
-        return $filtres;
+        $pivotRepository = PivotContainer::getFiltreRepository();
+        return $pivotRepository->findByReferencesOrUrns($categoryFiltres);
     }
 }
