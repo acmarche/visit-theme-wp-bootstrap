@@ -37,7 +37,7 @@ class PostUtils
 
         return [
             'url' => $post->permalink,
-            'titre' => $post->post_title,
+            'nom' => $post->post_title,
             'description' => $post->post_excerpt,
             'tags' => $tags,
             'image' => $post->thumbnail_url,
