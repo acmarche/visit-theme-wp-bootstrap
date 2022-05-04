@@ -5,6 +5,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Pivot\Entities\Category;
 use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Pivot\Entities\Offre\Offre;
+use AcMarche\Pivot\Entity\Filtre;
 use VisitMarche\Theme\Lib\Router;
 
 /**
@@ -61,18 +62,23 @@ class RouterHades extends Router
         return get_category_link($category).'?cgt=';
     }
 
+    /**
+     * @param Filtre[] $filtres
+     * @return array
+     */
     public static function setRoutesToFilters(array $filtres): array
     {
         $urlfiltre = self::getUrlFiltre();
         $filtres2 = [];
-        foreach ($filtres as $key => $nom) {
+        foreach ($filtres as $filtre) {
+            $key = $filtre->reference;
             $url = $urlfiltre.$key;
             if (\is_int($key)) {
-                $url = get_category_link($key);
+                //  $url = get_category_link($key);
             }
             $filtres2[] = [
                 'key' => $key,
-                'nom' => $nom,
+                'nom' => $filtre->nom,
                 'url' => $url,
             ];
         }
