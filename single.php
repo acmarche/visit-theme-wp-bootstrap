@@ -18,7 +18,7 @@ $currentCategory = get_category_by_slug($slugs[array_key_last($slugs)]);
 $urlBack = get_category_link($currentCategory);
 
 $tags = $wpRepository->getTags($post->ID);
-$recommandations = $wpRepository->getRelations($post->ID);
+$recommandations = $wpRepository->getSamePosts($post->ID);
 $next = null;
 if (0 === \count($recommandations)) {
     $searcher = new Searcher();
