@@ -142,7 +142,7 @@ class AdminPage
             return;
         }
         $pivotRepository = PivotContainer::getRepository();
-        $offre = $pivotRepository->getOffreByCgt($codeCgt, Offre::class);
+        $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
         if (!$offre) {
             Twig::rendPage(
                 'admin/error.html.twig',
