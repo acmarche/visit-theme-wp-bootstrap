@@ -4,7 +4,6 @@ namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
-use VisitMarche\Theme\Lib\HadesFiltresListing;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\PivotOffresTable;
 use VisitMarche\Theme\Lib\Twig;
@@ -28,7 +27,7 @@ class AdminPage
         );
         add_submenu_page(
             'pivot_home',
-            'pivot_filtres',
+            'Pivot filtres',
             'Filtres',
             'manage_options',
             'pivot_filtres',
@@ -36,7 +35,7 @@ class AdminPage
         );
         add_submenu_page(
             'pivot_home',
-            'pivot_offres',
+            'Pivot offres',
             'Liste des offres',
             'manage_options',
             'pivot_offres',
@@ -44,7 +43,7 @@ class AdminPage
         );
         add_submenu_page(
             'pivot_home',
-            'pivot_offre',
+            'Pivot offre',
             'Détail d\'une Offre',
             'manage_options',
             'pivot_offre',
@@ -67,11 +66,6 @@ class AdminPage
     {
         $pivotRepository = PivotContainer::getFiltreRepository();
         $filters = $pivotRepository->findWithChildren();
-
-        $categoryUtils = new HadesFiltresListing();
-        if (isset($_GET['notempty'])) {
-            $categoryUtils->getFiltresNotEmpty($filters);
-        }
 
         $category = get_category_by_slug('offres');
         $categoryUrl = get_category_link($category);

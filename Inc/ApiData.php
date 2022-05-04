@@ -21,9 +21,9 @@ class ApiData
 {
     public static function pivotFiltresByParent(WP_REST_Request $request)
     {
-        $parent = (int)$request->get_param('parent');
+        $parentId = (int)$request->get_param('parent');
         $pivotRepository = PivotContainer::getFiltreRepository();
-        $filtres = $pivotRepository->findByParent($parent);
+        $filtres = $pivotRepository->findByParent($parentId);
 
         return rest_ensure_response($filtres);
     }
