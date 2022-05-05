@@ -22,7 +22,7 @@ class AdminPage
         add_menu_page(
             'pivot_home',
             'Pivot',
-            'activate_plugins',
+            'edit_posts',
             'pivot_home',
             fn() => $this::homepageRender(),
             '/AcMarche/Pivot/public/Icone_Pivot_Small.png'
@@ -31,7 +31,7 @@ class AdminPage
             'pivot_home',
             'Pivot filtres',
             'Filtres',
-            'manage_options',
+            'edit_posts',
             'pivot_filtres',
             fn() => $this::filtresRender(),
         );
@@ -39,7 +39,7 @@ class AdminPage
             'pivot_home',
             'Pivot offres',
             'Liste des offres',
-            'manage_options',
+            'edit_posts',
             'pivot_offres',
             fn() => $this::offresRender(),
         );
@@ -47,7 +47,7 @@ class AdminPage
             'pivot_home',
             'Pivot offre',
             'Détail d\'une Offre',
-            'manage_options',
+            'edit_posts',
             'pivot_offre',
             fn() => $this::offreRender(),
         );
@@ -55,7 +55,7 @@ class AdminPage
             'pivot_home',
             'Catégories avec filtres',
             'Catégories avec filtres',
-            'manage_options',
+            'edit_posts',
             'pivot_categories_filtre',
             fn() => $this::categoriesFiltresRender(),
         );
