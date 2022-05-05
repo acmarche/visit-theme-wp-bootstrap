@@ -11,7 +11,7 @@ const {
 function Category() {
     const [ categoryId, setCategoryId ] = useState( 0 );
     const [ offres, setOffres ] = useState([]);
-    const [ filtreSelected, setFiltreSelected ] = useState( null );
+    const [ filtreSelected, setFiltreSelected ] = useState( 0 );
     const [ isLoading, setIsLoading ] = useState( true );
     const [ language, setLanguage ] = useState( 'fr' );
 
@@ -20,7 +20,7 @@ function Category() {
         setIsLoading( true );
         let response;
         try {
-            response = await fetchOffres( language, categoryId, filtreSelected );
+            response = await fetchOffres( '', categoryId, filtreSelected );
             setOffres( Object.entries( response.data ) );
             setIsLoading( false );
         } catch ( e ) {
@@ -48,9 +48,9 @@ function Category() {
                 setFiltreSelected={setFiltreSelected}
                 language={language}
             />
-            <OffreResults
+            { <OffreResults
                 isLoading={isLoading}
-                offres={offres}/>
+                offres={offres}/>}
         </>
     );
 }

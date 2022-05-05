@@ -2,12 +2,17 @@ import axios from '../../Axios';
 
 /**
  * @param {string} language
- * @param {string} categoryId
+ * @param {int} categoryId
+ * @param {int} flatWithChildren
  * @returns {Promise}
  */
-export function fetchFiltresByCategoryRequest( language, categoryId ) {
+export function fetchFiltresByCategoryRequest(
+    language,
+    categoryId,
+    flatWithChildren = 0
+) {
     const params = {};
-    const url = `${language}/wp-json/pivot/filtres_category/${categoryId}`;
+    const url = `${language}/wp-json/pivot/filtres_category/${categoryId}/${flatWithChildren}`;
     return axios.get( url, {
         params
     });

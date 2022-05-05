@@ -1,4 +1,4 @@
-import { fetchFiltres } from './service/categories-service';
+import { fetchFiltresByCategoryRequest } from '../Filtre/service/filtre-service';
 import FiltreItem from './FiltreItem';
 import FiltreItemOption from './FiltreItemOption';
 
@@ -15,9 +15,9 @@ function FiltresComposant( propos ) {
     async function loadFiltres() {
         let response;
         try {
-            response = await fetchFiltres( language, categoryId );
-            const filtres2 = Object.entries( response.data );
-            setFiltres( filtres2 );
+            console.log( categoryId );
+            response = await fetchFiltresByCategoryRequest( '', categoryId, true );
+            setFiltres( response.data );
         } catch ( e ) {
             console.log( e );
         }
@@ -37,17 +37,17 @@ function FiltresComposant( propos ) {
         return ( <></> );
     }
 
-    const listItems = filtres.map( ([ key, value ]) => ( <FiltreItem
-        value={value}
-        key={key}
-        clef={key}
+    const listItems = filtres.map( ( filtre ) => ( <FiltreItem
+        value={filtre.nom}
+        key={filtre.id}
+        clef={filtre.id}
         setFiltreSelected={setFiltreSelected}
     /> ) );
 
-    const listOptions = filtres.map( ([ value, name ]) => ( <FiltreItemOption
-        name={name}
-        value={value}
-        key={value}
+    const listOptions = filtres.map( ( filtre ) => ( <FiltreItemOption
+        name={filtre.nom}
+        value={filtre.id}
+        key={filtre.id}
     /> ) );
 
     function changeSelectedCategory( event ) {

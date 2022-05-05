@@ -3,16 +3,11 @@ import axios from '../../Axios';
 /**
  * @param {string} language
  * @param {int} categoryId
- * @param {string|null} filtre
+ * @param {int} filtre
  * @returns {Promise}
  */
 export function fetchOffres( language, categoryId, filtre ) {
-    let url = `${language}/wp-json/hades/offres/${categoryId}`;
-
-    if ( null !== filtre && '0' !== filtre ) {
-        url = url.concat( `/${filtre}` );
-    }
-
+    const url = `${language}/wp-json/pivot/offres/${categoryId}/${filtre}`;
     return axios.get( url, {
 
     });

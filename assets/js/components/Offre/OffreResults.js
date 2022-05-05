@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
 import OffreItem from './OffreItem';
 
-function OffreResults( propos ) {
+export function OffreResults( propos ) {
     const { offres, isLoading } = propos;
 
     const listItems = offres.map( ([ key, offre ]) => ( <OffreItem
@@ -31,5 +31,3 @@ function OffreResults( propos ) {
         </>
     );
 }
-
-export default OffreResults;
