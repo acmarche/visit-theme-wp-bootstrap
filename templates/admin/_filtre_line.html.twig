@@ -4,8 +4,8 @@
     </td>
     <td></td>
     <td>
-        <a href="{{ urlAdmin }}{{ root.reference }}" target="_pivot">
-            {{ root.reference }}
+        <a href="{{ urlAdmin }}{{ root.identifiant }}" target="_pivot">
+            {{ root.identifiant }}
         </a>
     </td>
     <td></td>
@@ -17,8 +17,8 @@
             <span>{{ child.nom }}</span>
         </td>
         <td>
-            <a href="{{ urlAdmin ~ child.urn|url_encode }}" target="_pivot">
-                {{ child.urn }}
+            <a href="{{ urlAdmin ~ child.identifiant|url_encode }}" target="_pivot">
+                {{ child.identifiant }}
             </a>
         </td>
         <td></td>
