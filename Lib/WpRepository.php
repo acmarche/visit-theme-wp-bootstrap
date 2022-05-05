@@ -188,7 +188,7 @@ class WpRepository
      * @param string $language
      * @return Filtre[]
      */
-    public static function getCategoryFilters(int $categoryId): array
+    public static function getCategoryFilters(int $categoryId, bool $flatWithChildren = false): array
     {
         $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
         if (!is_array($categoryFiltres)) {
@@ -196,6 +196,26 @@ class WpRepository
         }
         $filtreRepository = PivotContainer::getFiltreRepository();
 
-        return $filtreRepository->findByReferencesOrUrns($categoryFiltres);
+        $filtres = $filtreRepository->findByReferencesOrUrns($categoryFiltres);
+
+        if (!$flatWithChildren) {
+            return $filtres;
+        }
+
+        array_map(function ($filtre) use ($filtreRepository) {
+            return $filtre->children = $filtreRepository->findByParent($filtre->id);
+        }, $filtres);
+
+        $allFiltres = [];
+        foreach ($filtres as $filtre) {
+            $childs = $filtre->children;
+            $filtre->children = [];//bug loop infinit
+            $allFiltres[] = $filtre;
+            foreach ($childs as $child) {
+                $allFiltres[] = $child;
+            }
+        }
+
+        return $allFiltres;
     }
 }
