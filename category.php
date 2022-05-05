@@ -58,9 +58,10 @@ if ($filtreParam) {
         $categoryName = $filtres[0]->labelByLanguage($language);
     }
 } else {
-    $filtres = $wpRepository->getCategoryFilters($cat_ID);
+    $filtres = $wpRepository->getCategoryFilters($cat_ID, true);
 }
 if ([] !== $filtres) {
+    $filtres = RouterHades::setRoutesToFilters($filtres, $cat_ID);
     $pivotRepository = PivotContainer::getRepository();
     $offres = [];
     try {
@@ -80,15 +81,6 @@ if ([] !== $filtres) {
     $posts = $postUtils->convertPostsToArray($posts);
     $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
     $offres = array_merge($posts, $offres);
-
-    $allFiltres = [];
-    foreach ($filtres as $filtre) {
-        $allFiltres[] = $filtre;
-        foreach ($filterRepository->findByParent($filtre->id) as $child) {
-            $allFiltres[] = $child;
-        }
-    }
-    $filtres = RouterHades::setRoutesToFilters($allFiltres, $cat_ID);
 
     wp_enqueue_script(
         'react-app',
