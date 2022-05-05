@@ -17,7 +17,7 @@ get_header();
 
 $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
-$title = single_cat_title('', false);
+$categoryName = single_cat_title('', false);
 $permalink = get_category_link($cat_ID);
 
 $wpRepository = new WpRepository();
@@ -49,13 +49,22 @@ if ($header) {
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
-$filtres = $wpRepository->getCategoryFilters($cat_ID, $language);
+$filtreParam = $_GET['filtre'] ?? null;
+$filterRepository = PivotContainer::getFiltreRepository();
+if ($filtreParam) {
+    $filtres = $filterRepository->findByReferencesOrUrns([$filtreParam]);
 
+    if (count($filtres) > 0) {
+        $categoryName = $filtres[0]->labelByLanguage($language);
+    }
+} else {
+    $filtres = $wpRepository->getCategoryFilters($cat_ID);
+}
 if ([] !== $filtres) {
     $pivotRepository = PivotContainer::getRepository();
     $offres = [];
     try {
-        $offres = $pivotRepository->getOffres(array_keys($filtres));
+        $offres = $pivotRepository->getOffres($filtres);
         array_map(
             function ($offre) use ($cat_ID, $language) {
                 $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
@@ -72,26 +81,33 @@ if ([] !== $filtres) {
     $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
     $offres = array_merge($posts, $offres);
 
-    $filtres = RouterHades::setRoutesToFilters($filtres);
+    $allFiltres = [];
+    foreach ($filtres as $filtre) {
+        $allFiltres[] = $filtre;
+        foreach ($filterRepository->findByParent($filtre->id) as $child) {
+            $allFiltres[] = $child;
+        }
+    }
+    $filtres = RouterHades::setRoutesToFilters($allFiltres, $cat_ID);
 
-    //todo active react
-    /* wp_enqueue_script(
-         'react-app',
-         get_template_directory_uri().'/assets/js/build/offre.js',
-         ['wp-element'],
-         wp_get_theme()->get('Version'),
-         true
-     );*/
+    wp_enqueue_script(
+        'react-app',
+        get_template_directory_uri().'/assets/js/build/offre.js',
+        ['wp-element'],
+        wp_get_theme()->get('Version'),
+        true
+    );
 
     Twig::rendPage(
         'category/index_hades.html.twig',
         [
+            'title' => $categoryName,
             'urlBack' => $urlBack,
+            'filterParam' => $filtreParam,
             'nameBack' => $nameBack,
             'category' => $category,
             'filtres' => $filtres,
             'offres' => $offres,
-            'title' => $title,
             'permalink' => $permalink,
             'header' => $header,
             'icone' => $icone,
@@ -108,7 +124,7 @@ $sortLink = SortLink::linkSortArticles($cat_ID);
 Twig::rendPage(
     'category/index.html.twig',
     [
-        'title' => $category->name,
+        'title' => $categoryName,
         'category' => $category,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,

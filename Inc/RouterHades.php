@@ -52,30 +52,25 @@ class RouterHades extends Router
         return get_category_link($categoryId).self::OFFRE_URL.'/'.$offre->codeCgt;
     }
 
-    public static function getUrlFiltre(): string
+    public static function getUrlFiltre(int $categoryId): string
     {
-        $category = get_category_by_slug('offres');
-        if (!$category) {
-            return '/offres/?cgt=';
-        }
-
-        return get_category_link($category).'?cgt=';
+        return get_category_link(get_category($categoryId)).'?filtre=';
     }
 
     /**
      * @param Filtre[] $filtres
      * @return array
      */
-    public static function setRoutesToFilters(array $filtres): array
+    public static function setRoutesToFilters(array $filtres, int $categoryId): array
     {
-        $urlfiltre = self::getUrlFiltre();
+        $urlfiltre = self::getUrlFiltre($categoryId);
         $filtres2 = [];
         foreach ($filtres as $filtre) {
             $key = $filtre->reference;
-            $url = $urlfiltre.$key;
-            if (\is_int($key)) {
-                //  $url = get_category_link($key);
+            if ($filtre->urn) {
+                $key = $filtre->urn;
             }
+            $url = $urlfiltre.$key;
             $filtres2[] = [
                 'key' => $key,
                 'nom' => $filtre->nom,
