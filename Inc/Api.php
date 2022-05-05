@@ -23,7 +23,7 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'filtres_category/(?P<categoryId>[\w]+)',
+                    'filtres_category/(?P<categoryId>[\w]+)/(?P<flatWithChildren>[\w]+)',
                     [
                         'methods' => 'GET',
                         'callback' => fn($args) => ApiData::pivotFiltresByCategory($args),
@@ -51,7 +51,7 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'offres/(?P<category>[\d]+)(/?)(?P<filtre>[\w-]*)',
+                    'offres/(?P<category>[\d]+)/(?P<filtre>[\d]+)',
                     [
                         'methods' => 'GET',
                         'callback' => fn($args) => ApiData::pivotOffres($args),

@@ -22,7 +22,6 @@ class ApiData
     public static function pivotFiltresByParent(WP_REST_Request $request)
     {
         $parentId = (int)$request->get_param('parentId');
-        //return rest_ensure_response([$parentId]);
 
         $pivotRepository = PivotContainer::getFiltreRepository();
         if ($parentId == 0) {
@@ -36,83 +35,30 @@ class ApiData
 
     public static function pivotFiltresByCategory(WP_REST_Request $request)
     {
-        $categoryId = (int)$request->get_param('categoryId');
-        if ($categoryId < 1) {
+        $categoryWpId = (int)$request->get_param('categoryId');
+        $flatWithChildren = (bool)$request->get_param('flatWithChildren');
+        if ($categoryWpId < 1) {
             Mailer::sendError('error cat id filtres', 'missing param categoryId');
 
             return new WP_Error(500, 'missing param categoryId');
         }
 
-        $filtres = WpRepository::getCategoryFilters($categoryId);
-
-        /*  $categoryUtils = new WpRepository();
-          $language = LocaleHelper::getSelectedLanguage();
-          //$filtres = $categoryUtils->getCategoryFilters($categoryId, $language);
-          $pivotRepository = PivotContainer::getFiltreRepository();
-          $types = $pivotRepository->findWithChildren();
-          /**
-           * Ajout de "Tout".
-           *
-          $translator = LocaleHelper::iniTranslator();
-          $filtres[0] = $translator->trans('filter.all');*/
+        $filtres = WpRepository::getCategoryFilters($categoryWpId, $flatWithChildren);
 
         return rest_ensure_response($filtres);
     }
 
     public static function pivotOffres(WP_REST_Request $request)
     {
-        $data = [];
-        $filtreSelected = $request->get_param('filtre'); //element selected
-        $currentCategoryId = (int)$request->get_param('category'); //current category
+        $filtreSelected = (int)$request->get_param('filtre');
+        $currentCategoryId = (int)$request->get_param('category');
         if (0 === $currentCategoryId) {
             Mailer::sendError('error hades offre', 'missing param keyword');
 
             return new WP_Error(500, 'missing param keyword');
         }
 
-        $wpRepository = new WpRepository();
-        $language = LocaleHelper::getSelectedLanguage();
-        $postUtils = new PostUtils();
-
-        /*
-         * Si pas de filtre selectionne, on affiche tout
-         */
-        if (!$filtreSelected) {
-            $filtres = $wpRepository->getCategoryFilters($currentCategoryId);
-            $offres = [];
-            if ([] !== $filtres) {
-                $offres = self::getOffres($filtres, $currentCategoryId, $language);
-            }
-            $posts = $wpRepository->getPostsByCatId($currentCategoryId);
-            //fusion offres et articles
-            $posts = $postUtils->convertPostsToArray($posts);
-            $offres = array_merge($posts, $offres);
-
-            return rest_ensure_response($offres);
-        }
-
-        /**
-         * si filtre selectionne est int donc c'est une cat wp
-         * je vais chercher les filtres hades sur celui ci.
-         */
-        $filtreSelectedToInt = (int)$filtreSelected;
-
-        if (0 !== $filtreSelectedToInt) {
-            $filtres = $wpRepository->getCategoryFilters($filtreSelectedToInt);
-            $offres = [];
-            if ([] !== $filtres) {
-                $offres = self::getOffres($filtres, $currentCategoryId, $language);
-            }
-            $posts = $wpRepository->getPostsByCatId($filtreSelectedToInt);
-            $posts = $postUtils->convertPostsToArray($posts);
-            $offres = array_merge($posts, $offres);
-
-            return rest_ensure_response($offres);
-        }
-
-        $offres = self::getOffres([
-            $filtreSelected => $filtreSelected,
-        ], $currentCategoryId, $language);
+        $offres = self::getOffres($filtreSelected, $currentCategoryId);
 
         return rest_ensure_response($offres);
     }
@@ -131,15 +77,33 @@ class ApiData
         return rest_ensure_response($data);
     }
 
-    private static function getOffres(array $filtresParams, int $currentCategoryId, string $language): array
+    private static function getOffres(int $filtreSelected, int $currentCategoryId): array
     {
-        $pivotRepository = PivotContainer::getRepository();
+        $offres = $filtres = [];
+        $language = LocaleHelper::getSelectedLanguage();
         $filtreRepository = PivotContainer::getFiltreRepository();
+        $wpRepository = new WpRepository();
         $postUtils = new PostUtils();
 
-        $filtres = $filtreRepository->findByReferencesOrUrns($filtresParams);
-        $offres = $pivotRepository->getOffres($filtres);
+        if ($filtreSelected == 0) {
+            $filtres = $wpRepository->getCategoryFilters($currentCategoryId, true);
+        } else {
+            if ($filtre = $filtreRepository->find($filtreSelected)) {
+                $filtres[] = $filtre;
+            }
+        }
 
-        return $postUtils->convertOffres($offres, $currentCategoryId, $language);
+        if ([] !== $filtres) {
+            $pivotRepository = PivotContainer::getRepository();
+            $offres = $pivotRepository->getOffres($filtres);
+            $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
+        }
+
+        $posts = $wpRepository->getPostsByCatId($currentCategoryId);
+        //fusion offres et articles
+        $posts = $postUtils->convertPostsToArray($posts);
+        $offres = array_merge($posts, $offres);
+
+        return $offres;
     }
 }
