@@ -1,5 +1,5 @@
 import FiltresComposant from './FiltresComposant';
-import OffreResults from './OffreResults';
+import { OffreResults } from './OffreResults';
 import { fetchOffres } from './service/posts-service';
 import CategoryTitle from './CategoryTitle';
 
@@ -15,13 +15,13 @@ function Category() {
     const [ isLoading, setIsLoading ] = useState( true );
     const [ language, setLanguage ] = useState( 'fr' );
 
-    async function loadOffres( ) {
+    async function loadOffres() {
         console.log( 'loading offres', language, categoryId, filtreSelected );
         setIsLoading( true );
         let response;
         try {
             response = await fetchOffres( '', categoryId, filtreSelected );
-            setOffres( Object.entries( response.data ) );
+            setOffres( response.data );
             setIsLoading( false );
         } catch ( e ) {
             console.log( e );
@@ -34,10 +34,12 @@ function Category() {
         const name = 'app-offres';
         setCategoryId( document.getElementById( name ).getAttribute( 'data-category-id' ) );
         setLanguage( document.getElementById( 'body' ).getAttribute( 'data-current-language' ) );
-    }, [ ]);
+    }, []);
 
     useEffect( () => {
-        if ( 0 < categoryId ) { loadOffres( ); }
+        if ( 0 < categoryId ) {
+            loadOffres();
+        }
     }, [ categoryId, filtreSelected ]);
 
     return (
@@ -48,9 +50,9 @@ function Category() {
                 setFiltreSelected={setFiltreSelected}
                 language={language}
             />
-            { <OffreResults
+            <OffreResults
                 isLoading={isLoading}
-                offres={offres}/>}
+                offres={offres}/>
         </>
     );
 }

@@ -5,10 +5,10 @@ import OffreItem from './OffreItem';
 export function OffreResults( propos ) {
     const { offres, isLoading } = propos;
 
-    const listItems = offres.map( ([ key, offre ]) => ( <OffreItem
+    const listItems = offres.map( ( offre ) => ( <OffreItem
         offre={offre}
-        key={key}
-        clef={key}
+        key={offre.cgt}
+        clef={offre.cgt}
     /> ) );
 
     if ( true === isLoading ) {

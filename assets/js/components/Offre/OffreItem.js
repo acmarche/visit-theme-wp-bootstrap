@@ -33,7 +33,7 @@ function OffreItem( propos ) {
                     </i>
                     <div className="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
 
-                        <h3 maxlenght="0">{offre.titre}</h3>
+                        <h3 maxlenght="0">{offre.nom}</h3>
 
                         <p maxlenght="170">
                             {offre.description && offre.description.slice( 0, 170 )}
