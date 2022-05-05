@@ -3,7 +3,6 @@
 namespace VisitMarche\Theme\Inc;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Repository\PivotRepository;
 
 class Ajax
 {
@@ -21,11 +20,7 @@ class Ajax
         if ($categoryId && $id) {
             $filtreRepository = PivotContainer::getFiltreRepository();
             if ($filtre = $filtreRepository->find($id)) {
-                if ($filtre->urn) {
-                    $reference = $filtre->urn;
-                } else {
-                    $reference = $filtre->reference;
-                }
+                $reference = $filtre->getIdentifiant();
                 $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
                 if (is_array($categoryFiltres)) {
                     $key = array_search($reference, $categoryFiltres);
@@ -54,15 +49,11 @@ class Ajax
             }
             if ($childId) {
                 if ($filtre = $filtreRepository->find($childId)) {
-                    if ($filtre->urn) {
-                        $categoryFiltres[] = $filtre->urn;
-                    }
+                    $categoryFiltres[] = $filtre->getIdentifiant();
                 }
             } else {
                 if ($filtre = $filtreRepository->find($parentId)) {
-                    if ($filtre->reference) {
-                        $categoryFiltres[] = $filtre->reference;
-                    }
+                    $categoryFiltres[] = $filtre->getIdentifiant();
                 }
             }
             update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
