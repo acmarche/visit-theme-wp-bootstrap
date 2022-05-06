@@ -25,7 +25,7 @@ class AdminPage
             'edit_posts',
             'pivot_home',
             fn() => $this::homepageRender(),
-            '/AcMarche/Pivot/public/images/Icone_Pivot_Small.png'
+            get_template_directory_uri().'/assets/images/Icone_Pivot_Small.png'
         );
         add_submenu_page(
             'pivot_home',
