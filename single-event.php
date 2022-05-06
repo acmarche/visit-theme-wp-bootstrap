@@ -22,23 +22,34 @@ $event = null;
 
 if (!str_starts_with($codeCgt, "EVT")) {
     $event = $pivotRepository->getEventByIdHades($codeCgt);
-}
-
-if (!$event) {
-    try {
-        $event = $pivotRepository->getEvent($codeCgt);
-    } catch (Exception $e) {
+    if (null === $event) {
         Twig::rendPage(
-            'errors/500.html.twig',
+            'errors/404.html.twig',
             [
-                'title' => $e->getMessage(),
-                'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+                'title' => 'Manifestation non trouvée',
+                'url' => '',
             ]
         );
+
         get_footer();
 
         return;
     }
+}
+
+try {
+    $event = $pivotRepository->getEvent($codeCgt);
+} catch (Exception $e) {
+    Twig::rendPage(
+        'errors/500.html.twig',
+        [
+            'title' => $e->getMessage(),
+            'message' => 'Impossible de charger les évènements: '.$e->getMessage(),
+        ]
+    );
+    get_footer();
+
+    return;
 }
 
 if (null === $event) {
@@ -113,7 +124,7 @@ array_map(
 Twig::rendPage(
     'agenda/show.html.twig',
     [
-        'title' => $event->nom,
+        'title' => $event->nomByLanguage($language),
         'currentCategory' => $currentCategory,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
