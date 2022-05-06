@@ -119,14 +119,6 @@ var_dump(11111111111);
             return;
         }
         $pivotRepository = PivotContainer::getRepository();
-        $pivotRemoteRepository = PivotContainer::getRemoteRepository();
-        var_dump(11111111111);
-        try {
-            $pivotRemoteRepository->query();
-        } catch (\Exception $exception) {
-            var_dump($exception);
-        }
-var_dump(11111111111);
         $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
