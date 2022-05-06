@@ -120,7 +120,6 @@ class AdminPage
         $pivotRepository = PivotContainer::getRepository();
         $pivotRemoteRepository = PivotContainer::getRemoteRepository();
         try {
-
             $pivotRemoteRepository->query();
         } catch (\Exception $exception) {
             var_dump($exception);
