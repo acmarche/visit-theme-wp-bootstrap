@@ -61,7 +61,6 @@ if ($filtreParam) {
     $filtres = $wpRepository->getCategoryFilters($cat_ID, true);
 }
 if ([] !== $filtres) {
-    var_dump($filtres);
     $filtres = RouterHades::setRoutesToFilters($filtres, $cat_ID);
     $pivotRepository = PivotContainer::getRepository();
     $offres = [];
