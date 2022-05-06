@@ -93,6 +93,7 @@ class AdminPage
 
     private static function offresRender()
     {
+var_dump(11111111111);
         $filtre = $_GET['filtreId'] ?? null;
         if (!$filtre) {
             Twig::rendPage(
@@ -132,7 +133,7 @@ var_dump(11111111111);
         $pivotOffresTable->categoryId = 14;
         ?>
         <div class="wrap">
-            <h2>Les offres pour <?php echo $filtres[0]->nom; ?></h2>
+            <h2>Les offres pour zz <?php echo $filtres[0]->nom; ?></h2>
             <?php $pivotOffresTable->prepare_items();
             $pivotOffresTable->display();
             ?>
