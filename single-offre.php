@@ -85,7 +85,7 @@ foreach ($offres as $item) {
     ];
 }
 foreach ($offre->classements as $classement) {
-    dump($classement->specData);
+
 }
 
 Twig::rendPage(

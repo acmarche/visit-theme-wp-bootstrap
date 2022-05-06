@@ -110,7 +110,6 @@ array_map(
     $event->enfants
 );
 */
-dump($event);
 Twig::rendPage(
     'agenda/show.html.twig',
     [
