@@ -93,7 +93,6 @@ class AdminPage
 
     private static function offresRender()
     {
-var_dump(11111111111);
         $filtre = $_GET['filtreId'] ?? null;
         if (!$filtre) {
             Twig::rendPage(
