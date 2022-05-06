@@ -125,7 +125,6 @@ class AdminPage
             var_dump($exception);
         }
 
-
         $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
