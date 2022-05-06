@@ -118,6 +118,15 @@ class AdminPage
             return;
         }
         $pivotRepository = PivotContainer::getRepository();
+        $pivotRemoteRepository = PivotContainer::getRemoteRepository();
+        try {
+
+            $pivotRemoteRepository->query();
+        } catch (\Exception $exception) {
+            var_dump($exception);
+        }
+
+
         $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
