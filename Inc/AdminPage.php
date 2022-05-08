@@ -204,7 +204,7 @@ class AdminPage
     {
         wp_enqueue_script(
             'vue-app',
-            get_template_directory_uri().'/assets/js/vue/assets/index.76c84e44.js',
+            get_template_directory_uri().'/assets/js/dist/js/vuejf.js',
             [],
             wp_get_theme()->get('Version'),
             true
@@ -212,7 +212,7 @@ class AdminPage
 
         wp_enqueue_style(
             'vue-css',
-            get_template_directory_uri().'/assets/js/vue/assets/index.a11677c3.css',
+            get_template_directory_uri().'/assets/js/dist/js/vuejf.css',
             [],
             wp_get_theme()->get('Version')
         );
@@ -220,7 +220,7 @@ class AdminPage
         Twig::rendPage(
             'admin/vue.html.twig',
             [
-
+                'categoryId' => 10,
             ]
         );
     }

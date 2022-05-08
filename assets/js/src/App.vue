@@ -1,15 +1,15 @@
-<script setup >
-import SelectJf from './components/SelectJf.vue'
-import List from './components/List.vue';
+<script setup>
+import SelectFiltre from './components/SelectFiltre.vue'
+import ListFiltre from './components/ListFiltre.vue';
+const name = 'filtres-box';
 </script>
 
 <template>
-  <div id="filtres-box" data-category-id="41"></div>
   <div class="myDiv">
     <h3>Ajouter</h3>
-    <hr />
-    <List />
-    <SelectJf />
+    <hr/>
+    <ListFiltre :nameApp="name" />
+    <SelectFiltre :nameApp="name" />
   </div>
 </template>
 <style>
