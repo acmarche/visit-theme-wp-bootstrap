@@ -6,20 +6,20 @@ class AssetsLoad
 {
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', fn () => $this->visitmarcheAssets());
+        add_action('wp_enqueue_scripts', fn() => $this->visitmarcheAssets());
 
         if (Theme::isHomePage()) {
-            add_action('wp_enqueue_scripts', fn () => $this->visitmarcheHome());
+            add_action('wp_enqueue_scripts', fn() => $this->visitmarcheHome());
             //  add_action('wp_enqueue_scripts', [$this, 'loadSearchScreenHome']);
         }
 
-        if (! is_category() && ! is_search() && ! is_front_page()) {
-            add_action('wp_enqueue_scripts', fn () => $this->visitmarcheLeaft());
-            add_action('wp_enqueue_scripts', fn () => $this->visitmarcheLightGallery());
+        if (!is_category() && !is_search() && !is_front_page()) {
+            add_action('wp_enqueue_scripts', fn() => $this->visitmarcheLeaft());
+            add_action('wp_enqueue_scripts', fn() => $this->visitmarcheLightGallery());
             //  add_action('wp_enqueue_scripts', [$this, 'visitmarcheGpx']);
         }
 
-        //    add_action('wp_enqueue_scripts', [$this, 'loadSearchScreen']);
+        add_filter('script_loader_tag', fn($tag, $handle, $src) => $this->addAsModule($tag, $handle, $src), 10, 3);
     }
 
     public function visitmarcheAssets(): void
@@ -174,4 +174,21 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
     }
+
+    /**
+     * Pour vue
+     * @param $tag
+     * @param $handle
+     * @param $src
+     * @return mixed|string
+     */
+    function addAsModule($tag, $handle, $src)
+    {
+        if ('vue-app' !== $handle) {
+            return $tag;
+        }
+
+        return '<script type="module" src="'.esc_url($src).'"></script>';
+    }
+
 }

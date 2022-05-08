@@ -59,6 +59,14 @@ class AdminPage
             'pivot_categories_filtre',
             fn() => $this::categoriesFiltresRender(),
         );
+        add_submenu_page(
+            'pivot_home',
+            'Vue',
+            'Vue',
+            'edit_posts',
+            'pivot_vue',
+            fn() => $this::vueRender(),
+        );
     }
 
     private static function homepageRender()
@@ -190,5 +198,30 @@ class AdminPage
             ?>
         </div>
         <?php
+    }
+
+    private function vueRender()
+    {
+        wp_enqueue_script(
+            'vue-app',
+            get_template_directory_uri().'/assets/js/vue/assets/index.76c84e44.js',
+            [],
+            wp_get_theme()->get('Version'),
+            true
+        );
+
+        wp_enqueue_style(
+            'vue-css',
+            get_template_directory_uri().'/assets/js/vue/assets/index.a11677c3.css',
+            [],
+            wp_get_theme()->get('Version')
+        );
+
+        Twig::rendPage(
+            'admin/vue.html.twig',
+            [
+
+            ]
+        );
     }
 }
