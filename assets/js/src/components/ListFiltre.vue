@@ -1,23 +1,15 @@
 <script setup>
-import {ref, onMounted} from 'vue'
-import {deleteFiltreRequest, fetchFiltresByCategoryRequest} from '../service/filtre-service'
+import {defineEmits, defineProps} from 'vue'
+import {deleteFiltreRequest} from '../service/filtre-service'
 
-const props = defineProps({nameApp: String});
-const categoryId = ref(0)
-const filtres = ref([])
+const props = defineProps({filtres: Array, categoryId: Number});
+const emit = defineEmits(['refresh-filtres'])
 
 async function removeFiltre(id) {
   console.log(id)
-  response = await deleteFiltreRequest(categoryId, id);
-  response = await fetchFiltresByCategoryRequest('', categoryId);
-  filtres.value = [...response.data]
+  let response = await deleteFiltreRequest(props.categoryId, id);
+  emit('refresh-filtres')
 }
-
-onMounted(async () => {
-  categoryId.value = document.getElementById(props.nameApp).getAttribute('data-category-id');
-  let response = await fetchFiltresByCategoryRequest('', categoryId.value)
-  filtres.value = [...response.data]
-})
 </script>
 <template>
   <table class="wp-list-table widefat fixed striped table-view-list toplevel_page_pivot_list">
@@ -41,4 +33,5 @@ onMounted(async () => {
     </tr>
     </tbody>
   </table>
+  <br />
 </template>
