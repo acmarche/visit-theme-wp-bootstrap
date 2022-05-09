@@ -8,22 +8,23 @@ const indexedClass = [
   'object-card oc-new pt-8px pt-md-0 col-md-6 px-md-4px col-lg-4 px-lg-8px',
   'object-card oc-new pt-8px pt-lg-0 col-md-6 px-md-4px col-lg-4 px-lg-8px',
   'object-card oc-new pt-8px col-md-6 px-md-4px col-lg-4 pt-lg-16px px-lg-8px'
-];
+]
 
 let classBg = 'bg-img-enjoy-1'
 let style = ''
 const offre = ref(null)
 
 const styleBg = computed(() => {
+  console.log(offre.image)
   if (offre.image) {
     style = {
       backgroundImage: `url(${offre.image})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
-    };
-    classBg = '';
+    }
+    classBg = ''
   }
-
+console.log(style)
   return style
 })
 
@@ -39,7 +40,7 @@ function issetDescription() {
     <a :href="props.offre.url" class="bg-img rounded-xs">
       <i
           :style="styleBg"
-          :class="classBg +'bg-img-size-hover-110'">
+          :class="classBg + ' bg-img-size-hover-110'">
         <b class="d-block position-absolute top-0 bottom-0 left-0 right-0 bg-img-bgcolor-primary-0 bg-img-bgcolor-hover-primary-55 bg-img-transition-bgcolor"></b>
         <span
             class="text-white shadow-text-sm m-auto bg-img-opacity-0 bg-img-opacity-hover-1 transition-opacity d-block align-self-center z-10 ff-semibold fs-short-2">

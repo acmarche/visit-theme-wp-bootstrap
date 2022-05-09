@@ -2,7 +2,7 @@
 import {ref, onMounted, defineProps} from 'vue'
 import {addFiltreRequest, fetchFiltresByParentRequest} from '../../service/filtre-service'
 
-const props = defineProps({categoryId: Number});
+const props = defineProps({categoryId: Number})
 const rootSelected = ref(null)
 const childSelected = ref(null)
 const optionsRoot = ref([])
@@ -16,13 +16,13 @@ async function fetchChilds() {
 
 async function addFilter() {
   try {
-    let response = await addFiltreRequest(props.categoryId, rootSelected.value, childSelected.value);
+    let response = await addFiltreRequest(props.categoryId, rootSelected.value, childSelected.value)
     console.log(response.data)
     emit('refresh-filtres')
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
-  return null;
+  return null
 }
 
 onMounted(async () => {

@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 
-const props = defineProps({filtres: Array, categoryId: Number, language: String});
+const props = defineProps({filtres: Array, categoryId: Number, language: String})
 const emit = defineEmits(['refresh-offres'])
 const filtreSelected = ref(0)
 

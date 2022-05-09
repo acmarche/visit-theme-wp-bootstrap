@@ -1,9 +1,9 @@
 <script setup>
-import OffreItem from "./OffreItem.vue";
+import OffreItem from "./OffreItem.vue"
 
 const props = defineProps({offres: Array})
-const clef = 3;
-let style = {};
+const clef = 3
+let style = {}
 
 </script>
 <template>
