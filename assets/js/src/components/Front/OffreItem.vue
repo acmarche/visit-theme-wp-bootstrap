@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import {ref, computed} from 'vue'
+
 const props = defineProps({offre: Object, index: Number, key: String})
 
 const indexedClass = [
@@ -26,13 +27,16 @@ const styleBg = computed(() => {
   return style
 })
 
-onMounted( () => {
-  console.log(props.offre)
-})
+function issetDescription() {
+  if (props.offre.description == null)
+    return false
+
+  return props.offre.description.length !== 0
+}
 </script>
 <template>
-  <li :class="indexedClass[clef] ? indexedClass[clef] : indexedClass[3]" v-for="offre in props.offres">
-    <a :href="offre.url" class="bg-img rounded-xs">
+  <li :class="indexedClass[props.key] ? indexedClass[props.key] : indexedClass[3]">
+    <a :href="props.offre.url" class="bg-img rounded-xs">
       <i
           :style="styleBg"
           :class="classBg +'bg-img-size-hover-110'">
@@ -43,12 +47,10 @@ onMounted( () => {
           </span>
       </i>
       <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
-        <h3>{{ offre.nom }}</h3>
-        <p>
-          {{ offre.description && offre.description.slice(0, 170) }}
-        </p>
+        <h3>{{ props.offre.nom }}</h3>
+        <p v-if="issetDescription" v-html="props.offre.description.slice(0, 170)"></p>
         <span class="text-primary">
-            {{ offre.tags.join(',') }}
+            {{ props.offre.tags.join(',') }}
           </span>
       </div>
     </a>
