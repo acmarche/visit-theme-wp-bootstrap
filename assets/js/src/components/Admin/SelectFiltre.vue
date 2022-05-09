@@ -1,6 +1,6 @@
 <script setup>
 import {ref, onMounted, defineEmits, defineProps} from 'vue'
-import {addFiltreRequest, fetchFiltresByParentRequest} from '../service/filtre-service'
+import {addFiltreRequest, fetchFiltresByParentRequest} from '../../service/filtre-service'
 
 const props = defineProps({categoryId: Number});
 const rootSelected = ref(null)

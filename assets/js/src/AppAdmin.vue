@@ -1,8 +1,8 @@
 <script setup>
 import {ref, onMounted} from 'vue'
 import {fetchFiltresByCategoryRequest} from './service/filtre-service'
-import SelectFiltre from './components/SelectFiltre.vue'
-import ListFiltre from './components/ListFiltre.vue';
+import SelectFiltre from './components/Admin/SelectFiltre.vue'
+import ListFiltre from './components/Admin/ListFiltre.vue';
 
 const filtres = ref([])
 const categoryId = ref(0)

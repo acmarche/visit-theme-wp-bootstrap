@@ -1,6 +1,6 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import AppAdmin from "./AppAdmin.vue";
 
 import "./index.css";
 
-createApp(App).mount("#filtres-box");
+createApp(AppAdmin).mount("#filtres-box");

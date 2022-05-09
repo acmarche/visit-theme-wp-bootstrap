@@ -1,6 +1,6 @@
 <script setup>
 import {defineEmits, defineProps} from 'vue'
-import {deleteFiltreRequest} from '../service/filtre-service'
+import {deleteFiltreRequest} from '../../service/filtre-service'
 
 const props = defineProps({filtres: Array, categoryId: Number});
 const emit = defineEmits(['refresh-filtres'])
