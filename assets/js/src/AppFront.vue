@@ -1,9 +1,9 @@
 <script setup>
 import {ref, onMounted} from 'vue'
 import {fetchFiltresByCategoryRequest, fetchOffres} from './service/filtre-service'
-import CategoryTitle from "./components/Front/CategoryTitle.vue";
-import ListFiltre from "./components/Front/ListFiltre.vue";
-import OffresList from "./components/Front/OffresList.vue";
+import CategoryTitle from "./components/Front/CategoryTitle.vue"
+import ListFiltre from "./components/Front/ListFiltre.vue"
+import OffresList from "./components/Front/OffresList.vue"
 
 const name = 'app-offres';
 const filtres = ref([])
@@ -22,7 +22,7 @@ async function loadFiltres() {
 const callback = async function refreshOffres(filtreSelected) {
   console.log("refresh offres" + filtreSelected)
   if (filtreSelected > 0) {
-    console.log('loadOffres' + filtreId)
+    console.log('loadOffres cat' + categoryId.value + ' filtreid: ' + filtreId)
     let response = await fetchOffres('', categoryId.value, filtreSelected)
     console.log(response.data)
     offres.value = [...response.data]

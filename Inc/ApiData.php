@@ -14,8 +14,7 @@ use WP_REST_Request;
 use WP_REST_Response;
 
 /**
- * Enregistrement des routes pour les api pour les composants react
- * Class Api.
+ * Enregistrement des routes pour les api pour les composants vue
  */
 class ApiData
 {
@@ -50,12 +49,13 @@ class ApiData
 
     public static function pivotOffres(WP_REST_Request $request)
     {
-        $filtreSelected = (int)$request->get_param('filtre');
         $currentCategoryId = (int)$request->get_param('category');
+        $filtreSelected = (int)$request->get_param('filtre');
+
         if (0 === $currentCategoryId) {
             Mailer::sendError('error hades offre', 'missing param keyword');
 
-            return new WP_Error(500, 'missing param keyword');
+            return new WP_Error(500, 'missing param category');
         }
 
         $offres = self::getOffres($filtreSelected, $currentCategoryId);
