@@ -184,7 +184,7 @@ class AssetsLoad
      */
     function addAsModule($tag, $handle, $src)
     {
-        if (!in_array($handle, ['vue-app-front', 'vue-app'])) {
+        if (!in_array($handle, ['vue-app-front', 'vue-admin-js'])) {
             return $tag;
         }
 
