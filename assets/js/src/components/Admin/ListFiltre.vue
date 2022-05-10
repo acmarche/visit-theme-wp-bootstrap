@@ -6,7 +6,6 @@ const props = defineProps({filtres: Array, categoryId: Number})
 const emit = defineEmits(['refresh-filtres'])
 
 async function removeFiltre(id) {
-  console.log(id)
   let response = await deleteFiltreRequest(props.categoryId, id)
   emit('refresh-filtres')
 }

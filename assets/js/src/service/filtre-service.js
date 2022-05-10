@@ -51,7 +51,6 @@ export function deleteFiltreRequest( categoryId, id ) {
  * @returns {Promise}
  */
 export function addFiltreRequest( categoryId, parentId, childId ) {
-    console.log("add " + categoryId + parentId + childId)
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
     formData.append( 'action', 'action_add_filtre' );
@@ -67,9 +66,7 @@ export function addFiltreRequest( categoryId, parentId, childId ) {
  */
 export function fetchCategory( categoryId ) {
     const params = {};
-
     const url = `wp-json/wp/v2/categories/${categoryId}`;
-
     return axios.get( url, {
         params
     });
