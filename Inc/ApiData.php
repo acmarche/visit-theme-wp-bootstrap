@@ -96,14 +96,13 @@ class ApiData
         if ([] !== $filtres) {
             $pivotRepository = PivotContainer::getRepository();
             $offres = $pivotRepository->getOffres($filtres);
-            $offres = $postUtils->convertOffres($offres, $currentCategoryId, $language);
+            $offres = $postUtils->convertOffresToArray($offres, $currentCategoryId, $language);
         }
 
         $posts = $wpRepository->getPostsByCatId($currentCategoryId);
         //fusion offres et articles
         $posts = $postUtils->convertPostsToArray($posts);
-        $offres = array_merge($posts, $offres);
 
-        return $offres;
+        return array_merge($posts, $offres);
     }
 }

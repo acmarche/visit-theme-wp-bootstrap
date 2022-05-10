@@ -36,6 +36,7 @@ class PostUtils
         );
 
         return [
+            'id' => $post->ID,
             'url' => $post->permalink,
             'nom' => $post->post_title,
             'description' => $post->post_excerpt,
@@ -62,12 +63,12 @@ class PostUtils
      * @param string $language
      * @return array
      */
-    public function convertOffres(array $offres, int $categoryId, string $language): array
+    public function convertOffresToArray(array $offres, int $categoryId, string $language): array
     {
-        array_map(
+        return array_map(
             function ($offre) use ($categoryId, $language) {
-                $offre->url = RouterHades::getUrlOffre($offre, $categoryId);
-                $offre->nom = $offre->nomByLanguage($language);
+                $url = RouterHades::getUrlOffre($offre, $categoryId);
+                $nom = $offre->nomByLanguage($language);
                 $description = null;
                 if ((is_countable($offre->descriptions) ? \count($offre->descriptions) : 0) > 0) {
                     $tmp = $offre->descriptionsByLanguage($language);
@@ -76,7 +77,6 @@ class PostUtils
                     }
                     $description = $tmp[0]->value;
                 }
-                $offre->description = $description;
                 $tags = [$offre->typeOffre->labelByLanguage($language)];
                 $offre->tags = $tags;
                 array_map(
@@ -85,11 +85,19 @@ class PostUtils
                     },
                     $offre->categories
                 );
-                $offre->image = $offre->firstImage();
+                $image = $offre->firstImage();
+
+                return [
+                    'id' => $offre->codeCgt,
+                    'url' => $url,
+                    'nom' => $nom,
+                    'description' => $description,
+                    'tags' => $tags,
+                    'image' => $image,
+                ];
+
             },
             $offres
         );
-
-        return $offres;
     }
 }

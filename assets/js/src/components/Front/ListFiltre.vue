@@ -6,7 +6,6 @@ const emit = defineEmits(['refresh-offres'])
 const filtreSelected = ref(0)
 
 function zeze(filtreId) {
-  console.log(filtreId)
   emit('refresh-offres', filtreId)
 }
 

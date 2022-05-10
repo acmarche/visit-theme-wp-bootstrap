@@ -79,13 +79,13 @@ if ([] !== $filtres) {
     //fusion offres et articles
     $postUtils = new PostUtils();
     $posts = $postUtils->convertPostsToArray($posts);
-    $offres = $postUtils->convertOffres($offres, $cat_ID, $language);
+    $offres = $postUtils->convertOffresToArray($offres, $cat_ID, $language);
     $offres = array_merge($posts, $offres);
 
     wp_enqueue_script(
-        'react-app',
-        get_template_directory_uri().'/assets/js/build/offre.js',
-        ['wp-element'],
+        'vue-app-front',
+        get_template_directory_uri().'/assets/js/dist/js/appFiltreFront-vuejf.js',
+        [],
         wp_get_theme()->get('Version'),
         true
     );

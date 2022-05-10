@@ -15,16 +15,14 @@ let style = ''
 const offre = ref(null)
 
 const styleBg = computed(() => {
-  console.log(offre.image)
-  if (offre.image) {
+  if (props.offre.image) {
     style = {
-      backgroundImage: `url(${offre.image})`,
+      backgroundImage: `url(${props.offre.image})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }
     classBg = ''
   }
-console.log(style)
   return style
 })
 
@@ -49,7 +47,7 @@ function issetDescription() {
       </i>
       <div class="col py-18px pl-28px pr-14px text-left lh-0 px-lg-16px">
         <h3>{{ props.offre.nom }}</h3>
-        <p v-if="issetDescription" v-html="props.offre.description.slice(0, 170)"></p>
+        <p v-if="issetDescription" v-html="props.offre.description ? props.offre.description.slice(0, 170) : ''"></p>
         <span class="text-primary">
             {{ props.offre.tags.join(',') }}
           </span>

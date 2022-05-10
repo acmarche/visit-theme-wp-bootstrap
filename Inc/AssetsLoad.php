@@ -184,7 +184,7 @@ class AssetsLoad
      */
     function addAsModule($tag, $handle, $src)
     {
-        if ('vue-app' !== $handle) {
+        if (!in_array($handle, ['vue-app-front', 'vue-app'])) {
             return $tag;
         }
 

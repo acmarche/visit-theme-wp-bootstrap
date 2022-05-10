@@ -2,8 +2,6 @@
 import OffreItem from "./OffreItem.vue"
 
 const props = defineProps({offres: Array})
-const clef = 3
-let style = {}
 
 </script>
 <template>
@@ -12,7 +10,7 @@ let style = {}
         v-for="(offre, index) in offres"
         :offre="offre"
         :index="index"
-        :key="offre.codeCgt"
+        :key="offre.id"
     >
     </OffreItem>
   </ul>
