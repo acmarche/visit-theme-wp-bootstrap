@@ -51,7 +51,7 @@ class FiltreMetaBox
                 </th>
                 <td>
                     <p class="description">
-                        <a href="<?php echo admin_url('admin.php?page=pivot_filtre_menu') ?>" target="_blank">
+                        <a href="<?php echo admin_url('admin.php?page=pivot_filtres') ?>" target="_blank">
                             Liste des filtres</a>
                     </p>
                     <br/>
