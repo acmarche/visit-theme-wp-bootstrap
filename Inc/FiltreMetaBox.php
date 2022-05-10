@@ -26,11 +26,17 @@ class FiltreMetaBox
     public static function hades_metabox_edit(\WP_Term $term): void
     {
         wp_enqueue_script(
-            'vue-app',
-            get_template_directory_uri().'/assets/js/dist/js/vuejf.js',
+            'vue-admin-js',
+            get_template_directory_uri().'/assets/js/dist/js/appFiltreAdmin-vuejf.js',
             [],
             wp_get_theme()->get('Version'),
             true
+        );
+        wp_enqueue_style(
+            'vue-admin-css',
+            get_template_directory_uri().'/assets/js/dist/js/appFiltreAdmin-vuejf.css',
+            [],
+            wp_get_theme()->get('Version'),
         );
 
         $oldFiltres = get_term_meta($term->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);

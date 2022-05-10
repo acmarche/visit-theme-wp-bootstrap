@@ -89,6 +89,12 @@ if ([] !== $filtres) {
         wp_get_theme()->get('Version'),
         true
     );
+    wp_enqueue_style(
+        'vue-app-css',
+        get_template_directory_uri().'/assets/js/dist/js/appFiltreFront-vuejf.css',
+        [],
+        wp_get_theme()->get('Version'),
+    );
 
     Twig::rendPage(
         'category/index_hades.html.twig',
