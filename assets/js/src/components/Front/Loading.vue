@@ -1,8 +1,5 @@
-<script setup>
-const props = defineProps({isLoading: Boolean})
-</script>
 <template>
-  <div class="myLoad" v-if="props.isLoading">
+  <div class="myLoad">
     Loading...
   </div>
 </template>
