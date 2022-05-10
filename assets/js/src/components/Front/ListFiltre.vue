@@ -10,7 +10,7 @@ function zeze(filtreId) {
 }
 
 function zozo() {
-  emit('refresh-offres', filtreId)
+  emit('refresh-offres', filtreSelected.value )
 }
 
 </script>

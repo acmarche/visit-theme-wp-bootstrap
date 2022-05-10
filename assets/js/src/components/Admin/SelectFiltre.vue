@@ -16,7 +16,7 @@ async function fetchChilds() {
 
 async function addFilter() {
   try {
-    let response = await addFiltreRequest(props.categoryId, rootSelected.value, childSelected.value)
+    await addFiltreRequest(props.categoryId, rootSelected.value, childSelected.value)
     emit('refresh-filtres')
   } catch (e) {
     console.log(e)
