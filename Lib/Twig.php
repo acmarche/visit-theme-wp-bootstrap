@@ -25,10 +25,7 @@ class Twig
         }
 
         $loader = new FilesystemLoader($path);
-        $dir = ABSPATH.'../var/cache';
-        if (WP_DEBUG) {
-            $dir = ABSPATH.'var/cache';
-        }
+        $dir = ABSPATH.'var/cache';
         $environment = new Environment(
             $loader,
             [
@@ -38,10 +35,13 @@ class Twig
             ]
         );
 
+        $loader->addPath(ABSPATH.'wp-content/themes/visitmarche/templates/','Visit');
+        $loader->addPath(ABSPATH.'visittail/theme/templates/','VisitTail');
+
         // wp_get_environment_type();
-        if (WP_DEBUG) {
+      //  if (WP_DEBUG) {
             $environment->addExtension(new DebugExtension());
-        }
+       // }
 
         $translator = LocaleHelper::iniTranslator();
         $environment->addExtension(new TranslationExtension($translator));
