@@ -97,12 +97,12 @@ class WpRepository
         return $children;
     }
 
-    public function getSamePosts(int $postId): array
+    public function getSamePosts(int $postId, int $max = 3): array
     {
         $categories = get_the_category($postId);
         $args = [
             'category__in' => array_map(
-                fn($category) => $category->cat_ID,
+                fn ($category) => $category->cat_ID,
                 $categories
             ),
             'post__not_in' => [$postId],
@@ -121,6 +121,7 @@ class WpRepository
             }
             $recommandations[] = [
                 'title' => $post->post_title,
+                'excerpt' => $post->post_excerpt,
                 'url' => get_permalink($post->ID),
                 'image' => $image,
                 'tags' => self::getTags($post->ID),
@@ -137,7 +138,7 @@ class WpRepository
             $images = wp_get_attachment_image_src($attachment_id, 'original');
             $post_thumbnail_url = $images[0];
         } else {
-            $post_thumbnail_url = get_template_directory_uri().'/assets/images/404.jpg';
+            $post_thumbnail_url = get_template_directory_uri() . '/assets/images/404.jpg';
         }
 
         return $post_thumbnail_url;
@@ -209,7 +210,7 @@ class WpRepository
         $allFiltres = [];
         foreach ($filtres as $filtre) {
             $childs = $filtre->children;
-            $filtre->children = [];//bug loop infinit
+            $filtre->children = []; //bug loop infinit
             $allFiltres[] = $filtre;
             foreach ($childs as $child) {
                 $allFiltres[] = $child;
