@@ -3,7 +3,7 @@
 namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use AcMarche\Pivot\Entity\Filtre;
+use AcMarche\Pivot\Entity\TypeOffre;
 use VisitMarche\Theme\Inc\FiltreMetaBox;
 use VisitMarche\Theme\Inc\Theme;
 use WP_Post;
@@ -187,7 +187,7 @@ class WpRepository
     /**
      * @param int $categoryId
      * @param string $language
-     * @return Filtre[]
+     * @return TypeOffre[]
      */
     public static function getCategoryFilters(int $categoryId, bool $flatWithChildren = false): array
     {

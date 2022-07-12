@@ -5,7 +5,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Pivot\Entities\Category;
 use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Pivot\Entities\Offre\Offre;
-use AcMarche\Pivot\Entity\Filtre;
+use AcMarche\Pivot\Entity\TypeOffre;
 use VisitMarche\Theme\Lib\Router;
 
 /**
@@ -58,7 +58,7 @@ class RouterHades extends Router
     }
 
     /**
-     * @param Filtre[] $filtres
+     * @param TypeOffre[] $filtres
      * @return array
      */
     public static function setRoutesToFilters(array $filtres, int $categoryId): array
