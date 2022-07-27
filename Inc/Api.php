@@ -51,6 +51,20 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
+                    'filtres_name/(?P<name>[\w]+)',
+                    [
+                        'methods' => 'GET',
+                        'callback' => fn($args) => ApiData::pivotFiltresByName($args),
+                    ]
+                );
+            }
+        );
+
+        add_action(
+            'rest_api_init',
+            function () {
+                register_rest_route(
+                    'pivot',
                     'offres/(?P<category>[\d]+)/(?P<filtre>[\d]+)',
                     [
                         'methods' => 'GET',

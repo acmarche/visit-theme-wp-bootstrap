@@ -22,12 +22,23 @@ class ApiData
     {
         $parentId = (int)$request->get_param('parentId');
 
-        $pivotRepository = PivotContainer::getFiltreRepository();
+        $pivotRepository = PivotContainer::getTypeOffreRepository();
         if ($parentId == 0) {
             $filtres = $pivotRepository->findRoots();
         } else {
             $filtres = $pivotRepository->findByParent($parentId);
         }
+
+        return rest_ensure_response($filtres);
+    }
+
+    public static function pivotFiltresByName(WP_REST_Request $request)
+    {
+        $name = $request->get_param('name');
+
+        $pivotRepository = PivotContainer::getTypeOffreRepository();
+
+        $filtres = $pivotRepository->findByName($name);
 
         return rest_ensure_response($filtres);
     }

@@ -31,6 +31,18 @@ export function fetchFiltresByParentRequest( parentId ) {
 }
 
 /**
+ * @param {string} name
+ * @returns {Promise}
+ */
+export function fetchFiltresByName( name ) {
+    const params = {};
+    const url = `wp-json/pivot/filtres_name/${name}`;
+    return axios.get( url, {
+        params
+    });
+}
+
+/**
  * @param {int} categoryId
  * @param {int} id
  * @returns {Promise}
@@ -46,17 +58,13 @@ export function deleteFiltreRequest( categoryId, id ) {
 
 /**
  * @param {int} categoryId
- * @param {int} parentId
- * @param {int} childId
  * @returns {Promise}
  */
-export function addFiltreRequest( categoryId, parentId, childId ) {
+export function addFiltreRequest( categoryId ) {
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
     formData.append( 'action', 'action_add_filtre' );
     formData.append( 'categoryId', categoryId );
-    formData.append( 'parentId', parentId );
-    formData.append( 'childId', childId );
     return axios.post( url, formData );
 }
 
