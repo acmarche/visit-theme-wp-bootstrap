@@ -11,19 +11,13 @@ class FiltreMetaBox
     {
         add_action(
             'category_edit_form_fields',
-            fn($tag) => $this::hades_metabox_edit($tag),
-            10,
-            1
-        );
-        add_action(
-            'edited_category',
-            fn($term_id) => $this::save_hades_metadata($term_id),
+            fn($tag) => $this::pivot_metabox_edit($tag),
             10,
             1
         );
     }
 
-    public static function hades_metabox_edit(\WP_Term $term): void
+    public static function pivot_metabox_edit(\WP_Term $term): void
     {
         wp_enqueue_script(
             'vue-admin-js',
@@ -40,9 +34,6 @@ class FiltreMetaBox
         );
 
         $oldFiltres = get_term_meta($term->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);
-        //  delete_term_meta($term->term_id, self::PIVOT_REFRUBRIQUE);
-        //  $filtres = get_term_meta($term->term_id, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
-        //  dump($filtres);
         ?>
         <table class="form-table">
             <tr class="form-field">
@@ -64,16 +55,5 @@ class FiltreMetaBox
             </tr>
         </table>
         <?php
-    }
-
-    public static function save_hades_metadata($categoryId): void
-    {
-        /*  $meta_key = self::PIVOT_REFRUBRIQUE;
-          if (isset($_POST[$meta_key]) && [] !== $_POST[$meta_key]) {
-              $filtres = $_POST[$meta_key];
-              update_term_meta($categoryId, $meta_key, $filtres);
-          } else {
-              delete_term_meta($categoryId, $meta_key);
-          }*/
     }
 }

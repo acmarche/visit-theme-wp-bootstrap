@@ -20,11 +20,11 @@ class Ajax
         if ($categoryId && $id) {
             $filtreRepository = PivotContainer::getTypeOffreRepository();
             if ($filtre = $filtreRepository->find($id)) {
-                $reference = $filtre->getIdentifiant();
+                $urn = $filtre->urn;
                 $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
                 if (is_array($categoryFiltres)) {
-                    $key = array_search($reference, $categoryFiltres);
-                    if ($key) {
+                    $key = array_search($urn, $categoryFiltres);
+                    if (is_int($key)) {
                         unset($categoryFiltres[$key]);
                         update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
                     }
@@ -39,15 +39,16 @@ class Ajax
     {
         $categoryFiltres = [];
         $categoryId = (int)$_POST['categoryId'];
+        $typeOffreId = (int)$_POST['typeOffreId'];
         $filtreRepository = PivotContainer::getTypeOffreRepository();
-        if ($categoryId > 0) {
+        if ($categoryId > 0 && $typeOffreId > 0) {
             $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
             if (!is_array($categoryFiltres)) {
                 $categoryFiltres = [];
             }
-            $filtre = $filtreRepository->find($categoryId);
-            if($filtre){
-                $categoryFiltres[] = $filtre->getIdentifiant();
+            $filtre = $filtreRepository->find($typeOffreId);
+            if ($filtre) {
+                $categoryFiltres[] = $filtre->urn;
             }
             update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
         }

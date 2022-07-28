@@ -23,7 +23,7 @@ onMounted(async () => {
   <div class="myDiv">
     <h3>Ajouter</h3>
     <hr/>
-    <Autocomplete></Autocomplete>
+    <Autocomplete :categoryId="categoryId" @refresh-filtres="callback"/>
     <hr/>
     <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="callback"  />
   </div>

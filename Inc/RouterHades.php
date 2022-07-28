@@ -66,7 +66,7 @@ class RouterHades extends Router
         $urlfiltre = self::getUrlFiltre($categoryId);
         $filtres2 = [];
         foreach ($filtres as $filtre) {
-            $key = $filtre->getIdentifiant();
+            $key = $filtre->urn;
             $url = $urlfiltre.$key;
             $filtres2[] = [
                 'key' => $key,

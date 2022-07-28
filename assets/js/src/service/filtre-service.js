@@ -13,7 +13,7 @@ export function fetchFiltresByCategoryRequest(
 ) {
     const params = {};
     const url = `${language}/wp-json/pivot/filtres_category/${categoryId}/${flatWithChildren}`;
-    return axios.get( url, {
+    return axios.get(url, {
         params
     });
 }
@@ -22,10 +22,10 @@ export function fetchFiltresByCategoryRequest(
  * @param {int} parentId
  * @returns {Promise}
  */
-export function fetchFiltresByParentRequest( parentId ) {
+export function fetchFiltresByParentRequest(parentId) {
     const params = {};
     const url = `wp-json/pivot/filtres_parent/${parentId}`;
-    return axios.get( url, {
+    return axios.get(url, {
         params
     });
 }
@@ -34,10 +34,10 @@ export function fetchFiltresByParentRequest( parentId ) {
  * @param {string} name
  * @returns {Promise}
  */
-export function fetchFiltresByName( name ) {
+export function fetchFiltresByName(name) {
     const params = {};
     const url = `wp-json/pivot/filtres_name/${name}`;
-    return axios.get( url, {
+    return axios.get(url, {
         params
     });
 }
@@ -47,35 +47,37 @@ export function fetchFiltresByName( name ) {
  * @param {int} id
  * @returns {Promise}
  */
-export function deleteFiltreRequest( categoryId, id ) {
+export function deleteFiltreRequest(categoryId, id) {
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
-    formData.append( 'action', 'action_delete_filtre' );
-    formData.append( 'categoryId', categoryId );
-    formData.append( 'id', id );
-    return axios.post( url, formData );
+    formData.append('action', 'action_delete_filtre');
+    formData.append('categoryId', categoryId);
+    formData.append('id', id);
+    return axios.post(url, formData);
 }
 
 /**
  * @param {int} categoryId
+ * @param {int} typeOffreId
  * @returns {Promise}
  */
-export function addFiltreRequest( categoryId ) {
+export function addFiltreRequest(categoryId, typeOffreId) {
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
-    formData.append( 'action', 'action_add_filtre' );
-    formData.append( 'categoryId', categoryId );
-    return axios.post( url, formData );
+    formData.append('action', 'action_add_filtre');
+    formData.append('categoryId', categoryId);
+    formData.append('typeOffreId', typeOffreId);
+    return axios.post(url, formData);
 }
 
 /**
  * @param {string} categoryId
  * @returns {Promise}
  */
-export function fetchCategory( categoryId ) {
+export function fetchCategory(categoryId) {
     const params = {};
     const url = `wp-json/wp/v2/categories/${categoryId}`;
-    return axios.get( url, {
+    return axios.get(url, {
         params
     });
 }
@@ -86,9 +88,7 @@ export function fetchCategory( categoryId ) {
  * @param {int} filtre
  * @returns {Promise}
  */
-export function fetchOffres( language, categoryId, filtre ) {
+export function fetchOffres(language, categoryId, filtre) {
     const url = `${language}/wp-json/pivot/offres/${categoryId}/${filtre}`;
-    return axios.get( url, {
-
-    });
+    return axios.get(url, {});
 }

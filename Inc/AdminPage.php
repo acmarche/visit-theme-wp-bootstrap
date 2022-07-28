@@ -182,7 +182,7 @@ class AdminPage
             if (count($filtres) > 0) {
                 $categories[] = $category;
             } else {
-                $categoryFiltres = get_term_meta($category->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);
+                $categoryFiltres = get_term_meta($category->term_id, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
                 if ($categoryFiltres != '') {
                     $categories[] = $category;
                 }

@@ -189,15 +189,15 @@ class WpRepository
      * @param string $language
      * @return TypeOffre[]
      */
-    public static function getCategoryFilters(int $categoryId, bool $flatWithChildren = false): array
+    public static function getCategoryFilters(int $categoryWpId, bool $flatWithChildren = false): array
     {
-        $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        $categoryFiltres = get_term_meta($categoryWpId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
         if (!is_array($categoryFiltres)) {
             return [];
         }
-        $filtreRepository = PivotContainer::getFiltreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository();
 
-        $filtres = $filtreRepository->findByReferencesOrUrns($categoryFiltres);
+        $filtres = $filtreRepository->findByIdsOrUrns($categoryFiltres);
 
         if (!$flatWithChildren) {
             return $filtres;

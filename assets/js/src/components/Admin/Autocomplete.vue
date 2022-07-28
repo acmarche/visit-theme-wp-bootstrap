@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import {ref, watch} from 'vue'
+import {ref, watch, defineProps} from 'vue'
 import {fetchFiltresByName, addFiltreRequest} from '../../service/filtre-service'
 import {
   Combobox,
@@ -28,6 +28,7 @@ import {
   ComboboxOption,
 } from '@headlessui/vue'
 
+const props = defineProps({categoryId: Number})
 const typesOffre = ref([])
 const selectedTypeOffre = ref(null)
 const query = ref('')
@@ -46,7 +47,7 @@ function queryChange(name) {
 watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
   if (newTypeOffre.id > 0) {
     try {
-      await addFiltreRequest(newTypeOffre.id)
+      await addFiltreRequest(props.categoryId,newTypeOffre.id)
       emit('refresh-filtres')
       //  const res = await fetch('https://yesno.wtf/api')
       //  answer.value = (await res.json()).answer

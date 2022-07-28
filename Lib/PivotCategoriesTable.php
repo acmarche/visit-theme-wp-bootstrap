@@ -56,8 +56,7 @@ class PivotCategoriesTable extends WP_List_Table
         if (is_array($categoryFiltres)) {
             return join(',', $categoryFiltres);
         }
-        $categoryFiltres = get_term_meta($item->term_id, FiltreMetaBox::HADES_REFRUBRIQUE, true);
 
-        return $categoryFiltres;
+        return '';
     }
 }
