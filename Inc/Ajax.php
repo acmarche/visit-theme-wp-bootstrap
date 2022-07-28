@@ -21,12 +21,12 @@ class Ajax
             $filtreRepository = PivotContainer::getTypeOffreRepository();
             if ($filtre = $filtreRepository->find($id)) {
                 $urn = $filtre->urn;
-                $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+                $categoryFiltres = get_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
                 if (is_array($categoryFiltres)) {
                     $key = array_search($urn, $categoryFiltres);
                     if (is_int($key)) {
                         unset($categoryFiltres[$key]);
-                        update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+                        update_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
                     }
                 }
             }
@@ -42,7 +42,7 @@ class Ajax
         $typeOffreId = (int)$_POST['typeOffreId'];
         $filtreRepository = PivotContainer::getTypeOffreRepository();
         if ($categoryId > 0 && $typeOffreId > 0) {
-            $categoryFiltres = get_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+            $categoryFiltres = get_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
             if (!is_array($categoryFiltres)) {
                 $categoryFiltres = [];
             }
@@ -50,7 +50,7 @@ class Ajax
             if ($filtre) {
                 $categoryFiltres[] = $filtre->urn;
             }
-            update_term_meta($categoryId, FiltreMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+            update_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
         }
         echo json_encode($categoryFiltres);
         wp_die();

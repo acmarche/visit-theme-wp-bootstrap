@@ -9,7 +9,7 @@ use VisitMarche\Theme\Inc\Api;
 use VisitMarche\Theme\Inc\AssetsLoad;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Filter;
-use VisitMarche\Theme\Inc\FiltreMetaBox;
+use VisitMarche\Theme\Inc\PivotMetaBox;
 use VisitMarche\Theme\Inc\QueryAlter;
 use VisitMarche\Theme\Inc\RouterHades;
 use VisitMarche\Theme\Inc\SecurityConfig;
@@ -45,7 +45,7 @@ new RouterHades();
 /*
  * Pour hades
  */
-new FiltreMetaBox();
+new PivotMetaBox();
 /*
  * Balises pour le référencement
  */

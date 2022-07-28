@@ -4,7 +4,7 @@ namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entity\TypeOffre;
-use VisitMarche\Theme\Inc\FiltreMetaBox;
+use VisitMarche\Theme\Inc\PivotMetaBox;
 use VisitMarche\Theme\Inc\Theme;
 use WP_Post;
 use WP_Query;
@@ -191,7 +191,7 @@ class WpRepository
      */
     public static function getCategoryFilters(int $categoryWpId, bool $flatWithChildren = false): array
     {
-        $categoryFiltres = get_term_meta($categoryWpId, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        $categoryFiltres = get_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
         if (!is_array($categoryFiltres)) {
             return [];
         }

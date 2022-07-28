@@ -2,7 +2,7 @@
 
 namespace VisitMarche\Theme\Lib;
 
-use VisitMarche\Theme\Inc\FiltreMetaBox;
+use VisitMarche\Theme\Inc\PivotMetaBox;
 use WP_List_Table;
 
 class PivotCategoriesTable extends WP_List_Table
@@ -52,7 +52,7 @@ class PivotCategoriesTable extends WP_List_Table
 
     function getFiltres(\WP_Term $item): string
     {
-        $categoryFiltres = get_term_meta($item->term_id, FiltreMetaBox::PIVOT_REFRUBRIQUE, true);
+        $categoryFiltres = get_term_meta($item->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
         if (is_array($categoryFiltres)) {
             return join(',', $categoryFiltres);
         }
