@@ -1,3 +1,4 @@
+<!-- OBSOLETE -->
 <script setup>
 import {ref, onMounted, defineProps} from 'vue'
 import {addFiltreRequest, fetchFiltresByParentRequest} from '../../service/filtre-service'
