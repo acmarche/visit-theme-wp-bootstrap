@@ -8,7 +8,6 @@ const filtres = ref([])
 const categoryId = ref(0)
 const callback = async function refreshFiltres() {
   if (categoryId.value > 0) {
-    console.log('back')
     let response = await fetchFiltresByCategoryRequest('', categoryId.value)
     filtres.value = [...response.data]
   }
@@ -25,13 +24,6 @@ onMounted(async () => {
     <hr/>
     <Autocomplete :categoryId="categoryId" @refresh-filtres="callback"/>
     <hr/>
-    <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="callback"  />
+    <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="callback"/>
   </div>
 </template>
-<style>
-.myDiv {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-</style>
