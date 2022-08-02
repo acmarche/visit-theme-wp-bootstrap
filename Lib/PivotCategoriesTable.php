@@ -16,7 +16,7 @@ class PivotCategoriesTable extends WP_List_Table
     {
         $columns = array(
             'nom' => 'Nom',
-            'filtres' => 'Filtres',
+            'filtres' => 'Urn',
         );
 
         return $columns;
