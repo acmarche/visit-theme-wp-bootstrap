@@ -93,9 +93,10 @@ class ApiData
     {
         $offres = $filtres = [];
         $language = LocaleHelper::getSelectedLanguage();
-        $filtreRepository = PivotContainer::getFiltreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository();
         $wpRepository = new WpRepository();
         $postUtils = new PostUtils();
+
 
         if ($filtreSelected == 0) {
             $filtres = $wpRepository->getCategoryFilters($currentCategoryId, true);
