@@ -11,7 +11,7 @@ import {
 const props = defineProps({categoryId: Number})
 const typesOffre = ref([])
 const query = ref('')
-const emit = defineEmits(['refresh-filtres','update-post'])
+const emit = defineEmits(['update-post'])
 const selectedTypeOffre = ref(null)
 
 async function fetchByName() {
@@ -36,7 +36,7 @@ watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
         :displayValue="(typeOffre) => typeOffre?.nom"
         class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
     />
-    <ComboboxOptions class="divide-y divide-gray-200">
+    <ComboboxOptions class="divide-y divide-gray-200 overflow-hidden">
       <ComboboxOption
           as="template"
           v-slot="{ active, selected }"
