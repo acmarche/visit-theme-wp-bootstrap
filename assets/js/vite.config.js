@@ -5,6 +5,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
     plugins: [vue()],
     build: {
+        watch: {
+            // https://rollupjs.org/guide/en/#watch-options
+        },
         rollupOptions: {
             input: {
                 appFiltreAdmin: 'src/admin.js',
@@ -12,7 +15,7 @@ export default defineConfig({
             },
             output: {
                 //entryFileNames: 'assets/js/[name]-[hash].js',
-                assetFileNames: 'js/[name]-vuejf.css',
+                assetFileNames: 'js/admin-vuejf.css',
                 entryFileNames: 'js/[name]-vuejf.js',
             },
         }
