@@ -27,22 +27,25 @@ class PivotMetaBox
         );
         wp_enqueue_style(
             'vue-admin-css',
-            get_template_directory_uri().'/assets/js/dist/js/appFiltreAdmin-vuejf.css',
+            get_template_directory_uri().'/assets/js/dist/js/admin-vuejf.css',
             [],
             wp_get_theme()->get('Version'),
         );
+        //$filtres = get_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
         ?>
         <table class="form-table">
             <tr class="form-field">
                 <th scope="row" valign="top">
                     <label for="bottin_refrubrique">Références pivot</label>
-                </th>
-                <td>
+                    <br>
                     <p class="description">
                         <a href="<?php echo admin_url('admin.php?page=pivot_filtres') ?>" target="_blank">
-                            Liste des filtres</a>
+                            Liste des références</a>
                     </p>
                     <br/>
+                </th>
+                <td>
+
                     <div id="filtres-box" data-category-id="<?php echo $term->term_id ?>">
 
                     </div>
