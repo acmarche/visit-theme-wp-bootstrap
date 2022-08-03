@@ -1,33 +1,6 @@
-<template>
-  <Combobox v-model="selectedTypeOffre" name="assignee">
-    <ComboboxInput
-        @change="queryChange($event.target.value)"
-        :displayValue="(typeOffre) => typeOffre?.nom"
-    />
-    <ComboboxOptions class="divide-y divide-gray-200">
-      <ComboboxOption
-        as="template"
-        v-slot="{ active, selected }"
-          v-for="typeOffre in typesOffre"
-          :key="typeOffre.id"
-          :value="typeOffre"
-          :disabled="false"
-      >
-     <li
-          :class="{
-            'hover:bg-gray-50 px-2 py-2 text-green-700': active,
-            'hover:bg-gray-50 px-2 py-2 text-blue-500': !active
-          }"
-     >    {{ typeOffre.nom }} <span class="text-muted">({{ typeOffre.urn }})</span></li>
-      </ComboboxOption>
-    </ComboboxOptions>
-  </Combobox>
-
-</template>
-
 <script setup>
 import {ref, watch, defineProps} from 'vue'
-import {fetchFiltresByName, addFiltreRequest} from '../../service/filtre-service'
+import {fetchFiltresByName} from '../../service/filtre-service'
 import {
   Combobox,
   ComboboxInput,
@@ -37,9 +10,9 @@ import {
 
 const props = defineProps({categoryId: Number})
 const typesOffre = ref([])
-const selectedTypeOffre = ref(null)
 const query = ref('')
-const emit = defineEmits(['refresh-filtres'])
+const emit = defineEmits(['refresh-filtres','update-post'])
+const selectedTypeOffre = ref(null)
 
 async function fetchByName() {
   let response = await fetchFiltresByName(query.value)
@@ -52,21 +25,37 @@ function queryChange(name) {
 }
 
 watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
-  if (newTypeOffre.id > 0) {
-    try {
-      await addFiltreRequest(props.categoryId,newTypeOffre.id)
-      emit('refresh-filtres')
-      //  const res = await fetch('https://yesno.wtf/api')
-      //  answer.value = (await res.json()).answer
-    } catch (error) {
-      //  answer.value = 'Error! Could not reach the API. ' + error
-      console.log(error)
-    }
-    return null
-  }
+  emit('update-post', selectedTypeOffre)
 })
-</script>
 
+</script>
+<template>
+  <Combobox v-model="selectedTypeOffre" name="assignee">
+    <ComboboxInput
+        @change="queryChange($event.target.value)"
+        :displayValue="(typeOffre) => typeOffre?.nom"
+        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+    />
+    <ComboboxOptions class="divide-y divide-gray-200">
+      <ComboboxOption
+          as="template"
+          v-slot="{ active, selected }"
+          v-for="typeOffre in typesOffre"
+          :key="typeOffre.id"
+          :value="typeOffre"
+          :disabled="false"
+      >
+        <li style="cursor: pointer;"
+            :class="{
+            'hover:bg-gray-50 px-2 py-2 text-green-700': active,
+            'hover:bg-gray-50 px-2 py-2 text-blue-500': !active
+          }"
+        > {{ typeOffre.nom }} <span class="text-muted">({{ typeOffre.urn }})</span></li>
+      </ComboboxOption>
+    </ComboboxOptions>
+  </Combobox>
+
+</template>
 <style>
 .text-muted {
   color: #6c757d !important;
@@ -107,6 +96,4 @@ watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-
-
 </style>

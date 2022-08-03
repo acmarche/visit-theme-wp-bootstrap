@@ -11,11 +11,13 @@ async function removeFiltre(id) {
 }
 </script>
 <template>
-  <table class="wp-list-table widefat fixed striped table-view-list toplevel_page_pivot_list">
+
+  <table v-if="filtres.length > 0" class="wp-list-table widefat fixed striped table-view-list toplevel_page_pivot_list">
     <thead>
     <tr>
-      <th scope="col" id="booktitle" class="manage-column column-booktitle column-primary">Nom</th>
-      <th scope="col" id="booktitle" class="manage-column column-booktitle column-primary">Supprimer
+      <th scope="col" class="manage-column column-booktitle column-primary">Nom</th>
+      <th scope="col" class="manage-column column-booktitle column-primary">Urn</th>
+      <th scope="col" class="manage-column column-booktitle column-primary">Supprimer
       </th>
     </tr>
     </thead>
@@ -23,6 +25,9 @@ async function removeFiltre(id) {
     <tr v-for="filtre in filtres">
       <td class="ooktitle column-booktitle has-row-actions column-primary">
         {{ filtre.nom }}
+      </td>
+      <td class="ooktitle column-booktitle has-row-actions column-primary">
+        {{ filtre.urn }}
       </td>
       <td>
         <button class="button button-danger" type="button" @click="removeFiltre(filtre.id)">

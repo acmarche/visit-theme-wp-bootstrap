@@ -2,7 +2,7 @@
 import {ref, onMounted} from 'vue'
 import {fetchFiltresByCategoryRequest} from './service/filtre-service'
 import ListFiltre from './components/Admin/ListFiltre.vue';
-import Autocomplete from "./components/Admin/Autocomplete.vue";
+import AddFilter from "./components/Admin/AddFilter.vue";
 
 const filtres = ref([])
 const categoryId = ref(0)
@@ -19,11 +19,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="myDiv">
-    <h3>Ajouter</h3>
-    <hr/>
-    <Autocomplete :categoryId="categoryId" @refresh-filtres="callback"/>
-    <hr/>
+    <AddFilter :categoryId="categoryId" @refresh-filtres="callback"/>
     <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="callback"/>
-  </div>
 </template>
