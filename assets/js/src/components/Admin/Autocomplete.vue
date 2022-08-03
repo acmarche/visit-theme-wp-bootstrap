@@ -34,6 +34,7 @@ watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
     <ComboboxInput
         @change="queryChange($event.target.value)"
         :displayValue="(typeOffre) => typeOffre?.nom"
+        autocomplete="off"
         class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
     />
     <ComboboxOptions class="divide-y divide-gray-200 overflow-hidden">
