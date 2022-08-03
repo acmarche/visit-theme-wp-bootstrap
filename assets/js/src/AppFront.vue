@@ -9,7 +9,6 @@ const name = 'app-offres';
 const filtres = ref([])
 const offres = ref([])
 const categoryId = ref(0)
-const filtreId = ref(0)
 const language = ref('')
 const isLoading = ref(true)
 
@@ -23,9 +22,7 @@ async function loadFiltres() {
 }
 
 const callback = async function refreshOffres(filtreSelected) {
-  console.log('loadOffres cat' + categoryId.value + ' filtreid: ' + filtreSelected)
   let response = await fetchOffres('', categoryId.value, filtreSelected)
-  console.log(response.data)
   offres.value = [...response.data]
 }
 
