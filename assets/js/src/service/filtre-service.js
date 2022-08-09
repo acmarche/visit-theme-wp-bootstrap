@@ -36,9 +36,24 @@ export function fetchFiltresByParentRequest(parentId) {
  */
 export function fetchFiltresByName(name) {
     const params = {};
-    const url = `wp-json/pivot/filtres_name/${name}`;
+    name = replaceAccents(name)
+    const url = `wp-json/pivot/filtres_name/${name.toLowerCase()}`;
     return axios.get(url, {
         params
+    });
+}
+
+function replaceAccents(name) {
+    const translate = {
+        é: "e",
+        ê: "e",
+        è: "e",
+        à: "a",
+        ç: "c",
+    };
+    const translateRe = /[éèàê]/g;
+    return name.replace(translateRe, (match) => {
+        return translate[match];
     });
 }
 
