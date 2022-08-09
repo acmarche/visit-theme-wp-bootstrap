@@ -14,19 +14,19 @@ class Ajax
 
     function actionDeleteFiltre()
     {
-        $categoryId = (int)$_POST['categoryId'];
-        $id = $_POST['id'];
+        $categoryWpId = (int)$_POST['categoryId'];
+        $id = (int)$_POST['id'];
         $categoryFiltres = [];
-        if ($categoryId && $id) {
+        if ($categoryWpId && $id) {
             $filtreRepository = PivotContainer::getTypeOffreRepository();
             if ($filtre = $filtreRepository->find($id)) {
                 $urn = $filtre->urn;
-                $categoryFiltres = get_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
+                $categoryFiltres = get_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
                 if (is_array($categoryFiltres)) {
                     $key = array_search($urn, $categoryFiltres);
                     if (is_int($key)) {
                         unset($categoryFiltres[$key]);
-                        update_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
+                        update_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
                     }
                 }
             }
