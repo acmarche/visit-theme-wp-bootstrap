@@ -42,6 +42,6 @@ onMounted(async () => {
 
 <template>
   <ListFiltre :categoryId="categoryId" :language="language" :filtres="filtres" @refresh-offres="callback"/>
-  <Loading :isLoading="isLoading" v-if="isLoading ===true"/>
-  <OffresList :offres="offres" v-if="isLoading ===false"/>
+  <Loading :isLoading="isLoading" v-if="isLoading === true"/>
+  <OffresList :offres="offres" v-if="isLoading === false"/>
 </template>
