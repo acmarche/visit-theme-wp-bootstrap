@@ -50,9 +50,9 @@ if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
 $filtreParam = $_GET['filtre'] ?? null;
-$filterRepository = PivotContainer::getFiltreRepository();
+$filterRepository = PivotContainer::getTypeOffreRepository();
 if ($filtreParam) {
-    $filtres = $filterRepository->findByReferencesOrUrns([$filtreParam]);
+    $filtres = $filterRepository->findByIdsOrUrns([$filtreParam]);
 
     if (count($filtres) > 0) {
         $categoryName = $filtres[0]->labelByLanguage($language);
@@ -64,6 +64,7 @@ if ([] !== $filtres) {
     $filtres = RouterHades::setRoutesToFilters($filtres, $cat_ID);
     $pivotRepository = PivotContainer::getRepository();
     $offres = [];
+
     try {
         $offres = $pivotRepository->getOffres($filtres);
         array_map(
@@ -89,12 +90,12 @@ if ([] !== $filtres) {
         wp_get_theme()->get('Version'),
         true
     );
-    wp_enqueue_style(
+ /*   wp_enqueue_style(
         'vue-app-css',
         get_template_directory_uri().'/assets/js/dist/js/appFiltreFront-vuejf.css',
         [],
         wp_get_theme()->get('Version'),
-    );
+    );*/
 
     Twig::rendPage(
         'category/index_hades.html.twig',
