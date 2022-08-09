@@ -10,6 +10,7 @@ use VisitMarche\Theme\Lib\Twig;
 get_header();
 
 $cat_ID = get_queried_object_id();
+$category = get_category($cat_ID);
 
 $language = LocaleHelper::getSelectedLanguage();
 $pivotRepository = PivotContainer::getRepository();
@@ -39,6 +40,7 @@ Twig::rendPage(
     'agenda/index.html.twig',
     [
         'events' => $events,
+        'category' => $category,
     ]
 );
 
