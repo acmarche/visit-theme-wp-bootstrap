@@ -5,7 +5,7 @@
         <select name="categories" id="cat-select" class="fs-short-3 ff-semibold rounded-xs">
             <option value="all" selected>{{ 'filter.all'|trans }}</option>
             {% for filtre in filtres %}
-                <option value="{{ filtre.key }}">{{ filtre.nom }}</option>
+                <option value="{{ filtre.urn }}">{{ filtre.nom }}</option>
             {% endfor %}
         </select>
     </div>
