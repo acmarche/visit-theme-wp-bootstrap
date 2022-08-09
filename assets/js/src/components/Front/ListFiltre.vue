@@ -21,14 +21,14 @@ function zozo() {
             name="categories"
             id="cat-select"
             class="fs-short-3 ff-semibold rounded-xs">
-      <option v-for="option in props.filtres" :value="option.id">
+      <option v-for="option in filtres" :value="option.id">
         {{ option.nom }}
       </option>
     </select>
 
   </div>
   <ul class="cat-filters d-md-flex mw-648px flex-wrap justify-content-center align-items-center d-none">
-    <li v-for="filtre in props.filtres" class="mx-16px position-relative">
+    <li v-for="filtre in filtres" class="mx-16px position-relative">
       <input name="cat"
              :id="'cat-' + filtre.id"
              @click="zeze(filtre.id)"
