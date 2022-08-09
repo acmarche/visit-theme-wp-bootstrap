@@ -14,10 +14,11 @@ async function removeFiltre(id) {
   <div v-show="filtres.length === 0">
     <p>Aucun filtre</p>
   </div>
-  <table v-show="filtres.length > 0" class="mt-4 wp-list-table widefat striped table-view-list toplevel_page_pivot_list">
+  <table v-show="filtres.length > 0"
+         class="mt-4 wp-list-table widefat striped table-view-list toplevel_page_pivot_list">
     <thead>
     <tr>
-      <th scope="col" class="manage-column column-booktitle column-primary">Nom </th>
+      <th scope="col" class="manage-column column-booktitle column-primary">Nom</th>
       <th scope="col" class="manage-column column-booktitle column-primary">Urn</th>
       <th scope="col" class="manage-column column-booktitle column-primary">Supprimer
       </th>
@@ -33,7 +34,7 @@ async function removeFiltre(id) {
       </td>
       <td>
         <button class="button button-danger" type="button" @click="removeFiltre(filtre.id)">
-          <span class="dashicons dashicons-trash"></span>DELETE
+          <span class="dashicons dashicons-trash"></span> SUPPRIMER
         </button>
       </td>
     </tr>
