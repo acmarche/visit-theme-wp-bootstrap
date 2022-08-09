@@ -59,23 +59,17 @@ class RouterHades extends Router
 
     /**
      * @param TypeOffre[] $filtres
-     * @return array
+     * @return TypeOffre[]
      */
     public static function setRoutesToFilters(array $filtres, int $categoryId): array
     {
         $urlfiltre = self::getUrlFiltre($categoryId);
-        $filtres2 = [];
         foreach ($filtres as $filtre) {
             $key = $filtre->urn;
-            $url = $urlfiltre.$key;
-            $filtres2[] = [
-                'key' => $key,
-                'nom' => $filtre->nom,
-                'url' => $url,
-            ];
+            $filtre->url = $urlfiltre.$key;
         }
 
-        return $filtres2;
+        return $filtres;
     }
 
     public function addRouteEvent(): void
