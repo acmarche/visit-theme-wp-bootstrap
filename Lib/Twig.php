@@ -31,7 +31,6 @@ class Twig
             [
                 'cache' => $dir,
                 'debug' => WP_DEBUG,
-                'strict_variables' => WP_DEBUG,
             ]
         );
 
