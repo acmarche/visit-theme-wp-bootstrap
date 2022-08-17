@@ -39,7 +39,7 @@ new QueryAlter();
  */
 new SecurityConfig();
 /*
- * Ajout de routage pour pivot et bottin
+ * Ajout de routage pour pivot
  */
 new RouterPivot();
 /*

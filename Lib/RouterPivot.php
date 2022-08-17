@@ -8,7 +8,7 @@ use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Pivot\Entity\TypeOffre;
 
 /**
- * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
+ * Ajouts des routes pour les offres
  * https://roots.io/routing-wp-requests/
  * https://developer.wordpress.org/reference/functions/add_rewrite_rule/#user-contributed-notes
  * Class Router.
