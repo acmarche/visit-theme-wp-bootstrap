@@ -34,13 +34,13 @@ class Twig
             ]
         );
 
-        $loader->addPath(ABSPATH.'wp-content/themes/visitmarche/templates/','Visit');
-        $loader->addPath(ABSPATH.'visittail/theme/templates/','VisitTail');
+        $loader->addPath(ABSPATH.'wp-content/themes/visitmarche/templates/', 'Visit');
+        $loader->addPath(ABSPATH.'visittail/theme/templates/', 'VisitTail');
 
         // wp_get_environment_type();
-      //  if (WP_DEBUG) {
-            $environment->addExtension(new DebugExtension());
-       // }
+        //  if (WP_DEBUG) {
+        $environment->addExtension(new DebugExtension());
+        // }
 
         $translator = LocaleHelper::iniTranslator();
         $environment->addExtension(new TranslationExtension($translator));
@@ -81,7 +81,7 @@ class Twig
                     'relations' => [],
                 ]
             );
-            $url = Router::getCurrentUrl();
+            $url = RouterPivot::getCurrentUrl();
             Mailer::sendError('Error page: '.$templatePath, $url.' \n '.$e->getMessage());
         }
     }
@@ -114,7 +114,7 @@ class Twig
     {
         return new TwigFunction(
             'currentUrl',
-            fn(): string => Router::getCurrentUrl()
+            fn(): string => RouterPivot::getCurrentUrl()
         );
     }
 

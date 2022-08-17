@@ -7,7 +7,7 @@ use AcMarche\Pivot\Entities\Offre\Offre;
 use DateTime;
 use Exception;
 use stdClass;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\Mailer;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\WpRepository;
@@ -136,7 +136,7 @@ class ElasticData
                 $offres = $pivotRepository->getOffres($filtres);
                 array_map(
                     function ($offre) use ($category, $language) {
-                        $offre->url = RouterHades::getUrlOffre($offre, $category->cat_ID);
+                        $offre->url = RouterPivot::getUrlOffre($offre, $category->cat_ID);
                         $offre->titre = $offre->nomByLanguage($language);
                     },
                     $offres
@@ -242,7 +242,7 @@ class ElasticData
             $offres = $pivotRepository->getOffres($filtres);
             array_map(
                 function ($offre) use ($category, $language) {
-                    $offre->url = RouterHades::getUrlOffre($offre, $category->cat_ID);
+                    $offre->url = RouterPivot::getUrlOffre($offre, $category->cat_ID);
                     $offre->titre = $offre->nomByLanguage($language);
                 },
                 $offres

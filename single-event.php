@@ -4,13 +4,13 @@ namespace AcMarche\Theme;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use Exception;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$codeCgt = get_query_var(RouterHades::PARAM_EVENT);
+$codeCgt = get_query_var(RouterPivot::PARAM_EVENT);
 
 $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
@@ -75,7 +75,7 @@ if (count($images) > 0) {
 }
 $tags = [];
 foreach ($event->categories as $category) {
-    $urlCat = RouterHades::getUrlEventCategory($category);
+    $urlCat = RouterPivot::getUrlEventCategory($category);
     $tags[] = [
         'name' => $category->labelByLanguage($language),
         'url' => $category->id,
@@ -84,17 +84,17 @@ foreach ($event->categories as $category) {
 
 $categoryAgenda = get_category_by_slug('agenda');
 $urlAgenda = get_category_link($categoryAgenda);
-$event->url = RouterHades::getUrlEvent($event, $categoryAgenda->cat_ID);
+$event->url = RouterPivot::getUrlEvent($event, $categoryAgenda->cat_ID);
 $offres = $pivotRepository->getSameEvents($event);
 
-RouterHades::setRouteEvents($offres, $categoryAgenda->cat_ID);
+RouterPivot::setRouteEvents($offres, $categoryAgenda->cat_ID);
 
 $recommandations = [];
 foreach ($offres as $item) {
     if ($event->codeCgt === $item->codeCgt) {
         continue;
     }
-    $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
+    $url = RouterPivot::getUrlOffre($item, $currentCategory->cat_ID);
     $recommandations[] = [
         'title' => $item->nom,
         'url' => $url,

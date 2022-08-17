@@ -1,12 +1,11 @@
 <?php
 
-namespace VisitMarche\Theme\Inc;
+namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\Entities\Category;
 use AcMarche\Pivot\Entities\Event\Event;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use AcMarche\Pivot\Entity\TypeOffre;
-use VisitMarche\Theme\Lib\Router;
 
 /**
  * Ajouts des routes pour les articles virtuels du bottin et de l'agenda
@@ -14,12 +13,13 @@ use VisitMarche\Theme\Lib\Router;
  * https://developer.wordpress.org/reference/functions/add_rewrite_rule/#user-contributed-notes
  * Class Router.
  */
-class RouterHades extends Router
+class RouterPivot
 {
     public const PARAM_EVENT = 'codecgt';
     public const EVENT_URL = 'manifestation';
     public const PARAM_OFFRE = 'codeoffre';
     public const OFFRE_URL = 'offre';
+    public const PARAM_FILTRE = 'filtre';
 
     public function __construct()
     {
@@ -27,9 +27,16 @@ class RouterHades extends Router
         $this->addRouteOffre();
     }
 
+    public static function getCurrentUrl(): string
+    {
+        global $wp;
+
+        return home_url($wp->request);
+    }
+
     public static function getUrlEventCategory(Category $categorie): string
     {
-        return self::getBaseUrlSite().self::EVENT_URL.$categorie->id;
+        return '/'.self::EVENT_URL.$categorie->id;
     }
 
     public static function getUrlEvent(Event $offre, int $categoryId): string

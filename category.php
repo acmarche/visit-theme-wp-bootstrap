@@ -7,7 +7,7 @@ use AcSort;
 use Psr\Cache\InvalidArgumentException;
 use SortLink;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\PostUtils;
 use VisitMarche\Theme\Lib\Twig;
@@ -49,19 +49,19 @@ if ($header) {
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
-$filtreParam = $_GET['filtre'] ?? null;
-$filterRepository = PivotContainer::getTypeOffreRepository();
+$filtreParam = $_GET[RouterPivot::PARAM_FILTRE] ?? null;
 if ($filtreParam) {
-    $filtres = $filterRepository->findByIdsOrUrns([$filtreParam]);
-
+    $tpeOffreRepository = PivotContainer::getTypeOffreRepository();
+    $filtres = $tpeOffreRepository->findByUrn($filtreParam);
     if (count($filtres) > 0) {
         $categoryName = $filtres[0]->labelByLanguage($language);
     }
 } else {
     $filtres = $wpRepository->getCategoryFilters($cat_ID, true);
 }
+
 if ([] !== $filtres) {
-    $filtres = RouterHades::setRoutesToFilters($filtres, $cat_ID);
+    $filtres = RouterPivot::setRoutesToFilters($filtres, $cat_ID);
     $pivotRepository = PivotContainer::getRepository();
     $offres = [];
 
@@ -69,14 +69,13 @@ if ([] !== $filtres) {
         $offres = $pivotRepository->getOffres($filtres);
         array_map(
             function ($offre) use ($cat_ID, $language) {
-                $offre->url = RouterHades::getUrlOffre($offre, $cat_ID);
+                $offre->url = RouterPivot::getUrlOffre($offre, $cat_ID);
             },
             $offres
         );
     } catch (InvalidArgumentException $e) {
         dump($e->getMessage());
     }
-
     //fusion offres et articles
     $postUtils = new PostUtils();
     $posts = $postUtils->convertPostsToArray($posts);
@@ -90,12 +89,12 @@ if ([] !== $filtres) {
         wp_get_theme()->get('Version'),
         true
     );
- /*   wp_enqueue_style(
-        'vue-app-css',
-        get_template_directory_uri().'/assets/js/dist/js/appFiltreFront-vuejf.css',
-        [],
-        wp_get_theme()->get('Version'),
-    );*/
+    /*   wp_enqueue_style(
+           'vue-app-css',
+           get_template_directory_uri().'/assets/js/dist/js/appFiltreFront-vuejf.css',
+           [],
+           wp_get_theme()->get('Version'),
+       );*/
 
     Twig::rendPage(
         'category/index_hades.html.twig',

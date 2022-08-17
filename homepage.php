@@ -10,7 +10,7 @@ use Exception;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Inc\CategoryMetaBox;
 use VisitMarche\Theme\Inc\Menu;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 use VisitMarche\Theme\Lib\WpRepository;
@@ -43,7 +43,7 @@ try {
         $urlAgenda = get_category_link($categoryAgenda);
         array_map(
             function ($event) use ($categoryAgenda) {
-                $event->url = RouterHades::getUrlEvent($event, $categoryAgenda->cat_ID);
+                $event->url = RouterPivot::getUrlEvent($event, $categoryAgenda->cat_ID);
             },
             $events
         );

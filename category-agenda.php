@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 
@@ -19,7 +19,7 @@ try {
     $events = $pivotRepository->getEvents(true);
     array_map(
         function ($event) use ($cat_ID, $language) {
-            $event->url = RouterHades::getUrlOffre($event, $cat_ID);
+            $event->url = RouterPivot::getUrlOffre($event, $cat_ID);
         },
         $events
     );

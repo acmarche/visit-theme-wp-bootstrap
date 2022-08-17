@@ -3,7 +3,7 @@
 namespace AcMarche\Theme;
 
 use VisitMarche\Theme\Inc\Menu;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Inc\Theme;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
@@ -40,7 +40,7 @@ if (Theme::isHomePage()) {
             'icones' => $icones,
         ]
     );
-} elseif (get_query_var(RouterHades::PARAM_OFFRE)) {
+} elseif (get_query_var(RouterPivot::PARAM_OFFRE)) {
     Twig::rendPage(
         'header/_header_offre.html.twig',
         [

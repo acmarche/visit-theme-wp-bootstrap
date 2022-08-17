@@ -3,7 +3,6 @@
 namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\Entities\Offre\Offre;
-use VisitMarche\Theme\Inc\RouterHades;
 use WP_Post;
 
 class PostUtils
@@ -84,7 +83,7 @@ class PostUtils
     {
         return array_map(
             function ($offre) use ($categoryId, $language) {
-                $url = RouterHades::getUrlOffre($offre, $categoryId);
+                $url = RouterPivot::getUrlOffre($offre, $categoryId);
                 $nom = $offre->nomByLanguage($language);
                 $description = null;
                 if ((is_countable($offre->descriptions) ? \count($offre->descriptions) : 0) > 0) {

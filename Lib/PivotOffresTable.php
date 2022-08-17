@@ -3,7 +3,6 @@
 namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\Entities\Offre\Offre;
-use VisitMarche\Theme\Inc\RouterHades;
 use WP_List_Table;
 
 class PivotOffresTable extends WP_List_Table
@@ -44,7 +43,7 @@ class PivotOffresTable extends WP_List_Table
     {
         switch ($column_name) {
             case 'nom':
-                $url = RouterHades::getUrlOffre($item, $this->categoryId);
+                $url = RouterPivot::getUrlOffre($item, $this->categoryId);
 
                 return '<a href="'.$url.'">'.$item->nom.'</a>';
             case 'debug':

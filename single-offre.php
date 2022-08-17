@@ -5,13 +5,13 @@ namespace AcMarche\Theme;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use Exception;
-use VisitMarche\Theme\Inc\RouterHades;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\LocaleHelper;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$codeCgt = get_query_var(RouterHades::PARAM_OFFRE);
+$codeCgt = get_query_var(RouterPivot::PARAM_OFFRE);
 
 $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
@@ -63,7 +63,7 @@ $tags = [];
 foreach ($offre->categories as $category) {
     $tags[] = [
         'name' => $category->labelByLanguage($language),
-        'url' => $urlCat.'?cgt='.$category->id,
+        'url' => $urlCat.'?'.RouterPivot::PARAM_FILTRE.'='.$category->urn,
     ];
 }
 
@@ -74,7 +74,7 @@ if (count($offre->voir_aussis)) {
     $offres = $pivotRepository->getSameOffres($offre);
 }
 foreach ($offres as $item) {
-    $url = RouterHades::getUrlOffre($item, $currentCategory->cat_ID);
+    $url = RouterPivot::getUrlOffre($item, $currentCategory->cat_ID);
     $tags2 = [$item->typeOffre->labelByLanguage($language)];
 
     $recommandations[] = [

@@ -2,12 +2,12 @@
 
 namespace AcMarche\Theme;
 
-use VisitMarche\Theme\Lib\Router;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
 
-$url = Router::getCurrentUrl();
+$url = RouterPivot::getCurrentUrl();
 Twig::rendPage(
     'errors/404.html.twig',
     [
