@@ -29,18 +29,14 @@ class PostUtils
 
     public function postToArray(WP_Post $post): array
     {
-        $tags = $this->wpRepository->getTags($post->ID);
-        $tags = array_map(
-            fn($category) => $category['name'],
-            $tags
-        );
+        $this->tagsPost($post);
 
         return [
             'id' => $post->ID,
             'url' => $post->permalink,
             'nom' => $post->post_title,
             'description' => $post->post_excerpt,
-            'tags' => $tags,
+            'tags' => $post->tags,
             'image' => $post->thumbnail_url,
         ];
     }
@@ -55,6 +51,27 @@ class PostUtils
         }
 
         return null;
+    }
+
+    public function tagsOffre(Offre $offre, string $language)
+    {
+        $tags = [];
+        foreach ($offre->categories as $category) {
+            $tag = new \stdClass();
+            $tag->nom = $category->labelByLanguage($language);
+            $tag->key = $category->urn;
+            $tags[] = $tag;
+        }
+        $offre->tags = $tags;
+    }
+
+    public function tagsPost(WP_Post $post)
+    {
+        $tags = $this->wpRepository->getTags($post->ID);
+        $post->tags = array_map(
+            fn($category) => $category['name'],
+            $tags
+        );
     }
 
     /**
@@ -77,14 +94,7 @@ class PostUtils
                     }
                     $description = $tmp[0]->value;
                 }
-                $tags = [$offre->typeOffre->labelByLanguage($language)];
-                $offre->tags = $tags;
-                array_map(
-                    function ($category) use ($language) {
-                        $category->nom = $category->labelByLanguage($language);
-                    },
-                    $offre->categories
-                );
+                $this->tagsOffre($offre, $language);
                 $image = $offre->firstImage();
 
                 return [
@@ -92,7 +102,7 @@ class PostUtils
                     'url' => $url,
                     'nom' => $nom,
                     'description' => $description,
-                    'tags' => $tags,
+                    'tags' => $offre->tags,
                     'image' => $image,
                 ];
 
