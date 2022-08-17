@@ -86,7 +86,7 @@
                 <div class="overflow-hidden w-100 pt-24px col-md-12 px-0 px-md-15px d-lg-none">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="{{ tag }}" class="rounded-xs">{{ tag }}</a></li>
+                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -108,13 +108,14 @@
                         {% if offre.homepage %}
                             <p>{{ offre.homepage }}</p>
                         {% endif %}
+
                         {#% include 'offre/specifications/_classements.html.twig' %#}
                         {% include 'offre/specifications/_communications.html.twig' %}
-                        <p></p>
+
                         {% include 'offre/specifications/_equipements.html.twig' %}
-                        <p></p>
+
                         {% include 'offre/specifications/_accueils.html.twig' %}
-                        <p></p>
+
                         {% include 'offre/_images.html.twig' %}
                         {% include 'map/_carte.html.twig' %}
                     </div>
@@ -196,7 +197,7 @@
                 <div class="overflow-hidden w-100 pt-24px">
                     <ul class="object-tags">
                         {% for tag in tags %}
-                            <li><a href="{{ tag }}" class="rounded-xs">{{ tag }}</a></li>
+                            <li><a href="{{ tag.url }}" class="rounded-xs">{{ tag.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
