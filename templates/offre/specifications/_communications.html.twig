@@ -1,3 +1,16 @@
-<h4 class="text-success mt-2" style="font-size: 1rem;">{{ 'Communications'|trans }}</h4>
-<hr>
-{% include 'offre/specifications/_list.html.twig' with {'urnkeyword': 'urn:cat:moycom'} %}
+{% set found = false %}
+{% for specInfo in offre.specsDetailed %}
+    {% if specInfo.specData.urnCat is defined %}
+        {% if specInfo.specData.urnCat == 'urn:cat:moycom' %}
+            {% if specInfo.specData.value %}
+                {% set found = true %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% if found == true %}
+    <h4 class="text-success mt-2" style="font-size: 1rem;">{{ 'Communications'|trans }}</h4>
+    <hr>
+    {% include 'offre/specifications/_list.html.twig' with {'urnkeyword': 'urn:cat:moycom'} %}
+    <p></p>
+{% endif %}

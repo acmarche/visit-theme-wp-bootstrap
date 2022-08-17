@@ -1,3 +1,16 @@
-<h4 class="text-success" style="font-size: 1rem;">{{ 'Equipements'|trans }}</h4>
-<hr>
-{% include 'offre/specifications/_list.html.twig' with {'urnkeyword': 'urn:cat:eqpsrv'} %}
+{% set found = false %}
+{% for specInfo in offre.specsDetailed %}
+    {% if specInfo.specData.urnCat is defined %}
+        {% if specInfo.specData.urnCat == 'urn:cat:eqpsrv' %}
+            {% if specInfo.specData.value %}
+                {% set found = true %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% if found == true %}
+    <h4 class="text-success" style="font-size: 1rem;">{{ 'Equipements'|trans }}</h4>
+    <hr>
+    {% include 'offre/specifications/_list.html.twig' with {'urnkeyword': 'urn:cat:eqpsrv'} %}
+    <p></p>
+{% endif %}
