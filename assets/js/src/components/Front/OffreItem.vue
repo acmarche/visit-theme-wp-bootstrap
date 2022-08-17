@@ -49,8 +49,10 @@ function issetDescription() {
         <h3>{{ props.offre.nom }}</h3>
         <p v-if="issetDescription" v-html="props.offre.description ? props.offre.description.slice(0, 170) : ''"></p>
         <span class="text-primary">
-            {{ props.offre.tags.join(',') }}
-          </span>
+          <template v-for="tag in props.offre.tags">
+            {{ tag.nom }}
+          </template>
+        </span>
       </div>
     </a>
   </li>
