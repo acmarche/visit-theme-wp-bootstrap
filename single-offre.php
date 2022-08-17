@@ -66,7 +66,7 @@ foreach ($offre->categories as $category) {
         'url' => $urlCat.'?cgt='.$category->id,
     ];
 }
-$tags = [$offre->typeOffre->labelByLanguage($language)];
+
 $recommandations = [];
 if (count($offre->voir_aussis)) {
     $offres = $offre->voir_aussis;
@@ -83,9 +83,6 @@ foreach ($offres as $item) {
         'image' => $item->firstImage(),
         'categories' => $tags2,
     ];
-}
-foreach ($offre->classements as $classement) {
-
 }
 
 Twig::rendPage(
