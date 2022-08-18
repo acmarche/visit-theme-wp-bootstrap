@@ -37,22 +37,6 @@ class AdminPage
         );
         add_submenu_page(
             'pivot_home',
-            'Pivot offres',
-            'Liste des offres',
-            'edit_posts',
-            'pivot_offres',
-            fn() => $this::offresRender(),
-        );
-        add_submenu_page(
-            'pivot_home',
-            'Pivot offre',
-            'Détail d\'une Offre',
-            'edit_posts',
-            'pivot_offre',
-            fn() => $this::offreRender(),
-        );
-        add_submenu_page(
-            'pivot_home',
             'Catégories avec filtres',
             'Catégories avec filtres',
             'edit_posts',
@@ -82,7 +66,7 @@ class AdminPage
 
     private static function filtresRender()
     {
-        $pivotRepository = PivotContainer::getFiltreRepository();
+        $pivotRepository = PivotContainer::getTypeOffreRepository();
         $filters = $pivotRepository->findWithChildren();
 
         $category = get_category_by_slug('offres');
@@ -113,8 +97,8 @@ class AdminPage
             return;
         }
         $language = LocaleHelper::getSelectedLanguage();
-        $filtreRepository = PivotContainer::getFiltreRepository();
-        $filtres = $filtreRepository->findByReferencesOrUrns([$filtre]);
+        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $filtres = $filtreRepository->findByIdsOrUrns([$filtre]);
         if (count($filtres) == 0) {
             Twig::rendPage(
                 'admin/error.html.twig',
@@ -183,7 +167,7 @@ class AdminPage
                 $categories[] = $category;
             } else {
                 $categoryFiltres = get_term_meta($category->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-                if ($categoryFiltres != '') {
+                if (is_array($categoryFiltres)) {
                     $categories[] = $category;
                 }
             }
@@ -192,7 +176,7 @@ class AdminPage
         $pivotOffresTable->data = $categories;
         ?>
         <div class="wrap">
-            <h2>Les catégories avec des filtres</h2>
+            <h2>Les catégories wordpress avec des références Pivot</h2>
             <?php $pivotOffresTable->prepare_items();
             $pivotOffresTable->display();
             ?>
