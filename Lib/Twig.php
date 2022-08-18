@@ -35,7 +35,10 @@ class Twig
         );
 
         $loader->addPath(ABSPATH.'wp-content/themes/visitmarche/templates/', 'Visit');
-        $loader->addPath(ABSPATH.'visittail/theme/templates/', 'VisitTail');
+        try {
+            $loader->addPath(ABSPATH.'visittail/theme/templates/', 'VisitTail');
+        } catch (LoaderError $e) {
+        }
 
         // wp_get_environment_type();
         //  if (WP_DEBUG) {
