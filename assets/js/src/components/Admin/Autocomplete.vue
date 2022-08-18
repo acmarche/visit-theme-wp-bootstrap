@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watch, defineProps} from 'vue'
+import {ref, watch} from 'vue'
 import {fetchFiltresByName} from '../../service/filtre-service'
 import {
   Combobox,
@@ -8,7 +8,6 @@ import {
   ComboboxOption,
 } from '@headlessui/vue'
 
-const props = defineProps({categoryId: Number})
 const typesOffre = ref([])
 const query = ref('')
 const emit = defineEmits(['update-post'])

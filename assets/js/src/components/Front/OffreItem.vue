@@ -50,7 +50,7 @@ function issetDescription() {
         <p v-if="issetDescription" v-html="props.offre.description ? props.offre.description.slice(0, 170) : ''"></p>
         <span class="text-primary">
           <template v-for="tag in props.offre.tags">
-            {{ tag.nom }}
+            {{ tag.nom }} &nbsp;
           </template>
         </span>
       </div>

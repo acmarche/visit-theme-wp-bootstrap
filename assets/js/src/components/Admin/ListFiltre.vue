@@ -1,5 +1,4 @@
 <script setup>
-import {defineProps} from 'vue'
 import {deleteFiltreRequest} from '../../service/filtre-service'
 
 const props = defineProps({filtres: Array, categoryId: Number})

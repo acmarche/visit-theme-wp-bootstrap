@@ -1,6 +1,6 @@
 <!-- OBSOLETE -->
 <script setup>
-import {ref, onMounted, defineProps} from 'vue'
+import {ref, onMounted} from 'vue'
 import {addFiltreRequest, fetchFiltresByParentRequest} from '../../service/filtre-service'
 
 const props = defineProps({categoryId: Number})

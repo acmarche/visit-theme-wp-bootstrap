@@ -1,15 +1,18 @@
 <script setup>
 import Autocomplete from "./Autocomplete.vue";
-import {defineProps, ref} from 'vue'
+import {ref} from 'vue'
 import {addFiltreRequest} from '../../service/filtre-service'
 
-const props = defineProps({categoryId: Number})
 let selectedTypeOffreId = 0
 const answer = ref(null)
 const emit = defineEmits(['refresh-filtres'])
+const props = defineProps({
+  categoryId: Number
+})
 
 async function addFiltre() {
   console.log('ici' + selectedTypeOffreId)
+
   if (selectedTypeOffreId > 0) {
     try {
       await addFiltreRequest(props.categoryId, selectedTypeOffreId)
@@ -35,7 +38,7 @@ function onUpdatePost(typeOffre) {
     <table>
       <tr>
         <td>
-          <Autocomplete :categoryId="categoryId" @update-post="onUpdatePost"/>
+          <Autocomplete @update-post="onUpdatePost"/>
         </td>
         <td>
           <div class="ml-6 w-60">
