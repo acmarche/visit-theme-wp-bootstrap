@@ -74,14 +74,16 @@ export function deleteFiltreRequest(categoryId, id) {
 /**
  * @param {int} categoryId
  * @param {int} typeOffreId
+ * @param {boolean} withChildren
  * @returns {Promise}
  */
-export function addFiltreRequest(categoryId, typeOffreId) {
+export function addFiltreRequest(categoryId, typeOffreId, withChildren) {
     const url = 'wp-admin/admin-ajax.php';
     const formData = new FormData();
     formData.append('action', 'action_add_filtre');
     formData.append('categoryId', categoryId);
     formData.append('typeOffreId', typeOffreId);
+    formData.append('withChildren', withChildren);
     return axios.post(url, formData);
 }
 

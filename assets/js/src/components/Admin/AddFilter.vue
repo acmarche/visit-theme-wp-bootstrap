@@ -4,6 +4,7 @@ import {ref} from 'vue'
 import {addFiltreRequest} from '../../service/filtre-service'
 
 let selectedTypeOffreId = 0
+let withChildren = false
 const answer = ref(null)
 const emit = defineEmits(['refresh-filtres'])
 const props = defineProps({
@@ -11,11 +12,9 @@ const props = defineProps({
 })
 
 async function addFiltre() {
-  console.log('ici' + selectedTypeOffreId)
-
   if (selectedTypeOffreId > 0) {
     try {
-      await addFiltreRequest(props.categoryId, selectedTypeOffreId)
+      await addFiltreRequest(props.categoryId, selectedTypeOffreId, withChildren)
       emit('refresh-filtres')
       answer.value = 'oki'
     } catch (error) {
@@ -28,8 +27,9 @@ async function addFiltre() {
   }
 }
 
-function onUpdatePost(typeOffre) {
-  selectedTypeOffreId = typeOffre.value.id
+function onUpdateSelectedTypeOffre(typeOffre) {
+  console.log('update'+ typeOffre.id)
+  selectedTypeOffreId = typeOffre.id
 }
 </script>
 
@@ -38,12 +38,12 @@ function onUpdatePost(typeOffre) {
     <table>
       <tr>
         <td>
-          <Autocomplete @update-post="onUpdatePost"/>
+          <Autocomplete @update-post="onUpdateSelectedTypeOffre"/>
         </td>
         <td>
           <div class="ml-6 w-60">
             <label for="children" class="text-sm font-medium text-gray-700 mr-2">Avec les enfants</label>
-            <input type="checkbox" name="children" id="children"/>
+            <input type="checkbox" name="children" id="children" v-model="withChildren"/>
           </div>
         </td>
       </tr>
