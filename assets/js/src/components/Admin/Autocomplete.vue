@@ -1,59 +1,44 @@
 <script setup>
-import {ref, watch} from 'vue'
+import {ref} from 'vue'
 import {fetchFiltresByName} from '../../service/filtre-service'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxOptions,
-  ComboboxOption,
-} from '@headlessui/vue'
 
 const typesOffre = ref([])
-const query = ref('')
+const searchText = ref('')
 const emit = defineEmits(['update-post'])
-const selectedTypeOffre = ref(null)
 
 async function fetchByName() {
-  let response = await fetchFiltresByName(query.value)
+  let response = await fetchFiltresByName(searchText.value)
   typesOffre.value = [...response.data]
 }
 
-function queryChange(name) {
-  query.value = name
+function onChange() {
   fetchByName()
 }
 
-watch(selectedTypeOffre, async (newTypeOffre, oldTypeOffre) => {
+function setResult(selectedTypeOffre) {
+  searchText.value = selectedTypeOffre.nom
+  typesOffre.value = []
   emit('update-post', selectedTypeOffre)
-})
+}
 
 </script>
 <template>
-  <Combobox v-model="selectedTypeOffre" name="assignee">
-    <ComboboxInput
-        @change="queryChange($event.target.value)"
-        :displayValue="(typeOffre) => typeOffre?.nom"
-        autocomplete="off"
-        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-    />
-    <ComboboxOptions class="divide-y divide-gray-200 overflow-hidden">
-      <ComboboxOption
-          as="template"
-          v-slot="{ active, selected }"
-          v-for="typeOffre in typesOffre"
-          :key="typeOffre.id"
-          :value="typeOffre"
-          :disabled="false"
-      >
-        <li style="cursor: pointer;"
-            :class="{
-            'hover:bg-gray-50 px-2 py-2 text-green-700': active,
-            'hover:bg-gray-50 px-2 py-2 text-blue-500': !active
-          }"
-        > {{ typeOffre.nom }} <span class="text-muted">({{ typeOffre.urn }})</span></li>
-      </ComboboxOption>
-    </ComboboxOptions>
-  </Combobox>
+
+  <input type="search" name="typeOffre" v-model="searchText"
+         @input="onChange"
+         class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+
+  <ul class="divide-y divide-gray-200 overflow-hidden">
+    <li
+        v-for="typeOffre in typesOffre"
+        :key="typeOffre.id"
+        :value="typeOffre"
+        @click="setResult(typeOffre)"
+        style="cursor: pointer;"
+        class="hover:bg-gray-50 px-2 py-2 text-green-700">
+      {{ typeOffre.nom }} <span class="text-muted">({{ typeOffre.urn }})</span>
+    </li>
+  </ul>
 
 </template>
 <style>
