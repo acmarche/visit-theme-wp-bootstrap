@@ -1,6 +1,6 @@
 <?php
 
-namespace VisitMarche\Theme\Inc;
+namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use VisitMarche\Theme\Lib\Elasticsearch\Data\ElasticData;
@@ -38,7 +38,7 @@ class ApiData
 
         $pivotRepository = PivotContainer::getTypeOffreRepository();
 
-        $filtres = $pivotRepository->findByName($name);
+        $filtres = $pivotRepository->findByNameOrUrn($name);
 
         return rest_ensure_response($filtres);
     }
@@ -54,7 +54,7 @@ class ApiData
             return new WP_Error(500, 'missing param categoryId');
         }
 
-        $filtres = WpRepository::getCategoryFilters($categoryWpId, $flatWithChildren);
+        $filtres = WpRepository::getCategoryFilters($categoryWpId);
 
         return rest_ensure_response($filtres);
     }
@@ -98,7 +98,7 @@ class ApiData
         $postUtils = new PostUtils();
 
         if ($filtreSelected == 0) {
-            $filtres = $wpRepository->getCategoryFilters($currentCategoryId, true);
+            $filtres = $wpRepository->getCategoryFilters($currentCategoryId);
         } else {
             if ($filtre = $filtreRepository->find($filtreSelected)) {
                 $filtres[] = $filtre;

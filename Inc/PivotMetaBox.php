@@ -16,6 +16,16 @@ class PivotMetaBox
         );
     }
 
+    public static function getMetaPivotTypesOffre(int $wpCategoryId): array
+    {
+        $filtres = get_term_meta($wpCategoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
+        if (!is_array($filtres)) {
+            return [];
+        }
+
+        return $filtres;
+    }
+
     public static function pivot_metabox_edit(\WP_Term $term): void
     {
         wp_enqueue_script(
@@ -31,7 +41,11 @@ class PivotMetaBox
             [],
             wp_get_theme()->get('Version'),
         );
-        //$filtres = get_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
+        $filtres = self::getMetaPivotTypesOffre($term->term_id);
+        // $filtres = delete_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE);
+        foreach ($filtres as $filtre) {
+            dump($filtre);
+        }
         ?>
         <table class="form-table">
             <tr class="form-field">

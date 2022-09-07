@@ -2,6 +2,7 @@
 
 namespace VisitMarche\Theme\Inc;
 
+use VisitMarche\Theme\Lib\ApiData;
 use WP_Error;
 
 /**

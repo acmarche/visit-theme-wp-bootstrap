@@ -166,10 +166,11 @@ class AdminPage
             if (count($filtres) > 0) {
                 $categories[] = $category;
             } else {
-                $categoryFiltres = get_term_meta($category->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-                if (is_array($categoryFiltres)) {
-                    $categories[] = $category;
+                $categoryFiltres  = PivotMetaBox::getMetaPivotTypesOffre($category->term_id);
+                foreach ($categoryFiltres as $data) {
+
                 }
+                $categories[] = $category;
             }
         }
         $pivotOffresTable = new PivotCategoriesTable();

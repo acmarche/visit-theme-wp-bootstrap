@@ -189,14 +189,13 @@ class WpRepository
 
     /**
      * @param int $categoryWpId
-     * @param bool $flatWithChildren
      * @return TypeOffre[]
      * @throws \Exception
      */
-    public static function getCategoryFilters(int $categoryWpId, bool $flatWithChildren = false): array
+    public static function getCategoryFilters(int $categoryWpId): array
     {
         if ($categoryWpId == 6) {
-            return WpRepository::getChildrenHotel($categoryWpId);
+            return WpRepository::getChildrenHebergements();
         }
         if ($categoryWpId == 8) {
             return WpRepository::getChildrenEvents();
@@ -204,35 +203,35 @@ class WpRepository
         if ($categoryWpId == 5) {
             return WpRepository::getChildrenRestauration();
         }
-        if ($categoryWpId == 9) {
-            return WpRepository::getChildrenPatrimoine();
+
+        $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryWpId);
+        $typeOffreRepository = PivotContainer::getTypeOffreRepository();
+        $allFiltres = [];
+
+        foreach ($categoryFiltres as $data) {
+            $typeOffre = $typeOffreRepository->findOneByUrn($data['urn']);
+            if ($typeOffre) {
+                if ($data['withChildren']) {
+                    $children = $typeOffreRepository->findByParent($typeOffre->id);
+                    if (count($children) > 0) {
+                        foreach ($children as $typeOffreChild) {
+                            $allFiltres[] = $typeOffreChild;
+                        }
+                    } else {
+                        $allFiltres[] = $typeOffre;
+                    }
+                } else {
+                    $allFiltres[] = $typeOffre;
+                }
+            }
         }
 
-        $categoryFiltres = get_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-        if (!is_array($categoryFiltres)) {
-            return [];
-        }
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
-
+        return $allFiltres;
         $filtres = $filtreRepository->findByIdsOrUrns($categoryFiltres);
 
-        if (!$flatWithChildren) {
-            return $filtres;
-        }
-        $typeId = 0;
-        if (count($filtres) == 1) {
-            $typeId = $filtres[0]->typeId;
-        }
+        dump($filtres);
 
-        $allFiltres = [];
-        $pivotRepository = PivotContainer::getRepository();
-
-        $families = $pivotRepository->thesaurusChildren(
-            $typeId,
-            UrnList::CATEGORIE->value
-        );
-
-        foreach ($families as $family) {
+        foreach ($filtres as $filtre) {
             $filtres = $filtreRepository->findByUrn($family->urn);
             if (count($filtres) > 0) {
                 $filtre = $filtres[0];
@@ -240,8 +239,6 @@ class WpRepository
                 $allFiltres[] = $filtre;
             }
         }
-
-        return $allFiltres;
 
         array_map(function ($filtre) use ($filtreRepository) {
             return $filtre->children = $filtreRepository->findByParent($filtre->id);
@@ -261,7 +258,7 @@ class WpRepository
 
     /**
      * @return TypeOffre[]
-     * @throws NonUniqueResultException
+     * @throws NonUniqueResultException|\Exception
      */
     public static function getChildrenEvents(): array
     {
@@ -317,6 +314,19 @@ class WpRepository
      * @return TypeOffre[]
      * @throws NonUniqueResultException
      */
+    public static function getChildrenHebergements(): array
+    {
+        $filtreRepository = PivotContainer::getTypeOffreRepository();
+
+        $filtre = $filtreRepository->findOneByUrn(UrnList::HERGEMENT->value);
+
+        return $filtreRepository->findByParent($filtre->id);
+    }
+
+    /**
+     * @return TypeOffre[]
+     * @throws NonUniqueResultException
+     */
     public static function getChildrenPatrimoine(): array
     {
         $allFiltres = [];
@@ -332,6 +342,7 @@ class WpRepository
 
         $filtre->children = [];
         $allFiltres[] = $filtre;
+
         return $allFiltres;
         foreach ($families as $family) {
             $filtres = $filtreRepository->findsByUrn($family->urn);
@@ -345,17 +356,4 @@ class WpRepository
         return $allFiltres;
     }
 
-    /**
-     * @param int $categoryWpId
-     * @return TypeOffre[]
-     * @throws NonUniqueResultException
-     */
-    public static function getChildrenHotel(int $categoryWpId): array
-    {
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
-
-        $filtre = $filtreRepository->findOneByUrn(UrnList::HERGEMENT->value);
-
-        return $filtreRepository->findByParent($filtre->id);
-    }
 }

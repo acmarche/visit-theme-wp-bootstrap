@@ -52,11 +52,12 @@ class PivotCategoriesTable extends WP_List_Table
 
     function getFiltres(\WP_Term $item): string
     {
-        $categoryFiltres = get_term_meta($item->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-        if (is_array($categoryFiltres)) {
-            return join(',', $categoryFiltres);
+        $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($item->term_id);
+        $urns = [];
+        foreach ($categoryFiltres as $data) {
+            $urns[] = $data['urn'];
         }
 
-        return '';
+        return join(',', $urns);
     }
 }

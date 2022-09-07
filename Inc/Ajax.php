@@ -21,10 +21,9 @@ class Ajax
             $filtreRepository = PivotContainer::getTypeOffreRepository();
             if ($filtre = $filtreRepository->find($id)) {
                 $urn = $filtre->urn;
-                $categoryFiltres = get_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-                if (is_array($categoryFiltres)) {
-                    $key = array_search($urn, $categoryFiltres);
-                    if (is_int($key)) {
+                $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryWpId);
+                foreach ($categoryFiltres as $key => $data) {
+                    if ($urn == $data['urn']) {
                         unset($categoryFiltres[$key]);
                         update_term_meta($categoryWpId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
                     }
@@ -40,17 +39,17 @@ class Ajax
         $categoryFiltres = [];
         $categoryId = (int)$_POST['categoryId'];
         $typeOffreId = (int)$_POST['typeOffreId'];
+        $withChildren = filter_var($_POST['withChildren'], FILTER_VALIDATE_BOOLEAN);
         $filtreRepository = PivotContainer::getTypeOffreRepository();
+
         if ($categoryId > 0 && $typeOffreId > 0) {
-            $categoryFiltres = get_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, true);
-            if (!is_array($categoryFiltres)) {
-                $categoryFiltres = [];
-            }
+            $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryId);
             $filtre = $filtreRepository->find($typeOffreId);
             if ($filtre) {
-                $categoryFiltres[] = $filtre->urn;
+                $meta = ['urn' => $filtre->urn, 'withChildren' => $withChildren];
+                $categoryFiltres[] = $meta;
+                update_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
             }
-            update_term_meta($categoryId, PivotMetaBox::PIVOT_REFRUBRIQUE, $categoryFiltres);
         }
         echo json_encode($categoryFiltres);
         wp_die();
