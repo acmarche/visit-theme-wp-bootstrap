@@ -189,10 +189,11 @@ class WpRepository
 
     /**
      * @param int $categoryWpId
-     * @return TypeOffre[]
-     * @throws \Exception
+     * @param bool $forceNoChildren
+     * @return TypeOffre[]|array
+     * @throws NonUniqueResultException
      */
-    public static function getCategoryFilters(int $categoryWpId): array
+    public static function getCategoryFilters(int $categoryWpId, bool $forceNoChildren = false): array
     {
         if ($categoryWpId == 6) {
             return WpRepository::getChildrenHebergements();
@@ -211,7 +212,9 @@ class WpRepository
         foreach ($categoryFiltres as $data) {
             $typeOffre = $typeOffreRepository->findOneByUrn($data['urn']);
             if ($typeOffre) {
-                if ($data['withChildren']) {
+                $withChildren = $data['withChildren'];
+                $typeOffre->withChildren = $withChildren;
+                if ($withChildren && $forceNoChildren === true) {
                     $children = $typeOffreRepository->findByParent($typeOffre->id);
                     if (count($children) > 0) {
                         foreach ($children as $typeOffreChild) {

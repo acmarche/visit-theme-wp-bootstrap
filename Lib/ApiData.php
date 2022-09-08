@@ -46,7 +46,6 @@ class ApiData
     public static function pivotFiltresByCategory(WP_REST_Request $request)
     {
         $categoryWpId = (int)$request->get_param('categoryId');
-        $flatWithChildren = (bool)$request->get_param('flatWithChildren');
 
         if ($categoryWpId < 1) {
             Mailer::sendError('error cat id filtres', 'missing param categoryId');
@@ -54,7 +53,7 @@ class ApiData
             return new WP_Error(500, 'missing param categoryId');
         }
 
-        $filtres = WpRepository::getCategoryFilters($categoryWpId);
+        $filtres = WpRepository::getCategoryFilters($categoryWpId, true);
 
         return rest_ensure_response($filtres);
     }

@@ -19,6 +19,7 @@ async function removeFiltre(id) {
     <tr>
       <th scope="col" class="manage-column column-booktitle column-primary">Nom</th>
       <th scope="col" class="manage-column column-booktitle column-primary">Urn</th>
+      <th scope="col" class="manage-column column-booktitle column-primary">Enfants</th>
       <th scope="col" class="manage-column column-booktitle column-primary">Supprimer
       </th>
     </tr>
@@ -30,6 +31,9 @@ async function removeFiltre(id) {
       </td>
       <td class="ooktitle column-booktitle has-row-actions column-primary">
         {{ filtre.urn }}
+      </td>
+      <td class="ooktitle column-booktitle has-row-actions column-primary">
+        {{ filtre.withChildren }}
       </td>
       <td>
         <button class="button button-danger" type="button" @click="removeFiltre(filtre.id)">
