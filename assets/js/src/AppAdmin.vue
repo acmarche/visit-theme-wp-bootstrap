@@ -7,17 +7,19 @@ import My from "./components/Admin/My.vue";
 
 const filtres = ref([])
 const categoryId = ref(0)
-const callback = async function refreshFiltres() {
+const message = ref('hello')
+
+async function refreshFiltres() {
   if (categoryId.value > 0) {
     let response = await fetchFiltresByCategoryRequest('', categoryId.value)
     filtres.value = [...response.data]
   }
 }
+
 onMounted(async () => {
   categoryId.value = Number(document.getElementById('filtres-box').getAttribute('data-category-id'));
-  await callback()
+  await refreshFiltres()
 })
-const message = ref('hello')
 </script>
 
 <template>
@@ -25,6 +27,6 @@ const message = ref('hello')
   <My v-model:message="message"/>
   {{ message }}
 
-  <AddFilter :categoryId="categoryId" @refresh-filtres="callback"/>
-  <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="callback"/>
+  <AddFilter :categoryId="categoryId" @refresh-filtres="refreshFiltres"/>
+  <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="refreshFiltres"/>
 </template>
