@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted} from 'vue'
+import {onMounted, ref} from 'vue'
 import {fetchFiltresByCategoryRequest, fetchOffres} from './service/filtre-service'
 import ListFiltre from "./components/Front/ListFiltre.vue"
 import OffresList from "./components/Front/OffresList.vue"
@@ -21,7 +21,7 @@ async function loadFiltres() {
   }
 }
 
-const callback = async function refreshOffres(filtreSelected) {
+async function refreshOffres(filtreSelected) {
   let response = await fetchOffres('', categoryId.value, filtreSelected)
   offres.value = [...response.data]
 }
@@ -31,7 +31,7 @@ onMounted(async () => {
     language.value = document.getElementById('body').getAttribute('data-current-language')
     categoryId.value = Number(document.getElementById(name).getAttribute('data-category-id'))
     await loadFiltres()
-    await callback(0)
+    await refreshOffres(0)
   } catch (e) {
     console.log(e)
   } finally {
@@ -41,7 +41,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ListFiltre :categoryId="categoryId" :language="language" :filtres="filtres" @refresh-offres="callback"/>
+  <ListFiltre :categoryId="categoryId" :language="language" :filtres="filtres" @refresh-offres="refreshOffres"/>
   <Loading :isLoading="isLoading" v-if="isLoading === true"/>
   <OffresList :offres="offres" v-if="isLoading === false"/>
 </template>
