@@ -57,7 +57,7 @@ if ($filterSelected) {
         $categoryName = $filtres[0]->labelByLanguage($language);
     }
 } else {
-    $filtres = $wpRepository->getCategoryFilters($cat_ID, true);
+    $filtres = $wpRepository->getCategoryFilters($cat_ID);
 }
 
 if ([] !== $filtres) {
