@@ -11,7 +11,7 @@ async function removeFiltre(id) {
 </script>
 <template>
   <div v-show="filtres.length === 0">
-    <p>Aucun filtre</p>
+    <p class="mt-3">Aucun filtre</p>
   </div>
   <table v-show="filtres.length > 0"
          class="mt-4 wp-list-table widefat striped table-view-list toplevel_page_pivot_list">
