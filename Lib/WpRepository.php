@@ -195,13 +195,13 @@ class WpRepository
      */
     public static function getCategoryFilters(int $categoryWpId, bool $forceNoChildren = false): array
     {
-        if ($categoryWpId == 6) {
+        if (in_array($categoryWpId, Theme::CATEGORIES_HEBERGEMENT)) {
             return WpRepository::getChildrenHebergements();
         }
-        if ($categoryWpId == 8) {
+        if (in_array($categoryWpId, Theme::CATEGORIES_AGENDA)) {
             return WpRepository::getChildrenEvents();
         }
-        if ($categoryWpId == 5) {
+        if (in_array($categoryWpId, Theme::CATEGORIES_RESTAURATION)) {
             return WpRepository::getChildrenRestauration();
         }
 
@@ -226,33 +226,6 @@ class WpRepository
                 } else {
                     $allFiltres[] = $typeOffre;
                 }
-            }
-        }
-
-        return $allFiltres;
-        $filtres = $filtreRepository->findByIdsOrUrns($categoryFiltres);
-
-        dump($filtres);
-
-        foreach ($filtres as $filtre) {
-            $filtres = $filtreRepository->findByUrn($family->urn);
-            if (count($filtres) > 0) {
-                $filtre = $filtres[0];
-                $filtre->children = [];//bug loop infinit
-                $allFiltres[] = $filtre;
-            }
-        }
-
-        array_map(function ($filtre) use ($filtreRepository) {
-            return $filtre->children = $filtreRepository->findByParent($filtre->id);
-        }, $filtres);
-
-        foreach ($filtres as $filtre) {
-            $childs = $filtre->children;
-            $filtre->children = []; //bug loop infinit
-            $allFiltres[] = $filtre;
-            foreach ($childs as $child) {
-                $allFiltres[] = $child;
             }
         }
 
@@ -330,7 +303,7 @@ class WpRepository
      * @return TypeOffre[]
      * @throws NonUniqueResultException
      */
-    public static function getChildrenPatrimoine(): array
+    public static function getChildrenTest(): array
     {
         $allFiltres = [];
         $pivotRepository = PivotContainer::getRepository();

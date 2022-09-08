@@ -13,6 +13,9 @@ class Theme
     public const CATEGORY_FETES = 12;
     public const CATEGORY_GOURMANDISES = 13;
     public const CATEGORY_PATRIMOINES = 9;
+    public const CATEGORIES_AGENDA = [8,33,34];
+    public const CATEGORIES_HEBERGEMENT = [6,67,68];
+    public const CATEGORIES_RESTAURATION = [5,44,66];
 
     public static function isHomePage(): bool
     {
