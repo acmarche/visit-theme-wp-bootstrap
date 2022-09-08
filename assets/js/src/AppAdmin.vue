@@ -24,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <!--  <My v-model="message" /> {{ message }}  sample modelValue -->
-  <My v-model:message="message"/>
+  <!--  <My v-model:message="message"/> -->
   {{ message }}
 
   <AddFilter :categoryId="categoryId" @refresh-filtres="refreshFiltres"/>
