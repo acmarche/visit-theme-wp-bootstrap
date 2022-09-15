@@ -16,7 +16,9 @@ async function loadFiltres() {
   if (categoryId.value > 0) {
     let response = await fetchFiltresByCategoryRequest('', categoryId.value, 1)
     let filtresTmp = [...response.data]
-    filtresTmp.unshift({'id': 0, 'nom': 'Tout'})
+     if (filtresTmp.length > 1) {
+      filtresTmp.unshift({'id': 0, 'nom': 'Tout'})
+    }
     filtres.value = filtresTmp
   }
 }
@@ -41,7 +43,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ListFiltre :categoryId="categoryId" :language="language" :filtres="filtres" @refresh-offres="refreshOffres"/>
+  <ListFiltre :categoryId="categoryId" :language="language" :filtres="filtres" @refresh-offres="refreshOffres" v-if="filtres.length > 1"/>
   <Loading :isLoading="isLoading" v-if="isLoading === true"/>
   <OffresList :offres="offres" v-if="isLoading === false"/>
 </template>
