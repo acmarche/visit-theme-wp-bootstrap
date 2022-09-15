@@ -62,7 +62,7 @@ if ($filterSelected) {
 
 if ([] !== $filtres) {
     $filtres = RouterPivot::setRoutesToFilters($filtres, $cat_ID);
-    $pivotRepository = PivotContainer::getRepository();
+    $pivotRepository = PivotContainer::getPivotRepository();
     $offres = [];
 
     try {

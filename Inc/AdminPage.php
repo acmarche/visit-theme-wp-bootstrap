@@ -109,7 +109,7 @@ class AdminPage
 
             return;
         }
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
@@ -137,7 +137,7 @@ class AdminPage
 
             return;
         }
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
         if (!$offre) {
             Twig::rendPage(

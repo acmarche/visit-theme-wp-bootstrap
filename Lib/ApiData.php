@@ -105,7 +105,7 @@ class ApiData
         }
 
         if ([] !== $filtres) {
-            $pivotRepository = PivotContainer::getRepository();
+            $pivotRepository = PivotContainer::getPivotRepository();
             $offres = $pivotRepository->getOffres($filtres);
             $offres = $postUtils->convertOffresToArray($offres, $currentCategoryId, $language);
         }

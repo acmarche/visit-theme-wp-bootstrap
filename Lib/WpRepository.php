@@ -239,7 +239,7 @@ class WpRepository
     public static function getChildrenEvents(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $filtreRepository = PivotContainer::getTypeOffreRepository();
 
         $families = $pivotRepository->thesaurusChildren(
@@ -266,7 +266,7 @@ class WpRepository
     public static function getChildrenRestauration(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $filtreRepository = PivotContainer::getTypeOffreRepository();
 
         $families = $pivotRepository->thesaurusChildren(
@@ -306,7 +306,7 @@ class WpRepository
     public static function getChildrenTest(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $filtreRepository = PivotContainer::getTypeOffreRepository();
 
         $families = $pivotRepository->thesaurusChildren(

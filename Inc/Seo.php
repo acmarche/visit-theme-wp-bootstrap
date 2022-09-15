@@ -96,7 +96,7 @@ class Seo
     private static function metaHadesOffre(string $codeCgt): void
     {
         $language = LocaleHelper::getSelectedLanguage();
-        $pivotRepository = PivotContainer::getRepository();
+        $pivotRepository = PivotContainer::getPivotRepository();
         $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
         if (null !== $offre) {
             $base = self::baseTitle('');

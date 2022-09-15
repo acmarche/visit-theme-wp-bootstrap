@@ -16,7 +16,7 @@ $currentCategory = get_category_by_slug(get_query_var('category_name'));
 $urlBack = get_category_link($currentCategory);
 $nameBack = $currentCategory->name;
 
-$pivotRepository = PivotContainer::getRepository();
+$pivotRepository = PivotContainer::getPivotRepository();
 
 $event = null;
 
