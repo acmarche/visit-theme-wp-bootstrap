@@ -22,7 +22,7 @@ class ApiData
     {
         $parentId = (int)$request->get_param('parentId');
 
-        $pivotRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         if ($parentId == 0) {
             $filtres = $pivotRepository->findRoots();
         } else {
@@ -36,7 +36,7 @@ class ApiData
     {
         $name = $request->get_param('name');
 
-        $pivotRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $filtres = $pivotRepository->findByNameOrUrn($name);
 
@@ -92,7 +92,7 @@ class ApiData
     {
         $offres = $filtres = [];
         $language = LocaleHelper::getSelectedLanguage();
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         $wpRepository = new WpRepository();
         $postUtils = new PostUtils();
 
@@ -105,7 +105,7 @@ class ApiData
         }
 
         if ([] !== $filtres) {
-            $pivotRepository = PivotContainer::getPivotRepository();
+            $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
             $offres = $pivotRepository->getOffres($filtres);
             $offres = $postUtils->convertOffresToArray($offres, $currentCategoryId, $language);
         }

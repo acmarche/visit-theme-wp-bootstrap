@@ -206,7 +206,7 @@ class WpRepository
         }
 
         $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryWpId);
-        $typeOffreRepository = PivotContainer::getTypeOffreRepository();
+        $typeOffreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         $allFiltres = [];
 
         foreach ($categoryFiltres as $data) {
@@ -239,8 +239,8 @@ class WpRepository
     public static function getChildrenEvents(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getPivotRepository();
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $families = $pivotRepository->thesaurusChildren(
             UrnTypeList::evenement()->typeId,
@@ -266,8 +266,8 @@ class WpRepository
     public static function getChildrenRestauration(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getPivotRepository();
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $families = $pivotRepository->thesaurusChildren(
             UrnTypeList::restauration()->typeId,
@@ -292,7 +292,7 @@ class WpRepository
      */
     public static function getChildrenHebergements(): array
     {
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $filtre = $filtreRepository->findOneByUrn(UrnList::HERGEMENT->value);
 
@@ -306,8 +306,8 @@ class WpRepository
     public static function getChildrenTest(): array
     {
         $allFiltres = [];
-        $pivotRepository = PivotContainer::getPivotRepository();
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $families = $pivotRepository->thesaurusChildren(
             UrnTypeList::decouverteEtDivertissement()->typeId,

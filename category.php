@@ -51,7 +51,7 @@ if ($icone) {
 }
 $filterSelected = $_GET[RouterPivot::PARAM_FILTRE] ?? null;
 if ($filterSelected) {
-    $tpeOffreRepository = PivotContainer::getTypeOffreRepository();
+    $tpeOffreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
     $filtres = $tpeOffreRepository->findByUrn($filterSelected);
     if (count($filtres) > 0) {
         $categoryName = $filtres[0]->labelByLanguage($language);
@@ -62,7 +62,7 @@ if ($filterSelected) {
 
 if ([] !== $filtres) {
     $filtres = RouterPivot::setRoutesToFilters($filtres, $cat_ID);
-    $pivotRepository = PivotContainer::getPivotRepository();
+    $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
     $offres = [];
 
     try {

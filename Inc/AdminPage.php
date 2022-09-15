@@ -66,7 +66,7 @@ class AdminPage
 
     private static function filtresRender()
     {
-        $pivotRepository = PivotContainer::getTypeOffreRepository();
+        $pivotRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         $filters = $pivotRepository->findWithChildren();
 
         $category = get_category_by_slug('offres');
@@ -97,7 +97,7 @@ class AdminPage
             return;
         }
         $language = LocaleHelper::getSelectedLanguage();
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         $filtres = $filtreRepository->findByIdsOrUrns([$filtre]);
         if (count($filtres) == 0) {
             Twig::rendPage(
@@ -109,7 +109,7 @@ class AdminPage
 
             return;
         }
-        $pivotRepository = PivotContainer::getPivotRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
         $offres = $pivotRepository->getOffres($filtres);
         $pivotOffresTable = new PivotOffresTable();
         $pivotOffresTable->data = $offres;
@@ -137,7 +137,7 @@ class AdminPage
 
             return;
         }
-        $pivotRepository = PivotContainer::getPivotRepository();
+        $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
         $offre = $pivotRepository->getOffreByCgtAndParse($codeCgt, Offre::class);
         if (!$offre) {
             Twig::rendPage(

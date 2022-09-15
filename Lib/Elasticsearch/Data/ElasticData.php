@@ -132,7 +132,7 @@ class ElasticData
             $filtres = $this->wpRepository->getCategoryFilters($category->cat_ID);
 
             if ([] !== $filtres) {
-                $pivotRepository = PivotContainer::getPivotRepository();
+                $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
                 $offres = $pivotRepository->getOffres($filtres);
                 array_map(
                     function ($offre) use ($category, $language) {
@@ -238,7 +238,7 @@ class ElasticData
         $filtres = $categoryUtils->getCategoryFilters($category->cat_ID);
 
         if ([] !== $filtres) {
-            $pivotRepository = PivotContainer::getPivotRepository();
+            $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
             $offres = $pivotRepository->getOffres($filtres);
             array_map(
                 function ($offre) use ($category, $language) {

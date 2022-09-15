@@ -18,7 +18,7 @@ class Ajax
         $id = (int)$_POST['id'];
         $categoryFiltres = [];
         if ($categoryWpId && $id) {
-            $filtreRepository = PivotContainer::getTypeOffreRepository();
+            $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
             if ($filtre = $filtreRepository->find($id)) {
                 $urn = $filtre->urn;
                 $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryWpId);
@@ -40,7 +40,7 @@ class Ajax
         $categoryId = (int)$_POST['categoryId'];
         $typeOffreId = (int)$_POST['typeOffreId'];
         $withChildren = filter_var($_POST['withChildren'], FILTER_VALIDATE_BOOLEAN);
-        $filtreRepository = PivotContainer::getTypeOffreRepository();
+        $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         if ($categoryId > 0 && $typeOffreId > 0) {
             $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryId);

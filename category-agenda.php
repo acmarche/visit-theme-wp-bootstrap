@@ -13,7 +13,7 @@ $cat_ID = get_queried_object_id();
 $category = get_category($cat_ID);
 
 $language = LocaleHelper::getSelectedLanguage();
-$pivotRepository = PivotContainer::getPivotRepository();
+$pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
 
 try {
     $events = $pivotRepository->getEvents(true);

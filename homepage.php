@@ -20,7 +20,7 @@ get_header();
 $language = LocaleHelper::getSelectedLanguage();
 $wpRepository = new WpRepository();
 
-$pivotRepository = PivotContainer::getPivotRepository();
+$pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
 
 $inspirationCat = $wpRepository->getCategoryBySlug('inspirations');
 $inspirations = [];
