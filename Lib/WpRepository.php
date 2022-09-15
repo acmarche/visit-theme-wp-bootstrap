@@ -190,19 +190,23 @@ class WpRepository
     /**
      * @param int $categoryWpId
      * @param bool $forceNoChildren
+     * @param bool $filterCount
      * @return TypeOffre[]|array
      * @throws NonUniqueResultException
      */
-    public static function getCategoryFilters(int $categoryWpId, bool $forceNoChildren = false): array
-    {
+    public static function getCategoryFilters(
+        int $categoryWpId,
+        bool $forceNoChildren = false,
+        bool $filterCount = true
+    ): array {
         if (in_array($categoryWpId, Theme::CATEGORIES_HEBERGEMENT)) {
-            return WpRepository::getChildrenHebergements();
+            return WpRepository::getChildrenHebergements($filterCount);
         }
         if (in_array($categoryWpId, Theme::CATEGORIES_AGENDA)) {
-            return WpRepository::getChildrenEvents();
+            return WpRepository::getChildrenEvents($filterCount);
         }
         if (in_array($categoryWpId, Theme::CATEGORIES_RESTAURATION)) {
-            return WpRepository::getChildrenRestauration();
+            return WpRepository::getChildrenRestauration($filterCount);
         }
 
         $categoryFiltres = PivotMetaBox::getMetaPivotTypesOffre($categoryWpId);
@@ -228,6 +232,11 @@ class WpRepository
                 }
             }
         }
+        if ($filterCount) {
+            $allFiltres = array_filter($allFiltres, function ($typeOffre) {
+                return $typeOffre->countOffres > 0;
+            });
+        }
 
         return $allFiltres;
     }
@@ -236,7 +245,7 @@ class WpRepository
      * @return TypeOffre[]
      * @throws NonUniqueResultException|\Exception
      */
-    public static function getChildrenEvents(): array
+    public static function getChildrenEvents(bool $filterCount): array
     {
         $allFiltres = [];
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
@@ -255,15 +264,18 @@ class WpRepository
                 $allFiltres[] = $filtre;
             }
         }
+        if ($filterCount) {
+            return self::filterCount($allFiltres);
+        }
 
         return $allFiltres;
     }
 
     /**
      * @return TypeOffre[]
-     * @throws NonUniqueResultException
+     * @throws NonUniqueResultException|\Exception
      */
-    public static function getChildrenRestauration(): array
+    public static function getChildrenRestauration(bool $filterCount): array
     {
         $allFiltres = [];
         $pivotRepository = PivotContainer::getPivotRepository(WP_DEBUG);
@@ -282,6 +294,9 @@ class WpRepository
                 $allFiltres[] = $filtre;
             }
         }
+        if ($filterCount) {
+            return self::filterCount($allFiltres);
+        }
 
         return $allFiltres;
     }
@@ -290,13 +305,18 @@ class WpRepository
      * @return TypeOffre[]
      * @throws NonUniqueResultException
      */
-    public static function getChildrenHebergements(): array
+    public static function getChildrenHebergements(bool $filterCount): array
     {
         $filtreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
 
         $filtre = $filtreRepository->findOneByUrn(UrnList::HERGEMENT->value);
 
-        return $filtreRepository->findByParent($filtre->id);
+        $allFiltres = $filtreRepository->findByParent($filtre->id);
+        if ($filterCount) {
+            return self::filterCount($allFiltres);
+        }
+
+        return $allFiltres;
     }
 
     /**
@@ -330,6 +350,19 @@ class WpRepository
         }
 
         return $allFiltres;
+    }
+
+    /**
+     * @param array|TypeOffre[] $allFiltres
+     * @return array|TypeOffre[]
+     */
+    private static function filterCount(array $allFiltres): array
+    {
+        $allFiltres = array_filter($allFiltres, function ($typeOffre) {
+            return $typeOffre->countOffres > 0;
+        });
+
+        return array_values($allFiltres);//reset keys for js
     }
 
 }

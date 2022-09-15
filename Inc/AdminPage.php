@@ -162,7 +162,7 @@ class AdminPage
         $categories = [];
         $wpRepository = new WpRepository();
         foreach ($wpRepository->getCategoriesFromWp() as $category) {
-            $filtres = $wpRepository->getCategoryFilters($category->term_id);
+            $filtres = $wpRepository->getCategoryFilters($category->term_id, false, false);
             if (count($filtres) > 0) {
                 $categories[] = $category;
             } else {
