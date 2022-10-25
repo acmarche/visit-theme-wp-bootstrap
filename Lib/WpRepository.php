@@ -214,8 +214,12 @@ class WpRepository
         $allFiltres = [];
 
         foreach ($categoryFiltres as $data) {
+
             $typeOffre = $typeOffreRepository->findOneByUrn($data['urn']);
+
             if ($typeOffre) {
+                //bug parent is a proxy
+                unset($typeOffre->parent);
                 $withChildren = $data['withChildren'];
                 $typeOffre->withChildren = $withChildren;
                 if ($withChildren && $forceNoChildren === true) {
@@ -232,6 +236,7 @@ class WpRepository
                 }
             }
         }
+
         if ($filterCount) {
             $allFiltres = array_filter($allFiltres, function ($typeOffre) {
                 return $typeOffre->countOffres > 0;
