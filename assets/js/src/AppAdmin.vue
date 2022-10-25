@@ -3,7 +3,6 @@ import {ref, onMounted} from 'vue'
 import {fetchFiltresByCategoryRequest} from './service/filtre-service'
 import ListFiltre from './components/Admin/ListFiltre.vue';
 import AddFilter from "./components/Admin/AddFilter.vue";
-import My from "./components/Admin/My.vue";
 
 const filtres = ref([])
 const categoryId = ref(0)
@@ -23,10 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!--  <My v-model="message" /> {{ message }}  sample modelValue -->
-  <!--  <My v-model:message="message"/> -->
   {{ message }}
-
   <AddFilter :categoryId="categoryId" @refresh-filtres="refreshFiltres"/>
   <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="refreshFiltres"/>
 </template>
