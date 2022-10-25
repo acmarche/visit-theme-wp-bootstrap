@@ -6,7 +6,6 @@ import AddFilter from "./components/Admin/AddFilter.vue";
 
 const filtres = ref([])
 const categoryId = ref(0)
-const message = ref('hello')
 
 async function refreshFiltres() {
   if (categoryId.value > 0) {
@@ -22,7 +21,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  {{ message }}
   <AddFilter :categoryId="categoryId" @refresh-filtres="refreshFiltres"/>
   <ListFiltre :categoryId="categoryId" :filtres="filtres" @refresh-filtres="refreshFiltres"/>
 </template>
