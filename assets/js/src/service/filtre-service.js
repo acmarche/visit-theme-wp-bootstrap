@@ -4,15 +4,17 @@ import axios from './AxiosInstance';
  * @param {string} language
  * @param {int} categoryId
  * @param {int} flatWithChildren
+ * @param {int} filterCount
  * @returns {Promise}
  */
 export function fetchFiltresByCategoryRequest(
     language,
     categoryId,
-    flatWithChildren = 0
+    flatWithChildren = 0,
+    filterCount = 1
 ) {
     const params = {};
-    const url = `${language}/wp-json/pivot/filtres_category/${categoryId}/${flatWithChildren}`;
+    const url = `${language}/wp-json/pivot/filtres_category/${categoryId}/${flatWithChildren}/${filterCount}`;
     return axios.get(url, {
         params
     });

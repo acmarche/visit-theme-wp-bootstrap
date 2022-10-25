@@ -11,7 +11,7 @@ const message = ref('hello')
 
 async function refreshFiltres() {
   if (categoryId.value > 0) {
-    let response = await fetchFiltresByCategoryRequest('', categoryId.value)
+    let response = await fetchFiltresByCategoryRequest('', categoryId.value,0,0)
     filtres.value = [...response.data]
   }
 }

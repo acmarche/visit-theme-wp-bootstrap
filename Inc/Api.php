@@ -24,7 +24,7 @@ class Api
             function () {
                 register_rest_route(
                     'pivot',
-                    'filtres_category/(?P<categoryId>[\w]+)/(?P<flatWithChildren>[\w]+)',
+                    'filtres_category/(?P<categoryId>[\w]+)/(?P<flatWithChildren>[\w]+)/(?P<filterCount>[\w]+)',
                     [
                         'methods' => 'GET',
                         'callback' => fn($args) => ApiData::pivotFiltresByCategory($args),
