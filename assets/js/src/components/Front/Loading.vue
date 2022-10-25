@@ -1,6 +1,6 @@
 <template>
   <div class="myLoad">
-    <p>Loading...</p>
+    <p>Chargement...</p>
   </div>
 </template>
 <style>
