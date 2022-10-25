@@ -44,7 +44,7 @@ class PivotMetaBox
         $filtres = self::getMetaPivotTypesOffre($term->term_id);
         // $filtres = delete_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE);
         foreach ($filtres as $filtre) {
-            dump($filtre);
+
         }
         ?>
         <table class="form-table">
