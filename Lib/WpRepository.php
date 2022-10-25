@@ -189,14 +189,14 @@ class WpRepository
 
     /**
      * @param int $categoryWpId
-     * @param bool $forceNoChildren
+     * @param bool $flatWithChildren
      * @param bool $filterCount
      * @return TypeOffre[]|array
      * @throws NonUniqueResultException
      */
     public static function getCategoryFilters(
         int $categoryWpId,
-        bool $forceNoChildren = false,
+        bool $flatWithChildren = false,
         bool $filterCount = true
     ): array {
         if (in_array($categoryWpId, Theme::CATEGORIES_HEBERGEMENT)) {
@@ -226,6 +226,8 @@ class WpRepository
                     $children = $typeOffreRepository->findByParent($typeOffre->id);
                     if (count($children) > 0) {
                         foreach ($children as $typeOffreChild) {
+                            //bug parent is a proxy
+                            unset($typeOffreChild->parent);
                             $allFiltres[] = $typeOffreChild;
                         }
                     } else {
@@ -238,9 +240,14 @@ class WpRepository
         }
 
         if ($filterCount) {
-            $allFiltres = array_filter($allFiltres, function ($typeOffre) {
-                return $typeOffre->countOffres > 0;
-            });
+            $filtres = [];
+            foreach ($allFiltres as $filtre) {
+                if ($filtre->countOffres > 0) {
+                    $filtres[] = $filtre;
+                }
+            }
+
+            return $filtres;
         }
 
         return $allFiltres;
