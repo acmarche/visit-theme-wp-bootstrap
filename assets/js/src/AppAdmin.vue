@@ -9,7 +9,7 @@ const categoryId = ref(0)
 
 async function refreshFiltres() {
   if (categoryId.value > 0) {
-    let response = await fetchFiltresByCategoryRequest('', categoryId.value,0,0)
+    let response = await fetchFiltresByCategoryRequest('', categoryId.value,1,0)
     filtres.value = [...response.data]
   }
 }

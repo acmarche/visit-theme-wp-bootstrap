@@ -189,7 +189,7 @@ class WpRepository
 
     /**
      * @param int $categoryWpId
-     * @param bool $flatWithChildren
+     * @param bool $flatWithChildren pour admin ne pas etendre enfants
      * @param bool $filterCount
      * @return TypeOffre[]|array
      * @throws NonUniqueResultException
@@ -220,18 +220,20 @@ class WpRepository
             if ($typeOffre) {
                 //bug parent is a proxy
                 unset($typeOffre->parent);
-                $withChildren = $data['withChildren'];
-                $typeOffre->withChildren = $withChildren;
-                if ($withChildren) {
-                    $children = $typeOffreRepository->findByParent($typeOffre->id);
-                    if (count($children) > 0) {
-                        foreach ($children as $typeOffreChild) {
-                            //bug parent is a proxy
-                            unset($typeOffreChild->parent);
-                            $allFiltres[] = $typeOffreChild;
+                if (!$flatWithChildren) {
+                    $withChildren = $data['withChildren'];
+                    $typeOffre->withChildren = $withChildren;
+                    if ($withChildren) {
+                        $children = $typeOffreRepository->findByParent($typeOffre->id);
+                        if (count($children) > 0) {
+                            foreach ($children as $typeOffreChild) {
+                                //bug parent is a proxy
+                                unset($typeOffreChild->parent);
+                                $allFiltres[] = $typeOffreChild;
+                            }
+                        } else {
+                            $allFiltres[] = $typeOffre;
                         }
-                    } else {
-                        $allFiltres[] = $typeOffre;
                     }
                 } else {
                     $allFiltres[] = $typeOffre;
