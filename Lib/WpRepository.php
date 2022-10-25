@@ -222,7 +222,7 @@ class WpRepository
                 unset($typeOffre->parent);
                 $withChildren = $data['withChildren'];
                 $typeOffre->withChildren = $withChildren;
-                if ($withChildren && $forceNoChildren === true) {
+                if ($withChildren) {
                     $children = $typeOffreRepository->findByParent($typeOffre->id);
                     if (count($children) > 0) {
                         foreach ($children as $typeOffreChild) {
