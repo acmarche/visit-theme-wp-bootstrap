@@ -42,10 +42,17 @@ class PivotMetaBox
             wp_get_theme()->get('Version'),
         );
         $filtres = self::getMetaPivotTypesOffre($term->term_id);
-        // $filtres = delete_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE);
-        foreach ($filtres as $filtre) {
-
+        $update = false;
+        foreach ($filtres as $key => $filtre) {
+            if (!isset($filtre['urn'])) {
+                unset($filtres[$key]);
+                $update = true;
+            }
         }
+        if ($update) {
+           // update_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE, $filtres);
+        }
+        //  $filtres = delete_term_meta($term->term_id, PivotMetaBox::PIVOT_REFRUBRIQUE);
         ?>
         <table class="form-table">
             <tr class="form-field">
