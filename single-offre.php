@@ -5,8 +5,9 @@ namespace AcMarche\Theme;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use Exception;
-use VisitMarche\Theme\Lib\RouterPivot;
+use VisitMarche\Theme\Lib\GpxViewer;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\RouterPivot;
 use VisitMarche\Theme\Lib\Twig;
 
 get_header();
@@ -66,8 +67,7 @@ foreach ($offre->categories as $category) {
         'url' => $urlCat.'?'.RouterPivot::PARAM_FILTRE.'='.$category->urn,
     ];
 }
-
-$recommandations = [];
+$recommandations = $offres = [];
 if (count($offre->voir_aussis)) {
     $offres = $offre->voir_aussis;
 } else {
@@ -84,6 +84,15 @@ foreach ($offres as $item) {
         'categories' => $tags2,
     ];
 }
+foreach ($offre->pois as $poi) {
+    $poi->url = RouterPivot::getUrlOffre($poi, $currentCategory->cat_ID);
+}
+
+$gpxMap = null;
+if (count($offre->gpxs) > 0) {
+    $gpxViewer = new GpxViewer();
+    $gpxMap = $gpxViewer->gpxViewer($offre->gpxs[0]);
+}
 
 Twig::rendPage(
     'offre/show.html.twig',
@@ -95,6 +104,7 @@ Twig::rendPage(
         'images' => $offre->images,
         'urlBack' => $urlBack,
         'nameBack' => $nameBack,
+        'gpxMap' => $gpxMap,
         'recommandations' => $recommandations,
         'latitude' => $offre->getAdresse()->latitude ?? null,
         'longitude' => $offre->getAdresse()->longitude ?? null,
