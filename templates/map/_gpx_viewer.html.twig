@@ -1,4 +1,4 @@
-<div id="openmap" class="leaflet-map mt-3 mb-3" style="width: 100%; height: 600px;"></div>
+<div id="openmapgpx" class="leaflet-map mt-3 mb-3" style="width: 100%; height: 600px;"></div>
 
 <script>
     var opts = {
@@ -43,7 +43,7 @@
         },
     };
 
-    var map = L.map('openmap', opts.map);
+    var map = L.map('openmapgpx', opts.map);
 
     var controlElevation = L.control.elevation(opts.elevationControl.options);
     var controlLayer = L.control.layers(null, null, opts.layersControl.options);
