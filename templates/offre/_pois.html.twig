@@ -1,0 +1,13 @@
+{% if offre.pois|length > 0 %}
+    <h4 class="text-success mt-2" style="font-size: 1rem;">{{ 'Pois'|trans }}</h4>
+    <hr>
+    <ul class="list-group">
+        {% for poi in offre.pois %}
+            <li class="list-group-item">
+                <a href="{{ poi.url }}" class="">
+                    <p>{{ poi.nomByLanguage(locale) }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,29 @@
+{% if offre.gpxs|length > 0 %}
+    <h4 class="text-success mt-2" style="font-size: 1rem;">{{ 'Gpx'|trans }}</h4>
+    <hr>
+    {% for gpx in offre.gpxs %}
+        <p>{{ gpx.desc|nl2br }}</p>
+        <p> Longueur de l'itinéraire: {{ offre.gpx_distance }} km</p>
+        <p> Durée du parcours: {{ offre.gpx_duree }} minutes</p>
+        <p> Difficulté: {{ offre.gpx_difficulte }} </p>
+
+        <p>
+            <a href="https://www.cirkwi.com/fr/exporter-gpx/{{ offre.gpx_id }}_0?mb_id_outil=201467&amp;mb_use_temp=1"
+               class="btn btn-primary" rel="nofollow"
+               target="_blank" title="Télécharger GPX">
+                Télécharger le gpx
+            </a>
+        </p>
+
+        {% for link in gpx.links %}
+            <a href="{{ link }}" rel="groupbottin" class="img-fluid img-thumbnail img-lightGallery">
+                <img style="max-width: 250px; max-height: 150px;margin-top: 10px;" src="{{ link }}"
+                     alt="alt"
+                     class="alignLeft"/>
+            </a>
+        {% endfor %}
+    {% endfor %}
+    <p>MAp</p>
+    {{ gpxMap|raw }}
+    <p>MAp</p>
+{% endif %}
