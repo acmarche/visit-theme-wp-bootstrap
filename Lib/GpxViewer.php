@@ -26,7 +26,7 @@ class GpxViewer
                 'title' => $title,
                 'latitude' => 50.2268,
                 'longitude' => 5.3442,
-                'file' => 'https://visit.marche.be/var/gpx.xml',
+                'file' => 'https://visitmarche.be/var/gpx.xml',
                 //'file' => $gpx->url,
                 'file2' => null,
             ]
