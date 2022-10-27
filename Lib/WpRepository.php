@@ -214,7 +214,9 @@ class WpRepository
         $allFiltres = [];
 
         foreach ($categoryFiltres as $data) {
-
+            if (!isset($data['urn'])) {
+                continue;
+            }
             $typeOffre = $typeOffreRepository->findOneByUrn($data['urn']);
 
             if ($typeOffre) {
