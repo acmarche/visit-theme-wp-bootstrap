@@ -5,6 +5,7 @@ namespace VisitMarche\Theme\Inc;
 use AcMarche\Pivot\DependencyInjection\PivotContainer;
 use AcMarche\Pivot\Entities\Offre\Offre;
 use VisitMarche\Theme\Lib\LocaleHelper;
+use VisitMarche\Theme\Lib\RouterPivot;
 use WP_Post;
 
 class Seo
@@ -46,7 +47,7 @@ class Seo
             return;
         }
 
-        $codeCgt = get_query_var(RouterHades::PARAM_EVENT);
+        $codeCgt = get_query_var(RouterPivot::PARAM_EVENT);
         if ($codeCgt) {
             self::metaHadesOffre($codeCgt);
             self::renderMetas();
@@ -54,7 +55,7 @@ class Seo
             return;
         }
 
-        $codeCgt = get_query_var(RouterHades::PARAM_OFFRE);
+        $codeCgt = get_query_var(RouterPivot::OFFRE_URL);
         if ($codeCgt) {
             self::metaHadesOffre($codeCgt);
         }
