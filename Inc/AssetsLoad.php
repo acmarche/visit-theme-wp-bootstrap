@@ -134,13 +134,13 @@ class AssetsLoad
     {
         wp_enqueue_style(
             'visitmarche-leaflet',
-            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+            'https://unpkg.com/leaflet/dist/leaflet.css',
             [],
             wp_get_theme()->get('Version')
         );
         wp_enqueue_script(
             'visitmarche-leaflet-js',
-            'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+            'https://unpkg.com/leaflet/dist/leaflet.js',
             [],
             wp_get_theme()->get('Version')
         );
@@ -155,14 +155,14 @@ class AssetsLoad
 
         wp_enqueue_style(
             'visitmarche-leaflet-elevation-css',
-            'https://unpkg.com/@raruto/leaflet-elevation@1.6.7/dist/leaflet-elevation.min.css',
+            'https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.min.css',
             [],
             wp_get_theme()->get('Version')
         );
 
         wp_enqueue_script(
             'visitmarche-leaflet-ui-js',
-            'https://unpkg.com/leaflet-ui@0.2.0/dist/leaflet-ui.js',
+            'https://unpkg.com/leaflet-ui/dist/leaflet-ui.js',
             [],
             wp_get_theme()->get('Version')
         );
