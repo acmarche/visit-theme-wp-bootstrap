@@ -213,32 +213,36 @@ class WpRepository
         $typeOffreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
         $allFiltres = [];
 
-        foreach ($categoryFiltres as $data) {
-            if (!isset($data['urn'])) {
+        foreach ($categoryFiltres as $dataFiltre) {
+
+            if (!isset($dataFiltre['urn'])) {
                 continue;
             }
-            $typeOffre = $typeOffreRepository->findOneByUrn($data['urn']);
 
-            if ($typeOffre) {
-                //bug parent is a proxy
-                unset($typeOffre->parent);
-                if (!$flatWithChildren) {
-                    $withChildren = $data['withChildren'];
-                    $typeOffre->withChildren = $withChildren;
-                    if ($withChildren) {
-                        $children = $typeOffreRepository->findByParent($typeOffre->id);
-                        if (count($children) > 0) {
-                            foreach ($children as $typeOffreChild) {
-                                //bug parent is a proxy
-                                unset($typeOffreChild->parent);
-                                $allFiltres[] = $typeOffreChild;
-                            }
-                        } else {
-                            $allFiltres[] = $typeOffre;
-                        }
-                    }
-                } else {
-                    $allFiltres[] = $typeOffre;
+            $typeOffre = $typeOffreRepository->findOneByUrn($dataFiltre['urn']);
+            if (!$typeOffre) {
+                continue;
+            }
+
+            //bug parent is a proxy
+            unset($typeOffre->parent);
+            $allFiltres[] = $typeOffre;
+
+            /**
+             * Force a pas prendre enfant
+             */
+            if ($flatWithChildren) {
+                continue;
+            }
+
+            $withChildren = $dataFiltre['withChildren'];
+            $typeOffre->withChildren = $withChildren;
+            if ($withChildren) {
+                $children = $typeOffreRepository->findByParent($typeOffre->id);
+                foreach ($children as $typeOffreChild) {
+                    //bug parent is a proxy
+                    unset($typeOffreChild->parent);
+                    $allFiltres[] = $typeOffreChild;
                 }
             }
         }
