@@ -1,7 +1,7 @@
 /*!
 	Copyright (c) 2011-2015, Pavel Shramov, Bruno Bergot - MIT licence
 */
-if (L) {
+if (typeof L !== 'undefined') {
 
     L.KML = L.FeatureGroup.extend({
 

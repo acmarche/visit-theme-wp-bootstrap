@@ -20,7 +20,6 @@ class AssetsLoad
         }
 
         add_filter('script_loader_tag', fn($tag, $handle, $src) => $this->addAsModule($tag, $handle, $src), 10, 3);
-        add_filter('script_loader_tag', fn($tag, $handle) => $this->add_defer_attribute($tag, $handle), 10, 2);
     }
 
     public function visitmarcheAssets(): void
@@ -135,13 +134,13 @@ class AssetsLoad
     {
         wp_enqueue_style(
             'visitmarche-leaflet',
-            'https://unpkg.com/leaflet/dist/leaflet.css',
+            get_template_directory_uri().'/assets/js/leaflet/leaflet.css',
             [],
             wp_get_theme()->get('Version')
         );
         wp_enqueue_script(
             'visitmarche-leaflet-js',
-            'https://unpkg.com/leaflet/dist/leaflet.js',
+            get_template_directory_uri().'/assets/js/leaflet/leaflet.js',
             [],
             wp_get_theme()->get('Version')
         );
@@ -163,14 +162,14 @@ class AssetsLoad
 
         wp_enqueue_script(
             'visitmarche-leaflet-ui-js',
-            'https://unpkg.com/leaflet-ui@0.5.9/dist/leaflet-ui.js',
+            get_template_directory_uri().'/assets/js/leaflet/leaflet-ui.js',
             [],
             wp_get_theme()->get('Version')
         );
 
         wp_enqueue_script(
             'visitmarche-leaflet-elevation-js',
-            'https://unpkg.com/@raruto/leaflet-elevation@2.2.7/dist/leaflet-elevation.min.js',
+            get_template_directory_uri().'/assets/js/leaflet/leaflet-elevation.min.js',
             [],
             wp_get_theme()->get('Version')
         );
@@ -190,23 +189,5 @@ class AssetsLoad
         }
 
         return '<script type="module" src="'.esc_url($src).'"></script>';
-    }
-
-    function add_defer_attribute($tag, $handle)
-    {
-        $scripts_to_defer = array(
-            'visitmarche-leaflet-elevation-js',
-            'visitmarche-leaflet-ui-js',
-            'visitmarche-kml-js',
-            'visitmarche-leaflet-js',
-            'visitmarche-bootstrap-js',
-        );
-        foreach ($scripts_to_defer as $defer_script) {
-            if ($defer_script === $handle) {
-                return str_replace(' src', ' defer="defer" src', $tag);
-            }
-        }
-
-        return $tag;
     }
 }
