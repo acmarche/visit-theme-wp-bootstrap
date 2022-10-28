@@ -155,7 +155,7 @@ class AssetsLoad
 
         wp_enqueue_style(
             'visitmarche-leaflet-elevation-css',
-            'https://unpkg.com/@raruto/leaflet-elevation@2.2.7/dist/leaflet-elevation.min.css',
+            get_template_directory_uri().'/assets/js/leaflet/leaflet-elevation.min.css',
             [],
             wp_get_theme()->get('Version')
         );
