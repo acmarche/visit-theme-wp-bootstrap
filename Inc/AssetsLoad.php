@@ -20,6 +20,7 @@ class AssetsLoad
         }
 
         add_filter('script_loader_tag', fn($tag, $handle, $src) => $this->addAsModule($tag, $handle, $src), 10, 3);
+        add_filter('script_loader_tag', fn($tag, $handle) => $this->add_defer_attribute($tag, $handle), 10, 2);
     }
 
     public function visitmarcheAssets(): void
@@ -191,4 +192,21 @@ class AssetsLoad
         return '<script type="module" src="'.esc_url($src).'"></script>';
     }
 
+    function add_defer_attribute($tag, $handle)
+    {
+        $scripts_to_defer = array(
+            'visitmarche-leaflet-elevation-js',
+            'visitmarche-leaflet-ui-js',
+            'visitmarche-kml-js',
+            'visitmarche-leaflet-js',
+            'visitmarche-bootstrap-js',
+        );
+        foreach ($scripts_to_defer as $defer_script) {
+            if ($defer_script === $handle) {
+                return str_replace(' src', ' defer="defer" src', $tag);
+            }
+        }
+
+        return $tag;
+    }
 }
