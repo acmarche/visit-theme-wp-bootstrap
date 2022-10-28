@@ -49,6 +49,30 @@ if ($header) {
 if ($icone) {
     $icone = '/wp-content/themes/visitmarche/assets/images/'.$icone;
 }
+
+$children = $wpRepository->getChildrenOfCategory($category->cat_ID);
+if (count($children) > 0) {
+    Twig::rendPage(
+        'category/index.html.twig',
+        [
+            'title' => $categoryName,
+            'urlBack' => $urlBack,
+            'nameBack' => $nameBack,
+            'category' => $category,
+            'children' => $children,
+            'posts' => $posts,
+            'permalink' => $permalink,
+            'header' => $header,
+            'icone' => $icone,
+            'bgcat' => $bgcat,
+        ]
+    );
+
+    get_footer();
+
+    return;
+}
+
 $filterSelected = $_GET[RouterPivot::PARAM_FILTRE] ?? null;
 if ($filterSelected) {
     $tpeOffreRepository = PivotContainer::getTypeOffreRepository(WP_DEBUG);
@@ -127,6 +151,7 @@ Twig::rendPage(
         'title' => $categoryName,
         'category' => $category,
         'urlBack' => $urlBack,
+        'children' => $children,
         'nameBack' => $nameBack,
         'posts' => $posts,
         'sortLink' => $sortLink,
