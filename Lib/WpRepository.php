@@ -226,6 +226,8 @@ class WpRepository
 
             //bug parent is a proxy
             unset($typeOffre->parent);
+
+            $typeOffre->withChildren = $dataFiltre['withChildren'];
             $allFiltres[] = $typeOffre;
 
             /**
@@ -235,9 +237,7 @@ class WpRepository
                 continue;
             }
 
-            $withChildren = $dataFiltre['withChildren'];
-            $typeOffre->withChildren = $withChildren;
-            if ($withChildren) {
+            if ($dataFiltre['withChildren']) {
                 $children = $typeOffreRepository->findByParent($typeOffre->id);
                 foreach ($children as $typeOffreChild) {
                     //bug parent is a proxy
