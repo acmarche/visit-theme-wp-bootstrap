@@ -140,8 +140,7 @@ class AssetsLoad
             'visitmarche-leaflet-js',
             'https://unpkg.com/leaflet@latest/dist/leaflet.js',
             [],
-            null,
-            true
+            null
 
         );
         wp_enqueue_script(
@@ -165,16 +164,14 @@ class AssetsLoad
             'visitmarche-leaflet-ui-js',
             'https://unpkg.com/leaflet-ui@0.5.9/dist/leaflet-ui.js',
             [],
-            null,
-            true
+            null
         );
 
         wp_enqueue_script(
             'visitmarche-leaflet-elevation-js',
             'https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.min.js',
             [],
-            null,
-            true
+            null
         );
     }
 
