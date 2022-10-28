@@ -145,7 +145,7 @@ class AssetsLoad
             wp_get_theme()->get('Version')
         );
         wp_enqueue_script(
-            'visitmarche-zoom-js',
+            'visitmarche-kml-js',
             get_template_directory_uri().'/assets/js/utils/L.KML.js',
             [],
             wp_get_theme()->get('Version')
