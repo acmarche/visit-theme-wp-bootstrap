@@ -4,6 +4,7 @@ namespace VisitMarche\Theme\Lib;
 
 use AcMarche\Pivot\Entities\Offre\Offre;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Component\Dotenv\Dotenv;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -25,25 +26,23 @@ class Twig
         }
 
         $loader = new FilesystemLoader($path);
-        $dir = ABSPATH.'var/cache';
+        (new Dotenv())
+            ->bootEnv(ABSPATH.'.env');
         $environment = new Environment(
             $loader,
             [
-                'cache' => $dir,
+                'cache' => $_ENV['APP_CACHE_DIR'],
                 'debug' => WP_DEBUG,
             ]
         );
 
         $loader->addPath(ABSPATH.'wp-content/themes/visitmarche/templates/', 'Visit');
         try {
-            $loader->addPath(ABSPATH.'visittail/theme/templates/', 'VisitTail');
+            $loader->addPath(ABSPATH.'wp-content/themes/visittail/templates/', 'VisitTail');
         } catch (LoaderError $e) {
         }
 
-        // wp_get_environment_type();
-        //  if (WP_DEBUG) {
         $environment->addExtension(new DebugExtension());
-        // }
 
         $translator = LocaleHelper::iniTranslator();
         $environment->addExtension(new TranslationExtension($translator));
@@ -75,7 +74,7 @@ class Twig
             );
         } catch (LoaderError|RuntimeError|SyntaxError $e) {
             echo $twig->render(
-                'errors/500.html.twig',
+                '@VisitTail/errors/500.html.twig',
                 [
                     'message' => $e->getMessage()." ligne ".$e->getLine()." file ".$e->getFile(),
                     'error' => $e,
@@ -99,7 +98,7 @@ class Twig
             );
         } catch (LoaderError|RuntimeError|SyntaxError $e) {
             return $twig->render(
-                'errors/500.html.twig',
+                '@VisitTail/errors/500.html.twig',
                 [
                     'message' => $e->getMessage(),
                     'title' => "La page n'a pas pu être chargée",
